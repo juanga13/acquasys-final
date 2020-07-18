@@ -39,7 +39,7 @@ const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
                     });
                     dispatch(adminPaymentsActions.getPaymentsSuccess(data));
                 })
-                .catch(dispatch(adminPaymentsActions.getPaymentsError()));
+                .catch(() => dispatch(adminPaymentsActions.getPaymentsError()));
             break;
 
         case ADMIN_PAYMENTS_CHANGE_MODAL_STATE:
@@ -56,7 +56,7 @@ const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
                     dispatch(adminPaymentsActions.createPaymentSuccess());
                     dispatch(adminPaymentsActions.getPayments())
                 })
-                .catch(dispatch(adminPaymentsActions.createPaymentError()));
+                .catch(() => dispatch(adminPaymentsActions.createPaymentError()));
             break;
 
         // case UPDATE_PAYMENT:
@@ -68,7 +68,7 @@ const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
         //             dispatch(adminPaymentsActions.updateLessonSuccess());
         //             dispatch(adminPaymentsActions.getLessons())
         //         })
-        //         .catch(dispatch(adminPaymentsActions.updateLessonError()));
+        //         .catch(() => dispatch(adminPaymentsActions.updateLessonError()));
         //     break;
 
         // case DELETE_PAYMENT:
@@ -78,13 +78,14 @@ const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
         //             dispatch(adminPaymentsActions.selectLesson(null));
         //             dispatch(adminPaymentsActions.getLessons());
         //         })
-        //         .catch(dispatch(adminPaymentsActions.deleteLessonError()));
+        //         .catch(() => dispatch(adminPaymentsActions.deleteLessonError()));
         //     break;
 
         case GET_FEE:
             requests.getPaymentFee()
                 .then(response => dispatch(adminPaymentsActions.getFeeSuccess(response)))
-                .catch(() => dispatch(adminPaymentsActions.getFeeError()))
+                .catch(() => dispatch(adminPaymentsActions.getFeeError()));
+            break;
 
         case SET_FEE:
             requests.setPaymentFee(action.value)
@@ -92,7 +93,8 @@ const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
                     dispatch(adminPaymentsActions.setFeeSuccess(response));
                     dispatch(adminPaymentsActions.getFee())
                 })
-                .catch(() => dispatch(adminPaymentsActions.setFeeError()))
+                .catch(() => dispatch(adminPaymentsActions.setFeeError()));
+            break;
 
 
         default: break;

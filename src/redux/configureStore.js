@@ -13,6 +13,7 @@ import {
 import { translations } from '../locales/index';
 import sessionMiddleware from '../screens/session/session.middleware';
 import adminMiddleware from '../screens/account/admin/admin.middleware';
+import adminCalendarMiddleware from '../screens/account/admin/calendar/admin.calendar.middleware';
 import adminLessonsMiddleware from '../screens/account/admin/lessons/admin.lessons.middleware';
 import adminPaymentsMiddleware from '../screens/account/admin/payments/admin.payments.middleware';
 import adminStudentsMiddleware from '../screens/account/admin/students/admin.students.middleware';
@@ -30,6 +31,7 @@ export default function configureStore(preloadedState) {
             logger, 
             sessionMiddleware,
             adminMiddleware,
+            adminCalendarMiddleware,
             adminLessonsMiddleware,
             adminPaymentsMiddleware,
             adminStudentsMiddleware,

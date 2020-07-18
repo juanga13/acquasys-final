@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Header, Button, Segment, Label, Icon } from 'semantic-ui-react';
+import { Header, Button, Segment, Label, Icon, Dimmer, Loader, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
 import ModalEdit from '../../../../common/components/Modals/ModalEdit';
@@ -11,6 +11,7 @@ import { MODAL_STATES, MODAL_TYPES, REQUEST_STATUS } from '../../../../../utils/
 import adminPaymentsActions from '../admin.payments.actions';
 import MyTable from '../../../../common/components/MyTable';
 import { dummyAvatar } from '../../../../../assets';
+import fireToast from '../../../../common/components/Toaster';
 
 
 const Payments = (props) => {
@@ -27,13 +28,34 @@ const Payments = (props) => {
         setFeeStatus,
         paymentForm
     } = props;
+    const [newFee, setNewFee] = useState('');
     const isFeeSegmentLoading = (getFeeStatus === REQUEST_STATUS.LOADING || setFeeStatus === REQUEST_STATUS.LOADING);
+
+    useEffect(() => {}, [props.fee])
+
+    useEffect(() => {
+        console.log('create payment effect');
+        if (createPaymentStatus === REQUEST_STATUS.SUCCESS) fireToast(I18n.t('admin.payments.success.create.title'), I18n.t('admin.payments.success.create.description'), 'success', 'check');
+        if (createPaymentStatus === REQUEST_STATUS.ERROR) fireToast(I18n.t('admin.payments.error.create.title'), I18n.t('admin.payments.error.create.description'), 'error', 'warning');
+    }, [props.createPaymentStatus]);
+
+    // useEffect(() => {
+    //     console.log('update payment effect');
+    //     if (updatePaymentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.payments.success.update.title'), I18n.t('admin.payments.success.update.description'), 'success', 'check' );
+    //     if (updatePaymentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.payments.error.update.title'), I18n.t('admin.payments.error.update.description'), 'error', 'warning' );
+    // }, [props.updatePaymentStatus]);
+
+    // useEffect(() => {
+    //     console.log('delete payment effect');
+    //     if (deletePaymentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.payments.success.delete.title'), I18n.t('admin.payments.success.delete.description'), 'success', 'check' );
+    //     if (deletePaymentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.payments.error.delete.title'), I18n.t('admin.payments.error.delete.description'), 'error', 'warning' );
+    // }, [props.deletePaymentStatus]);
 
     const renderModals = () => {
         return ([
             <ModalPreview
                 key='modal-preview'
-                isOpen={modalState === MODAL_STATES.PREVIEW} 
+                isOpen={modalState === MODAL_STATES.PREVIEW}
                 type={MODAL_TYPES.ADMIN_PAYMENT}
                 data={selectedPayment}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
@@ -43,7 +65,7 @@ const Payments = (props) => {
             // ModalEdit with not null data is a new payment
             <ModalEdit
                 key='modal-edit'
-                isOpen={modalState === MODAL_STATES.EDIT}    
+                isOpen={modalState === MODAL_STATES.EDIT}
                 type={MODAL_TYPES.ADMIN_PAYMENT}
                 form={paymentForm}
                 loading={updatePaymentStatus === REQUEST_STATUS.LOADING}
@@ -89,27 +111,30 @@ const Payments = (props) => {
                         {I18n.t('admin.payments.buttons.newPayment')}
                     </Button>
                     {/* apparently without image changes the style of the label texts xD */}
-                    <Button as='div' labelPosition='left'>
-                        <Button icon pointing='right'><Icon name='heart' />{I18n.t('admin.payments.feeAmount')}</Button>
-                        <Label basic pointing='right'>{fee + ' $'}</Label>
-                        <Button icon><Icon name='heart' />{I18n.t('admin.payments.feeAmount')}</Button>
+                    <Input
+                        size='mini'
+                        value={newFee}
+                        placeholder={I18n.t('admin.payments.insertNewFee')}
+                        onChange={(e, data) => setNewFee(data.value)}
+                    />
+                    <Button as='div' labelPosition='right' onClick={() => props.setFee(newFee)}>
+                        <Button>{I18n.t('admin.payments.setFeeAmount')}</Button>
+                        <Label as='a' basic pointing='left'>
+                            {I18n.t('admin.payments.feeAmount') + ': ' + fee + ' $'}
+                        </Label>
                     </Button>
                 </Header>
             </div>
-            {/* 0:
-                amount: 2000
-                date: "2020-06-02T03:00:00.000+0000"
-                payed: false
-                student: {id: 429, email: "Marcos543@student.com", password: "$2a$10$t68SxBU5MMCFEEspR10v4eqGdXc4Cz.yxWNkJhLuupaBefS1kHnL.", name: "Marcos", surname: "Fernandez", …}
-            _ */}
             <MyTable
                 data={payments}
                 columns={['name', 'surname', 'dni', 'amount', 'date']}
                 actions={[
-                    { type: 'file alternate', action: (data) => {
-                        props.selectPayment(data);
-                        props.changeModalState(MODAL_STATES.PREVIEW);
-                    }},
+                    {
+                        type: 'file alternate', action: (data) => {
+                            props.selectPayment(data);
+                            props.changeModalState(MODAL_STATES.PREVIEW);
+                        }
+                    },
                     // { type: 'user delete', action: (data) => {
                     //     props.selectPayment(data);
                     //     props.changeModalState(MODAL_STATES.DELETE);
@@ -142,7 +167,8 @@ const mapDispatchToProps = (dispatch) => ({
     createPayment: (data) => dispatch(adminPaymentsActions.createPayment(data)),
     updatePayment: (data) => dispatch(adminPaymentsActions.updatePayment(data)),
     deletePayment: (id) => dispatch(adminPaymentsActions.deletePayment(id)),
-    inputChange: (id, value) => dispatch(adminPaymentsActions.adminPaymentsInputChange(id, value))
+    inputChange: (id, value) => dispatch(adminPaymentsActions.adminPaymentsInputChange(id, value)),
+    setFee: (fee) => dispatch(adminPaymentsActions.setFee(fee))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Payments));

@@ -9,6 +9,7 @@ import {
 } from './admin.teachers.actions';
 import { FIELD_TYPES, REQUEST_STATUS, MODAL_STATES, GENRES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
+import { LOGOUT } from '../../../session/session.actions';
 
 const initialState = {
     teachers: [],
@@ -74,6 +75,9 @@ const adminTeachersReducer = (state = initialState, action) => {
         case DELETE_TEACHER: return { ...state, deleteTeacherStatus: REQUEST_STATUS.LOADING };
         case DELETE_TEACHER_SUCCESS: return { ...state, deleteTeacherStatus: REQUEST_STATUS.SUCCESS };
         case DELETE_TEACHER_ERROR: return { ...state, deleteTeacherStatus: REQUEST_STATUS.ERROR };
+        
+        case LOGOUT: return initialState;
+
 
         default: return state;
     }

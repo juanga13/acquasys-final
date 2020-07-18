@@ -16,7 +16,7 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
         case GET_LESSONS:
             requests.getLessons()
                 .then(response => dispatch(adminLessonsActions.getLessonsSuccess(response)))
-                .catch(dispatch(adminLessonsActions.getLessonsError()));
+                .catch(() => dispatch(adminLessonsActions.getLessonsError()));
             break;
 
         case ADMIN_LESSONS_CHANGE_MODAL_STATE:
@@ -38,7 +38,7 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
                     dispatch(adminLessonsActions.createLessonSuccess());
                     dispatch(adminLessonsActions.getLessons())
                 })
-                .catch(dispatch(adminLessonsActions.createLessonError()));
+                .catch(() => dispatch(adminLessonsActions.createLessonError()));
             break;
 
         case UPDATE_LESSON:
@@ -57,7 +57,7 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
                     dispatch(adminLessonsActions.updateLessonSuccess());
                     dispatch(adminLessonsActions.getLessons())
                 })
-                .catch(dispatch(adminLessonsActions.updateLessonError()));
+                .catch(() => dispatch(adminLessonsActions.updateLessonError()));
             break;
 
         case DELETE_LESSON:
@@ -67,7 +67,7 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
                     dispatch(adminLessonsActions.selectLesson(null));
                     dispatch(adminLessonsActions.getLessons());
                 })
-                .catch(dispatch(adminLessonsActions.deleteLessonError()));
+                .catch(() => dispatch(adminLessonsActions.deleteLessonError()));
             break;
 
         default: break;

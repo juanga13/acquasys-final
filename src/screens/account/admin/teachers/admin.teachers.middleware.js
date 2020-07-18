@@ -16,7 +16,7 @@ const adminTeachersMiddleware = ({ dispatch, getState }) => next => action => {
             case GET_TEACHERS:
                 requests.getTeachers()
                     .then(response => dispatch(adminTeachersActions.getTeachersSuccess(response)))
-                    .catch(dispatch(adminTeachersActions.getTeachersError()));
+                    .catch(() => dispatch(adminTeachersActions.getTeachersError()));
                 break;
 
             case ADMIN_TEACHERS_CHANGE_MODAL_STATE:
@@ -39,7 +39,7 @@ const adminTeachersMiddleware = ({ dispatch, getState }) => next => action => {
                         dispatch(adminTeachersActions.createTeacherSuccess());
                         dispatch(adminTeachersActions.getTeachers())
                     })
-                    .catch(dispatch(adminTeachersActions.createTeacherError()));
+                    .catch(() => dispatch(adminTeachersActions.createTeacherError()));
                 break;
 
             case UPDATE_TEACHER:
@@ -58,7 +58,7 @@ const adminTeachersMiddleware = ({ dispatch, getState }) => next => action => {
                         dispatch(adminTeachersActions.updateTeacherSuccess());
                         dispatch(adminTeachersActions.getTeachers())
                     })
-                    .catch(dispatch(adminTeachersActions.updateTeacherError()));
+                    .catch(() => dispatch(adminTeachersActions.updateTeacherError()));
                 break;
 
             case DELETE_TEACHER:
@@ -68,7 +68,7 @@ const adminTeachersMiddleware = ({ dispatch, getState }) => next => action => {
                         dispatch(adminTeachersActions.selectTeacher(null));
                         dispatch(adminTeachersActions.getTeachers());
                     })
-                    .catch(dispatch(adminTeachersActions.deleteTeacherError()));
+                    .catch(() => dispatch(adminTeachersActions.deleteTeacherError()));
                 break;
 
             default: break;

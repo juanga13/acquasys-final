@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Header, Button } from 'semantic-ui-react';
@@ -10,6 +10,7 @@ import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
 import ModalDelete from '../../../../common/components/Modals/ModalDelete';
 import MyTable from '../../../../common/components/MyTable';
+import fireToast from '../../../../common/components/Toaster';
 
 const Teachers = (props) => {
     const {
@@ -22,6 +23,24 @@ const Teachers = (props) => {
         deleteTeacherStatus,
         teacherForm
     } = props;
+
+    useEffect(() => {
+        console.log('create student effect');
+        if (createTeacherStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.teachers.success.create.title'), I18n.t('admin.teacherss.success.create.description'),'success', 'check' );
+        if (createTeacherStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.teachers.error.create.title'), I18n.t('admin.teachers.error.create.description'), 'error', 'warning' );
+    }, [props.createTeacherStatus]);
+
+    useEffect(() => {
+        console.log('update student effect');
+        if (updateTeacherStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.teachers.success.update.title'), I18n.t('admin.teachers.success.update.description'), 'success', 'check' );
+        if (updateTeacherStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.teachers.error.update.title'), I18n.t('admin.teachers.error.update.description'), 'error', 'warning' );
+    }, [props.updateTeacherStatus]);
+
+    useEffect(() => {
+        console.log('delete student effect');
+        if (deleteTeacherStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.teachers.success.delete.title'), I18n.t('admin.teachers.success.delete.description'), 'success', 'check' );
+        if (deleteTeacherStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.teachers.error.delete.title'), I18n.t('admin.teachers.error.delete.description'), 'error', 'warning' );
+    }, [props.deleteTeacherStatus]);
 
     const renderModals = () => {
         return ([

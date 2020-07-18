@@ -22,17 +22,15 @@ import MyFormInput from '../MyFormInput';
 const ModalEdit = (props) => {
     const {
         isOpen,
-        loading,
         type,
         form,
         showImage,
-        status
+        loading
     } = props;
 
     // const formKeys = form ? Object.keys(form) : [];
     const formValues = form ? Object.values(form) : [];
-    console.log('askjasdjk', formValues);
-
+    
     const handleSubmit = () => {
         // if (!Object.values(form).some(field => !verifyField(field.type, field.value))) {
         //     props.login();   
@@ -158,10 +156,6 @@ const ModalEdit = (props) => {
             <Dimmer active={loading} inverted><Loader /></Dimmer>
             <Modal.Header>{I18n.t('common.modals.edit.title.' + type)}</Modal.Header>
             <Modal.Content image>
-                <div>
-                    {status === REQUEST_STATUS.ERROR && <Label color='red'>{I18n.t('common.modals.delete.error.' + type)}</Label>}
-                    {status === REQUEST_STATUS.SUCCESS && <Label color='green'>{I18n.t('common.modals.delete.success.' + type)}</Label>}
-                </div>
                 {showImage && <Image wrapped size='small' src={dummyAvatar} />}
                 <Modal.Description>
                     {renderForm()}

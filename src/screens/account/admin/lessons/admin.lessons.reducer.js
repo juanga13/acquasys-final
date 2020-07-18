@@ -9,6 +9,7 @@ import {
 } from './admin.lessons.actions';
 import { REQUEST_STATUS, FIELD_TYPES, MODAL_STATES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
+import { LOGOUT } from '../../../session/session.actions';
 
 const initialState = {
     lessons: [],
@@ -70,6 +71,8 @@ const adminLessonsReducer = (state = initialState, action) => {
         case DELETE_LESSON: return { ...state, deleteLessonStatus: REQUEST_STATUS.LOADING };
         case DELETE_LESSON_SUCCESS: return { ...state, deleteLessonStatus: REQUEST_STATUS.SUCCESS };
         case DELETE_LESSON_ERROR: return { ...state, deleteLessonStatus: REQUEST_STATUS.ERROR };
+        
+        case LOGOUT: return initialState;
 
 
         default: return state;

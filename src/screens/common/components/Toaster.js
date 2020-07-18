@@ -25,7 +25,6 @@ const fireToast = (
 //     onClick = null,
 //     onDismiss = null
 ) => {
-    console.log('firing toast');
     setTimeout(() => {
         toast({
             type: type,

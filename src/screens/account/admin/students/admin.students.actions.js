@@ -1,4 +1,3 @@
-// students
 export const GET_STUDENTS = 'GET_STUDENTS';
 export const GET_STUDENTS_SUCCESS = 'GET_STUDENTS_SUCCESS';
 export const GET_STUDENTS_ERROR = 'GET_STUDENTS_ERROR';
@@ -18,6 +17,8 @@ export const UPDATE_STUDENT_ERROR = 'UPDATE_STUDENT_ERROR';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
 export const DELETE_STUDENT_SUCCESS = 'DELETE_STUDENT_SUCCESS';
 export const DELETE_STUDENT_ERROR = 'DELETE_STUDENT_ERROR';
+
+export const CLEAR_STATUSES = 'CLEAR_STATUSES';
 
 const adminStudentsActions = {
     getStudents: () => ({ type: GET_STUDENTS }),
@@ -39,6 +40,8 @@ const adminStudentsActions = {
     deleteStudent: (id) => ({ type: DELETE_STUDENT, id }),
     deleteStudentSuccess: () => ({ type: DELETE_STUDENT_SUCCESS }),
     deleteStudentError: () => ({ type: DELETE_STUDENT_ERROR }),
+
+    clearStatuses: () => ({ type: CLEAR_STATUSES })
 };
 
 export default adminStudentsActions;

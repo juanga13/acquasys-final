@@ -18,6 +18,8 @@ export const DELETE_LESSON = 'DELETE_LESSON';
 export const DELETE_LESSON_SUCCESS = 'DELETE_LESSON_SUCCESS';
 export const DELETE_LESSON_ERROR = 'DELETE_LESSON_ERROR';
 
+export const CLEAR_STATUSES = 'CLEAR_STATUSES';
+
 
 const adminLessonsActions = {
     getLessons: () => ({ type: GET_LESSONS }),
@@ -38,7 +40,9 @@ const adminLessonsActions = {
 
     deleteLesson: (id) => ({ type: DELETE_LESSON, id }),
     deleteLessonSuccess: () => ({ type: DELETE_LESSON_SUCCESS }),
-    deleteLessonError: () => ({ type: DELETE_LESSON_ERROR })
+    deleteLessonError: () => ({ type: DELETE_LESSON_ERROR }),
+
+    clearStatuses: () => ({ type: CLEAR_STATUSES })
 };
 
 export default adminLessonsActions;

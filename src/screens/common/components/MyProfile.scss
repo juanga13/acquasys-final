@@ -1,0 +1,19 @@
+.my-profile-container {
+    
+}
+
+.label-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    // label key
+    p:nth-child(1) {
+        flex-grow: 1;  // magic align here :')
+        font-weight: bold;
+    }
+    // label value
+    p:nth-child(2) {
+        
+    }
+}

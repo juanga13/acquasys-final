@@ -11,6 +11,7 @@ import {
 } from './admin.payments.actions';
 import { MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
+import { LOGOUT } from '../../../session/session.actions';
 
 const initialState = {
     payments: [],
@@ -77,7 +78,10 @@ const adminPaymentsReducer = (state = initialState, action) => {
         case SET_FEE: return { ...state, setFeeStatus: REQUEST_STATUS.LOADING }
         case SET_FEE_SUCCESS: return { ...state, setFeeStatus: REQUEST_STATUS.SUCCESS }
         case SET_FEE_ERROR: return { ...state, setFeeStatus: REQUEST_STATUS.ERROR }
+        
+        case LOGOUT: return initialState;
 
+        
         default: return state;
     }
 };

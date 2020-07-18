@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Header, Button } from 'semantic-ui-react';
@@ -10,6 +10,7 @@ import ModalDelete from '../../../../common/components/Modals/ModalDelete';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
 import ModalCreate from '../../../../common/components/Modals/ModalCreate';
 import ModalEdit from '../../../../common/components/Modals/ModalEdit';
+import fireToast from '../../../../common/components/Toaster';
 
 const Students = (props) => {
     const {
@@ -22,6 +23,24 @@ const Students = (props) => {
         updateStudentStatus,
         deleteStudentStatus
     } = props;
+
+    useEffect(() => {
+        console.log('create student effect');
+        if (createStudentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.students.success.create.title'), I18n.t('admin.students.success.create.description'),'success', 'check' );
+        if (createStudentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.students.error.create.title'), I18n.t('admin.students.error.create.description'), 'error', 'warning' );
+    }, [props.createStudentStatus]);
+
+    useEffect(() => {
+        console.log('update student effect');
+        if (updateStudentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.students.success.update.title'), I18n.t('admin.students.success.update.description'), 'success', 'check' );
+        if (updateStudentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.students.error.update.title'), I18n.t('admin.students.error.update.description'), 'error', 'warning' );
+    }, [props.updateStudentStatus]);
+
+    useEffect(() => {
+        console.log('delete student effect');
+        if (deleteStudentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.students.success.delete.title'), I18n.t('admin.students.success.delete.description'), 'success', 'check' );
+        if (deleteStudentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.students.error.delete.title'), I18n.t('admin.students.error.delete.description'), 'error', 'warning' );
+    }, [props.deleteStudentStatus]);
 
     const renderModals = () => {
         return ([

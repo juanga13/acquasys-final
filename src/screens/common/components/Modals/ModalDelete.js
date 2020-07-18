@@ -19,8 +19,7 @@ const ModalDelete = (props) => {
         isOpen,
         type,
         data,
-        loading,
-        status
+        loading
     } = props;
 
     return (
@@ -28,10 +27,6 @@ const ModalDelete = (props) => {
             <Dimmer active={loading} inverted><Loader /></Dimmer>
             <Modal.Header>{I18n.t('common.modals.delete.title.' + type, { ...data })}</Modal.Header>
             <Modal.Content>
-                <div>
-                    {status === REQUEST_STATUS.ERROR && <Label color='red'>{I18n.t('common.modals.delete.error.' + type)}</Label>}
-                    {status === REQUEST_STATUS.SUCCESS && <Label color='green'>{I18n.t('common.modals.delete.success.' + type)}</Label>}
-                </div>
                 <p>{I18n.t('common.modals.delete.prompt.' + type, { ...data })}</p>
             </Modal.Content>
             <Modal.Actions>

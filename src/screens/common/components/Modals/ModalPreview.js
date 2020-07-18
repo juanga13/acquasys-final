@@ -21,11 +21,11 @@ import { sortData } from '../../../../utils/sortData';
 const ModalPreview = (props) => {
     const {
         isOpen,
-        loading,
         data,
         type,
         showImage,
-        noEditOption
+        noEditOption,
+        loading
     } = props;
     const sortedData  = data ? sortData(type, data) : {};
     const keys = Object.keys(sortedData);

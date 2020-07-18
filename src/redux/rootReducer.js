@@ -6,6 +6,7 @@ import { i18nReducer } from "react-redux-i18n";
 import sessionReducer from '../screens/session/session.reducer';
 
 import adminReducer from '../screens/account/admin/admin.reducer';
+import adminCalendarReducer from '../screens/account/admin/calendar/admin.calendar.reducer';
 import adminStudentsReducer from '../screens/account/admin/students/admin.students.reducer';
 import adminTeachersReducer from '../screens/account/admin/teachers/admin.teachers.reducer';
 import adminLessonsReducer from '../screens/account/admin/lessons/admin.lessons.reducer';
@@ -16,6 +17,7 @@ const rootReducer = (history) => combineReducers({
     session: sessionReducer,
     admin: combineReducers({
         main: adminReducer,
+        calendar: adminCalendarReducer,
         students: adminStudentsReducer,
         teachers: adminTeachersReducer,
         lessons: adminLessonsReducer,

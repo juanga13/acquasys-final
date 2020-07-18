@@ -1,6 +1,11 @@
 import { MODAL_TYPES } from "./consts";
 
-// we want custom sorting, order variable determines how
+/*
+    ordena data para imprimir en los previews, porque a diferencia 
+    de los forms data nos lo dan en orden alfabetico de key, aca 
+    de paso tenemos un poco mas claro en que orden quiero que se
+    muestren los datos.
+*/
 export const sortData = (modalType, data) => {
     let order = [];
     switch (modalType) {

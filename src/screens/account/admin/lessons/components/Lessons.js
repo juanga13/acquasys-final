@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Header, Button } from 'semantic-ui-react';
@@ -10,6 +10,7 @@ import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import ModalCreate from '../../../../common/components/Modals/ModalCreate';
 import ModalDelete from '../../../../common/components/Modals/ModalDelete';
 import MyTable from '../../../../common/components/MyTable';
+import fireToast from '../../../../common/components/Toaster';
 
 const Lessons = (props) => {
     const {
@@ -22,6 +23,16 @@ const Lessons = (props) => {
         deleteLessonStatus,
         lessonForm
     } = props;
+
+    useEffect(() => {
+        console.log('lesson effect');
+        if (createLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.create.title'), I18n.t('admin.lessons.success.create.description'),'success', 'check' );
+        if (createLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.create.title'), I18n.t('admin.lessons.error.create.description'), 'error', 'warning' );
+        if (updateLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.update.title'), I18n.t('admin.lessons.success.update.description'), 'success', 'check' );
+        if (updateLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.update.title'), I18n.t('admin.lessons.error.update.description'), 'error', 'warning' );
+        if (deleteLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.delete.title'), I18n.t('admin.lessons.success.delete.description'), 'success', 'check' );
+        if (deleteLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.delete.title'), I18n.t('admin.lessons.error.delete.description'), 'error', 'warning' );
+    }, [props.createLessonStatus, props.updateLessonStatus, props.deleteLessonStatus]);
 
     const renderModals = () => {
         return ([

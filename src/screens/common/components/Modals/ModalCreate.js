@@ -22,12 +22,11 @@ import fireToast from '../Toaster';
 const ModalCreate = (props) => {
     const {
         isOpen,
-        loading,
         form,
         type,
         error,
         showImage,
-        status
+        loading
     } = props;
 
     // const formKeys = form ? Object.keys(form) : [];
@@ -112,23 +111,6 @@ const ModalCreate = (props) => {
             case MODAL_TYPES.TEACHER_LESSON: return 'small';
             default: return 'small';
         }
-    }
-
-    const renderToasts = () => {
-        if (status === REQUEST_STATUS.ERROR) 
-            fireToast(
-                I18n.t('admin.toasts.create.error.' + type + '.title'), 
-                I18n.t('admin.toasts.create.error.' + type + '.description'),
-                'error', 
-                'warning'
-            );
-        if (status === REQUEST_STATUS.SUCCESS)
-            fireToast(
-                I18n.t('admin.toasts.create.success.' + type + '.title'), 
-                I18n.t('admin.toasts.create.success.' + type + '.description'),
-                'success', 
-                'check'
-            );
     };
 
     return (
@@ -138,7 +120,6 @@ const ModalCreate = (props) => {
             onClose={props.onClose}
         >
             <Dimmer active={loading} inverted><Loader /></Dimmer>
-            {renderToasts()}
             <Modal.Header>
                 <Header>{I18n.t('common.modals.create.title.' + type)}</Header>
                 {error && <Label>{I18n.t('common.modals.create.error.creation')}</Label>}

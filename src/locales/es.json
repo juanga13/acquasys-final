@@ -129,88 +129,6 @@
                     "adminTeacher": "Hubo un error al eliminar el profesor",
                     "adminLesson": "Hubo un error al eliminar la clase",
                     "adminPayment": "Hubo un error al eliminar el pago"
-                },
-                "toasts": {
-                    "preview": {
-                        "success": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        },
-                        "error": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        }
-                    },
-                    "create": {
-                        "success": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        },
-                        "error": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        }
-                    },
-                    "edit": {
-                        "success": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        },
-                        "error": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        }
-                    },
-                    "delete": {
-                        "success": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        },
-                        "error": {
-                            "adminStudent": "",
-                            "adminTeacher": "",
-                            "adminLesson": "",
-                            "adminPayment": "",
-                            "studentLesson": "",
-                            "studentPayment": "",
-                            "teacherLesson": ""
-                        }
-                    }
                 }
             }
         },
@@ -233,14 +151,15 @@
             }
         },
         "myProfile": {
-            "name": "Nombre: {{name}}",
-            "surname": "Apellido: {{surname}}",
-            "email": "Email: {{email}}",
+            "name": "Nombre",
+            "surname": "Apellido",
+            "email": "Email",
             "admin": {
-                "noVerifiedAccount": "(mTODO) Cuentas que verificar.",
+                "noVerifiedAccount": "Ninguna cuenta que verificar.",
                 "weekLessons": "(mTODO) Clases que se van a dar esta semana.",
                 "paymentsNotDone": "(mTODO) Pagos que faltan hacer.",
-                "paymentsNext": "(mTODO) Pagos que tienen que hacer el mes que viene."
+                "paymentsNext": "(mTODO) Pagos que tienen que hacer el mes que viene.",
+                "verifiedAccountsTitle": "Usuarios que se necesitan verificar"
             },
             "student": {
                 "weekLessons": "(mTODO) Clases que tengo esta semana",
@@ -252,7 +171,9 @@
             },
             "unverified": {
                 "verificationStatus": "(mTODO) Estado de la verificacion de mi cuenta (1. faltan datos; 2. falta confirmacion; 3. verificacion denegada)"
-            }
+            },
+            "title": "Mi Perfil",
+            "dni": "DNI"
         },
         "input": {
             "sex": {
@@ -349,6 +270,34 @@
             "title": "Clases",
             "buttons": {
                 "newLesson": "Crear nueva clase"
+            },
+            "success": {
+                "create": {
+                    "title": "Creación de clase",
+                    "description": "Se ha creado la nueva clase con éxito."
+                },
+                "update": {
+                    "title": "Actualización de clase",
+                    "description": "Se han actualizado los datos de la clase con éxito."
+                },
+                "delete": {
+                    "title": "Eliminación de clase",
+                    "description": "Se ha eliminado la clse con éxito."
+                }
+            },
+            "error": {
+                "create": {
+                    "title": "Creación de clase",
+                    "description": "Hubo un error al crear la nueva clase."
+                },
+                "update": {
+                    "title": "Actualización de clase",
+                    "description": "Hubo un error al actualizar los datos de la clase."
+                },
+                "delete": {
+                    "title": "Eliminación de clase",
+                    "description": "Hubo un error al eliminar la clase."
+                }
             }
         },
         "payments": {
@@ -356,19 +305,108 @@
             "buttons": {
                 "newPayment": "Crear nuevo pago"
             },
-            "feeAmount": "Valor de la cuota"
+            "feeAmount": "Valor de la cuota",
+            "success": {
+                "create": {
+                    "title": "Creación de pago",
+                    "description": "Se ha creado el nuevo pago con éxito."
+                },
+                "update": {
+                    "title": "Actualización de pago",
+                    "description": "Se han actualizado los datos del pago con éxito."
+                },
+                "delete": {
+                    "title": "Eliminación de pago",
+                    "description": "Se ha eliminado el pago con éxito."
+                }
+            },
+            "error": {
+                "create": {
+                    "title": "Creación de pago",
+                    "description": "Hubo un error al crear el nuevo pago."
+                },
+                "update": {
+                    "title": "Actualización de pago",
+                    "description": "Hubo un error al actualizar los datos del pago."
+                },
+                "delete": {
+                    "title": "Eliminación de pago",
+                    "description": "Hubo un error al eliminar el pago."
+                }
+            },
+            "setFeeAmount": "Cambiar el valor de la cuota",
+            "insertNewFee": "Nuevo valor de cuota"
         },
         "students": {
             "title": "Alumnos",
             "buttons": {
                 "newStudent": "Crear nuevo alumno"
+            },
+            "success": {
+                "create": {
+                    "title": "Creación de alumno",
+                    "description": "Se ha creado el nuevo alumno con éxito."
+                },
+                "update": {
+                    "title": "Actualización de alumno",
+                    "description": "Se han actualizado los datos del alumno con éxito."
+                },
+                "delete": {
+                    "title": "Eliminación de alumno",
+                    "description": "Se ha eliminado el alumno con éxito."
+                }
+            },
+            "error": {
+                "create": {
+                    "title": "Creación de alumno",
+                    "description": "Hubo un error al crear el nuevo alumno."
+                },
+                "update": {
+                    "title": "Actualización de alumno",
+                    "description": "Hubo un error al actualizar los datos del alumno."
+                },
+                "delete": {
+                    "title": "Eliminación de alumno",
+                    "description": "Hubo un error al eliminar el alumno."
+                }
             }
         },
         "teachers": {
             "title": "Profesores",
             "buttons": {
                 "newTeacher": "Crear nuevo profesor"
+            },
+            "success": {
+                "create": {
+                    "title": "Creación de profesor",
+                    "description": "Se ha creado el nuevo profesor con éxito."
+                },
+                "update": {
+                    "title": "Actualización de profesor",
+                    "description": "Se han actualizado los datos del profesor con éxito."
+                },
+                "delete": {
+                    "title": "Eliminación de profesor",
+                    "description": "Se ha eliminado el profesor con éxito."
+                }
+            },
+            "error": {
+                "create": {
+                    "title": "Creación de profesor",
+                    "description": "Hubo un error al crear el nuevo profesor."
+                },
+                "update": {
+                    "title": "Actualización de profesor",
+                    "description": "Hubo un error al actualizar los datos del profesor."
+                },
+                "delete": {
+                    "title": "Eliminación de profesor",
+                    "description": "Hubo un error al eliminar el profesor."
+                }
             }
+        },
+        "calendar": {
+            "title": "Calendario"
         }
     },
     "student": {},

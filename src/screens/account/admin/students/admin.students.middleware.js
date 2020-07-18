@@ -16,7 +16,7 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
         case GET_STUDENTS:
             requests.getStudents()
                 .then(response => dispatch(adminStudentsActions.getStudentsSuccess(response)))
-                .catch(dispatch(adminStudentsActions.getStudentsError()));
+                .catch(() => dispatch(adminStudentsActions.getStudentsError()));
             break;
 
         case ADMIN_STUDENTS_CHANGE_MODAL_STATE:
@@ -40,7 +40,7 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
                     dispatch(adminStudentsActions.getStudents())
                     dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSE))
                 })
-                .catch(dispatch(adminStudentsActions.createStudentError()));
+                .catch(() => dispatch(adminStudentsActions.createStudentError()));
             break;
 
         case UPDATE_STUDENT:
@@ -58,17 +58,21 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
                     dispatch(adminStudentsActions.updateStudentSuccess());
                     dispatch(adminStudentsActions.getStudents());
                 })
-                .catch(dispatch(adminStudentsActions.updateStudentError()));
+                .catch(() => dispatch(adminStudentsActions.updateStudentError()));
             break;
 
         case DELETE_STUDENT:
             requests.deleteStudent(action.id)
                 .then(() => {
+                    console.log('delete student nice')
                     dispatch(adminStudentsActions.deleteStudentSuccess());
                     dispatch(adminStudentsActions.selectStudent(null));
                     dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSED));
                 })
-                .catch(dispatch(adminStudentsActions.deleteStudentError()));
+                .catch(() => {
+                    console.log('delete student bad')
+                    dispatch(adminStudentsActions.deleteStudentError())
+                });
             break;
 
         default: break;

@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import { FIELD_TYPES } from './consts';
 
-
+/**
+ * 
+ * @param { enum } type FIELD_TYPE en const.js
+ * @param { * } value cualquier cosa, si yo se el FIELD_TYPE 
+ * yo se que verificar. 
+ */
 const verifyField = (type, value) => {
     switch (type) {
         case FIELD_TYPES.STRING: return (value.length > 0)
@@ -18,7 +23,7 @@ const verifyField = (type, value) => {
 
 verifyField.propTypes = {
     type: PropTypes.string,
-    value: PropTypes.object
+    value: PropTypes.any
 };
 
 export default verifyField;

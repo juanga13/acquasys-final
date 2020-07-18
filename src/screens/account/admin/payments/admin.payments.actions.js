@@ -27,6 +27,8 @@ export const SET_FEE = 'SET_FEE';
 export const SET_FEE_SUCCESS = 'SET_FEE_SUCCESS';
 export const SET_FEE_ERROR = 'SET_FEE_ERROR';
 
+export const CLEAR_STATUSES = 'CLEAR_STATUSES';
+
 /* Definitions */
 const adminPaymentsActions = {
     getPayments: () => ({ type: GET_PAYMENTS }),
@@ -55,7 +57,9 @@ const adminPaymentsActions = {
 
     setFee: (value) => ({ type: SET_FEE, value }),
     setFeeSuccess: () => ({ type: SET_FEE_SUCCESS }),
-    setFeeError: () => ({ type: SET_FEE_ERROR })
+    setFeeError: () => ({ type: SET_FEE_ERROR }),
+
+    clearStatuses: () => ({ type: CLEAR_STATUSES })
 };
 
 export default adminPaymentsActions;

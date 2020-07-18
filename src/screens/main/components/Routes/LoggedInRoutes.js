@@ -10,6 +10,7 @@ import { default as AdminLessons } from '../../../account/admin/lessons/componen
 import { default as AdminPayments } from '../../../account/admin/payments/components/Payments';
 import { default as AdminStudents } from '../../../account/admin/students/components/Students';
 import { default as AdminTeachers } from '../../../account/admin/teachers/components/Teachers';
+import { AdminCalendar } from '../../../account/admin';
 
 
 /**
@@ -21,12 +22,12 @@ const LoggedInRoutes = (props) => {
     const renderRoleRoutes = () => {
         switch (role) {
             case ROLES.ADMIN:
-                {/* <Route to='/calendar' component={Calendar}/> */}
                 return ([
-                    <Route key='route-admin-1' path='/students' component={AdminStudents}/>,
-                    <Route key='route-admin-2' path='/lessons' component={AdminLessons}/>,
-                    <Route key='route-admin-3' path='/payments' component={AdminPayments}/>,
-                    <Route key='route-admin-4' path='/teachers' component={AdminTeachers}/>
+                    <Route key='route-admin-1' path='/calendar' component={AdminCalendar}/>,
+                    <Route key='route-admin-2' path='/students' component={AdminStudents}/>,
+                    <Route key='route-admin-3' path='/lessons' component={AdminLessons}/>,
+                    <Route key='route-admin-4' path='/payments' component={AdminPayments}/>,
+                    <Route key='route-admin-5' path='/teachers' component={AdminTeachers}/>
                 ]);
 
             case ROLES.STUDENT:
