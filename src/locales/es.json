@@ -1,0 +1,377 @@
+{
+    "main": {
+        "welcome": "Bienvenido %{name} %{surname} a Acquasys.",
+        "unloggedWelcome": "Bienvenido a Acquasys! Usted no esta logeado.",
+        "navbar": {
+            "home": "Inicio",
+            "login": "Ingresar",
+            "register": "Registrarse",
+            "profile": "Mi Perfil",
+            "calendar": "Calendario",
+            "lessons": "Clases",
+            "payments": "Pagos",
+            "students": "Alumnos",
+            "teachers": "Profesores",
+            "logout": "Deslogear"
+        },
+        "home": {
+            "title": "Home"
+        },
+        "error": {
+            "welcome": "Hubo un error al obtener los datos de su perfil."
+        }
+    },
+    "common": {
+        "modals": {
+            "preview": {
+                "title": {
+                    "adminStudent": "Alumnos - Detalles de datos de %{name} %{surname}",
+                    "adminTeacher": "Profesores - Detalles de datos de %{name} %{surname}",
+                    "adminLesson": "Clases - Detalles de datos de %{name}",
+                    "adminPayment": "Pagos - Detalles de datos de %{name}",
+                    "studentLesson": "Clases - Detalles de datos de %{name}",
+                    "studentPayment": "Pagos - Detalles de datos de %{name}",
+                    "teacherLesson": "Clases - Detalles de datos de %{name}"
+                },
+                "buttons": {
+                    "submit": "Aceptar",
+                    "close": "Cerrar",
+                    "edit": "Editar datos"
+                }
+            },
+            "create": {
+                "title": {
+                    "adminStudent": "Alumnos - Crear un nuevo alumno",
+                    "adminTeacher": "Profesores - Crear un nuevo profesor",
+                    "adminLesson": "Clases - Crear una nueva clase",
+                    "adminPayment": "Pagos - Crear un nuevo pago",
+                    "studentLesson": "Clases - ",
+                    "studentPayment": "Pagos - ",
+                    "teacherLesson": "Clases - "
+                },
+                "buttons": {
+                    "create": "Crear",
+                    "cancel": "Cancelar"
+                },
+                "success": {
+                    "adminStudent": "Se creo el alumno con exito",
+                    "adminTeacher": "Se creo el profesor con exito",
+                    "adminLesson": "Se creo la clase con exito",
+                    "adminPayment": "Se creo el pago con exito"
+                },
+                "error": {
+                    "adminStudent": "Hubo un error al crear el alumno",
+                    "adminTeacher": "Hubo un error al crear el profesor",
+                    "adminLesson": "Hubo un error al crear la clase",
+                    "adminPayment": "Hubo un error al crear el pago"
+                }
+            },
+            "edit": {
+                "title": {
+                    "adminStudent": "Alumnos - Editar de datos",
+                    "adminTeacher": "Profesores - Editar de datos",
+                    "adminLesson": "Clases - Editar de datos",
+                    "adminPayment": "Pagos - Editar de datos",
+                    "studentLesson": "Clases - Editar de datos",
+                    "studentPayment": "Pagos - Editar de datos",
+                    "teacherLesson": "Clases - Editar de datos"
+                },
+                "buttons": {
+                    "submit": "Aceptar cambios",
+                    "cancel": "Cancelar",
+                    "goBack": "Cancelar y volver",
+                    "newPassword": "Crear nueva contraseña"
+                },
+                "success": {
+                    "adminStudent": "Se cambiaron los datos del alumno con exito",
+                    "adminTeacher": "Se cambiaron los datos del profesor con exito",
+                    "adminLesson": "Se cambiaron los datos de la clase con exito",
+                    "adminPayment": "Se cambiaron los datos del pago con exito"
+                },
+                "error": {
+                    "adminStudent": "Hubo un error al editar los datos del alumno",
+                    "adminTeacher": "Hubo un error al editar los datos del profesor",
+                    "adminLesson": "Hubo un error al editar los datos de la clase",
+                    "adminPayment": "Hubo un error al editar los datos del pago"
+                }
+            },
+            "delete": {
+                "title": {
+                    "adminStudent": "Alumnos - Eliminar %{name} %{surname}",
+                    "adminTeacher": "Profesores - Eliminar %{name} %{surname}",
+                    "adminLesson": "Clases - Eliminar %{name}",
+                    "adminPayment": "Pagos - Eliminar %{name}",
+                    "studentLesson": "Clases - Eliminar %{name}",
+                    "studentPayment": "Pagos - Eliminar %{name}",
+                    "teacherLesson": "Clases - Eliminar %{name}"
+                },
+                "prompt": {
+                    "adminStudent": "Esta seguro que desea eliminar al alumno %{name} %{surname}?",
+                    "adminTeacher": "Esta seguro que desea eliminar al profesor %{name} %{surname} (CUIL %{cuil})?",
+                    "adminLesson": "Esta seguro que desea eliminar la clase %{name}?",
+                    "adminPayment": "Esta seguro que desea eliminar el pago %{name}?",
+                    "studentLesson": "Esta seguro que desea eliminar la clase %{name}",
+                    "studentPayment": "Esta seguro que desea eliminar el pago %{name}",
+                    "teacherLesson": "Esta seguro que desea eliminar la clase %{name}"
+                },
+                "buttons": {
+                    "yes": "Si",
+                    "no": "No"
+                },
+                "success": {
+                    "adminStudent": "Se eliminó el alumno con exito",
+                    "adminTeacher": "Se eliminó el profesor con exito",
+                    "adminLesson": "Se eliminó la clase con exito",
+                    "adminPayment": "Se eliminó el pago con exito"
+                },
+                "error": {
+                    "adminStudent": "Hubo un error al eliminar el alumno",
+                    "adminTeacher": "Hubo un error al eliminar el profesor",
+                    "adminLesson": "Hubo un error al eliminar la clase",
+                    "adminPayment": "Hubo un error al eliminar el pago"
+                },
+                "toasts": {
+                    "preview": {
+                        "success": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        },
+                        "error": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        }
+                    },
+                    "create": {
+                        "success": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        },
+                        "error": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        }
+                    },
+                    "edit": {
+                        "success": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        },
+                        "error": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        }
+                    },
+                    "delete": {
+                        "success": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        },
+                        "error": {
+                            "adminStudent": "",
+                            "adminTeacher": "",
+                            "adminLesson": "",
+                            "adminPayment": "",
+                            "studentLesson": "",
+                            "studentPayment": "",
+                            "teacherLesson": ""
+                        }
+                    }
+                }
+            }
+        },
+        "table": {
+            "actions": "Acciones",
+            "title": {
+                "name": "Nombre",
+                "surname": "Apellido",
+                "dni": "DNI",
+                "cuil": "CUIL",
+                "amount": "Cantidad",
+                "date": "Fecha"
+            },
+            "cells": {
+                "file alternate": "Detalles",
+                "user delete": "Eliminar"
+            },
+            "error": {
+                "dataError": "Hubo un error con la obtencion de datos"
+            }
+        },
+        "myProfile": {
+            "name": "Nombre: {{name}}",
+            "surname": "Apellido: {{surname}}",
+            "email": "Email: {{email}}",
+            "admin": {
+                "noVerifiedAccount": "(mTODO) Cuentas que verificar.",
+                "weekLessons": "(mTODO) Clases que se van a dar esta semana.",
+                "paymentsNotDone": "(mTODO) Pagos que faltan hacer.",
+                "paymentsNext": "(mTODO) Pagos que tienen que hacer el mes que viene."
+            },
+            "student": {
+                "weekLessons": "(mTODO) Clases que tengo esta semana",
+                "paymentsNotDone": "(mTODO) Pagos que me faltan hacer.",
+                "paymentsNext": "(mTODO) Pagos que tengo que hacer el mes que viene."
+            },
+            "teacher": {
+                "weekLessons": "(mTODO) Clases que tengo que dar esta semana."
+            },
+            "unverified": {
+                "verificationStatus": "(mTODO) Estado de la verificacion de mi cuenta (1. faltan datos; 2. falta confirmacion; 3. verificacion denegada)"
+            }
+        },
+        "input": {
+            "sex": {
+                "femenine": "Femenino",
+                "masculine": "Masculino"
+            }
+        },
+        "weekdays": {
+            "monday": "Lunes",
+            "tuesday": "Martes",
+            "wednesday": "Miércoles",
+            "thursday": "Jueves",
+            "friday": "Viernes",
+            "saturday": "Sábado",
+            "sunday": "Domingo"
+        },
+        "other": {
+            "atHour": "a las %{hour}:%{minutes}",
+            "duration": "Duración",
+            "minutes": "minutos"
+        },
+        "inputs": {
+            "weekdaysInput": {
+                "add": "Agregar día",
+                "weekdaySelect": "Elije un dia",
+                "hour": "Hora",
+                "duration": "Duración"
+            }
+        }
+    },
+    "forms": {
+        "name": "Nombre",
+        "surname": "Apellido",
+        "email": "Email",
+        "password": "Nueva Contraseña",
+        "dni": "DNI",
+        "sex": "Sexo",
+        "image": "Imagen de perfil",
+        "phoneNumber": "Telefono",
+        "fatherName": "Nombre del padre",
+        "fatherSurname": "Apellido del padre",
+        "fatherPhone": "Telefono del padre",
+        "fatherEmail": "Email del padre",
+        "motherName": "Nombre de la madre",
+        "motherSurname": "Apellido de la madre",
+        "motherPhone": "Telefono de la madre",
+        "motherEmail": "Email de la madre",
+        "socialPlan": "Plan social",
+        "affiliateNumber": "Número de afiliado",
+        "address": "Dirección",
+        "birthday": "Fecha de nacimiento",
+        "inscriptionDate": "Fecha de inscripcion",
+        "verified": "Está verificado",
+        "cuil": "CUIL",
+        "startDate": "Fecha de inicio",
+        "endDate": "Fecha de finalización",
+        "students": "Estudiantes",
+        "teachers": "Profesores",
+        "weekdays": "Días de la semana",
+        "day": "Día",
+        "duration": "Duración",
+        "hour": "Hora",
+        "minutes": "Minutos",
+        "passwordRepeat": "Repetir Nueva Contraseña",
+        "passwordPlease": "Contraseña",
+        "date": "Fecha",
+        "amount": "Cantidad",
+        "student": "Alumno"
+    },
+    "session": {
+        "titles": {
+            "register": "Registrarse",
+            "login": "Ingresar"
+        },
+        "button": {
+            "login": "Ingresar",
+            "register": "Registrarse"
+        },
+        "errors": {
+            "login": "Hubo un error al ingresar."
+        },
+        "form": {
+            "button": {
+                "login": "Ingresar",
+                "register": "Registrarse"
+            }
+        },
+        "error": {
+            "login": "Hubo un error al ingresar."
+        }
+    },
+    "admin": {
+        "lessons": {
+            "title": "Clases",
+            "buttons": {
+                "newLesson": "Crear nueva clase"
+            }
+        },
+        "payments": {
+            "title": "Pagos",
+            "buttons": {
+                "newPayment": "Crear nuevo pago"
+            },
+            "feeAmount": "Valor de la cuota"
+        },
+        "students": {
+            "title": "Alumnos",
+            "buttons": {
+                "newStudent": "Crear nuevo alumno"
+            }
+        },
+        "teachers": {
+            "title": "Profesores",
+            "buttons": {
+                "newTeacher": "Crear nuevo profesor"
+            }
+        }
+    },
+    "student": {},
+    "teacher": {},
+    "unverified": {}
+}

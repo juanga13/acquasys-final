@@ -1,0 +1,27 @@
+.main-container {
+    width: 100%;
+    height: 100%;
+    display: table;
+
+    > div {
+        display: table-row;
+    }
+    
+    .my-background {
+        height: 1000px;
+        background-color: red;
+    }
+}
+
+.routes-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.notification-container {
+    position: absolute;
+    z-index: 9999;
+    top: 90px;
+    left: 15px
+}

@@ -1,0 +1,25 @@
+.modals .description {    
+    width: 60% !important;
+    .field-container {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        width: 100%;
+        &.preview {
+            border-bottom: 1px solid lightgray;
+        }
+        // label key
+        p:nth-child(1) {
+            flex-grow: 1;  // magic align here :')
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        // label value
+        p:nth-child(2) {
+            
+        }
+         
+        .selection .dropdown {
+        }
+    }
+}
