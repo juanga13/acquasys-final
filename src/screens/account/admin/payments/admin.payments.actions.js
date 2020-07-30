@@ -1,11 +1,10 @@
-/* Constants */
-export const GET_PAYMENTS = 'GET_PAYMENTS';
-export const GET_PAYMENTS_SUCCESS = 'GET_PAYMENTS_SUCCESS';
-export const GET_PAYMENTS_ERROR = 'GET_PAYMENTS_ERROR';
+export const ADMIN_GET_PAYMENTS = 'ADMIN_GET_PAYMENTS';
+export const ADMIN_GET_PAYMENTS_SUCCESS = 'ADMIN_GET_PAYMENTS_SUCCESS';
+export const ADMIN_GET_PAYMENTS_ERROR = 'GADMIN_ET_PAYMENTS_ERROR';
 
 export const ADMIN_PAYMENTS_INPUT_CHANGE = 'ADMIN_PAYMENTS_INPUT_CHANGE';
 export const ADMIN_PAYMENTS_CHANGE_MODAL_STATE = 'ADMIN_PAYMENTS_CHANGE_MODAL_STATE';
-export const SELECT_PAYMENT = 'SELECT_PAYMENT';
+export const ADMIN_SELECT_PAYMENT = 'ADMIN_SELECT_PAYMENT';
 
 export const CREATE_PAYMENT = 'CREATE_PAYMENT';
 export const CREATE_PAYMENT_SUCCESS = 'CREATE_PAYMENT_SUCCESS';
@@ -29,15 +28,15 @@ export const SET_FEE_ERROR = 'SET_FEE_ERROR';
 
 export const CLEAR_STATUSES = 'CLEAR_STATUSES';
 
-/* Definitions */
+
 const adminPaymentsActions = {
-    getPayments: () => ({ type: GET_PAYMENTS }),
-    getPaymentsSuccess: (response) => ({ type: GET_PAYMENTS_SUCCESS, response }),
-    getPaymentsError: () => ({ type: GET_PAYMENTS_ERROR }),
+    getPayments: () => ({ type: ADMIN_GET_PAYMENTS }),
+    getPaymentsSuccess: (response) => ({ type: ADMIN_GET_PAYMENTS_SUCCESS, response }),
+    getPaymentsError: () => ({ type: ADMIN_GET_PAYMENTS_ERROR }),
 
     adminPaymentsInputChange: (id, value) => ({ type: ADMIN_PAYMENTS_INPUT_CHANGE, id, value }),
     adminPaymentsChangeModalState: (modalState) => ({ type: ADMIN_PAYMENTS_CHANGE_MODAL_STATE, modalState }),
-    selectPayment: (payment) => ({ type: SELECT_PAYMENT, payment }),
+    selectPayment: (payment) => ({ type: ADMIN_SELECT_PAYMENT, payment }),
 
     createPayment: (data) => ({ type: CREATE_PAYMENT, data }),
     createPaymentSuccess: () => ({ type: CREATE_PAYMENT_SUCCESS }),

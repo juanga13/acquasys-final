@@ -6,6 +6,7 @@ import { I18n } from 'react-redux-i18n';
 import ReactDatePicker from 'react-datepicker';
 import { dummyAvatar } from '../../../assets';
 import WeekdaysInput from './WeekdaysInput';
+import './MyFormInput.scss';
 
 const MyFormInput = (props) => {
     const {
@@ -25,6 +26,7 @@ const MyFormInput = (props) => {
                     // error
                     // type
                     placeholderText={I18n.t(placeholder)}
+                    onChange={date => props.onChange(id, date)}
                 />
             );
 
@@ -59,6 +61,18 @@ const MyFormInput = (props) => {
                 );
             }
 
+        case FIELD_TYPES.TEXT_AREA:
+            return (
+                <Form.TextArea
+                    id={id}
+                    value={value}
+                    error={error}  // TODO no lo tiene
+                    placeholder={I18n.t(placeholder)}
+                    onChange={(e, data) => props.onChange(id, data.value)}
+                    className='textarea'
+                />
+            );
+
         case FIELD_TYPES.NULL:
             if (id === 'students') {
                 const allStudents = props.students.map(student => (
@@ -91,17 +105,23 @@ const MyFormInput = (props) => {
                         image: { avatar: true, src: dummyAvatar }  // image 
                     }
                 ));
-                const selectedTeachers = value.map(teacher => teacher.id);
+                const selectedTeachersIds = value.map(teacher => teacher.id);
                 return (
                     <Form.Dropdown
                         placeholder={I18n.t(placeholder)}
-                        fluid
+                        // fluid
                         multiple
                         search
                         selection
-                        defaultValue={selectedTeachers}
+                        defaultValue={selectedTeachersIds}
                         options={allTeachers}
-                        onChange={(e, data) => props.onChange(id, data.value)}
+                        onChange={(e, teacherIdArray) => {
+                            var result = [];
+                            teacherIdArray.value.forEach(teacherId => (
+                                result.push(props.teachers.find(teacher => teacher.id === teacherId))
+                            ));
+                            props.onChange(id, result);
+                        }}
                     />
                 );
             } else if (id === 'weekdays') {
@@ -112,11 +132,27 @@ const MyFormInput = (props) => {
                     />
                 );
             } else if (id === 'student') {
+                const allStudents = props.students.map(student => (
+                    { 
+                        key: student.id,  // key 
+                        text: student.name + ', ' + student.surname + ' (DNI ' + student.dni + ')',  // text
+                        value: student.id,  // value
+                        image: { avatar: true, src: dummyAvatar }  // image 
+                    }
+                ));
                 return (
-                    <Form.Field>
-
-                    </Form.Field>
-                )
+                    <Form.Dropdown
+                        placeholder={I18n.t(placeholder)}
+                        fluid
+                        search
+                        selection
+                        clearable
+                        defaultValue={value && value.id}
+                        options={allStudents}
+                        // en el caso de crear un payment el back me pide studentId
+                        onChange={(e, data) => props.onChange(id, data.value)}
+                    />
+                );
             } else return null;
 
         // FIELD_TYPES.STRING

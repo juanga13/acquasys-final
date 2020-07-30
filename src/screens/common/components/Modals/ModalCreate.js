@@ -76,12 +76,16 @@ const ModalCreate = (props) => {
                 );
 
             case MODAL_TYPES.ADMIN_PAYMENT:
+                console.log('modal create payments', formValues);
                 return (
                     <Form>
                         {formValues.map((valueProps) => (
                             <Form.Field className='field-container' key={'modal-create-form-field-' + valueProps.id}>
                                 <p>{I18n.t(valueProps.label) + ':'}</p>
-                                <MyFormInput {...valueProps} onChange={(id, value) => props.onChange(id, value)} />
+                                <MyFormInput 
+                                    {...valueProps} 
+                                    students={valueProps.id === 'student' && props.students}
+                                    onChange={(id, value) => props.onChange(id, value)} />
                             </Form.Field>
                         ))}
                     </Form>

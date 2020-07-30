@@ -5,9 +5,6 @@
         flex-flow: row nowrap;
         align-items: center;
         width: 100%;
-        &.preview {
-            border-bottom: 1px solid lightgray;
-        }
         // label key
         p:nth-child(1) {
             flex-grow: 1;  // magic align here :')

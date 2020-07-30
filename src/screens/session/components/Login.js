@@ -36,7 +36,7 @@ const Login = (props) => {
                         onChange={(e) => props.inputChange(FORMS.LOGIN, fieldProps.id, e.target.value)}
                     />
                 })}
-                <Button type='submit'>{I18n.t('session.form.button.login')}</Button>
+                <Button color='teal' type='submit'>{I18n.t('session.form.button.login')}</Button>
             </Form>
         </div>
     );

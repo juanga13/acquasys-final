@@ -12,7 +12,8 @@ const MyTable = (props) => {
         columns,
         actions,
         status,
-        color
+        color,
+        noResults
     } = props;
     const keys = Object.keys(data.length > 0 && data[0]).filter(key => columns.includes(key));
 
@@ -39,38 +40,42 @@ const MyTable = (props) => {
                     </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        {data.map((item, id) => (
-                            <Table.Row key={id}>
-                                {keys.map((key) => {
-                                    if (key === 'date') {
-                                        return (
-                                            <Table.Cell key={id + '-' + key + '-cell'}>{new Date(item[key]).toLocaleDateString()}</Table.Cell> 
-                                        );
-                                    } else if (key === 'amount') {
-                                        return (
-                                            <Table.Cell key={id + '-' + key + '-cell'}>{item[key] + ' $'}</Table.Cell> 
-                                        );
-                                    } else {
-                                        return (
-                                            <Table.Cell key={id + '-' + key + '-cell'}>{item[key]}</Table.Cell> 
-                                        );
-                                    } 
-                                }).concat(
-                                    <Table.Cell key={id + '-actions'} colSpan='3'>
-                                        {actions.map(({type, action}) => (
-                                            <Button
-                                                key={id + '-' + type + '-button'}
-                                                color={getColor(type)}
-                                                onClick={() => action(item)}>
-                                                
-                                                <Icon name={type}/>
-                                                {I18n.t('common.table.cells.' + type)}
-                                            </Button>
-                                        ))}
-                                    </Table.Cell>
-                                )}
-                            </Table.Row>
-                        ))}
+                        {noResults ? 
+                            <Table.Row><Table.Cell>{I18n.t('common.table.noResults')}</Table.Cell></Table.Row>
+                            :
+                            data.map((item, id) => (
+                                <Table.Row key={id}>
+                                    {keys.map((key) => {
+                                        if (key === 'date') {
+                                            return (
+                                                <Table.Cell key={id + '-' + key + '-cell'}>{new Date(item[key]).toLocaleDateString()}</Table.Cell> 
+                                            );
+                                        } else if (key === 'amount') {
+                                            return (
+                                                <Table.Cell key={id + '-' + key + '-cell'}>{item[key] + ' $'}</Table.Cell> 
+                                            );
+                                        } else {
+                                            return (
+                                                <Table.Cell key={id + '-' + key + '-cell'}>{item[key]}</Table.Cell> 
+                                            );
+                                        } 
+                                    }).concat(
+                                        <Table.Cell key={id + '-actions'} colSpan='3'>
+                                            {actions.map(({type, action}) => (
+                                                <Button
+                                                    key={id + '-' + type + '-button'}
+                                                    color={getColor(type)}
+                                                    onClick={() => action(item)}>
+                                                    
+                                                    <Icon name={type}/>
+                                                    {I18n.t('common.table.cells.' + type)}
+                                                </Button>
+                                            ))}
+                                        </Table.Cell>
+                                    )}
+                                </Table.Row>
+                            ))
+                        }
                     </Table.Body>
                 </Table>
             }

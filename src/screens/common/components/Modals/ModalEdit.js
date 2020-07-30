@@ -88,8 +88,21 @@ const ModalEdit = (props) => {
                         {formValues.map((valueProps) => (
                             <Form.Field className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
                                 <p>{I18n.t(valueProps.label) + ':'}</p>
-                                <MyFormInput {...valueProps} onChange={(id, value) => props.onChange(id, value)} />
+                                <MyFormInput 
+                                    {...valueProps}
+                                    students={valueProps.id === 'student' && props.students}
+                                    onChange={(id, value) => props.onChange(id, value)} 
+                                />
                             </Form.Field>
+                        ))}
+                    </Form>
+                );
+                
+            case MODAL_TYPES.TEACHER_ASSISTANCES:
+                return (
+                    <Form>
+                        {formValues.map((value, i) => (
+                            <p>{'EDIT' + value}</p>
                         ))}
                     </Form>
                 );
@@ -129,6 +142,16 @@ const ModalEdit = (props) => {
                         ))}
                     </Form>
                 );
+                
+            case MODAL_TYPES.TEACHER_ASSISTANCES:
+                return (
+                    <Form>
+                        {formValues.map((value, i) => (
+                            <p>{'EDIT' + value}</p>
+                        ))}
+                    </Form>
+                );
+
 
             default: return null;
         }

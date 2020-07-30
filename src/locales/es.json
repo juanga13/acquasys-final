@@ -12,7 +12,8 @@
             "payments": "Pagos",
             "students": "Alumnos",
             "teachers": "Profesores",
-            "logout": "Deslogear"
+            "logout": "Deslogear",
+            "messaging": "Mensajes"
         },
         "home": {
             "title": "Home"
@@ -36,7 +37,8 @@
                 "buttons": {
                     "submit": "Aceptar",
                     "close": "Cerrar",
-                    "edit": "Editar datos"
+                    "edit": "Editar datos",
+                    "attendances": "Asistencias"
                 }
             },
             "create": {
@@ -130,6 +132,13 @@
                     "adminLesson": "Hubo un error al eliminar la clase",
                     "adminPayment": "Hubo un error al eliminar el pago"
                 }
+            },
+            "newMessage": {
+                "title": "Nuevo Mensaje",
+                "buttons": {
+                    "cancel": "Cancel",
+                    "send": "Enviar mensaje"
+                }
             }
         },
         "table": {
@@ -148,18 +157,24 @@
             },
             "error": {
                 "dataError": "Hubo un error con la obtencion de datos"
-            }
+            },
+            "noResults": "Sin resultados"
         },
         "myProfile": {
             "name": "Nombre",
             "surname": "Apellido",
             "email": "Email",
             "admin": {
-                "noVerifiedAccount": "Ninguna cuenta que verificar.",
-                "weekLessons": "(mTODO) Clases que se van a dar esta semana.",
-                "paymentsNotDone": "(mTODO) Pagos que faltan hacer.",
-                "paymentsNext": "(mTODO) Pagos que tienen que hacer el mes que viene.",
-                "verifiedAccountsTitle": "Usuarios que se necesitan verificar"
+                "titles": {
+                    "profileData": "Datos de la cuenta",
+                    "nowLessons": "(mTODO) Clases que se van a dar esta semana.",
+                    "todoPayments": "(mTODO) Pagos que faltan hacer.",
+                    "nextPayments": "(mTODO) Pagos que tienen que hacer el mes que viene.",
+                    "verificationsPending": "Usuarios que se necesitan verificar"
+                },
+                "texts": {
+                    "noVerifiedAccount": "Ninguna cuenta que verificar."
+                }
             },
             "student": {
                 "weekLessons": "(mTODO) Clases que tengo esta semana",
@@ -202,6 +217,16 @@
                 "hour": "Hora",
                 "duration": "Duración"
             }
+        },
+        "messaging": {
+            "titles": {
+                "header": "Mensajería",
+                "recieved": "Recibidos",
+                "sent": "Enviados"
+            },
+            "buttons": {
+                "newMessage": "Nuevo mensaje"
+            }
         }
     },
     "forms": {
@@ -241,7 +266,10 @@
         "passwordPlease": "Contraseña",
         "date": "Fecha",
         "amount": "Cantidad",
-        "student": "Alumno"
+        "student": "Alumno",
+        "subject": "Titulo",
+        "to": "Destinatario",
+        "content": "Mensaje"
     },
     "session": {
         "titles": {
@@ -297,8 +325,15 @@
                 "delete": {
                     "title": "Eliminación de clase",
                     "description": "Hubo un error al eliminar la clase."
+                },
+                "get": {
+                    "title": "Obtencion de clases",
+                    "description": "Hubo un error al obtener las clases."
                 }
-            }
+            },
+            "searchName": "Nombre",
+            "searchStartDate": "Fecha inicial",
+            "searchEndDate": "Fecha final"
         },
         "payments": {
             "title": "Pagos",
@@ -335,7 +370,9 @@
                 }
             },
             "setFeeAmount": "Cambiar el valor de la cuota",
-            "insertNewFee": "Nuevo valor de cuota"
+            "insertNewFee": "Nuevo valor de cuota",
+            "searchName": "Nombre, apellido o DNI de alumno",
+            "filters": "Filtros: "
         },
         "students": {
             "title": "Alumnos",
@@ -409,7 +446,88 @@
             "title": "Calendario"
         }
     },
-    "student": {},
-    "teacher": {},
-    "unverified": {}
+    "student": {
+        "profile": {
+            "success": {
+                "update": {
+                    "title": "Actualizacion de datos exitosa",
+                    "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
+                }
+            },
+            "error": {
+                "update": {
+                    "title": "Actualizacion de datos",
+                    "description": "Hubo un error al actualizar tus datos."
+                }
+            }
+        },
+        "lessons": {
+            "success": {},
+            "error": {
+                "get": {
+                    "title": "Obtencion de datos",
+                    "description": "Hubo un error al obtener las clases."
+                }
+            }
+        },
+        "payments": {
+            "success": {},
+            "error": {
+                "get": {
+                    "title": "Obtencion de datos",
+                    "description": "Hubo un error al obtener los pagos."
+                }
+            }
+        }
+    },
+    "teacher": {
+        "profile": {
+            "success": {
+                "update": {
+                    "title": "Actualizacion de datos exitosa",
+                    "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
+                }
+            },
+            "error": {
+                "update": {
+                    "title": "Actualizacion de datos",
+                    "description": "Hubo un error al actualizar tus datos."
+                }
+            }
+        },
+        "lessons": {
+            "success": {
+                "setAttendance": {
+                    "title": "Asistencias",
+                    "description": "Se han puesto las asistencias correctamente."
+                }
+            },
+            "error": {
+                "get": {
+                    "title": "Obtencion de datos",
+                    "description": "Hubo un error al obtener las clases."
+                },
+                "setAttendance": {
+                    "title": "Asistencias",
+                    "description": "Hubo un error al poner las asistencias."
+                }
+            }
+        }
+    },
+    "unverified": {
+        "profile": {
+            "success": {
+                "update": {
+                    "title": "Actualizacion de datos exitosa",
+                    "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
+                }
+            },
+            "error": {
+                "update": {
+                    "title": "Actualizacion de datos",
+                    "description": "Hubo un error al actualizar tus datos."
+                }
+            }
+        }
+    }
 }

@@ -1,11 +1,10 @@
 import adminLessonsActions, { 
-    GET_LESSONS, 
+    ADMIN_GET_LESSONS, 
     CREATE_LESSON, 
     ADMIN_LESSONS_CHANGE_MODAL_STATE, 
     DELETE_LESSON,
     UPDATE_LESSON
 } from './admin.lessons.actions';
-import { getNodeText } from '@testing-library/react';
 import requests from './admin.lessons.services';
 import { MODAL_STATES } from '../../../../utils/consts';
 import { formToDataTransform } from '../../../../utils/dataFormTransform';
@@ -13,7 +12,7 @@ import { formToDataTransform } from '../../../../utils/dataFormTransform';
 const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
     next(action);
     switch (action.type) {
-        case GET_LESSONS:
+        case ADMIN_GET_LESSONS:
             requests.getLessons()
                 .then(response => dispatch(adminLessonsActions.getLessonsSuccess(response)))
                 .catch(() => dispatch(adminLessonsActions.getLessonsError()));

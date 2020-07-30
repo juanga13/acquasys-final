@@ -17,21 +17,28 @@ const requests = {
         };
         let tokenData = {token: '', role: ''}
         return fetch(baseUrl + '/oauth/token', tokenRequestOptions)
-            .then(response => { return response.json() })
-            .catch(error => { throw error })
+            .then(response => {
+                const result = response.json();
+                if (response.ok) return result; 
+                else throw result;
+            })
+            // .catch(error => console.log('login failed', error))
             // get json and continue
             .then(myJson => {
                 tokenData.token = myJson.access_token;
-                return fetch(baseUrl + "/oauth/check_token?token=" + tokenData.token, roleRequestOptions)
-                    .then(response => { return response.json() })
-                    .catch(error => { throw error })
-                    
-                    .then(myJson => {
-                        tokenData.role = myJson.authorities[0];
-                        return tokenData;
-                    })
-                }
-            )
+                return fetch(baseUrl + "/oauth/check_token?token=" + myJson.access_token, roleRequestOptions)
+                .then(response => {
+                    const result = response.json();
+                    if (response.ok) return result; 
+                    else throw result;
+                })
+                // .catch(error => console.log('get token failed', error))
+                .then(myJson => {
+                    tokenData.role = myJson.authorities[0];
+                    return tokenData;
+                })
+                // .catch(error => console.log('token not ok?', error))
+            })
     },
     
     checkToken: () => {

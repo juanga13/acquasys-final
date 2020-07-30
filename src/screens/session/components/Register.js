@@ -34,7 +34,7 @@ const Register = (props) => {
                         onChange={(e) => props.inputChange(FORMS.REGISTER, fieldProps.id, e.target.value)}
                     />
                 )}
-                <Button type='submit'>{I18n.t('session.form.button.register')}</Button>
+                <Button color='blue' type='submit'>{I18n.t('session.form.button.register')}</Button>
             </Form>
         </div>
     );

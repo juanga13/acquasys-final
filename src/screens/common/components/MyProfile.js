@@ -2,10 +2,10 @@ import React from 'react';
 import { ROLES } from '../../../utils/consts';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { AdminProfile } from '../../account/admin/index';
-import StudentProfile from '../../account/student/StudentProfile';
-import TeacherProfile from '../../account/teacher/TeacherProfile';
-import UnverifiedProfile from '../../account/unverified/UnverifiedProfile';
+import { AdminProfile } from '../../account/admin';
+import { StudentProfile } from '../../account/student';
+import { TeacherProfile } from '../../account/teacher';
+import { UnverifiedProfile } from '../../account/unverified';
 import './MyProfile.scss';
 
 const MyProfile = (props) => {

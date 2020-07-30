@@ -18,7 +18,10 @@ import adminLessonsMiddleware from '../screens/account/admin/lessons/admin.lesso
 import adminPaymentsMiddleware from '../screens/account/admin/payments/admin.payments.middleware';
 import adminStudentsMiddleware from '../screens/account/admin/students/admin.students.middleware';
 import adminTeachersMiddleware from '../screens/account/admin/teachers/admin.teachers.middleware';
-
+import studentMiddleware from '../screens/account/student/student.middleware';
+import teacherMiddleware from '../screens/account/teacher/teacher.middleware';
+import unverifiedMiddleware from '../screens/account/unverified/unverified.middleware';
+import commonMiddleware from '../screens/common/common.middleware';
 
 
 export const history = createBrowserHistory();
@@ -27,17 +30,19 @@ export default function configureStore(preloadedState) {
         createRootReducer(history),
         preloadedState,
         applyMiddleware(
-            thunk, 
-            logger, 
+            thunk,
+            logger,
             sessionMiddleware,
+            commonMiddleware,
             adminMiddleware,
             adminCalendarMiddleware,
             adminLessonsMiddleware,
             adminPaymentsMiddleware,
             adminStudentsMiddleware,
             adminTeachersMiddleware,
-            // studentMiddleware,
-            // unverifiedMiddleware,
+            studentMiddleware,
+            teacherMiddleware,
+            unverifiedMiddleware,
             routerMiddleware(history),
         ),
     )

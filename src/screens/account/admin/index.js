@@ -7,9 +7,9 @@ import Profile from './Profile';
 
 export { 
     Calendar as AdminCalendar, 
-    Lessons, 
-    Payments, 
-    Students, 
-    Teachers, 
+    Lessons as AdminLessons, 
+    Payments as AdminPayments,
+    Students as AdminStudents,
+    Teachers as AdminTeachers,
     Profile as AdminProfile
 };

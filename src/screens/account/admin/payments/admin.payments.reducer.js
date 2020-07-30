@@ -1,8 +1,8 @@
 import {
-    GET_PAYMENTS, GET_PAYMENTS_SUCCESS, GET_PAYMENTS_ERROR,
+    ADMIN_GET_PAYMENTS, ADMIN_GET_PAYMENTS_SUCCESS, ADMIN_GET_PAYMENTS_ERROR,
     ADMIN_PAYMENTS_INPUT_CHANGE,
     ADMIN_PAYMENTS_CHANGE_MODAL_STATE,
-    SELECT_PAYMENT,
+    ADMIN_SELECT_PAYMENT,
     CREATE_PAYMENT, CREATE_PAYMENT_SUCCESS, CREATE_PAYMENT_ERROR,
     // UPDATE_PAYMENT, UPDATE_PAYMENT_SUCCESS, UPDATE_PAYMENT_ERROR,
     // DELETE_PAYMENT, DELETE_PAYMENT_SUCCESS, DELETE_PAYMENT_ERROR,
@@ -27,15 +27,17 @@ const initialState = {
     paymentForm: {
         amount: { id: 'amount', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.amount', label: 'forms.amount', required: false },
         date: { id: 'date', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.date', label: 'forms.date', required: false },
-        student: { id: 'student', value: null, error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.student', label: 'forms.student', required: false },
+        // en el caso de crear un payment el back me pide studentId
+        // se pone student para que se muestre el dropdown para elegir student
+        student: { id: 'student', value: -1, error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.student', label: 'forms.student', required: false },
     }
 };
 
 const adminPaymentsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_PAYMENTS: return { ...state, getPaymentsStatus: REQUEST_STATUS.LOADING }
-        case GET_PAYMENTS_SUCCESS: return { ...state, getPaymentsStatus: REQUEST_STATUS.SUCCESS, payments: action.response }
-        case GET_PAYMENTS_ERROR: return { ...state, getPaymentsStatus: REQUEST_STATUS.ERROR }
+        case ADMIN_GET_PAYMENTS: return { ...state, getPaymentsStatus: REQUEST_STATUS.LOADING }
+        case ADMIN_GET_PAYMENTS_SUCCESS: return { ...state, getPaymentsStatus: REQUEST_STATUS.SUCCESS, payments: action.response }
+        case ADMIN_GET_PAYMENTS_ERROR: return { ...state, getPaymentsStatus: REQUEST_STATUS.ERROR }
 
         case ADMIN_PAYMENTS_INPUT_CHANGE: const { id, value } = action;
             return {
@@ -57,7 +59,7 @@ const adminPaymentsReducer = (state = initialState, action) => {
             // preview utiliza selectedLesson solo, delete utiliza data solo y create utiliza el form solo
             return { ...state, modalState: action.modalState, paymentForm: initialState.paymentForm };
 
-        case SELECT_PAYMENT: return { ...state, selectedPayment: action.payment };
+        case ADMIN_SELECT_PAYMENT: return { ...state, selectedPayment: action.payment };
 
         case CREATE_PAYMENT: return { ...state, createPaymentStatus: REQUEST_STATUS.LOADING }
         case CREATE_PAYMENT_SUCCESS: return { ...state, createPaymentStatus: REQUEST_STATUS.SUCCESS }

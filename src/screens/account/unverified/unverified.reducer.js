@@ -6,7 +6,7 @@ const initialState = {
 
 };
 
-const unverifiednReducer = (state = initialState, action) => {
+const unverifiedReducer = (state = initialState, action) => {
     switch (action.type) {
         
 

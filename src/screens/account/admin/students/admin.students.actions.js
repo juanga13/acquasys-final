@@ -1,6 +1,6 @@
-export const GET_STUDENTS = 'GET_STUDENTS';
-export const GET_STUDENTS_SUCCESS = 'GET_STUDENTS_SUCCESS';
-export const GET_STUDENTS_ERROR = 'GET_STUDENTS_ERROR';
+export const ADMIN_GET_STUDENTS = 'ADMIN_GET_STUDENTS';
+export const ADMIN_GET_STUDENTS_SUCCESS = 'ADMIN_GET_STUDENTS_SUCCESS';
+export const ADMIN_GET_STUDENTS_ERROR = 'ADMIN_GET_STUDENTS_ERROR';
 
 export const ADMIN_STUDENTS_INPUT_CHANGE = 'ADMIN_STUDENTS_INPUT_CHANGE';
 export const ADMIN_STUDENTS_CHANGE_MODAL_STATE = 'ADMIN_STUDENTS_CHANGE_MODAL_STATE';
@@ -21,9 +21,9 @@ export const DELETE_STUDENT_ERROR = 'DELETE_STUDENT_ERROR';
 export const CLEAR_STATUSES = 'CLEAR_STATUSES';
 
 const adminStudentsActions = {
-    getStudents: () => ({ type: GET_STUDENTS }),
-    getStudentsSuccess: (response) => ({ type: GET_STUDENTS_SUCCESS, response }),
-    getStudentsError: () => ({ type: GET_STUDENTS_ERROR }),
+    getStudents: () => ({ type: ADMIN_GET_STUDENTS }),
+    getStudentsSuccess: (response) => ({ type: ADMIN_GET_STUDENTS_SUCCESS, response }),
+    getStudentsError: () => ({ type: ADMIN_GET_STUDENTS_ERROR }),
 
     adminStudentsInputChange: (id, value) => ({type: ADMIN_STUDENTS_INPUT_CHANGE, id, value}),
     adminStudentsChangeModalState: (modalState) => ({type: ADMIN_STUDENTS_CHANGE_MODAL_STATE, modalState}),

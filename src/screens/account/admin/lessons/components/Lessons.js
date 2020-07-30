@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Header, Button } from 'semantic-ui-react';
+import { Header, Button, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import adminLessonsActions from '../admin.lessons.actions';
-import { MODAL_TYPES, MODAL_STATES, REQUEST_STATUS } from '../../../../../utils/consts';
+import { MODAL_TYPES, MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../../../../utils/consts';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
 import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import ModalCreate from '../../../../common/components/Modals/ModalCreate';
 import ModalDelete from '../../../../common/components/Modals/ModalDelete';
 import MyTable from '../../../../common/components/MyTable';
 import fireToast from '../../../../common/components/Toaster';
+import ModalAttendance from '../../../../common/components/Modals/ModalAttendance';
 
 const Lessons = (props) => {
     const {
@@ -21,11 +22,17 @@ const Lessons = (props) => {
         createLessonStatus,
         updateLessonStatus,
         deleteLessonStatus,
-        lessonForm
+        lessonForm,
+        getAttendancesStatus,
+        attendances,
+        setAttendanceStatus
     } = props;
+    const [searchName, setSearchName] = useState('');
+    const filteredLessons = lessons.filter(lesson => lesson.name.includes(searchName));
 
     useEffect(() => {
         console.log('lesson effect');
+        if (getLessonsStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.get.title'), I18n.t('admin.lessons.error.get.description'), 'error', 'warning' );
         if (createLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.create.title'), I18n.t('admin.lessons.success.create.description'),'success', 'check' );
         if (createLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.create.title'), I18n.t('admin.lessons.error.create.description'), 'error', 'warning' );
         if (updateLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.update.title'), I18n.t('admin.lessons.success.update.description'), 'success', 'check' );
@@ -59,6 +66,17 @@ const Lessons = (props) => {
                 onSubmit={() => props.updateLesson()}
                 students={props.students}  // all students available
                 teachers={props.teachers}  // all teachers available
+            />,
+            <ModalAttendance
+                key='modal-attendances'
+                isOpen={modalState === MODAL_STATES.ATTENDANCE}    
+                type={MODAL_TYPES.ADMIN_ASSISTANCES}
+                getAttendancesStatus={getAttendancesStatus}
+                attendances={attendances}
+                setAttendanceStatus={setAttendanceStatus}
+                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
+                onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
+                onSetAttendance={(id, value) => props.inputChange(id, value)}
             />,
             <ModalCreate
                 key='modal-create'
@@ -94,8 +112,17 @@ const Lessons = (props) => {
                     {I18n.t('admin.lessons.buttons.newLesson')}
                 </Button>
             </div>
+            <div className='section-header-container'>
+                <Input
+                    id='table-search-input'
+                    placeholder={I18n.t('admin.lessons.searchName')}
+                    value={searchName}
+                    type={FIELD_TYPES.STRING}
+                    onChange={(e, data) => setSearchName(data.value)}
+                />
+            </div>
             <MyTable
-                data={lessons}
+                data={filteredLessons}
                 columns={['name']}
                 actions={[
                     { type: 'file alternate', action: (data) => {
@@ -124,7 +151,10 @@ const mapStateToProps = (state) => ({
     deleteLessonStatus: state.admin.lessons.deleteLessonStatus,
     lessonForm: state.admin.lessons.lessonForm,
     students: state.admin.students.students,
-    teachers: state.admin.teachers.teachers
+    teachers: state.admin.teachers.teachers,
+    getAttendancesStatus: state.admin.lessons.getAttendancesStatus,
+    attendances: state.admin.lessons.attendances,
+    setAttendanceStatus: state.admin.lessons.setAttendanceStatus
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -13,8 +13,8 @@ const requests = {
         };
         return fetch(baseUrl + "/api/lesson/all", requestOptions)
             .then(response => {
-                if (response.ok) return response.json()
-                else throw response.json()
+                if (response.ok) return response.json();
+                else throw response.json();
             })
     },
 

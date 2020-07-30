@@ -16,19 +16,19 @@ export const sortData = (modalType, data) => {
             order = ['email', 'password', 'name', 'surname', 'dni', 'cuil', 'sex', 'phoneNumber'];
             break;
         case MODAL_TYPES.ADMIN_LESSON: 
-            order = ['name', 'endDate', 'startDate', 'students', 'teachers', 'weekdays'];
+            order = ['name', 'startDate', 'endDate', 'students', 'teachers', 'weekdays'];
             break;
         case MODAL_TYPES.ADMIN_PAYMENT:
             order = ['name', 'surname', 'dni', 'amount', 'date'];
             break;
         case MODAL_TYPES.STUDENT_LESSON: 
-            order = [];
+            order = ['name', 'startDate', 'endDate', 'students', 'teachers', 'weekdays'];
             break;
         case MODAL_TYPES.STUDENT_PAYMENT: 
             order = [];
             break;
         case MODAL_TYPES.TEACHER_LESSON: 
-            order = [];
+            order = ['name', 'endDate', 'startDate', 'students', 'teachers', 'weekdays'];
             break;
         default:
             order = [];  // !! not expected

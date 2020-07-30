@@ -1,5 +1,5 @@
 import {
-    GET_STUDENTS, GET_STUDENTS_SUCCESS, GET_STUDENTS_ERROR,
+    ADMIN_GET_STUDENTS, ADMIN_GET_STUDENTS_SUCCESS, ADMIN_GET_STUDENTS_ERROR,
     ADMIN_STUDENTS_INPUT_CHANGE,
     ADMIN_STUDENTS_CHANGE_MODAL_STATE,
     SELECT_STUDENT,
@@ -23,7 +23,7 @@ const initialState = {
         name: { id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: false },
         surname: { id: 'surname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.surname', label: 'forms.surname', required: false },
         email: { id: 'email', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email', required: false },
-        password: { id: 'password', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.password', label: 'forms.password', required: false },
+        password: { id: 'password', value: '', error: false, type: FIELD_TYPES.PASSWORD, placeholder: 'forms.password', label: 'forms.password', required: false },
         dni: { id: 'dni', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.dni', label: 'forms.dni', required: false },
         sex: { id: 'sex', value: GENRES.FEMENINE, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.sex', label: 'forms.sex', required: false },
         birthday: { id: 'birthday', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.birthday', label: 'forms.birthday', required: false },
@@ -47,9 +47,9 @@ const initialState = {
 const adminReducer = (state = initialState, action) => {
     switch (action.type) {
         /* get students */
-        case GET_STUDENTS: return { ...state, getStudentsStatus: REQUEST_STATUS.LOADING };
-        case GET_STUDENTS_SUCCESS: return { ...state, getStudentsStatus: REQUEST_STATUS.SUCCESS, students: action.response };
-        case GET_STUDENTS_ERROR: return { ...state, getStudentsStatus: REQUEST_STATUS.ERROR };
+        case ADMIN_GET_STUDENTS: return { ...state, getStudentsStatus: REQUEST_STATUS.LOADING };
+        case ADMIN_GET_STUDENTS_SUCCESS: return { ...state, getStudentsStatus: REQUEST_STATUS.SUCCESS, students: action.response };
+        case ADMIN_GET_STUDENTS_ERROR: return { ...state, getStudentsStatus: REQUEST_STATUS.ERROR };
 
         /* other */
         case ADMIN_STUDENTS_INPUT_CHANGE:

@@ -16,6 +16,8 @@ export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 export const REFRESH_TOKEN_SUCCESS = 'REFRESH_TOKEN_SUCCESS';
 export const REFRESH_TOKEN_ERROR = 'REFRESH_TOKEN_ERROR';
 
+export const GET_ROLE_DATA = 'GET_ROLE_DATA';
+
 export const LOGOUT = 'LOGOUT';
 
 const sessionActions = {
@@ -36,6 +38,8 @@ const sessionActions = {
     refreshToken: () => ({ type: REFRESH_TOKEN }),
     refreshTokenSuccess: (response) => ({ type: REFRESH_TOKEN_SUCCESS, response }),
     refreshTokenError: () => ({ type: REFRESH_TOKEN_ERROR }),
+
+    getRoleData: () => ({ type: GET_ROLE_DATA }),
 
     logout: () => ({ type: LOGOUT }),
 };

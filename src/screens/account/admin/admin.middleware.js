@@ -11,7 +11,7 @@ import { tenDaysBeforeNow } from '../../../utils/time';
 const adminMiddleware = ({dispatch, getState}) => next => action => {
     next(action);
     switch (action.type) {
-         case GET_ALL_DATA:
+        case GET_ALL_DATA:
             dispatch(adminStudentsActions.getStudents());
             dispatch(adminTeachersActions.getTeachers());
             dispatch(adminLessonsActions.getLessons());

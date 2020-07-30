@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Divider } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -11,12 +11,23 @@ const StudentProfile = (props) => {
     
     return (
         <div className='section-container'>
-            <Header>{I18n.t('common.myProfile.title')}</Header>
-            
-            <p>{I18n.t('common.myProfile.name', profile.name)}</p>
-            <p>{I18n.t('common.myProfile.surname', profile.surname)}</p>
-            <p>{I18n.t('common.myProfile.email', profile.email)}</p>
-            
+            <div className='section-header-container'>
+                <Header>{I18n.t('common.myProfile.title')}</Header>
+            </div>
+            <Divider hidden/>
+            <div className='label-container'>
+                <p>{I18n.t('common.myProfile.name') + ': '}</p>
+                <p>{profile.name}</p>
+            </div>
+            <div className='label-container'>
+                <p>{I18n.t('common.myProfile.name') + ': '}</p>
+                <p>{profile.surname}</p>
+            </div>
+            <div className='label-container'>
+                <p>{I18n.t('common.myProfile.email') + ': '}</p>
+                <p>{profile.email}</p>
+            </div>
+            <Divider hidden/>
             <div>
                 <p>{I18n.t('common.myProfile.student.weekLessons')}</p>
                 <p>{I18n.t('common.myProfile.student.paymentsNotDone')}</p>

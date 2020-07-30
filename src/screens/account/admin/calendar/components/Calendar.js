@@ -8,7 +8,6 @@ import adminLessonsActions from '../../lessons/admin.lessons.actions';
 import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import { REQUEST_STATUS, MODAL_STATES, MODAL_TYPES } from '../../../../../utils/consts';
 import fireToast from '../../../../common/components/Toaster';
-import adminCalendarActions from '../admin.calendar.actions';
 
 const Calendar = (props) => {
     const {

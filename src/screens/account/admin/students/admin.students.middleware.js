@@ -1,5 +1,5 @@
 import {
-    GET_STUDENTS,
+    ADMIN_GET_STUDENTS,
     ADMIN_STUDENTS_CHANGE_MODAL_STATE,
     CREATE_STUDENT,
     UPDATE_STUDENT,
@@ -13,7 +13,7 @@ import { formToDataTransform } from '../../../../utils/dataFormTransform';
 const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
     next(action);
     switch (action.type) {
-        case GET_STUDENTS:
+        case ADMIN_GET_STUDENTS:
             requests.getStudents()
                 .then(response => dispatch(adminStudentsActions.getStudentsSuccess(response)))
                 .catch(() => dispatch(adminStudentsActions.getStudentsError()));

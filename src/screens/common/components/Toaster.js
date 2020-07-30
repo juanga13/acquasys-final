@@ -1,4 +1,3 @@
-import React from 'react';
 const { toast } = require("react-semantic-toasts");
 
 /**

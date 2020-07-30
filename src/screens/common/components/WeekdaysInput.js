@@ -75,7 +75,7 @@ const WeekdaysInput = (props) => {
     return (
         <Form.Group>
             <ul>
-                {values.map((weekday, i) => (<li>{
+                {values.map((weekday, i) => (<li key={'weekday-list-item-' + i}>{
                     I18n.t('common.weekdays.' + weekday.asWeekDay.toLowerCase()) +
                     ' ' + I18n.t('common.other.atHour', {hour: weekday.hour, minutes: weekday.minutes === 0 ? '00' : weekday.minutes}) +
                     ' - ' + I18n.t('common.other.duration') + ': ' + weekday.duration + ' ' + I18n.t('common.other.minutes') + '.'
@@ -87,7 +87,6 @@ const WeekdaysInput = (props) => {
                     multiple
                     search
                     selection
-                    defaultValue={weekdays}
                     options={allWeekDays}
                     onChange={(e, data) => setWeekdays(data.value)}
                 />

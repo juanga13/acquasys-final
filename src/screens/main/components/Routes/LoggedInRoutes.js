@@ -1,16 +1,12 @@
 import React from 'react'
 import { withRouter, Route, Redirect } from 'react-router-dom';
 import { ROLES } from '../../../../utils/consts';
-
-import Navbar from '../Navbar/Navbar';
 import Home from '../Home';
+import { AdminCalendar, AdminStudents, AdminLessons, AdminPayments, AdminTeachers } from '../../../account/admin';
+import { StudentCalendar, StudentLessons, StudentPayments } from '../../../account/student';
+import { TeacherCalendar, TeacherLessons } from '../../../account/teacher';
 import MyProfile from '../../../common/components/MyProfile';
-
-import { default as AdminLessons } from '../../../account/admin/lessons/components/Lessons';
-import { default as AdminPayments } from '../../../account/admin/payments/components/Payments';
-import { default as AdminStudents } from '../../../account/admin/students/components/Students';
-import { default as AdminTeachers } from '../../../account/admin/teachers/components/Teachers';
-import { AdminCalendar } from '../../../account/admin';
+import Messaging from '../../../common/components/Messaging';
 
 
 /**
@@ -23,43 +19,43 @@ const LoggedInRoutes = (props) => {
         switch (role) {
             case ROLES.ADMIN:
                 return ([
-                    <Route key='route-admin-1' path='/calendar' component={AdminCalendar}/>,
-                    <Route key='route-admin-2' path='/students' component={AdminStudents}/>,
-                    <Route key='route-admin-3' path='/lessons' component={AdminLessons}/>,
-                    <Route key='route-admin-4' path='/payments' component={AdminPayments}/>,
-                    <Route key='route-admin-5' path='/teachers' component={AdminTeachers}/>
+                    <Route key='route-admin-1' path='/calendar' component={AdminCalendar} />,
+                    <Route key='route-admin-2' path='/students' component={AdminStudents} />,
+                    <Route key='route-admin-3' path='/lessons' component={AdminLessons} />,
+                    <Route key='route-admin-4' path='/payments' component={AdminPayments} />,
+                    <Route key='route-admin-5' path='/teachers' component={AdminTeachers} />
                 ]);
 
             case ROLES.STUDENT:
-                {/* <Route to='/calendar' component={Calendar}/> */}
                 return ([
-                    <Route key='route-student-1' path='/students' component={AdminStudents}/>,
-                    <Route key='route-student-2' path='/lessons' component={AdminLessons}/>
+                    <Route key='route-student-1' path='/calendar' component={StudentCalendar} />,
+                    <Route key='route-student-2' path='/lessons' component={StudentLessons} />,
+                    <Route key='route-student-3' path='/payments' component={StudentPayments} />
                 ]);
 
             case ROLES.UNVERIFIED_STUDENT:
-                return (
-                    <div>
-                    </div>
-                );
-            case ROLES.TEACHER:
-                {/* <Route to='/calendar' component={Calendar}/> */}
                 return ([
-                    <Route key='route-teacher-1' path='/students' component={AdminStudents}/>
+                ]);
+
+            case ROLES.TEACHER:
+                return ([
+                    // <Route key='route-teacher-1' path='/calendar' component={TeacherCalendar} />,  // no esta hecho en el back
+                    <Route key='route-teacher-2' path='/lessons' component={TeacherLessons} />
                 ]);
 
             default: return null;
-        } 
+        }
     };
 
     return (
         <div>
             <div className='routes-container'>
-                <Route exact path='/' component={Home}/>
-                <Route path='/profile' component={MyProfile}/>
+                <Route exact path='/' component={Home} />
+                <Route path='/profile' component={MyProfile} />
+                <Route path='/messaging' component={Messaging} />
                 {renderRoleRoutes()}
 
-                <Route path='*' render={() => <Redirect exact to='/'/>}/>
+                <Route path='*' render={() => <Redirect exact to='/' />} />
             </div>
         </div>
     )

@@ -1,47 +1,66 @@
 import sessionActions, {
+    GET_ROLE_DATA,
     LOGIN,
+    REGISTER,
     REFRESH_TOKEN,
     GET_PROFILE,    
     LOGOUT,
-    REGISTER,
 } from './session.actions'
 import requests from './session.services'
 import { push } from 'connected-react-router'
 import { ROLES } from '../../utils/consts';
 import adminActions from '../account/admin/admin.actions';
-// import studentActions from '../account/student/student.actions';
-// import unverifiedActions from '../account/unverified/unverified.actions';
-// import teacherActions from '../account/teacher/teacher.actions';
+import studentActions from '../account/student/student.actions';
+import teacherActions from '../account/teacher/teacher.actions';
+import { tenDaysBeforeNow } from '../../utils/time';
+import commonActions from '../common/common.actions';
 
 const sessionMiddleware = ({dispatch, getState}) => next => action => {
     next(action);
     switch (action.type) {
+        case GET_ROLE_DATA:
+            dispatch(sessionActions.getProfile());
+            dispatch(commonActions.getMessages());
+            const role = localStorage.getItem('role');
+            console.log('rol: ' + role);
+            switch (role) {
+                case ROLES.ADMIN:
+                    console.log('admin')
+                    dispatch(adminActions.getAllData());
+                    break;
+                case ROLES.STUDENT:
+                    console.log('student')
+                    dispatch(studentActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
+                    dispatch(studentActions.getLessons());
+                    dispatch(studentActions.getPayments());
+                    break;
+                case ROLES.TEACHER:
+                    console.log('teacher')
+                    // dispatch(teacherActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
+                    dispatch(teacherActions.getLessons());
+                    break;
+                case ROLES.UNVERIFIED_STUDENT:
+                    break;
+                    
+                default: break;
+            }
+            break;
+
         case LOGIN:
             const loginEmail = getState().session.forms.login.email.value;
             const loginPassword = getState().session.forms.login.password.value;
             requests.login(loginEmail, loginPassword)
                 .then(data => {
+                    console.log('LOGIN SUCCESS')
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('role', data.role);
                     dispatch(sessionActions.loginSuccess());
-                    dispatch(sessionActions.getProfile());
-                    switch(data.role) {
-                        case ROLES.ADMIN:
-                            dispatch(adminActions.getAllData());
-                            break;
-                        case ROLES.STUDENT:
-                            // dispatch(studentActions.getAllData());
-                            break;
-                        case ROLES.UNVERIFIED_STUDENT:
-                            // dispatch(unverifiedActions.getStatus());
-                            break;
-                        case ROLES.TEACHER:
-                            // dispatch(teacherActions.getAllData());
-                            break;
-                        default: break;
-                    }
+                    dispatch(sessionActions.getRoleData());
                 })
-                .catch(error => dispatch(sessionActions.loginError(error)))
+                .catch(error => {
+                    console.log('login failed', error);
+                    dispatch(sessionActions.loginError(error))
+                })
             break;
             
         case REGISTER:
@@ -58,24 +77,8 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
         case REFRESH_TOKEN:
             requests.checkToken()
                 .then(data => {
-                    const role = localStorage.getItem('role');
-                    dispatch(sessionActions.refreshTokenSuccess(data))
-                    dispatch(sessionActions.getProfile());
-                    switch(role) {
-                        case ROLES.ADMIN:
-                            dispatch(adminActions.getAllData());
-                            break;
-                        case ROLES.STUDENT:
-                            // dispatch(studentActions.getAllData());
-                            break;
-                        case ROLES.UNVERIFIED_STUDENT:
-                            // dispatch(unverifiedActions.getStatus());
-                            break;
-                        case ROLES.TEACHER:
-                            // dispatch(teacherActions.getAllData());
-                            break;
-                        default: break;
-                    }
+                    dispatch(sessionActions.refreshTokenSuccess(data));
+                    dispatch(sessionActions.getRoleData())
                 })
                 .catch(error => dispatch(sessionActions.refreshTokenError(error)))
             break;
@@ -86,14 +89,15 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
                 .catch(error => { 
                     delete localStorage['token'];
                     delete localStorage['role'];
-                    dispatch(sessionActions.getProfileError(error)) 
+                    dispatch(sessionActions.getProfileError(error));
+                    push('/login');
                 })
             break;
                 
         case LOGOUT:
             delete localStorage['token'];
             delete localStorage['role'];
-            dispatch(push('/'));
+            push('/');
             break;
 
         default:

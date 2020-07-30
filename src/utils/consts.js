@@ -5,6 +5,7 @@ export const FIELD_TYPES = {
     NUMBER: 'number',
     DATE: 'date',
     BOOLEAN: 'boolean',
+    TEXT_AREA: '',
     NULL: 'null'
 };
 
@@ -36,17 +37,21 @@ export const MODAL_STATES = {
     PREVIEW: 'PREVIEW',
     CREATE: 'CREATE',
     EDIT: 'EDIT',
-    DELETE: 'DELETE'
+    DELETE: 'DELETE',
+    ATTENDANCE: 'ATTENDANCE',
+    NEW_MESSAGE: 'NEW_MESSAGE' 
 };
 
 export const MODAL_TYPES = {
     ADMIN_STUDENT: 'adminStudent',
     ADMIN_TEACHER: 'adminTeacher',
     ADMIN_LESSON: 'adminLesson',
+    ADMIN_ASSISTANCES: 'adminAssistances',
     ADMIN_PAYMENT: 'adminPayment',
     STUDENT_LESSON: 'studentLesson',
     STUDENT_PAYMENT: 'studentPayment',
     TEACHER_LESSON: 'teacherLesson',
+    TEACHER_ASSISTANCES: 'teacherAssistances'
 };
 
 export const GENRES = {

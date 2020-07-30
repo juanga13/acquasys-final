@@ -30,7 +30,8 @@ const LoggedInNavbar = (props) => {
 
             case ROLES.TEACHER:
                 return ([
-                    <Menu.Item key='navbar-item-teacher-1' as={NavLink} to='/calendar'><Icon name='calendar'/>{I18n.t('main.navbar.calendar')}</Menu.Item>,
+                    // calendar no esta hecho en el back
+                    // <Menu.Item key='navbar-item-teacher-1' as={NavLink} to='/calendar'><Icon name='calendar'/>{I18n.t('main.navbar.calendar')}</Menu.Item>,
                     <Menu.Item key='navbar-item-teacher-2' as={NavLink} to='/lessons'><Icon name='calendar alternate outline'/>{I18n.t('main.navbar.lessons')}</Menu.Item>
                 ]);
 
@@ -44,6 +45,7 @@ const LoggedInNavbar = (props) => {
         <Menu.Menu position='right'>
             <Menu.Item key='navbar-item-home' as={NavLink} exact to='/'><Icon name='home'/>{I18n.t('main.navbar.home')}</Menu.Item>
             {renderRoleNavbarItems()}
+            <Menu.Item key='navbar-item-messaging' as={NavLink} to='/messaging'><Icon name='mail'/>{I18n.t('main.navbar.messaging')}</Menu.Item>
             <Menu.Item key='navbar-item-profile' as={NavLink} to='/profile'><Icon name='user'/>{I18n.t('main.navbar.profile')}</Menu.Item>
             <Menu.Item key='navbar-item-logout' onClick={props.logout}><Icon name='power off'/>{I18n.t('main.navbar.logout')}</Menu.Item>
         </Menu.Menu>

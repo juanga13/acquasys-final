@@ -11,10 +11,16 @@ import adminStudentsReducer from '../screens/account/admin/students/admin.studen
 import adminTeachersReducer from '../screens/account/admin/teachers/admin.teachers.reducer';
 import adminLessonsReducer from '../screens/account/admin/lessons/admin.lessons.reducer';
 import adminPaymentsReducer from '../screens/account/admin/payments/admin.payments.reducer';
+import studentReducer from '../screens/account/student/student.reducer';
+import teacherReducer from '../screens/account/teacher/teacher.reducer';
+import unverifiedReducer from '../screens/account/unverified/unverified.reducer';
+import commonReducer from '../screens/common/common.reducer';
+
 
 const rootReducer = (history) => combineReducers({
     i18n: i18nReducer,
     session: sessionReducer,
+    common: commonReducer,
     admin: combineReducers({
         main: adminReducer,
         calendar: adminCalendarReducer,
@@ -23,8 +29,9 @@ const rootReducer = (history) => combineReducers({
         lessons: adminLessonsReducer,
         payments: adminPaymentsReducer,
     }),
-    // student: studentReducer,
-    // unverified: unverifiedReducer,
+    student: studentReducer,
+    teacher: teacherReducer,
+    unverified: unverifiedReducer,
     
     router: connectRouter(history),
 });

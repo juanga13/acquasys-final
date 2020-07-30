@@ -1,0 +1,9 @@
+.modals .description {
+    padding-left: 20px;
+    .field.field-container > div {
+        width: 100%;
+    }
+    .field.field-container > div > textarea {
+        resize: none;
+    }
+}
