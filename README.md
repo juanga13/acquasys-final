@@ -1,3 +1,3 @@
 # Acquasys 
 
-proyecto de laboratorio 1 mio y de facu version final
+proyecto de laboratorio 1 version final
