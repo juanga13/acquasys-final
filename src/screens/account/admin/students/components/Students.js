@@ -25,22 +25,8 @@ const Students = (props) => {
     } = props;
 
     useEffect(() => {
-        console.log('create student effect');
-        if (createStudentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.students.success.create.title'), I18n.t('admin.students.success.create.description'),'success', 'check' );
-        if (createStudentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.students.error.create.title'), I18n.t('admin.students.error.create.description'), 'error', 'warning' );
-    }, [props.createStudentStatus]);
-
-    useEffect(() => {
-        console.log('update student effect');
-        if (updateStudentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.students.success.update.title'), I18n.t('admin.students.success.update.description'), 'success', 'check' );
-        if (updateStudentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.students.error.update.title'), I18n.t('admin.students.error.update.description'), 'error', 'warning' );
-    }, [props.updateStudentStatus]);
-
-    useEffect(() => {
-        console.log('delete student effect');
-        if (deleteStudentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.students.success.delete.title'), I18n.t('admin.students.success.delete.description'), 'success', 'check' );
-        if (deleteStudentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.students.error.delete.title'), I18n.t('admin.students.error.delete.description'), 'error', 'warning' );
-    }, [props.deleteStudentStatus]);
+        // console.log('useEffect, students prop changed');
+    }, [students, selectedStudent]);
 
     const renderModals = () => {
         return ([

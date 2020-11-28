@@ -9,6 +9,9 @@ import requests from './admin.students.services';
 import adminStudentsActions from './admin.students.actions';
 import { MODAL_STATES } from '../../../../utils/consts';
 import { formToDataTransform } from '../../../../utils/dataFormTransform';
+import fireToast from '../../../common/components/Toaster';
+import { I18n } from 'react-redux-i18n';
+
 
 const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
     next(action);
@@ -35,12 +38,18 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
                 createData.password.value = 'asd123';
             }
             requests.createStudent(createData)
-                .then(() => {
+                .then((response) => {
                     dispatch(adminStudentsActions.createStudentSuccess());
-                    dispatch(adminStudentsActions.getStudents())
-                    dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSE))
+                    console.log('asdonasdnasodin')
+                    fireToast( I18n.t('admin.students.success.create.title'), I18n.t('admin.students.success.create.description'),'success', 'check' );
+                    dispatch(adminStudentsActions.selectStudent(response));
+                    dispatch(adminStudentsActions.getStudents());
+                    dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSE));
                 })
-                .catch(() => dispatch(adminStudentsActions.createStudentError()));
+                .catch(() => {
+                    fireToast( I18n.t('admin.students.error.create.title'), I18n.t('admin.students.error.create.description'), 'error', 'warning' );
+                    dispatch(adminStudentsActions.createStudentError())
+                });
             break;
 
         case UPDATE_STUDENT:
@@ -54,24 +63,33 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
                 updateData.password = updateSelectedStudent.password;
             }
             requests.updateStudent(updateData)
-                .then(() => {
+                .then((response) => {
                     dispatch(adminStudentsActions.updateStudentSuccess());
+                    fireToast( I18n.t('admin.students.success.update.title'), I18n.t('admin.students.success.update.description'), 'success', 'check' );
+                    dispatch(adminStudentsActions.selectStudent(response));
                     dispatch(adminStudentsActions.getStudents());
+                    dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSE));
                 })
-                .catch(() => dispatch(adminStudentsActions.updateStudentError()));
+                .catch(() => {
+                    fireToast( I18n.t('admin.students.error.update.title'), I18n.t('admin.students.error.update.description'), 'error', 'warning' );
+                    dispatch(adminStudentsActions.updateStudentError())
+                });
             break;
 
         case DELETE_STUDENT:
             requests.deleteStudent(action.id)
                 .then(() => {
-                    console.log('delete student nice')
+                    // console.log('delete student nice');
                     dispatch(adminStudentsActions.deleteStudentSuccess());
+                    fireToast( I18n.t('admin.students.success.delete.title'), I18n.t('admin.students.success.delete.description'), 'success', 'check' );
                     dispatch(adminStudentsActions.selectStudent(null));
+                    dispatch(adminStudentsActions.getStudents());
                     dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSED));
                 })
                 .catch(() => {
-                    console.log('delete student bad')
-                    dispatch(adminStudentsActions.deleteStudentError())
+                    // console.log('delete student bad');
+                    dispatch(adminStudentsActions.deleteStudentError());
+                    fireToast( I18n.t('admin.students.error.delete.title'), I18n.t('admin.students.error.delete.description'), 'error', 'warning' );
                 });
             break;
 

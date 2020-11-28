@@ -30,7 +30,6 @@ const ModalEdit = (props) => {
     } = props;
     const [formValid, setFormValid] = useState(true);
 
-    // const formKeys = form ? Object.keys(form) : [];
     const formValues = form ? Object.values(form) : [];
     
     const handleChange = (id, type, value) => {
