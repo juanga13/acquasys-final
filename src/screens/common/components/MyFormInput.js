@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { FIELD_TYPES, GENRES, allWeekDaysValues } from '../../../utils/consts';
-import { Form, Checkbox, Dropdown } from 'semantic-ui-react';
+import { FIELD_TYPES, GENRES } from '../../../utils/consts';
+import { Form } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import es from "date-fns/locale/es";

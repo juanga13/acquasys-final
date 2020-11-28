@@ -41,7 +41,7 @@ const ModalPreview = (props) => {
                     } else {
                         return (
                             <div className='field-container' key={'modal-preview-item-' + i}>
-                                <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                 <p>
                                     {['inscriptionDate', 'birthday'].some(value => value === keys[i]) ?
                                         new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
@@ -62,7 +62,7 @@ const ModalPreview = (props) => {
                     } else {
                         return (
                             <div className='field-container' key={'modal-preview-item-' + i}>
-                                <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                 <p>{value}</p>
                                 <Divider hidden/>
                             </div>
@@ -80,7 +80,7 @@ const ModalPreview = (props) => {
                             case 'students': 
                                 return (
                                     <div className='field-container' key={'modal-preview-item-' + i}>
-                                        <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                        <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                         <ul>
                                             {value.map((student, i) => (<li>{student.name + ', ' + student.surname}</li>))}
                                         </ul>
@@ -91,7 +91,7 @@ const ModalPreview = (props) => {
                                 return (
                                     
                                     <div className='field-container' key={'modal-preview-item-' + i}>
-                                        <p>{I18n.t('forms.' + keys[i]) + ':'}</p>                                      
+                                        <label>{I18n.t('forms.' + keys[i]) + ':'}</label>                                      
                                         <ul>
                                             {value.map((teacher, i) => (<li>{teacher.name + ', ' + teacher.surname}</li>))}
                                         </ul>
@@ -102,7 +102,7 @@ const ModalPreview = (props) => {
                                 return (
                                     
                                     <div className='field-container' key={'modal-preview-item-' + i}>
-                                        <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                        <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                         <ul>
                                             {value.map((weekday, i) => (<li>{
                                                 I18n.t('common.weekdays.' + weekday.asWeekDay.toLowerCase()) +
@@ -116,7 +116,7 @@ const ModalPreview = (props) => {
                             default:
                                 return (
                                     <div className='field-container' key={'modal-preview-item-' + i}>
-                                        <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                        <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                         <p>
                                             {['startDate', 'endDate'].some(value => value === keys[i]) ?
                                                 new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
@@ -136,7 +136,7 @@ const ModalPreview = (props) => {
                     if (['student'].some(value => value === keys[i])) {
                         return (
                             <div className='field-container' key={'modal-preview-item-' + i}>
-                                <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                 <p>
                                     {['date'].some(value => value === keys[i]) ?
                                         new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
@@ -150,7 +150,7 @@ const ModalPreview = (props) => {
                     } else {
                         return (
                             <div className='field-container' key={'modal-preview-item-' + i}>
-                                <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                 <p>
                                     {['date'].some(value => value === keys[i]) ?
                                         new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})        
@@ -176,7 +176,7 @@ const ModalPreview = (props) => {
                             case 'students': 
                                 return (
                                     <div className='field-container' key={'modal-preview-item-' + i}>
-                                        <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                        <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                         <ul>
                                             {value.map((student, i) => (<li>{student.name + ', ' + student.surname}</li>))}
                                         </ul>
@@ -186,7 +186,7 @@ const ModalPreview = (props) => {
                             case 'teachers': 
                                 return (
                                     <div className='field-container' key={'modal-preview-item-' + i}>
-                                        <p>{I18n.t('forms.' + keys[i]) + ':'}</p>                                      
+                                        <label>{I18n.t('forms.' + keys[i]) + ':'}</label>                                      
                                         <ul>
                                             {value.map((teacher, i) => (<li>{teacher.name + ', ' + teacher.surname}</li>))}
                                         </ul>
@@ -196,7 +196,7 @@ const ModalPreview = (props) => {
                             case 'weekdays':
                                 return (
                                     <div className='field-container' key={'modal-preview-item-' + i}>
-                                        <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
+                                        <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                         <ul>
                                             {value.map((weekday, i) => (<li>{
                                                 I18n.t('common.weekdays.' + weekday.asWeekDay.toLowerCase()) +

@@ -35,7 +35,7 @@ const ModalCreate = (props) => {
     const formValues = form ? Object.values(form) : [];
 
     const handleChange = (id, type, value) => {
-        if (formValues.some((value) => value.required && !verifyInput(id, type, value))) setFormValid(false);
+        if (formValues.some((item) => value.required && !verifyInput(item.id, item.type, item.value))) setFormValid(false);
         else setFormValid(true);
         props.onChange(id, type, value);
     };
@@ -46,8 +46,8 @@ const ModalCreate = (props) => {
                 return (
                     <Form>
                         {formValues.map((valueProps) => (
-                            <Form.Field className='field-container' key={'modal-create-form-field-' + valueProps.id}>
-                                <p>{I18n.t(valueProps.label) + ':'}</p>
+                            <Form.Field required={valueProps.required} className='field-container' key={'modal-create-form-field-' + valueProps.id}>
+                                <label>{I18n.t(valueProps.label) + ':'}</label>
                                 <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
                             </Form.Field>
                         ))}
@@ -58,8 +58,8 @@ const ModalCreate = (props) => {
                 return (
                     <Form>
                         {formValues.map((valueProps) => (
-                            <Form.Field className='field-container' key={'modal-create-form-field-' + valueProps.id}>
-                                <p>{I18n.t(valueProps.label) + ':'}</p>
+                            <Form.Field required={valueProps.required} className='field-container' key={'modal-create-form-field-' + valueProps.id}>
+                                <label>{I18n.t(valueProps.label) + ':'}</label>
                                 <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
                             </Form.Field>
                         ))}
@@ -70,8 +70,8 @@ const ModalCreate = (props) => {
                 return (
                     <Form>
                         {formValues.map((valueProps) => (
-                            <Form.Field className='field-container' key={'modal-create-form-field-' + valueProps.id}>
-                                <p>{I18n.t(valueProps.label) + ':'}</p>
+                            <Form.Field required={valueProps.required} className='field-container' key={'modal-create-form-field-' + valueProps.id}>
+                                <label>{I18n.t(valueProps.label) + ':'}</label>
                                 <MyFormInput 
                                     {...valueProps} 
                                     students={valueProps.id === 'students' && props.students}
@@ -88,8 +88,8 @@ const ModalCreate = (props) => {
                 return (
                     <Form>
                         {formValues.map((valueProps) => (
-                            <Form.Field className='field-container' key={'modal-create-form-field-' + valueProps.id}>
-                                <p>{I18n.t(valueProps.label) + ':'}</p>
+                            <Form.Field required={valueProps.required} className='field-container' key={'modal-create-form-field-' + valueProps.id}>
+                                <label>{I18n.t(valueProps.label) + ':'}</label>
                                 <MyFormInput 
                                     {...valueProps} 
                                     students={valueProps.id === 'student' && props.students}
