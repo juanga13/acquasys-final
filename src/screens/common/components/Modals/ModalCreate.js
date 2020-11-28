@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Icon, Image, Form, Dimmer, Loader, Header, Label } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { I18n } from 'react-redux-i18n';
@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { MODAL_TYPES, REQUEST_STATUS } from '../../../../utils/consts';
 import MyFormInput from '../MyFormInput';
 import fireToast from '../Toaster';
+import verifyInput from '../../../../utils/verifyInput';
 
 /**
  * 
@@ -28,10 +29,17 @@ const ModalCreate = (props) => {
         showImage,
         loading
     } = props;
+    const [formValid, setFormValid] = useState(false);
 
     // const formKeys = form ? Object.keys(form) : [];
     const formValues = form ? Object.values(form) : [];
 
+    const handleChange = (id, type, value) => {
+        if (formValues.some((value) => value.required && !verifyInput(id, type, value))) setFormValid(false);
+        else setFormValid(true);
+        props.onChange(id, type, value);
+    };
+    
     const renderForm = () => {
         switch (type) {
             case MODAL_TYPES.ADMIN_STUDENT:
@@ -40,7 +48,7 @@ const ModalCreate = (props) => {
                         {formValues.map((valueProps) => (
                             <Form.Field className='field-container' key={'modal-create-form-field-' + valueProps.id}>
                                 <p>{I18n.t(valueProps.label) + ':'}</p>
-                                <MyFormInput {...valueProps} onChange={(id, value) => props.onChange(id, value)} />
+                                <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
                             </Form.Field>
                         ))}
                     </Form>
@@ -52,7 +60,7 @@ const ModalCreate = (props) => {
                         {formValues.map((valueProps) => (
                             <Form.Field className='field-container' key={'modal-create-form-field-' + valueProps.id}>
                                 <p>{I18n.t(valueProps.label) + ':'}</p>
-                                <MyFormInput {...valueProps} onChange={(id, value) => props.onChange(id, value)} />
+                                <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
                             </Form.Field>
                         ))}
                     </Form>
@@ -68,7 +76,7 @@ const ModalCreate = (props) => {
                                     {...valueProps} 
                                     students={valueProps.id === 'students' && props.students}
                                     teachers={valueProps.id === 'teachers' && props.teachers}
-                                    onChange={(id, value) => props.onChange(id, value)} 
+                                    onChange={(id, type, value) => handleChange(id, type, value)} 
                                 />
                             </Form.Field>
                         ))}
@@ -85,7 +93,7 @@ const ModalCreate = (props) => {
                                 <MyFormInput 
                                     {...valueProps} 
                                     students={valueProps.id === 'student' && props.students}
-                                    onChange={(id, value) => props.onChange(id, value)} />
+                                    onChange={(id, type, value) => handleChange(id, type, value)} />
                             </Form.Field>
                         ))}
                     </Form>
@@ -135,8 +143,17 @@ const ModalCreate = (props) => {
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='green' onClick={props.onSubmit}><Icon name='check' />{I18n.t('common.modals.create.buttons.create')}</Button>
-                <Button color='red' onClick={props.onClose}><Icon name='close' />{I18n.t('common.modals.create.buttons.cancel')}</Button>
+                <Button
+                    color='green'
+                    disabled={!formValid}
+                    onClick={props.onSubmit}
+                >
+                    <Icon name='check' />
+                    {I18n.t('common.modals.create.buttons.create')}
+                </Button>
+                <Button
+                    color='red'
+                    onClick={props.onClose}><Icon name='close' />{I18n.t('common.modals.create.buttons.cancel')}</Button>
             </Modal.Actions>
         </Modal>
     )

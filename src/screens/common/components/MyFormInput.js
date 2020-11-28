@@ -3,10 +3,15 @@ import { withRouter } from 'react-router-dom';
 import { FIELD_TYPES, GENRES, allWeekDaysValues } from '../../../utils/consts';
 import { Form, Checkbox, Dropdown } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
-import ReactDatePicker from 'react-datepicker';
+import ReactDatePicker, { registerLocale } from 'react-datepicker';
+import es from "date-fns/locale/es";
+
 import { dummyAvatar } from '../../../assets';
 import WeekdaysInput from './WeekdaysInput';
 import './MyFormInput.scss';
+
+
+registerLocale("es", es); // date picker to spanish
 
 const MyFormInput = (props) => {
     const {
@@ -15,19 +20,28 @@ const MyFormInput = (props) => {
         error,
         type,
         placeholder,
+        required,
+
+        // only for date inputs
+        maxDate,
+        minDate,
     } = props;
 
     switch (type) {
         case FIELD_TYPES.DATE:
             return (
-                <ReactDatePicker
-                    id={id}
-                    selected={value}
-                    // error
-                    // type
-                    placeholderText={I18n.t(placeholder)}
-                    onChange={date => props.onChange(id, date)}
-                />
+                <div className='date-picker-container'>
+                    <ReactDatePicker
+                        id={id}
+                        selected={value}
+                        minDate={minDate} maxDate={maxDate}
+                        dateFormat="dd MMMMMMMMMMMM yyyy" // mucho MMM para que entre cualquier mes
+                        locale='es'
+                        placeholderText={I18n.t(placeholder)}
+                        onChange={date => props.onChange(id, type, date.getTime())}
+                    />
+                    {error && <div className='date-picker-error'>Fecha invalida</div>}
+                </div>
             );
 
         case FIELD_TYPES.BOOLEAN:
@@ -44,7 +58,7 @@ const MyFormInput = (props) => {
                         error={error}
                         options={options}
                         placeholder={I18n.t(placeholder)}
-                        onChange={(e, data) => props.onChange(id, data.value)}
+                        onChange={(e, data) => props.onChange(id, type, data.value)}
                     />
                 );
             } else if (id === 'verified') {
@@ -56,7 +70,7 @@ const MyFormInput = (props) => {
                         // error={error}
                         // type={type}
                         // placeholder={I18n.t(placeholder)}
-                        onChange={(e, data) => props.onChange(id, data.checked)}
+                        onChange={(e, data) => props.onChange(id, type, data.checked)}
                     />
                 );
             }
@@ -68,7 +82,7 @@ const MyFormInput = (props) => {
                     value={value}
                     error={error}  // TODO no lo tiene
                     placeholder={I18n.t(placeholder)}
-                    onChange={(e, data) => props.onChange(id, data.value)}
+                    onChange={(e, data) => props.onChange(id, type, data.value)}
                     className='textarea'
                 />
             );
@@ -93,7 +107,7 @@ const MyFormInput = (props) => {
                         selection
                         defaultValue={selectedStudents}
                         options={allStudents}
-                        onChange={(e, data) => props.onChange(id, data.value)}
+                        onChange={(e, data) => props.onChange(id, type, data.value)}
                     />
                 );
             } else if (id === 'teachers') {
@@ -120,7 +134,7 @@ const MyFormInput = (props) => {
                             teacherIdArray.value.forEach(teacherId => (
                                 result.push(props.teachers.find(teacher => teacher.id === teacherId))
                             ));
-                            props.onChange(id, result);
+                            props.onChange(id, type, result);
                         }}
                     />
                 );
@@ -150,7 +164,7 @@ const MyFormInput = (props) => {
                         defaultValue={value && value.id}
                         options={allStudents}
                         // en el caso de crear un payment el back me pide studentId
-                        onChange={(e, data) => props.onChange(id, data.value)}
+                        onChange={(e, data) => props.onChange(id, type, data.value)}
                     />
                 );
             } else return null;
@@ -167,7 +181,7 @@ const MyFormInput = (props) => {
                     error={error}
                     placeholder={I18n.t(placeholder)}
                     type={type}
-                    onChange={(e) => props.onChange(id, e.target.value)}
+                    onChange={(e) => props.onChange(id, type, e.target.value)}
                 />
             );
     }

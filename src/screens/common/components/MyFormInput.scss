@@ -1,9 +1,20 @@
-.modals .description {
-    padding-left: 20px;
-    .field.field-container > div {
-        width: 100%;
-    }
-    .field.field-container > div > textarea {
-        resize: none;
+// .modals .description {
+//     padding-left: 20px;
+//     .field.field-container > div {
+//         width: 100%;
+//     }
+//     .field.field-container > div > textarea {
+//         resize: none;
+//     }
+// }
+
+.date-picker-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    .date-picker-error {
+        margin-left: 5px;
+        color: rgb(185, 46, 46);
     }
 }

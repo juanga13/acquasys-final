@@ -62,7 +62,7 @@ const Students = (props) => {
                 status={createStudentStatus}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onVerify={(id) => props.verifyStudent(id)}
-                onChange={(id, value) => props.inputChange(id, value)}
+                onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onCancel={() => {  // user cancel edition and goes back to preview mode
                     props.changeModalState(MODAL_STATES.PREVIEW);
                 }}
@@ -76,7 +76,7 @@ const Students = (props) => {
                 type={MODAL_TYPES.ADMIN_STUDENT}
                 status={createStudentStatus}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onChange={(id, value) => props.inputChange(id, value)}
+                onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onSubmit={(data) => props.createStudent(data)}  // triggers selectStudent if success and opens preview
                 showImage
             />,
@@ -142,7 +142,7 @@ const mapDispatchToProps = (dispatch) => ({
     createStudent: (data) => dispatch(adminStudentsActions.createStudent(data)),
     updateStudent: (data) => dispatch(adminStudentsActions.updateStudent(data)),
     deleteStudent: (id) => dispatch(adminStudentsActions.deleteStudent(id)),
-    inputChange: (id, value) => dispatch(adminStudentsActions.adminStudentsInputChange(id, value))
+    inputChange: (id, type, value) => dispatch(adminStudentsActions.adminStudentsInputChange(id, type, value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Students));

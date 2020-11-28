@@ -44,7 +44,7 @@ const ModalPreview = (props) => {
                                 <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
                                 <p>
                                     {['inscriptionDate', 'birthday'].some(value => value === keys[i]) ?
-                                        new Date(value).toLocaleDateString()
+                                        new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
                                         :
                                         value
                                     }
@@ -119,7 +119,7 @@ const ModalPreview = (props) => {
                                         <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
                                         <p>
                                             {['startDate', 'endDate'].some(value => value === keys[i]) ?
-                                                new Date(value).toLocaleDateString()
+                                                new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
                                                 :
                                                 value
                                             }
@@ -139,7 +139,7 @@ const ModalPreview = (props) => {
                                 <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
                                 <p>
                                     {['date'].some(value => value === keys[i]) ?
-                                        new Date(value).toLocaleDateString()
+                                        new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
                                         :
                                         value
                                     }
@@ -153,7 +153,7 @@ const ModalPreview = (props) => {
                                 <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
                                 <p>
                                     {['date'].some(value => value === keys[i]) ?
-                                        new Date(value).toLocaleDateString()
+                                        new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})        
                                         :
                                         (keys[i] === 'amount') ?
                                         value + ' $'
@@ -213,7 +213,7 @@ const ModalPreview = (props) => {
                                         <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
                                         <p>
                                             {['startDate', 'endDate'].some(value => value === keys[i]) ?
-                                                new Date(value).toLocaleDateString()
+                                                new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
                                                 :
                                                 value
                                             }
@@ -274,7 +274,7 @@ const ModalPreview = (props) => {
                                         <p>{I18n.t('forms.' + keys[i]) + ':'}</p>
                                         <p>
                                             {['startDate', 'endDate'].some(value => value === keys[i]) ?
-                                                new Date(value).toLocaleDateString()
+                                                new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})
                                                 :
                                                 value
                                             }

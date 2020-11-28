@@ -25,7 +25,7 @@ const adminStudentsActions = {
     getStudentsSuccess: (response) => ({ type: ADMIN_GET_STUDENTS_SUCCESS, response }),
     getStudentsError: () => ({ type: ADMIN_GET_STUDENTS_ERROR }),
 
-    adminStudentsInputChange: (id, value) => ({type: ADMIN_STUDENTS_INPUT_CHANGE, id, value}),
+    adminStudentsInputChange: (id, typeD, value) => ({type: ADMIN_STUDENTS_INPUT_CHANGE, id, typeD, value}),
     adminStudentsChangeModalState: (modalState) => ({type: ADMIN_STUDENTS_CHANGE_MODAL_STATE, modalState}),
     selectStudent: (student) => ({type: SELECT_STUDENT, student}),
 
