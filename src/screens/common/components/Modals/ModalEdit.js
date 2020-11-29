@@ -93,8 +93,8 @@ const ModalEdit = (props) => {
                                     <label>{I18n.t(valueProps.label) + ':'}</label>
                                     <MyFormInput
                                         {...valueProps}
-                                        students={valueProps.id === 'students' && props.students}
-                                        teachers={valueProps.id === 'teachers' && props.teachers}
+                                        // students={valueProps.id === 'students' && props.students}
+                                        // teachers={valueProps.id === 'teachers' && props.teachers}
                                         onChange={(id, type, value) => handleChange(id, type, value)}
                                     />
                                 </Form.Field>

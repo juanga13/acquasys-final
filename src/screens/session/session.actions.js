@@ -21,7 +21,7 @@ export const GET_ROLE_DATA = 'GET_ROLE_DATA';
 export const LOGOUT = 'LOGOUT';
 
 const sessionActions = {
-    sessionInputChange: (formType, id, value) => ({ type: SESSION_INPUT_CHANGE, formType, id, value }),
+    sessionInputChange: (formType, id, typeD, value) => ({ type: SESSION_INPUT_CHANGE, formType, id, typeD, value }),
 
     getProfile: () => ({ type: GET_PROFILE }),
     getProfileSuccess: (response) => ({ type: GET_PROFILE_SUCCESS, response }),

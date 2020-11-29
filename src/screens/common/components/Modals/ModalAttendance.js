@@ -20,13 +20,21 @@ import MyFormInput from '../MyFormInput';
  * onBack
  * onSetAttendance
  */
-const ModalEdit = (props) => {
+const ModalAttendance = (props) => {
     const {
         isOpen,
         type,
         form,
         showImage,
-        loading
+        loading,
+        
+        key,
+        getAttendancesStatus,
+        attendances,
+        setAttendanceStatus,
+        onClose,
+        onBack,
+        onSetAttendance,
     } = props;
 
     // const formKeys = form ? Object.keys(form) : [];
@@ -94,4 +102,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalEdit));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalAttendance));

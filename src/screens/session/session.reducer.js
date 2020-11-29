@@ -7,6 +7,7 @@ import {
     SESSION_INPUT_CHANGE
 } from './session.actions';
 import { REQUEST_STATUS, FIELD_TYPES } from '../../utils/consts';
+import verifyInput from '../../utils/verifyInput';
 
 const initialState = {
     isLoggedIn: false,
@@ -30,7 +31,8 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
         case SESSION_INPUT_CHANGE:
-            const { formType, id, value } = action;
+            const { formType, id, typeD, value } = action;
+            const error = !verifyInput(id, typeD, value);
             return { 
                 ...state, 
                 forms: { 
@@ -39,7 +41,8 @@ const sessionReducer = (state = initialState, action) => {
                         ...state.forms[formType], 
                         [id]: { 
                             ...state.forms[formType][id], 
-                            value 
+                            value,
+                            error
                         } 
                     }
                 }

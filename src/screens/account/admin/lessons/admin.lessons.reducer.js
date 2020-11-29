@@ -12,6 +12,7 @@ import {
 import { REQUEST_STATUS, FIELD_TYPES, MODAL_STATES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
 import { LOGOUT } from '../../../session/session.actions';
+import verifyInput from '../../../../utils/verifyInput';
 
 const initialState = {
     lessons: [],
@@ -22,12 +23,12 @@ const initialState = {
     updateLessonStatus: REQUEST_STATUS.NONE,
     deleteLessonStatus: REQUEST_STATUS.NONE,
     lessonForm: {
-        name: {id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: false },
-        endDate: {id: 'endDate', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.endDate', label: 'forms.endDate', required: false },
-        startDate: {id: 'startDate', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.startDate', label: 'forms.startDate', required: false },
+        name: {id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: true },
+        startDate: {id: 'startDate', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.startDate', label: 'forms.startDate', required: true },
+        endDate: {id: 'endDate', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.endDate', label: 'forms.endDate', required: true },
         students: {id: 'students', value: [], error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.students', label: 'forms.students', required: false },
         teachers: {id: 'teachers', value: [], error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.teachers', label: 'forms.teachers', required: false },
-        weekdays: {id: 'weekdays', value: [], error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.weekdays', label: 'forms.weekdays', required: false }
+        weekdays: {id: 'weekdays', value: [], error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.weekdays', label: 'forms.weekdays', required: true },
         // id: {id: 'id', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.id', label: 'forms.id', required: false },
     },
     getAttendancesStatus: REQUEST_STATUS.NONE,
@@ -42,17 +43,19 @@ const adminLessonsReducer = (state = initialState, action) => {
         case ADMIN_GET_LESSONS_ERROR: return { ...state, getLessonsStatus: REQUEST_STATUS.ERROR };
 
         case ADMIN_LESSONS_INPUT_CHANGE: 
-            const { id, value } = action;
-                return {
-                    ...state,
-                    lessonForm: {
-                        ...state.lessonForm,
-                        [id]: {
-                            ...state.lessonForm[id],
-                            value
-                        }
+            const { id, typeD, value } = action;
+            const error = !verifyInput(id, typeD, value);
+            return {
+                ...state,
+                lessonForm: {
+                    ...state.lessonForm,
+                    [id]: {
+                        ...state.lessonForm[id],
+                        value,
+                        error,
                     }
-                };
+                }
+            };
 
         case ADMIN_LESSONS_CHANGE_MODAL_STATE: 
             // si pasa a edicion poblar el form con los datos del selectedLesson

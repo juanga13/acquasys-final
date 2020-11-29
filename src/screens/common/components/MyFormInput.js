@@ -142,7 +142,7 @@ const MyFormInput = (props) => {
                 return (
                     <WeekdaysInput 
                         values={value} 
-                        onChange={(values => props.onChange(id, values))}
+                        onChange={(values => props.onChange(id, type, values))}
                     />
                 );
             } else if (id === 'student') {

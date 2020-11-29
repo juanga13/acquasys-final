@@ -38,11 +38,9 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
                 createData.password.value = 'asd123';
             }
             requests.createStudent(createData)
-                .then((response) => {
+                .then(() => {
                     dispatch(adminStudentsActions.createStudentSuccess());
-                    console.log('asdonasdnasodin')
                     fireToast( I18n.t('admin.students.success.create.title'), I18n.t('admin.students.success.create.description'),'success', 'check' );
-                    dispatch(adminStudentsActions.selectStudent(response));
                     dispatch(adminStudentsActions.getStudents());
                     dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSE));
                 })
@@ -63,10 +61,9 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
                 updateData.password = updateSelectedStudent.password;
             }
             requests.updateStudent(updateData)
-                .then((response) => {
+                .then((respose) => {
                     dispatch(adminStudentsActions.updateStudentSuccess());
                     fireToast( I18n.t('admin.students.success.update.title'), I18n.t('admin.students.success.update.description'), 'success', 'check' );
-                    dispatch(adminStudentsActions.selectStudent(response));
                     dispatch(adminStudentsActions.getStudents());
                     dispatch(adminStudentsActions.adminStudentsChangeModalState(MODAL_STATES.CLOSE));
                 })

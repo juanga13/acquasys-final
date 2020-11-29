@@ -31,15 +31,8 @@ const Lessons = (props) => {
     const filteredLessons = lessons.filter(lesson => lesson.name.toLowerCase().includes(searchName));
 
     useEffect(() => {
-        console.log('lesson effect');
-        if (getLessonsStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.get.title'), I18n.t('admin.lessons.error.get.description'), 'error', 'warning' );
-        if (createLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.create.title'), I18n.t('admin.lessons.success.create.description'),'success', 'check' );
-        if (createLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.create.title'), I18n.t('admin.lessons.error.create.description'), 'error', 'warning' );
-        if (updateLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.update.title'), I18n.t('admin.lessons.success.update.description'), 'success', 'check' );
-        if (updateLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.update.title'), I18n.t('admin.lessons.error.update.description'), 'error', 'warning' );
-        if (deleteLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.lessons.success.delete.title'), I18n.t('admin.lessons.success.delete.description'), 'success', 'check' );
-        if (deleteLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.lessons.error.delete.title'), I18n.t('admin.lessons.error.delete.description'), 'error', 'warning' );
-    }, [props.createLessonStatus, props.updateLessonStatus, props.deleteLessonStatus]);
+        // console.log('useEffect, students prop changed');
+    }, [lessons, selectedLesson]);
 
     const renderModals = () => {
         return ([
@@ -59,7 +52,7 @@ const Lessons = (props) => {
                 form={lessonForm}
                 loading={updateLessonStatus === REQUEST_STATUS.LOADING}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onChange={(id, value) => props.inputChange(id, value)}
+                onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onCancel={() => {  // user cancel edition and goes back to preview mode
                     props.changeModalState(MODAL_STATES.PREVIEW);
                 }}
@@ -76,7 +69,7 @@ const Lessons = (props) => {
                 setAttendanceStatus={setAttendanceStatus}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
-                onSetAttendance={(id, value) => props.inputChange(id, value)}
+                onSetAttendance={(id, type, value) => props.inputChange(id, type, value)}
             />,
             <ModalCreate
                 key='modal-create'
@@ -86,7 +79,7 @@ const Lessons = (props) => {
                 loading={createLessonStatus === REQUEST_STATUS.LOADING}
                 error={createLessonStatus === REQUEST_STATUS.ERROR}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onChange={(id, value) => props.inputChange(id, value)}
+                onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onSubmit={(data) => props.createLesson(data)}  // triggers selectLesson if success and opens preview
                 students={props.students}  // all students available
                 teachers={props.teachers}  // all teachers available
@@ -163,7 +156,7 @@ const mapDispatchToProps = (dispatch) => ({
     createLesson: (data) => dispatch(adminLessonsActions.createLesson(data)),
     updateLesson: (data) => dispatch(adminLessonsActions.updateLesson(data)),
     deleteLesson: (id) => dispatch(adminLessonsActions.deleteLesson(id)),
-    inputChange: (id, value) => dispatch(adminLessonsActions.adminLessonsInputChange(id, value))
+    inputChange: (id, type, value) => dispatch(adminLessonsActions.adminLessonsInputChange(id, type, value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Lessons));

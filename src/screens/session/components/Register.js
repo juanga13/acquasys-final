@@ -5,7 +5,7 @@ import { Header, Divider, Form, Button } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import sessionActions from '../session.actions';
 import { REQUEST_STATUS, FORMS } from '../../../utils/consts';
-import verifyField from '../../../utils/fieldVerifier';
+import verifyInput from '../../../utils/verifyInput';
 
 const Register = (props) => {
     const {
@@ -13,17 +13,11 @@ const Register = (props) => {
         registerStatus
     } = props;
 
-    const handleSubmit = () => {
-        if (!Object.values(form).some(field => !verifyField(field.type, field.value))) {
-            props.register();
-        }
-    };
-
     return (
         <div className='loginRegister-container' >
             <Header>{I18n.t('session.titles.register')}</Header>
             <Divider />
-            <Form onSubmit={handleSubmit} loading={registerStatus === REQUEST_STATUS.LOADING}>
+            <Form onSubmit={props.register} loading={registerStatus === REQUEST_STATUS.LOADING}>
                 {Object.values(form).map((fieldProps, i) =>
                     <Form.Input
                         {...fieldProps}
@@ -31,7 +25,7 @@ const Register = (props) => {
                         value={fieldProps.value}
                         placeholder={I18n.t(fieldProps.placeholder)}
                         label={I18n.t(fieldProps.label)}
-                        onChange={(e) => props.inputChange(FORMS.REGISTER, fieldProps.id, e.target.value)}
+                        onChange={(e) => props.inputChange(FORMS.REGISTER, fieldProps.id, fieldProps.type, e.target.value)}
                     />
                 )}
                 <Button color='blue' type='submit'>{I18n.t('session.form.button.register')}</Button>
@@ -47,7 +41,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     register: () => dispatch(sessionActions.register()),
-    inputChange: (formType, type, value) => dispatch(sessionActions.sessionInputChange(formType, type, value))
+    inputChange: (formType, id, type, value) => dispatch(sessionActions.sessionInputChange(formType, id, type, value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));

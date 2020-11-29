@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import sessionActions from '../../../session/session.actions';
-import { Parallax, Background } from 'react-parallax';
+import { Parallax } from 'react-parallax';
 import { background } from '../../../../assets';
 import './Routes.scss';
 import { SemanticToastContainer } from 'react-semantic-toasts';
-import fireToast from '../../../common/components/Toaster';
 import PrivateRoute from './PrivateRoute';
 import { REQUEST_STATUS, ROLES } from '../../../../utils/consts';
 
@@ -20,7 +19,7 @@ import { StudentCalendar, StudentLessons, StudentPayments } from '../../../accou
 import { TeacherCalendar, TeacherLessons } from '../../../account/teacher';
 import MyProfile from '../../../common/components/MyProfile';
 import Messaging from '../../../common/components/Messaging';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 
 
 const routesObj = {

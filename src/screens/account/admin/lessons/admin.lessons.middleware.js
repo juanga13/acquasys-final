@@ -8,6 +8,9 @@ import adminLessonsActions, {
 import requests from './admin.lessons.services';
 import { MODAL_STATES } from '../../../../utils/consts';
 import { formToDataTransform } from '../../../../utils/dataFormTransform';
+import { I18n } from 'react-redux-i18n';
+import fireToast from '../../../common/components/Toaster';
+
 
 const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
     next(action);
@@ -15,7 +18,10 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
         case ADMIN_GET_LESSONS:
             requests.getLessons()
                 .then(response => dispatch(adminLessonsActions.getLessonsSuccess(response)))
-                .catch(() => dispatch(adminLessonsActions.getLessonsError()));
+                .catch(() => {
+                    fireToast( I18n.t('admin.lessons.error.get.title'), I18n.t('admin.lessons.error.get.description'), 'error', 'warning' );
+                    dispatch(adminLessonsActions.getLessonsError())
+                });
             break;
 
         case ADMIN_LESSONS_CHANGE_MODAL_STATE:
@@ -35,9 +41,14 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             requests.createLesson(createData)
                 .then(() => {
                     dispatch(adminLessonsActions.createLessonSuccess());
-                    dispatch(adminLessonsActions.getLessons())
+                    fireToast( I18n.t('admin.lessons.success.create.title'), I18n.t('admin.lessons.success.create.description'),'success', 'check' );
+                    dispatch(adminLessonsActions.getLessons());
+                    dispatch(adminLessonsActions.adminLessonsChangeModalState(MODAL_STATES.CLOSED));
                 })
-                .catch(() => dispatch(adminLessonsActions.createLessonError()));
+                .catch(() => {
+                    fireToast( I18n.t('admin.lessons.error.create.title'), I18n.t('admin.lessons.error.create.description'), 'error', 'warning' );
+                    dispatch(adminLessonsActions.createLessonError())
+                });
             break;
 
         case UPDATE_LESSON:
@@ -54,19 +65,29 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             requests.updateLesson(updateData)
                 .then(() => {
                     dispatch(adminLessonsActions.updateLessonSuccess());
-                    dispatch(adminLessonsActions.getLessons())
+                    fireToast( I18n.t('admin.lessons.success.update.title'), I18n.t('admin.lessons.success.update.description'), 'success', 'check' );
+                    dispatch(adminLessonsActions.getLessons());
+                    dispatch(adminLessonsActions.adminLessonsChangeModalState(MODAL_STATES.CLOSED));
                 })
-                .catch(() => dispatch(adminLessonsActions.updateLessonError()));
+                .catch(() => {
+                    fireToast( I18n.t('admin.lessons.error.update.title'), I18n.t('admin.lessons.error.update.description'), 'error', 'warning' );
+                    dispatch(adminLessonsActions.updateLessonError())
+                });
             break;
 
         case DELETE_LESSON:
             requests.deleteLesson(action.id)
                 .then(() => {
                     dispatch(adminLessonsActions.deleteLessonSuccess());
+                    fireToast( I18n.t('admin.lessons.success.delete.title'), I18n.t('admin.lessons.success.delete.description'), 'success', 'check' );
                     dispatch(adminLessonsActions.selectLesson(null));
                     dispatch(adminLessonsActions.getLessons());
+                    dispatch(adminLessonsActions.adminLessonsChangeModalState(MODAL_STATES.CLOSED));
                 })
-                .catch(() => dispatch(adminLessonsActions.deleteLessonError()));
+                .catch(() => {
+                    fireToast( I18n.t('admin.lessons.error.delete.title'), I18n.t('admin.lessons.error.delete.description'), 'error', 'warning' );
+                    dispatch(adminLessonsActions.deleteLessonError())
+                });
             break;
 
         default: break;

@@ -34,7 +34,7 @@ const adminLessonsActions = {
     getLessonsSuccess: (response) => ({ type: ADMIN_GET_LESSONS_SUCCESS, response }),
     getLessonsError: () => ({ type: ADMIN_GET_LESSONS_ERROR }),
 
-    adminLessonsInputChange: (id, value) => ({ type: ADMIN_LESSONS_INPUT_CHANGE, id, value }),
+    adminLessonsInputChange: (id, typeD, value) => ({ type: ADMIN_LESSONS_INPUT_CHANGE, id, typeD, value }),
     adminLessonsChangeModalState: (modalState) => ({ type: ADMIN_LESSONS_CHANGE_MODAL_STATE, modalState }),
     selectLesson: (lesson) => ({ type: ADMIN_SELECT_LESSON, lesson }),
 

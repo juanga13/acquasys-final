@@ -289,8 +289,22 @@
         "register": "Registrarse"
       }
     },
+    "success": {
+      "register": {
+        "title": "Registro",
+        "description": "Se ha registado correctamente."
+      }
+    },
     "error": {
-      "login": "Hubo un error al ingresar."
+      "register": {
+        "title": "Registro",
+        "description": "Hubo un error al registrarse."
+      },
+      "login": {
+        "title": "Ingreso",
+        "description": "Hubo un error al ingresar."
+      }
+      
     }
   },
   "admin": {

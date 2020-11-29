@@ -14,6 +14,9 @@ import studentActions from '../account/student/student.actions';
 import teacherActions from '../account/teacher/teacher.actions';
 import { tenDaysBeforeNow } from '../../utils/time';
 import commonActions from '../common/common.actions';
+import { I18n } from 'react-redux-i18n';
+import fireToast from '../common/components/Toaster';
+
 
 const sessionMiddleware = ({dispatch, getState}) => next => action => {
     next(action);
@@ -51,27 +54,31 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
             const loginPassword = getState().session.forms.login.password.value;
             requests.login(loginEmail, loginPassword)
                 .then(data => {
-                    console.log('LOGIN SUCCESS')
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('role', data.role);
                     dispatch(sessionActions.loginSuccess());
                     dispatch(sessionActions.getRoleData());
                 })
                 .catch(error => {
-                    console.log('login failed', error);
                     dispatch(sessionActions.loginError(error))
+                    fireToast( I18n.t('session.error.login.title'), I18n.t('session.error.login.description'), 'error', 'warning' );
                 })
             break;
             
         case REGISTER:
             const registerEmail = getState().session.forms.register.email.value;
             const registerPassword = getState().session.forms.register.password.value;
-            requests.register(registerEmail, registerPassword)
-                .then(response => {
-                    dispatch(sessionActions.registerSuccess(response));
-                    push('/login');
-                })
-                .catch(error => dispatch(sessionActions.registerError(error)))
+            push('/login');
+                    dispatch(sessionActions.registerSuccess(null));
+            // requests.register(registerEmail, registerPassword)
+            //     .then(response => {
+                // dispatch(sessionActions.registerSuccess(response));
+            //         fireToast( I18n.t('session.success.register.title'), I18n.t('session.success.register.description'), 'success', 'check' );
+            //     })
+            //     .catch(error => {
+            //         dispatch(sessionActions.registerError(error))
+            //         fireToast( I18n.t('session.error.register.title'), I18n.t('session.error.register.description'), 'error', 'warning' );
+            //     })
             break;
             
         case REFRESH_TOKEN:
