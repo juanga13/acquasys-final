@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Header, Button } from 'semantic-ui-react';
+import { Header, Button, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import adminTeachersActions from '../admin.teachers.actions';
-import { MODAL_TYPES, MODAL_STATES, REQUEST_STATUS } from '../../../../../utils/consts';
+import { MODAL_TYPES, MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../../../../utils/consts';
 import ModalCreate from '../../../../common/components/Modals/ModalCreate';
 import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
@@ -23,7 +23,14 @@ const Teachers = (props) => {
         deleteTeacherStatus,
         teacherForm
     } = props;
-
+    const [searchName, setSearchName] = useState('');
+    const filteredTeachers = teachers.filter(teacher => {
+        const nameIncluded = teacher.name.toLowerCase().includes(searchName);
+        const surnameIncluded = teacher.surname.toLowerCase().includes(searchName);
+        const cuilIncluded = teacher.cuil.toString().includes(searchName);
+        if (nameIncluded || surnameIncluded || cuilIncluded) return true;
+        else return false;
+    });
     useEffect(() => {
         // console.log('useEffect, teachers prop changed');
     }, [teachers, selectedTeacher]);
@@ -87,8 +94,17 @@ const Teachers = (props) => {
                     {I18n.t('admin.teachers.buttons.newTeacher')}
                 </Button>
             </div>
+            <div className='section-header-container'>
+                <Input
+                    id='table-search-input'
+                    placeholder={I18n.t('admin.teachers.searchName')}
+                    value={searchName}
+                    type={FIELD_TYPES.STRING}
+                    onChange={(e, data) => setSearchName(data.value)}
+                />
+            </div>
             <MyTable
-                data={teachers}
+                data={filteredTeachers}
                 columns={['name', 'surname', 'cuil']}
                 actions={[
                     { type: 'file alternate', action: (data) => {

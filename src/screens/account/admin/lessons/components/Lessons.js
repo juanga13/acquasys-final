@@ -28,7 +28,7 @@ const Lessons = (props) => {
         setAttendanceStatus
     } = props;
     const [searchName, setSearchName] = useState('');
-    const filteredLessons = lessons.filter(lesson => lesson.name.includes(searchName));
+    const filteredLessons = lessons.filter(lesson => lesson.name.toLowerCase().includes(searchName));
 
     useEffect(() => {
         console.log('lesson effect');

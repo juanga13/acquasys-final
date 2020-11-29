@@ -1,533 +1,535 @@
 {
-    "main": {
-        "welcome": "Bienvenido %{name} %{surname} a Acquasys.",
-        "unloggedWelcome": "Bienvenido a Acquasys! Usted no esta logeado.",
-        "navbar": {
-            "home": "Inicio",
-            "login": "Ingresar",
-            "register": "Registrarse",
-            "profile": "Mi Perfil",
-            "calendar": "Calendario",
-            "lessons": "Clases",
-            "payments": "Pagos",
-            "students": "Alumnos",
-            "teachers": "Profesores",
-            "logout": "Deslogear",
-            "messaging": "Mensajes"
+  "main": {
+    "welcome": "Bienvenido %{name} %{surname} a Acquasys.",
+    "unloggedWelcome": "Bienvenido a Acquasys! Usted no esta logeado.",
+    "navbar": {
+      "home": "Inicio",
+      "login": "Ingresar",
+      "register": "Registrarse",
+      "profile": "Mi Perfil",
+      "calendar": "Calendario",
+      "lessons": "Clases",
+      "payments": "Pagos",
+      "students": "Alumnos",
+      "teachers": "Profesores",
+      "logout": "Deslogear",
+      "messaging": "Mensajes"
+    },
+    "home": {
+      "title": "Home"
+    },
+    "error": {
+      "welcome": "Hubo un error al obtener los datos de su perfil."
+    }
+  },
+  "common": {
+    "modals": {
+      "preview": {
+        "title": {
+          "adminStudent": "Alumnos - Detalles de datos de %{name} %{surname}",
+          "adminTeacher": "Profesores - Detalles de datos de %{name} %{surname}",
+          "adminLesson": "Clases - Detalles de datos de %{name}",
+          "adminPayment": "Pagos - Detalles de datos de %{name}",
+          "studentLesson": "Clases - Detalles de datos de %{name}",
+          "studentPayment": "Pagos - Detalles de datos de %{name}",
+          "teacherLesson": "Clases - Detalles de datos de %{name}"
         },
-        "home": {
-            "title": "Home"
+        "buttons": {
+          "submit": "Aceptar",
+          "close": "Cerrar",
+          "edit": "Editar datos",
+          "attendances": "Asistencias"
+        }
+      },
+      "create": {
+        "title": {
+          "adminStudent": "Alumnos - Crear un nuevo alumno",
+          "adminTeacher": "Profesores - Crear un nuevo profesor",
+          "adminLesson": "Clases - Crear una nueva clase",
+          "adminPayment": "Pagos - Crear un nuevo pago",
+          "studentLesson": "Clases - ",
+          "studentPayment": "Pagos - ",
+          "teacherLesson": "Clases - "
+        },
+        "buttons": {
+          "create": "Crear",
+          "cancel": "Cancelar"
+        },
+        "success": {
+          "adminStudent": "Se creo el alumno con exito",
+          "adminTeacher": "Se creo el profesor con exito",
+          "adminLesson": "Se creo la clase con exito",
+          "adminPayment": "Se creo el pago con exito"
         },
         "error": {
-            "welcome": "Hubo un error al obtener los datos de su perfil."
+          "adminStudent": "Hubo un error al crear el alumno",
+          "adminTeacher": "Hubo un error al crear el profesor",
+          "adminLesson": "Hubo un error al crear la clase",
+          "adminPayment": "Hubo un error al crear el pago"
         }
-    },
-    "common": {
-        "modals": {
-            "preview": {
-                "title": {
-                    "adminStudent": "Alumnos - Detalles de datos de %{name} %{surname}",
-                    "adminTeacher": "Profesores - Detalles de datos de %{name} %{surname}",
-                    "adminLesson": "Clases - Detalles de datos de %{name}",
-                    "adminPayment": "Pagos - Detalles de datos de %{name}",
-                    "studentLesson": "Clases - Detalles de datos de %{name}",
-                    "studentPayment": "Pagos - Detalles de datos de %{name}",
-                    "teacherLesson": "Clases - Detalles de datos de %{name}"
-                },
-                "buttons": {
-                    "submit": "Aceptar",
-                    "close": "Cerrar",
-                    "edit": "Editar datos",
-                    "attendances": "Asistencias"
-                }
-            },
-            "create": {
-                "title": {
-                    "adminStudent": "Alumnos - Crear un nuevo alumno",
-                    "adminTeacher": "Profesores - Crear un nuevo profesor",
-                    "adminLesson": "Clases - Crear una nueva clase",
-                    "adminPayment": "Pagos - Crear un nuevo pago",
-                    "studentLesson": "Clases - ",
-                    "studentPayment": "Pagos - ",
-                    "teacherLesson": "Clases - "
-                },
-                "buttons": {
-                    "create": "Crear",
-                    "cancel": "Cancelar"
-                },
-                "success": {
-                    "adminStudent": "Se creo el alumno con exito",
-                    "adminTeacher": "Se creo el profesor con exito",
-                    "adminLesson": "Se creo la clase con exito",
-                    "adminPayment": "Se creo el pago con exito"
-                },
-                "error": {
-                    "adminStudent": "Hubo un error al crear el alumno",
-                    "adminTeacher": "Hubo un error al crear el profesor",
-                    "adminLesson": "Hubo un error al crear la clase",
-                    "adminPayment": "Hubo un error al crear el pago"
-                }
-            },
-            "edit": {
-                "title": {
-                    "adminStudent": "Alumnos - Editar de datos",
-                    "adminTeacher": "Profesores - Editar de datos",
-                    "adminLesson": "Clases - Editar de datos",
-                    "adminPayment": "Pagos - Editar de datos",
-                    "studentLesson": "Clases - Editar de datos",
-                    "studentPayment": "Pagos - Editar de datos",
-                    "teacherLesson": "Clases - Editar de datos"
-                },
-                "buttons": {
-                    "submit": "Aceptar cambios",
-                    "cancel": "Cancelar",
-                    "goBack": "Cancelar y volver",
-                    "newPassword": "Crear nueva contraseña"
-                },
-                "success": {
-                    "adminStudent": "Se cambiaron los datos del alumno con exito",
-                    "adminTeacher": "Se cambiaron los datos del profesor con exito",
-                    "adminLesson": "Se cambiaron los datos de la clase con exito",
-                    "adminPayment": "Se cambiaron los datos del pago con exito"
-                },
-                "error": {
-                    "adminStudent": "Hubo un error al editar los datos del alumno",
-                    "adminTeacher": "Hubo un error al editar los datos del profesor",
-                    "adminLesson": "Hubo un error al editar los datos de la clase",
-                    "adminPayment": "Hubo un error al editar los datos del pago"
-                }
-            },
-            "delete": {
-                "title": {
-                    "adminStudent": "Alumnos - Eliminar %{name} %{surname}",
-                    "adminTeacher": "Profesores - Eliminar %{name} %{surname}",
-                    "adminLesson": "Clases - Eliminar %{name}",
-                    "adminPayment": "Pagos - Eliminar %{name}",
-                    "studentLesson": "Clases - Eliminar %{name}",
-                    "studentPayment": "Pagos - Eliminar %{name}",
-                    "teacherLesson": "Clases - Eliminar %{name}"
-                },
-                "prompt": {
-                    "adminStudent": "Esta seguro que desea eliminar al alumno %{name} %{surname}?",
-                    "adminTeacher": "Esta seguro que desea eliminar al profesor %{name} %{surname} (CUIL %{cuil})?",
-                    "adminLesson": "Esta seguro que desea eliminar la clase %{name}?",
-                    "adminPayment": "Esta seguro que desea eliminar el pago %{name}?",
-                    "studentLesson": "Esta seguro que desea eliminar la clase %{name}",
-                    "studentPayment": "Esta seguro que desea eliminar el pago %{name}",
-                    "teacherLesson": "Esta seguro que desea eliminar la clase %{name}"
-                },
-                "buttons": {
-                    "yes": "Si",
-                    "no": "No"
-                },
-                "success": {
-                    "adminStudent": "Se eliminó el alumno con exito",
-                    "adminTeacher": "Se eliminó el profesor con exito",
-                    "adminLesson": "Se eliminó la clase con exito",
-                    "adminPayment": "Se eliminó el pago con exito"
-                },
-                "error": {
-                    "adminStudent": "Hubo un error al eliminar el alumno",
-                    "adminTeacher": "Hubo un error al eliminar el profesor",
-                    "adminLesson": "Hubo un error al eliminar la clase",
-                    "adminPayment": "Hubo un error al eliminar el pago"
-                }
-            },
-            "newMessage": {
-                "title": "Nuevo Mensaje",
-                "buttons": {
-                    "cancel": "Cancel",
-                    "send": "Enviar mensaje"
-                }
-            }
+      },
+      "edit": {
+        "title": {
+          "adminStudent": "Alumnos - Editar de datos",
+          "adminTeacher": "Profesores - Editar de datos",
+          "adminLesson": "Clases - Editar de datos",
+          "adminPayment": "Pagos - Editar de datos",
+          "studentLesson": "Clases - Editar de datos",
+          "studentPayment": "Pagos - Editar de datos",
+          "teacherLesson": "Clases - Editar de datos"
         },
-        "table": {
-            "actions": "Acciones",
-            "title": {
-                "name": "Nombre",
-                "surname": "Apellido",
-                "dni": "DNI",
-                "cuil": "CUIL",
-                "amount": "Cantidad",
-                "date": "Fecha"
-            },
-            "cells": {
-                "file alternate": "Detalles",
-                "user delete": "Eliminar"
-            },
-            "error": {
-                "dataError": "Hubo un error con la obtencion de datos"
-            },
-            "noResults": "Sin resultados"
+        "buttons": {
+          "submit": "Aceptar cambios",
+          "cancel": "Cancelar",
+          "goBack": "Cancelar y volver",
+          "newPassword": "Crear nueva contraseña"
         },
-        "myProfile": {
-            "name": "Nombre",
-            "surname": "Apellido",
-            "email": "Email",
-            "admin": {
-                "titles": {
-                    "profileData": "Datos de la cuenta",
-                    "nowLessons": "(mTODO) Clases que se van a dar esta semana.",
-                    "todoPayments": "(mTODO) Pagos que faltan hacer.",
-                    "nextPayments": "(mTODO) Pagos que tienen que hacer el mes que viene.",
-                    "verificationsPending": "Usuarios que se necesitan verificar"
-                },
-                "texts": {
-                    "noVerifiedAccount": "Ninguna cuenta que verificar."
-                }
-            },
-            "student": {
-                "weekLessons": "(mTODO) Clases que tengo esta semana",
-                "paymentsNotDone": "(mTODO) Pagos que me faltan hacer.",
-                "paymentsNext": "(mTODO) Pagos que tengo que hacer el mes que viene."
-            },
-            "teacher": {
-                "weekLessons": "(mTODO) Clases que tengo que dar esta semana."
-            },
-            "unverified": {
-                "verificationStatus": "(mTODO) Estado de la verificacion de mi cuenta (1. faltan datos; 2. falta confirmacion; 3. verificacion denegada)"
-            },
-            "title": "Mi Perfil",
-            "dni": "DNI"
+        "success": {
+          "adminStudent": "Se cambiaron los datos del alumno con exito",
+          "adminTeacher": "Se cambiaron los datos del profesor con exito",
+          "adminLesson": "Se cambiaron los datos de la clase con exito",
+          "adminPayment": "Se cambiaron los datos del pago con exito"
         },
-        "input": {
-            "sex": {
-                "femenine": "Femenino",
-                "masculine": "Masculino"
-            }
-        },
-        "weekdays": {
-            "monday": "Lunes",
-            "tuesday": "Martes",
-            "wednesday": "Miércoles",
-            "thursday": "Jueves",
-            "friday": "Viernes",
-            "saturday": "Sábado",
-            "sunday": "Domingo"
-        },
-        "other": {
-            "atHour": "a las %{hour}:%{minutes}",
-            "duration": "Duración",
-            "minutes": "minutos"
-        },
-        "inputs": {
-            "weekdaysInput": {
-                "add": "Agregar día",
-                "weekdaySelect": "Elije un dia",
-                "hour": "Hora",
-                "duration": "Duración"
-            }
-        },
-        "messaging": {
-            "titles": {
-                "header": "Mensajería",
-                "recieved": "Recibidos",
-                "sent": "Enviados"
-            },
-            "buttons": {
-                "newMessage": "Nuevo mensaje"
-            }
+        "error": {
+          "adminStudent": "Hubo un error al editar los datos del alumno",
+          "adminTeacher": "Hubo un error al editar los datos del profesor",
+          "adminLesson": "Hubo un error al editar los datos de la clase",
+          "adminPayment": "Hubo un error al editar los datos del pago"
         }
+      },
+      "delete": {
+        "title": {
+          "adminStudent": "Alumnos - Eliminar %{name} %{surname}",
+          "adminTeacher": "Profesores - Eliminar %{name} %{surname}",
+          "adminLesson": "Clases - Eliminar %{name}",
+          "adminPayment": "Pagos - Eliminar %{name}",
+          "studentLesson": "Clases - Eliminar %{name}",
+          "studentPayment": "Pagos - Eliminar %{name}",
+          "teacherLesson": "Clases - Eliminar %{name}"
+        },
+        "prompt": {
+          "adminStudent": "Esta seguro que desea eliminar al alumno %{name} %{surname}?",
+          "adminTeacher": "Esta seguro que desea eliminar al profesor %{name} %{surname} (CUIL %{cuil})?",
+          "adminLesson": "Esta seguro que desea eliminar la clase %{name}?",
+          "adminPayment": "Esta seguro que desea eliminar el pago %{name}?",
+          "studentLesson": "Esta seguro que desea eliminar la clase %{name}",
+          "studentPayment": "Esta seguro que desea eliminar el pago %{name}",
+          "teacherLesson": "Esta seguro que desea eliminar la clase %{name}"
+        },
+        "buttons": {
+          "yes": "Si",
+          "no": "No"
+        },
+        "success": {
+          "adminStudent": "Se eliminó el alumno con exito",
+          "adminTeacher": "Se eliminó el profesor con exito",
+          "adminLesson": "Se eliminó la clase con exito",
+          "adminPayment": "Se eliminó el pago con exito"
+        },
+        "error": {
+          "adminStudent": "Hubo un error al eliminar el alumno",
+          "adminTeacher": "Hubo un error al eliminar el profesor",
+          "adminLesson": "Hubo un error al eliminar la clase",
+          "adminPayment": "Hubo un error al eliminar el pago"
+        }
+      },
+      "newMessage": {
+        "title": "Nuevo Mensaje",
+        "buttons": {
+          "cancel": "Cancel",
+          "send": "Enviar mensaje"
+        }
+      }
     },
-    "forms": {
+    "table": {
+      "actions": "Acciones",
+      "title": {
         "name": "Nombre",
         "surname": "Apellido",
-        "email": "Email",
-        "password": "Nueva Contraseña",
         "dni": "DNI",
-        "sex": "Sexo",
-        "image": "Imagen de perfil",
-        "phoneNumber": "Telefono",
-        "fatherName": "Nombre del padre",
-        "fatherSurname": "Apellido del padre",
-        "fatherPhone": "Telefono del padre",
-        "fatherEmail": "Email del padre",
-        "motherName": "Nombre de la madre",
-        "motherSurname": "Apellido de la madre",
-        "motherPhone": "Telefono de la madre",
-        "motherEmail": "Email de la madre",
-        "socialPlan": "Plan social",
-        "affiliateNumber": "Número de afiliado",
-        "address": "Dirección",
-        "birthday": "Fecha de nacimiento",
-        "inscriptionDate": "Fecha de inscripcion",
-        "verified": "Está verificado",
         "cuil": "CUIL",
-        "startDate": "Fecha de inicio",
-        "endDate": "Fecha de finalización",
-        "students": "Estudiantes",
-        "teachers": "Profesores",
-        "weekdays": "Días de la semana",
-        "day": "Día",
-        "duration": "Duración",
-        "hour": "Hora",
-        "minutes": "Minutos",
-        "passwordRepeat": "Repetir Nueva Contraseña",
-        "passwordPlease": "Contraseña",
-        "date": "Fecha",
         "amount": "Cantidad",
-        "student": "Alumno",
-        "subject": "Titulo",
-        "to": "Destinatario",
-        "content": "Mensaje"
+        "date": "Fecha"
+      },
+      "cells": {
+        "file alternate": "Detalles",
+        "user delete": "Eliminar"
+      },
+      "error": {
+        "dataError": "Hubo un error con la obtencion de datos"
+      },
+      "noResults": "Sin resultados"
     },
-    "session": {
+    "myProfile": {
+      "name": "Nombre",
+      "surname": "Apellido",
+      "email": "Email",
+      "admin": {
         "titles": {
-            "register": "Registrarse",
-            "login": "Ingresar"
+          "profileData": "Datos de la cuenta",
+          "nowLessons": "(mTODO) Clases que se van a dar esta semana.",
+          "todoPayments": "(mTODO) Pagos que faltan hacer.",
+          "nextPayments": "(mTODO) Pagos que tienen que hacer el mes que viene.",
+          "verificationsPending": "Usuarios que se necesitan verificar"
         },
-        "button": {
-            "login": "Ingresar",
-            "register": "Registrarse"
-        },
-        "errors": {
-            "login": "Hubo un error al ingresar."
-        },
-        "form": {
-            "button": {
-                "login": "Ingresar",
-                "register": "Registrarse"
-            }
-        },
-        "error": {
-            "login": "Hubo un error al ingresar."
+        "texts": {
+          "noVerifiedAccount": "Ninguna cuenta que verificar."
         }
+      },
+      "student": {
+        "weekLessons": "(mTODO) Clases que tengo esta semana",
+        "paymentsNotDone": "(mTODO) Pagos que me faltan hacer.",
+        "paymentsNext": "(mTODO) Pagos que tengo que hacer el mes que viene."
+      },
+      "teacher": {
+        "weekLessons": "(mTODO) Clases que tengo que dar esta semana."
+      },
+      "unverified": {
+        "verificationStatus": "(mTODO) Estado de la verificacion de mi cuenta (1. faltan datos; 2. falta confirmacion; 3. verificacion denegada)"
+      },
+      "title": "Mi Perfil",
+      "dni": "DNI"
     },
-    "admin": {
-        "lessons": {
-            "title": "Clases",
-            "buttons": {
-                "newLesson": "Crear nueva clase"
-            },
-            "success": {
-                "create": {
-                    "title": "Creación de clase",
-                    "description": "Se ha creado la nueva clase con éxito."
-                },
-                "update": {
-                    "title": "Actualización de clase",
-                    "description": "Se han actualizado los datos de la clase con éxito."
-                },
-                "delete": {
-                    "title": "Eliminación de clase",
-                    "description": "Se ha eliminado la clse con éxito."
-                }
-            },
-            "error": {
-                "create": {
-                    "title": "Creación de clase",
-                    "description": "Hubo un error al crear la nueva clase."
-                },
-                "update": {
-                    "title": "Actualización de clase",
-                    "description": "Hubo un error al actualizar los datos de la clase."
-                },
-                "delete": {
-                    "title": "Eliminación de clase",
-                    "description": "Hubo un error al eliminar la clase."
-                },
-                "get": {
-                    "title": "Obtencion de clases",
-                    "description": "Hubo un error al obtener las clases."
-                }
-            },
-            "searchName": "Nombre",
-            "searchStartDate": "Fecha inicial",
-            "searchEndDate": "Fecha final"
-        },
-        "payments": {
-            "title": "Pagos",
-            "buttons": {
-                "newPayment": "Crear nuevo pago"
-            },
-            "feeAmount": "Valor de la cuota",
-            "success": {
-                "create": {
-                    "title": "Creación de pago",
-                    "description": "Se ha creado el nuevo pago con éxito."
-                },
-                "update": {
-                    "title": "Actualización de pago",
-                    "description": "Se han actualizado los datos del pago con éxito."
-                },
-                "delete": {
-                    "title": "Eliminación de pago",
-                    "description": "Se ha eliminado el pago con éxito."
-                }
-            },
-            "error": {
-                "create": {
-                    "title": "Creación de pago",
-                    "description": "Hubo un error al crear el nuevo pago."
-                },
-                "update": {
-                    "title": "Actualización de pago",
-                    "description": "Hubo un error al actualizar los datos del pago."
-                },
-                "delete": {
-                    "title": "Eliminación de pago",
-                    "description": "Hubo un error al eliminar el pago."
-                }
-            },
-            "setFeeAmount": "Cambiar el valor de la cuota",
-            "insertNewFee": "Nuevo valor de cuota",
-            "searchName": "Nombre, apellido o DNI de alumno",
-            "filters": "Filtros: "
-        },
-        "students": {
-            "title": "Alumnos",
-            "buttons": {
-                "newStudent": "Crear nuevo alumno"
-            },
-            "success": {
-                "create": {
-                    "title": "Creación de alumno",
-                    "description": "Se ha creado el nuevo alumno con éxito."
-                },
-                "update": {
-                    "title": "Actualización de alumno",
-                    "description": "Se han actualizado los datos del alumno con éxito."
-                },
-                "delete": {
-                    "title": "Eliminación de alumno",
-                    "description": "Se ha eliminado el alumno con éxito."
-                }
-            },
-            "error": {
-                "create": {
-                    "title": "Creación de alumno",
-                    "description": "Hubo un error al crear el nuevo alumno."
-                },
-                "update": {
-                    "title": "Actualización de alumno",
-                    "description": "Hubo un error al actualizar los datos del alumno."
-                },
-                "delete": {
-                    "title": "Eliminación de alumno",
-                    "description": "Hubo un error al eliminar el alumno."
-                }
-            }
-        },
-        "teachers": {
-            "title": "Profesores",
-            "buttons": {
-                "newTeacher": "Crear nuevo profesor"
-            },
-            "success": {
-                "create": {
-                    "title": "Creación de profesor",
-                    "description": "Se ha creado el nuevo profesor con éxito."
-                },
-                "update": {
-                    "title": "Actualización de profesor",
-                    "description": "Se han actualizado los datos del profesor con éxito."
-                },
-                "delete": {
-                    "title": "Eliminación de profesor",
-                    "description": "Se ha eliminado el profesor con éxito."
-                }
-            },
-            "error": {
-                "create": {
-                    "title": "Creación de profesor",
-                    "description": "Hubo un error al crear el nuevo profesor."
-                },
-                "update": {
-                    "title": "Actualización de profesor",
-                    "description": "Hubo un error al actualizar los datos del profesor."
-                },
-                "delete": {
-                    "title": "Eliminación de profesor",
-                    "description": "Hubo un error al eliminar el profesor."
-                }
-            }
-        },
-        "calendar": {
-            "title": "Calendario"
-        }
+    "input": {
+      "sex": {
+        "femenine": "Femenino",
+        "masculine": "Masculino"
+      }
     },
-    "student": {
-        "profile": {
-            "success": {
-                "update": {
-                    "title": "Actualizacion de datos exitosa",
-                    "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
-                }
-            },
-            "error": {
-                "update": {
-                    "title": "Actualizacion de datos",
-                    "description": "Hubo un error al actualizar tus datos."
-                }
-            }
-        },
-        "lessons": {
-            "success": {},
-            "error": {
-                "get": {
-                    "title": "Obtencion de datos",
-                    "description": "Hubo un error al obtener las clases."
-                }
-            }
-        },
-        "payments": {
-            "success": {},
-            "error": {
-                "get": {
-                    "title": "Obtencion de datos",
-                    "description": "Hubo un error al obtener los pagos."
-                }
-            }
-        }
+    "weekdays": {
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo"
     },
-    "teacher": {
-        "profile": {
-            "success": {
-                "update": {
-                    "title": "Actualizacion de datos exitosa",
-                    "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
-                }
-            },
-            "error": {
-                "update": {
-                    "title": "Actualizacion de datos",
-                    "description": "Hubo un error al actualizar tus datos."
-                }
-            }
-        },
-        "lessons": {
-            "success": {
-                "setAttendance": {
-                    "title": "Asistencias",
-                    "description": "Se han puesto las asistencias correctamente."
-                }
-            },
-            "error": {
-                "get": {
-                    "title": "Obtencion de datos",
-                    "description": "Hubo un error al obtener las clases."
-                },
-                "setAttendance": {
-                    "title": "Asistencias",
-                    "description": "Hubo un error al poner las asistencias."
-                }
-            }
-        }
+    "other": {
+      "atHour": "a las %{hour}:%{minutes}",
+      "duration": "Duración:",
+      "minutes": "minutos"
     },
-    "unverified": {
-        "profile": {
-            "success": {
-                "update": {
-                    "title": "Actualizacion de datos exitosa",
-                    "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
-                }
-            },
-            "error": {
-                "update": {
-                    "title": "Actualizacion de datos",
-                    "description": "Hubo un error al actualizar tus datos."
-                }
-            }
-        }
+    "inputs": {
+      "weekdaysInput": {
+        "add": "Agregar día",
+        "weekdaySelect": "Elije un dia",
+        "hour": "Hora",
+        "duration": "Duración"
+      }
+    },
+    "messaging": {
+      "titles": {
+        "header": "Mensajería",
+        "recieved": "Recibidos",
+        "sent": "Enviados"
+      },
+      "buttons": {
+        "newMessage": "Nuevo mensaje"
+      }
     }
+  },
+  "forms": {
+    "name": "Nombre",
+    "surname": "Apellido",
+    "email": "Email",
+    "password": "Nueva Contraseña",
+    "dni": "DNI",
+    "sex": "Sexo",
+    "image": "Imagen de perfil",
+    "phoneNumber": "Telefono",
+    "fatherName": "Nombre del padre",
+    "fatherSurname": "Apellido del padre",
+    "fatherPhone": "Telefono del padre",
+    "fatherEmail": "Email del padre",
+    "motherName": "Nombre de la madre",
+    "motherSurname": "Apellido de la madre",
+    "motherPhone": "Telefono de la madre",
+    "motherEmail": "Email de la madre",
+    "socialPlan": "Plan social",
+    "affiliateNumber": "Número de afiliado",
+    "address": "Dirección",
+    "birthday": "Fecha de nacimiento",
+    "inscriptionDate": "Fecha de inscripcion",
+    "verified": "Está verificado",
+    "cuil": "CUIL",
+    "startDate": "Fecha de inicio",
+    "endDate": "Fecha de finalización",
+    "students": "Estudiantes",
+    "teachers": "Profesores",
+    "weekdays": "Días de la semana",
+    "day": "Día",
+    "duration": "Duración",
+    "hour": "Hora",
+    "minutes": "Minutos",
+    "passwordRepeat": "Repetir Nueva Contraseña",
+    "passwordPlease": "Contraseña",
+    "date": "Fecha",
+    "amount": "Cantidad",
+    "student": "Alumno",
+    "subject": "Titulo",
+    "to": "Destinatario",
+    "content": "Mensaje"
+  },
+  "session": {
+    "titles": {
+      "register": "Registrarse",
+      "login": "Ingresar"
+    },
+    "button": {
+      "login": "Ingresar",
+      "register": "Registrarse"
+    },
+    "errors": {
+      "login": "Hubo un error al ingresar."
+    },
+    "form": {
+      "button": {
+        "login": "Ingresar",
+        "register": "Registrarse"
+      }
+    },
+    "error": {
+      "login": "Hubo un error al ingresar."
+    }
+  },
+  "admin": {
+    "lessons": {
+      "title": "Clases",
+      "buttons": {
+        "newLesson": "Crear nueva clase"
+      },
+      "success": {
+        "create": {
+          "title": "Creación de clase",
+          "description": "Se ha creado la nueva clase con éxito."
+        },
+        "update": {
+          "title": "Actualización de clase",
+          "description": "Se han actualizado los datos de la clase con éxito."
+        },
+        "delete": {
+          "title": "Eliminación de clase",
+          "description": "Se ha eliminado la clse con éxito."
+        }
+      },
+      "error": {
+        "create": {
+          "title": "Creación de clase",
+          "description": "Hubo un error al crear la nueva clase."
+        },
+        "update": {
+          "title": "Actualización de clase",
+          "description": "Hubo un error al actualizar los datos de la clase."
+        },
+        "delete": {
+          "title": "Eliminación de clase",
+          "description": "Hubo un error al eliminar la clase."
+        },
+        "get": {
+          "title": "Obtencion de clases",
+          "description": "Hubo un error al obtener las clases."
+        }
+      },
+      "searchName": "Nombre de la clase",
+      "searchStartDate": "Fecha inicial",
+      "searchEndDate": "Fecha final"
+    },
+    "payments": {
+      "title": "Pagos",
+      "buttons": {
+        "newPayment": "Crear nuevo pago"
+      },
+      "feeAmount": "Valor de la cuota",
+      "success": {
+        "create": {
+          "title": "Creación de pago",
+          "description": "Se ha creado el nuevo pago con éxito."
+        },
+        "update": {
+          "title": "Actualización de pago",
+          "description": "Se han actualizado los datos del pago con éxito."
+        },
+        "delete": {
+          "title": "Eliminación de pago",
+          "description": "Se ha eliminado el pago con éxito."
+        }
+      },
+      "error": {
+        "create": {
+          "title": "Creación de pago",
+          "description": "Hubo un error al crear el nuevo pago."
+        },
+        "update": {
+          "title": "Actualización de pago",
+          "description": "Hubo un error al actualizar los datos del pago."
+        },
+        "delete": {
+          "title": "Eliminación de pago",
+          "description": "Hubo un error al eliminar el pago."
+        }
+      },
+      "setFeeAmount": "Cambiar el valor de la cuota",
+      "insertNewFee": "Nuevo valor de cuota",
+      "searchName": "Nombre, apellido o DNI de alumno",
+      "filters": "Filtros: "
+    },
+    "students": {
+      "title": "Alumnos",
+      "buttons": {
+        "newStudent": "Crear nuevo alumno"
+      },
+      "success": {
+        "create": {
+          "title": "Creación de alumno",
+          "description": "Se ha creado el nuevo alumno con éxito."
+        },
+        "update": {
+          "title": "Actualización de alumno",
+          "description": "Se han actualizado los datos del alumno con éxito."
+        },
+        "delete": {
+          "title": "Eliminación de alumno",
+          "description": "Se ha eliminado el alumno con éxito."
+        }
+      },
+      "error": {
+        "create": {
+          "title": "Creación de alumno",
+          "description": "Hubo un error al crear el nuevo alumno."
+        },
+        "update": {
+          "title": "Actualización de alumno",
+          "description": "Hubo un error al actualizar los datos del alumno."
+        },
+        "delete": {
+          "title": "Eliminación de alumno",
+          "description": "Hubo un error al eliminar el alumno."
+        }
+      },
+      "searchName": "Nombre, apellido o DNI del alumno"
+    },
+    "teachers": {
+      "title": "Profesores",
+      "buttons": {
+        "newTeacher": "Crear nuevo profesor"
+      },
+      "success": {
+        "create": {
+          "title": "Creación de profesor",
+          "description": "Se ha creado el nuevo profesor con éxito."
+        },
+        "update": {
+          "title": "Actualización de profesor",
+          "description": "Se han actualizado los datos del profesor con éxito."
+        },
+        "delete": {
+          "title": "Eliminación de profesor",
+          "description": "Se ha eliminado el profesor con éxito."
+        }
+      },
+      "error": {
+        "create": {
+          "title": "Creación de profesor",
+          "description": "Hubo un error al crear el nuevo profesor."
+        },
+        "update": {
+          "title": "Actualización de profesor",
+          "description": "Hubo un error al actualizar los datos del profesor."
+        },
+        "delete": {
+          "title": "Eliminación de profesor",
+          "description": "Hubo un error al eliminar el profesor."
+        }
+      },
+      "searchName": "Nombre, apellido o CUIT del profesor"
+    },
+    "calendar": {
+      "title": "Calendario"
+    }
+  },
+  "student": {
+    "profile": {
+      "success": {
+        "update": {
+          "title": "Actualizacion de datos exitosa",
+          "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
+        }
+      },
+      "error": {
+        "update": {
+          "title": "Actualizacion de datos",
+          "description": "Hubo un error al actualizar tus datos."
+        }
+      }
+    },
+    "lessons": {
+      "success": {},
+      "error": {
+        "get": {
+          "title": "Obtencion de datos",
+          "description": "Hubo un error al obtener las clases."
+        }
+      }
+    },
+    "payments": {
+      "success": {},
+      "error": {
+        "get": {
+          "title": "Obtencion de datos",
+          "description": "Hubo un error al obtener los pagos."
+        }
+      }
+    }
+  },
+  "teacher": {
+    "profile": {
+      "success": {
+        "update": {
+          "title": "Actualizacion de datos exitosa",
+          "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
+        }
+      },
+      "error": {
+        "update": {
+          "title": "Actualizacion de datos",
+          "description": "Hubo un error al actualizar tus datos."
+        }
+      }
+    },
+    "lessons": {
+      "success": {
+        "setAttendance": {
+          "title": "Asistencias",
+          "description": "Se han puesto las asistencias correctamente."
+        }
+      },
+      "error": {
+        "get": {
+          "title": "Obtencion de datos",
+          "description": "Hubo un error al obtener las clases."
+        },
+        "setAttendance": {
+          "title": "Asistencias",
+          "description": "Hubo un error al poner las asistencias."
+        }
+      }
+    }
+  },
+  "unverified": {
+    "profile": {
+      "success": {
+        "update": {
+          "title": "Actualizacion de datos exitosa",
+          "description": "Se enviara un mensaje al Administrador para confirmar los cambios."
+        }
+      },
+      "error": {
+        "update": {
+          "title": "Actualizacion de datos",
+          "description": "Hubo un error al actualizar tus datos."
+        }
+      }
+    }
+  }
 }

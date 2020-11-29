@@ -76,8 +76,20 @@ const ModalEdit = (props) => {
                 return (
                     <Form onSubmit={handleSubmit}>
                         {formValues.map((valueProps) => {
+                            const setCustomFieldClassName = () => {
+                                switch (valueProps.id) {
+                                    case 'students': return 'field-container_students';
+                                    case 'teachers': return 'field-container_teachers';
+                                    case 'weekdays': return 'field-container_weekdays';
+                                    default: return 'field-container';
+                                }
+                            };
                             return (
-                                <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
+                                <Form.Field
+                                    required={valueProps.required}
+                                    className={setCustomFieldClassName()}
+                                    key={'modal-edit-form-field-' + valueProps.id}
+                                >
                                     <label>{I18n.t(valueProps.label) + ':'}</label>
                                     <MyFormInput
                                         {...valueProps}

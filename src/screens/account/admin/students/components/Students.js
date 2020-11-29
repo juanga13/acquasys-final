@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Header, Button } from 'semantic-ui-react';
+import { Header, Button, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import MyTable from '../../../../common/components/MyTable';
-import { REQUEST_STATUS, MODAL_STATES, MODAL_TYPES } from '../../../../../utils/consts';
+import { REQUEST_STATUS, MODAL_STATES, MODAL_TYPES, FIELD_TYPES } from '../../../../../utils/consts';
 import adminStudentsActions from '../admin.students.actions';
 import ModalDelete from '../../../../common/components/Modals/ModalDelete';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
@@ -23,6 +23,14 @@ const Students = (props) => {
         updateStudentStatus,
         deleteStudentStatus
     } = props;
+    const [searchName, setSearchName] = useState('');
+    const filteredStudents = students.filter(student => {
+        const nameIncluded = student.name.toLowerCase().includes(searchName);
+        const surnameIncluded = student.surname.toLowerCase().includes(searchName);
+        const dniIncluded = student.dni.toString().includes(searchName);
+        if (nameIncluded || surnameIncluded || dniIncluded) return true;
+        else return false;
+    });
 
     useEffect(() => {
         // console.log('useEffect, students prop changed');
@@ -87,8 +95,17 @@ const Students = (props) => {
                     {I18n.t('admin.students.buttons.newStudent')}
                 </Button>
             </div>
+            <div className='section-header-container'>
+                <Input
+                    id='table-search-input'
+                    placeholder={I18n.t('admin.students.searchName')}
+                    value={searchName}
+                    type={FIELD_TYPES.STRING}
+                    onChange={(e, data) => setSearchName(data.value)}
+                />
+            </div>
             <MyTable
-                data={students}
+                data={filteredStudents}
                 columns={['name', 'surname', 'dni']}
                 actions={[
                     {
