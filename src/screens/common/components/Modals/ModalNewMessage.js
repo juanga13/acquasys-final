@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { Modal, Form, Button, Icon } from 'semantic-ui-react';
 import MyFormInput from '../MyFormInput';
 import { I18n } from 'react-redux-i18n';
@@ -64,4 +64,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalNewMessage));
+export default connect(mapStateToProps, mapDispatchToProps)(ModalNewMessage);

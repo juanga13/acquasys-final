@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { Modal, Form, Image, Button, Icon, Loader, Dimmer, Label } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { dummyAvatar } from '../../../../assets';
@@ -27,7 +27,7 @@ const ModalAttendance = (props) => {
         form,
         showImage,
         loading,
-        
+
         key,
         getAttendancesStatus,
         attendances,
@@ -102,4 +102,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalAttendance));
+export default connect(mapStateToProps, mapDispatchToProps)(ModalAttendance);

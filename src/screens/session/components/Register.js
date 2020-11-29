@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { Header, Divider, Form, Button } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import sessionActions from '../session.actions';
@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => ({
     inputChange: (formType, id, type, value) => dispatch(sessionActions.sessionInputChange(formType, id, type, value))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

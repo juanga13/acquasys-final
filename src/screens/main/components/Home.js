@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { I18n } from 'react-redux-i18n';
 import { Header, Loader } from 'semantic-ui-react';
 import { REQUEST_STATUS } from '../../../utils/consts';
@@ -41,4 +41,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { Header, Divider, Loader, Button } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import commonActions from '../common.actions';
@@ -79,4 +79,4 @@ const mapDispatchToProps = (dispatch) => ({
     modalStateChange: (modalState) => dispatch(commonActions.newMessageModalStateChange(modalState))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Messaging));
+export default connect(mapStateToProps, mapDispatchToProps)(Messaging);

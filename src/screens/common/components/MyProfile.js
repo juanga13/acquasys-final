@@ -1,7 +1,7 @@
 import React from 'react';
 import { ROLES } from '../../../utils/consts';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { AdminProfile } from '../../account/admin';
 import { StudentProfile } from '../../account/student';
 import { TeacherProfile } from '../../account/teacher';
@@ -41,4 +41,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MyProfile));
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);

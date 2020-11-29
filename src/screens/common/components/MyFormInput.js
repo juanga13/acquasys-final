@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+ 
 import { FIELD_TYPES, GENRES } from '../../../utils/consts';
 import { Form } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
@@ -188,4 +188,4 @@ const MyFormInput = (props) => {
     }
 };
 
-export default withRouter(MyFormInput);
+export default MyFormInput;

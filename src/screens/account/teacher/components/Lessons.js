@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { Header, Button, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import teacherActions from '../teacher.actions';
@@ -95,4 +94,4 @@ const mapDispatchToProps = (dispatch) => ({
     setAttendance: (attendance) => dispatch(teacherActions.setAttendance(attendance))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Lessons));
+export default connect(mapStateToProps, mapDispatchToProps)(Lessons);

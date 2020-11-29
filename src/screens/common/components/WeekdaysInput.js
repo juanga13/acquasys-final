@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { Form, Button, Dropdown, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { weekdayConstTranslate, FIELD_TYPES, allWeekDaysValues } from '../../../utils/consts';
@@ -122,4 +122,4 @@ const mapDispatchToProps = (state) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(WeekdaysInput));
+export default connect(mapStateToProps, mapDispatchToProps)(WeekdaysInput);

@@ -3,7 +3,7 @@ import { Modal, Button, Icon, Image, Form, Dimmer, Loader, Header, Label } from 
 import { connect } from 'react-redux';
 import { I18n } from 'react-redux-i18n';
 import { dummyAvatar } from '../../../../assets';
-import { withRouter } from 'react-router-dom';
+ 
 import { MODAL_TYPES, REQUEST_STATUS } from '../../../../utils/consts';
 import MyFormInput from '../MyFormInput';
 import fireToast from '../Toaster';
@@ -167,4 +167,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalCreate));
+export default connect(mapStateToProps, mapDispatchToProps)(ModalCreate);

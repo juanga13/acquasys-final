@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { Modal, Dimmer, Loader, Button, Label } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { REQUEST_STATUS } from '../../../../utils/consts';
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalDelete));
+export default connect(mapStateToProps, mapDispatchToProps)(ModalDelete);

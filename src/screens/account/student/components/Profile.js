@@ -2,7 +2,6 @@ import React from 'react';
 import { Header, Divider } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 const StudentProfile = (props) => {
     const {
@@ -45,4 +44,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(StudentProfile));
+export default connect(mapStateToProps, mapDispatchToProps)(StudentProfile);

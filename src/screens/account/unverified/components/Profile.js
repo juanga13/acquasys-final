@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { I18n } from 'react-redux-i18n';
 import { Header, Divider } from 'semantic-ui-react';
 
@@ -28,4 +27,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profile));
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

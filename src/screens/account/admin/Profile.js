@@ -2,7 +2,6 @@ import React from 'react';
 import { Header, Divider, Icon } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 const AdminProfile = (props) => {
     const {
@@ -95,4 +94,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminProfile));
+export default connect(mapStateToProps, mapDispatchToProps)(AdminProfile);

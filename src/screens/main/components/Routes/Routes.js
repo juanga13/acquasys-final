@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import sessionActions from '../../../session/session.actions';
 import { Parallax } from 'react-parallax';
@@ -162,4 +162,4 @@ const mapDispatchToProps = dispatch => ({
     refreshToken: () => dispatch(sessionActions.refreshToken()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Routes))
+export default connect(mapStateToProps, mapDispatchToProps)(Routes)

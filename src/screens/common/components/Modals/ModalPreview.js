@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+ 
 import { Modal, Button, Icon, Image, Divider } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { dummyAvatar } from '../../../../assets';
@@ -351,4 +351,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ModalPreview));
+export default connect(mapStateToProps, mapDispatchToProps)(ModalPreview);

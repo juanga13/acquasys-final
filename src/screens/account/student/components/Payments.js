@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { Header, Button, Label, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { ModalPreview, ModalEdit, ModalCreate, ModalDelete } from '../../../common/components/Modals';
@@ -205,4 +204,4 @@ const mapDispatchToProps = (dispatch) => ({
     setFee: (fee) => dispatch(adminPaymentsActions.setFee(fee))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Payments));
+export default connect(mapStateToProps, mapDispatchToProps)(Payments);

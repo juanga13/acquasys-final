@@ -7,7 +7,6 @@ import { ModalPreview } from '../../../common/components/Modals';
 import fireToast from '../../../common/components/Toaster';
 import studentActions from '../student.actions';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 const Calendar = (props) => {
     const {
@@ -71,4 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
     changeModalState: (modalState) => dispatch(studentActions.adminLessonsChangeModalState(modalState))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Calendar));
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

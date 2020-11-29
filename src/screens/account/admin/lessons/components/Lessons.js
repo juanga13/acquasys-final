@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { Header, Button, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import adminLessonsActions from '../admin.lessons.actions';
@@ -159,4 +158,4 @@ const mapDispatchToProps = (dispatch) => ({
     inputChange: (id, type, value) => dispatch(adminLessonsActions.adminLessonsInputChange(id, type, value))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Lessons));
+export default connect(mapStateToProps, mapDispatchToProps)(Lessons);
