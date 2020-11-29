@@ -14,9 +14,15 @@ html, body {
     margin: 0;
 }
 .main-container {
-    > div.ui.borderless.menu {
-        background-color: rgba($color: #fff, $alpha: 0.97);
+    .react-parallax-content {
+        height: 100%;
     }
+
+    div.ui.borderless.menu {
+        background-color: rgba($color: #fff, $alpha: 0.97);
+        margin:0;
+    }
+    
     
     .section-container {
         margin-top: 20px;
