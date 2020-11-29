@@ -25,22 +25,8 @@ const Teachers = (props) => {
     } = props;
 
     useEffect(() => {
-        console.log('create student effect');
-        if (createTeacherStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.teachers.success.create.title'), I18n.t('admin.teacherss.success.create.description'),'success', 'check' );
-        if (createTeacherStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.teachers.error.create.title'), I18n.t('admin.teachers.error.create.description'), 'error', 'warning' );
-    }, [props.createTeacherStatus]);
-
-    useEffect(() => {
-        console.log('update student effect');
-        if (updateTeacherStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.teachers.success.update.title'), I18n.t('admin.teachers.success.update.description'), 'success', 'check' );
-        if (updateTeacherStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.teachers.error.update.title'), I18n.t('admin.teachers.error.update.description'), 'error', 'warning' );
-    }, [props.updateTeacherStatus]);
-
-    useEffect(() => {
-        console.log('delete student effect');
-        if (deleteTeacherStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.teachers.success.delete.title'), I18n.t('admin.teachers.success.delete.description'), 'success', 'check' );
-        if (deleteTeacherStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.teachers.error.delete.title'), I18n.t('admin.teachers.error.delete.description'), 'error', 'warning' );
-    }, [props.deleteTeacherStatus]);
+        // console.log('useEffect, teachers prop changed');
+    }, [teachers, selectedTeacher]);
 
     const renderModals = () => {
         return ([
@@ -61,7 +47,7 @@ const Teachers = (props) => {
                 form={teacherForm}
                 loading={updateTeacherStatus === REQUEST_STATUS.LOADING}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onChange={(id, value) => props.inputChange(id, value)}
+                onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onCancel={() => {  // user cancel edition and goes back to preview mode
                     props.changeModalState(MODAL_STATES.PREVIEW);
                 }}
@@ -76,7 +62,7 @@ const Teachers = (props) => {
                 loading={createTeacherStatus === REQUEST_STATUS.LOADING}
                 error={createTeacherStatus === REQUEST_STATUS.ERROR}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onChange={(id, value) => props.inputChange(id, value)}
+                onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onSubmit={(data) => props.createTeacher(data)}  // triggers selectTeacher if success and opens preview
                 showImage
             />,
@@ -138,7 +124,7 @@ const mapDispatchToProps = (dispatch) => ({
     createTeacher: (data) => dispatch(adminTeachersActions.createTeacher(data)),
     updateTeacher: (data) => dispatch(adminTeachersActions.updateTeacher(data)),
     deleteTeacher: (id) => dispatch(adminTeachersActions.deleteTeacher(id)),
-    inputChange: (id, value) => dispatch(adminTeachersActions.adminTeachersInputChange(id, value))
+    inputChange: (id, type, value) => dispatch(adminTeachersActions.adminTeachersInputChange(id, type, value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Teachers));

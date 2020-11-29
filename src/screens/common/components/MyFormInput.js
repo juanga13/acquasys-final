@@ -181,6 +181,7 @@ const MyFormInput = (props) => {
                     error={error}
                     placeholder={I18n.t(placeholder)}
                     type={type}
+                    disabled={type === FIELD_TYPES.EMAIL} // disable editing email field because doesnt work in back
                     onChange={(e) => props.onChange(id, type, e.target.value)}
                 />
             );

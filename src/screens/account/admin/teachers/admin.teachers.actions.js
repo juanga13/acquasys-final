@@ -24,7 +24,7 @@ const adminTeachersActions = {
     getTeachersSuccess: (response) => ({type: GET_TEACHERS_SUCCESS, response}),
     getTeachersError: () => ({type: GET_TEACHERS_ERROR}),
 
-    adminTeachersInputChange: (id, value) => ({type: ADMIN_TEACHERS_INPUT_CHANGE, id, value}),
+    adminTeachersInputChange: (id, typeD, value) => ({type: ADMIN_TEACHERS_INPUT_CHANGE, id, typeD, value}),
     adminTeachersChangeModalState: (modalState) => ({type: ADMIN_TEACHERS_CHANGE_MODAL_STATE, modalState}),
     selectTeacher: (teacher) => ({type: SELECT_TEACHER, teacher}),
 

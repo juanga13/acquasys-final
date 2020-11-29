@@ -10,6 +10,7 @@ import {
 import { FIELD_TYPES, REQUEST_STATUS, MODAL_STATES, GENRES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
 import { LOGOUT } from '../../../session/session.actions';
+import verifyInput from '../../../../utils/verifyInput';
 
 const initialState = {
     teachers: [],
@@ -20,14 +21,14 @@ const initialState = {
     updateTeacherStatus: REQUEST_STATUS.NONE,
     deleteTeacherStatus: REQUEST_STATUS.NONE,
     teacherForm: {
-        email: { id: 'email', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email', required: false },
-        password: { id: 'password', value: '', error: false, type: FIELD_TYPES.PASSWORD, placeholder: 'forms.password', label: 'forms.password', required: false },
-        name: { id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: false },
-        surname: { id: 'surname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.surname', label: 'forms.surname', required: false },
-        dni: { id: 'dni', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.dni', label: 'forms.dni', required: false },
-        cuil: { id: 'cuil', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.cuil', label: 'forms.cuil', required: false },
-        sex: { id: 'sex', value: GENRES.FEMENINE, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.sex', label: 'forms.sex', required: false },
-        phoneNumber: { id: 'phoneNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.phoneNumber', label: 'forms.phoneNumber', required: false },
+        name: { id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: true },
+        surname: { id: 'surname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.surname', label: 'forms.surname', required: true },
+        email: { id: 'email', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email', required: true },
+        password: { id: 'password', value: '', error: false, type: FIELD_TYPES.PASSWORD, placeholder: 'forms.password', label: 'forms.password', required: true },
+        dni: { id: 'dni', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.dni', label: 'forms.dni', required: true },
+        cuil: { id: 'cuil', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.cuil', label: 'forms.cuil', required: true },
+        sex: { id: 'sex', value: GENRES.FEMENINE, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.sex', label: 'forms.sex', required: true },
+        phoneNumber: { id: 'phoneNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.phoneNumber', label: 'forms.phoneNumber', required: true },
         // "avatarUrl": "string",
         // "id": 0,
         // "role": "STUDENT",
@@ -41,14 +42,16 @@ const adminTeachersReducer = (state = initialState, action) => {
         case GET_TEACHERS_ERROR: return { ...state, getTeachersStatus: REQUEST_STATUS.ERROR };
 
         case ADMIN_TEACHERS_INPUT_CHANGE:
-            const { id, value } = action;
+            const { id, typeD, value } = action;
+            const error = !verifyInput(id, typeD, value);
             return {
                 ...state,
                 teacherForm: {
                     ...state.teacherForm,
                     [id]: {
                         ...state.teacherForm[id],
-                        value
+                        value,
+                        error,
                     }
                 }
             };
