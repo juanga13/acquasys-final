@@ -69,17 +69,31 @@ const ModalCreate = (props) => {
             case MODAL_TYPES.ADMIN_LESSON:
                 return (
                     <Form>
-                        {formValues.map((valueProps) => (
-                            <Form.Field required={valueProps.required} className='field-container' key={'modal-create-form-field-' + valueProps.id}>
-                                <label>{I18n.t(valueProps.label) + ':'}</label>
-                                <MyFormInput 
-                                    {...valueProps} 
-                                    students={valueProps.id === 'students' && props.students}
-                                    teachers={valueProps.id === 'teachers' && props.teachers}
-                                    onChange={(id, type, value) => handleChange(id, type, value)} 
-                                />
-                            </Form.Field>
-                        ))}
+                        {formValues.map((valueProps) => {
+                            const setCustomFieldClassName = () => {
+                                switch (valueProps.id) {
+                                    case 'students': return 'field-container_students';
+                                    case 'teachers': return 'field-container_teachers';
+                                    case 'weekdays': return 'field-container_weekdays';
+                                    default: return 'field-container';
+                                }
+                            };
+                            return (
+                                <Form.Field
+                                    required={valueProps.required}
+                                    className={setCustomFieldClassName()}
+                                    key={'modal-edit-form-field-' + valueProps.id}
+                                >
+                                    <label>{I18n.t(valueProps.label) + ':'}</label>
+                                    <MyFormInput 
+                                        {...valueProps} 
+                                        students={valueProps.id === 'students' && props.students}
+                                        teachers={valueProps.id === 'teachers' && props.teachers}
+                                        onChange={(id, type, value) => handleChange(id, type, value)} 
+                                    />
+                                </Form.Field>
+                            );
+                        })}
                     </Form>
                 );
 

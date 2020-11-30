@@ -35,9 +35,9 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             // take data from getState().selectedLesson and insert it into data!
             createData.avatarUrl = '';
             createData.id = 0;
-            if (createData.password.value === '') {
-                createData.password.value = 'asd123';
-            }
+            // if (createData.password.value === '') {
+            //     createData.password.value = 'asd123';
+            // }
             requests.createLesson(createData)
                 .then(() => {
                     dispatch(adminLessonsActions.createLessonSuccess());

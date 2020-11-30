@@ -29,7 +29,7 @@ const requests = {
             body: JSON.stringify(data),
         };
 
-        return fetch(baseUrl + '/api/lesson/add', requestOptions)
+        return fetch(baseUrl + '/api/lesson/create', requestOptions)
             .then(response => {
                 if (response.ok) return response.json()
                 else throw response.json()
