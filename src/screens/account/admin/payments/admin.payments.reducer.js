@@ -12,6 +12,7 @@ import {
 import { MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
 import { LOGOUT } from '../../../session/session.actions';
+import verifyInput from '../../../../utils/verifyInput';
 
 const initialState = {
     payments: [],
@@ -25,11 +26,11 @@ const initialState = {
     getFeeStatus: REQUEST_STATUS.NONE,
     setFeeStatus: REQUEST_STATUS.NONE,
     paymentForm: {
-        amount: { id: 'amount', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.amount', label: 'forms.amount', required: false },
-        date: { id: 'date', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.date', label: 'forms.date', required: false },
+        amount: { id: 'amount', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.amount', label: 'forms.amount', required: true },
+        date: { id: 'date', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.date', label: 'forms.date', required: true },
         // en el caso de crear un payment el back me pide studentId
         // se pone student para que se muestre el dropdown para elegir student
-        student: { id: 'student', value: -1, error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.student', label: 'forms.student', required: false },
+        student: { id: 'student', value: -1, error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.student', label: 'forms.student', required: true },
     }
 };
 
@@ -39,14 +40,17 @@ const adminPaymentsReducer = (state = initialState, action) => {
         case ADMIN_GET_PAYMENTS_SUCCESS: return { ...state, getPaymentsStatus: REQUEST_STATUS.SUCCESS, payments: action.response }
         case ADMIN_GET_PAYMENTS_ERROR: return { ...state, getPaymentsStatus: REQUEST_STATUS.ERROR }
 
-        case ADMIN_PAYMENTS_INPUT_CHANGE: const { id, value } = action;
+        case ADMIN_PAYMENTS_INPUT_CHANGE:
+            const { id, typeD, value } = action;
+            const error = !verifyInput(id, typeD, value);
             return {
                 ...state,
                 paymentForm: {
                     ...state.paymentForm,
                     [id]: {
                         ...state.paymentForm[id],
-                        value
+                        value,
+                        error,
                     }
                 }
             };

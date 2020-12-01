@@ -34,7 +34,7 @@ const adminPaymentsActions = {
     getPaymentsSuccess: (response) => ({ type: ADMIN_GET_PAYMENTS_SUCCESS, response }),
     getPaymentsError: () => ({ type: ADMIN_GET_PAYMENTS_ERROR }),
 
-    adminPaymentsInputChange: (id, value) => ({ type: ADMIN_PAYMENTS_INPUT_CHANGE, id, value }),
+    adminPaymentsInputChange: (id, typeD, value) => ({ type: ADMIN_PAYMENTS_INPUT_CHANGE, id, typeD, value }),
     adminPaymentsChangeModalState: (modalState) => ({ type: ADMIN_PAYMENTS_CHANGE_MODAL_STATE, modalState }),
     selectPayment: (payment) => ({ type: ADMIN_SELECT_PAYMENT, payment }),
 

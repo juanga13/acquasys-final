@@ -40,8 +40,8 @@ const Payments = (props) => {
     const getFilteredPayments = () => {
         return payments.filter(payment => {
             const date = new Date(payment.date);
-            const a = payment.name.includes(searchText);
-            const b = payment.surname.includes(searchText); 
+            const a = payment.name.toLowerCase().includes(searchText);
+            const b = payment.surname.toLowerCase().includes(searchText); 
             const c = payment.dni.toString().includes(searchText); 
             const dateIsAfterStartDate = (startDate !== null ? date >= startDate : true); 
             const dateIsBeforeEndDate = (endDate !== null ? date <= endDate : true); 
@@ -51,16 +51,6 @@ const Payments = (props) => {
     const filteredPayments = getFilteredPayments();
     
     useEffect(() => {}, [props.fee])
-
-    useEffect(() => {
-        if (createPaymentStatus === REQUEST_STATUS.SUCCESS) fireToast(I18n.t('admin.payments.success.create.title'), I18n.t('admin.payments.success.create.description'), 'success', 'check');
-        if (createPaymentStatus === REQUEST_STATUS.ERROR) fireToast(I18n.t('admin.payments.error.create.title'), I18n.t('admin.payments.error.create.description'), 'error', 'warning');
-        // if (updatePaymentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.payments.success.update.title'), I18n.t('admin.payments.success.update.description'), 'success', 'check' );
-        // if (updatePaymentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.payments.error.update.title'), I18n.t('admin.payments.error.update.description'), 'error', 'warning' );
-        // if (deletePaymentStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('admin.payments.success.delete.title'), I18n.t('admin.payments.success.delete.description'), 'success', 'check' );
-        // if (deletePaymentStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('admin.payments.error.delete.title'), I18n.t('admin.payments.error.delete.description'), 'error', 'warning' );
-    }, [props.createPaymentStatus]);
-    // }, [props.createPaymentStatus, props.updatePaymentStatus, props.deletePaymentStatus]);
 
     const renderModals = () => {
         return ([
@@ -95,7 +85,7 @@ const Payments = (props) => {
                 loading={createPaymentStatus === REQUEST_STATUS.LOADING}
                 error={createPaymentStatus === REQUEST_STATUS.ERROR}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onChange={(id, value) => props.inputChange(id, value)}
+                onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onSubmit={(data) => props.createPayment(data)}  // triggers selectedPayment if success and opens preview
                 students={props.students}
             />,
@@ -191,6 +181,7 @@ const Payments = (props) => {
                 ]}
                 status={getPaymentsStatus}
                 color='grey'
+                defaultSort='date'
             />
         </div>
     );
@@ -217,7 +208,7 @@ const mapDispatchToProps = (dispatch) => ({
     createPayment: (data) => dispatch(adminPaymentsActions.createPayment(data)),
     updatePayment: (data) => dispatch(adminPaymentsActions.updatePayment(data)),
     deletePayment: (id) => dispatch(adminPaymentsActions.deletePayment(id)),
-    inputChange: (id, value) => dispatch(adminPaymentsActions.adminPaymentsInputChange(id, value)),
+    inputChange: (id, type, value) => dispatch(adminPaymentsActions.adminPaymentsInputChange(id, type, value)),
     setFee: (fee) => dispatch(adminPaymentsActions.setFee(fee))
 });
 

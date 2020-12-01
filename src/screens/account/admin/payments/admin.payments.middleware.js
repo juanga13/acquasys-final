@@ -10,6 +10,9 @@ import adminPaymentsActions, {
 import requests from './admin.payments.services';
 import { MODAL_STATES } from '../../../../utils/consts';
 import { formToDataTransform } from '../../../../utils/dataFormTransform';
+import fireToast from '../../../common/components/Toaster';
+import { I18n } from 'react-redux-i18n';
+
 
 const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
     next(action);
@@ -54,9 +57,13 @@ const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
             requests.createPayment(createData)
                 .then(() => {
                     dispatch(adminPaymentsActions.createPaymentSuccess());
-                    dispatch(adminPaymentsActions.getPayments())
+                    fireToast(I18n.t('admin.payments.success.create.title'), I18n.t('admin.payments.success.create.description'), 'success', 'check');
+                    dispatch(adminPaymentsActions.getPayments());
                 })
-                .catch(() => dispatch(adminPaymentsActions.createPaymentError()));
+                .catch(() => {
+                    dispatch(adminPaymentsActions.createPaymentError());
+                    fireToast(I18n.t('admin.payments.error.create.title'), I18n.t('admin.payments.error.create.description'), 'error', 'warning');
+                });
             break;
 
         // case UPDATE_PAYMENT:

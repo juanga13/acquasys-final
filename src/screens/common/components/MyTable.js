@@ -13,9 +13,11 @@ const MyTable = (props) => {
         actions,
         status,
         color,
-        noResults
+        noResults,
+        defaultSort,
     } = props;
-    const keys = Object.keys(data.length > 0 && data[0]).filter(key => columns.includes(key));
+    let keys = Object.keys(data.length > 0 && data[0]).filter(key => columns.includes(key));
+    const renderingData = defaultSort === 'date' ? data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : data;
 
     const handleSort = (key) => {
         console.log('handleSort');
@@ -27,28 +29,31 @@ const MyTable = (props) => {
             {status === REQUEST_STATUS.ERROR ?
                 <Header disabled>{I18n.t('common.table.error.dataError')}</Header>
                 :
-                <Table fixed padded striped celled color={color}>
+                <Table fixed padded striped celled color={color} sortable>
                     <Table.Header>
-                    <Table.Row>
-                        {keys.map((key) => (
-                            <Table.HeaderCell
-                                key={'header-' + key}
-                                sorted={sorting.column === key ? sorting.direction : null}
-                                onClick={() => handleSort(key)}
-                            >{I18n.t('common.table.title.' + key)}</Table.HeaderCell>
-                        )).concat(<Table.HeaderCell key={'header-actions'} colSpan='3'>{I18n.t('common.table.actions')}</Table.HeaderCell>)}
-                    </Table.Row>
+                        <Table.Row>
+                            {keys.map((key) => (
+                                <Table.HeaderCell
+                                    key={'header-' + key}
+                                    sorted={key === 'date' ? 'descending' : null}
+                                    width={(key === 'date' || key === 'dni') ? 3 : undefined}
+                                    // onClick={() => handleSort(key)}
+                                >{I18n.t('common.table.title.' + key)}</Table.HeaderCell>
+                            )).concat(<Table.HeaderCell key={'header-actions'} colSpan='3'>{I18n.t('common.table.actions')}</Table.HeaderCell>)}
+                        </Table.Row>
                     </Table.Header>
                     <Table.Body>
                         {noResults ? 
                             <Table.Row><Table.Cell>{I18n.t('common.table.noResults')}</Table.Cell></Table.Row>
                             :
-                            data.map((item, id) => (
+                            renderingData.map((item, id) => (
                                 <Table.Row key={id}>
                                     {keys.map((key) => {
                                         if (key === 'date') {
                                             return (
-                                                <Table.Cell key={id + '-' + key + '-cell'}>{new Date(item[key]).toLocaleDateString()}</Table.Cell> 
+                                                <Table.Cell  key={id + '-' + key + '-cell'}>
+                                                    {new Date(item[key]).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})}
+                                                </Table.Cell> 
                                             );
                                         } else if (key === 'amount') {
                                             return (
