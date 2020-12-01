@@ -36,8 +36,15 @@ const ModalPreview = (props) => {
         switch (type) {
             case MODAL_TYPES.ADMIN_STUDENT:
                 return values.map((value, i) => {
-                    if (['id', 'role', 'complete', 'avatarUrl', 'password', 'verified'].some(value => value === keys[i])) {
+                    if (['id', 'role', 'complete', 'avatarUrl', 'password'].some(valueD => valueD === keys[i])) {
                         return null;
+                    } else if (keys[i] === 'verified') {
+                        return (
+                            <div className='field-container verified' key={'modal-preview-item-' + i}>
+                                <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
+                                <Icon  name='check'/>
+                            </div>
+                        )
                     } else {
                         return (
                             <div className='field-container' key={'modal-preview-item-' + i}>

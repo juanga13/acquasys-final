@@ -10,6 +10,11 @@
         padding: 1px;
         margin: 0;
         
+        &.verified {
+            padding-top: 4px;
+            padding-bottom: 8px;
+        }
+        
         /* label key */
         label {
             flex-grow: 1;  // magic align here :')
