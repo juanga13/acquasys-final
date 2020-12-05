@@ -42,7 +42,7 @@ const ModalPreview = (props) => {
                         return (
                             <div className='field-container verified' key={'modal-preview-item-' + i}>
                                 <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
-                                <Icon  name='check'/>
+                                <Icon  name={value === true ? 'check' : 'close'}/>
                             </div>
                         )
                     } else {

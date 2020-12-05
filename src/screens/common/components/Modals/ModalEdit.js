@@ -28,13 +28,18 @@ const ModalEdit = (props) => {
         showImage,
         loading
     } = props;
-    const [formValid, setFormValid] = useState(true);
+    const [formValid, setFormValid] = useState(false);
 
     const formValues = form ? Object.values(form) : [];
     
     const handleChange = (id, type, value) => {
         if (formValues.some((item) => {
-            return value.required && !verifyInput(item.id, item.type, item.value)
+            if (item.id === 'password') return false;
+            if (item.id === id) {
+                return item.required && !verifyInput(id, type, value);
+            } else {
+                return item.required && !verifyInput(item.id, item.type, item.value);
+            }
         })) setFormValid(false);
         else setFormValid(true);
         props.onChange(id, type, value);
@@ -52,7 +57,7 @@ const ModalEdit = (props) => {
                 return (
                     <Form onSubmit={handleSubmit}>
                         {formValues.map((valueProps) => (
-                            <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
+                            <Form.Field required={valueProps.id !== 'password' && valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
                                 <label>{I18n.t(valueProps.label) + ':'}</label>
                                 <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
                             </Form.Field>
@@ -64,7 +69,7 @@ const ModalEdit = (props) => {
                 return (
                     <Form onSubmit={handleSubmit}>
                         {formValues.map((valueProps) => (
-                            <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
+                            <Form.Field required={valueProps.id !== 'password' && valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
                                 <label>{I18n.t(valueProps.label) + ':'}</label>
                                 <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
                             </Form.Field>

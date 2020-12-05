@@ -10,6 +10,8 @@ const getColor = icon => {
             return 'red';
         case 'file alternate':  // preview icon
             return 'grey'
+        case 'signup':
+            return 'yellow';
         
         default:
             return 'black'

@@ -24,12 +24,16 @@ const Students = (props) => {
     } = props;
     const [searchName, setSearchName] = useState('');
     const filteredStudents = students.filter(student => {
-        const nameIncluded = student.name.toLowerCase().includes(searchName);
-        const surnameIncluded = student.surname.toLowerCase().includes(searchName);
-        const dniIncluded = student.dni.toString().includes(searchName);
+        const nameIncluded = student.name ? student.name.toLowerCase().includes(searchName) : true;
+        const surnameIncluded = student.surname ? student.surname.toLowerCase().includes(searchName) : true;
+        const dniIncluded = student.dni ? student.dni.toString().includes(searchName) : true;
         if (nameIncluded || surnameIncluded || dniIncluded) return true;
         else return false;
     });
+
+    useEffect(() => {
+        props.getStudents();
+    }, [])
 
     useEffect(() => {
         // console.log('useEffect, students prop changed');
@@ -144,7 +148,8 @@ const mapDispatchToProps = (dispatch) => ({
     createStudent: (data) => dispatch(adminStudentsActions.createStudent(data)),
     updateStudent: (data) => dispatch(adminStudentsActions.updateStudent(data)),
     deleteStudent: (id) => dispatch(adminStudentsActions.deleteStudent(id)),
-    inputChange: (id, type, value) => dispatch(adminStudentsActions.adminStudentsInputChange(id, type, value))
+    inputChange: (id, type, value) => dispatch(adminStudentsActions.adminStudentsInputChange(id, type, value)),
+    getStudents: () => dispatch(adminStudentsActions.getStudents()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Students);

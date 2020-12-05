@@ -22,11 +22,7 @@ const Lessons = (props) => {
 
     // TODO hacer traducciones de error/success
     useEffect(() => {
-        console.log('lesson effect');
-        if (subscribeLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t(''), I18n.t(''),'success', 'check' );
-        if (subscribeLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t(''), I18n.t(''), 'error', 'warning' );
-        if (unsubscribeLessonStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t(''), I18n.t(''), 'success', 'check' );
-        if (unsubscribeLessonStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t(''), I18n.t(''), 'error', 'warning' );
+        // console.log('lesson effect');
     }, [props.subscribeLessonStatus, props.unsubscribeLessonStatus]);
 
     const renderModals = () => {
@@ -68,9 +64,9 @@ const Lessons = (props) => {
                         props.selectLesson(data);
                         props.changeModalState(MODAL_STATES.PREVIEW);
                     }},
-                    { type: 'user delete', action: (data) => {
-                        props.selectLesson(data);
-                        props.changeModalState(MODAL_STATES.DELETE);
+                    { type: 'signup', action: (data) => {
+                        // console.log('suscribed ', data); 
+                        props.subscribeLesson(data);
                     }}
                 ]}
                 status={getLessonsStatus}

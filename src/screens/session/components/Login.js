@@ -18,7 +18,7 @@ const Login = (props) => {
             <Header>{I18n.t('session.titles.login')}</Header>
             <Divider />
             {loginStatus === REQUEST_STATUS.ERROR &&
-                <Segment inverted color='red'>{I18n.t('session.error.login')}</Segment>}
+                <Segment inverted color='red'>{I18n.t('session.errors.login')}</Segment>}
             <Form onSubmit={props.login} loading={loginStatus === REQUEST_STATUS.LOADING}>
                 {Object.values(form).map((fieldProps, i) => {
                     return <Form.Input

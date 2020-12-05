@@ -63,7 +63,7 @@ const Routes = (props) => {
                 />
                 {loading ?
                     <div className='routes-container-loader'>
-                        <Loader massive/>
+                        <Loader size='massive'/>
                     </div>
                     :
                     <div className='routes-container'>
@@ -118,28 +118,40 @@ const Routes = (props) => {
                                 path='/admin/teachers' 
                                 component={AdminTeachers}
                             />
-
-                            {/* student */}
                             
-                            {/* <PrivateRoute
+                            {/* student */}
+                            <PrivateRoute
                                 roleNeeded={ROLES.STUDENT}
                                 key='route-student-1'
-                                path='/calendar'
+                                path='/student/calendar'
                                 component={StudentCalendar}
                             />
                             <PrivateRoute
                                 roleNeeded={ROLES.STUDENT}
                                 key='route-student-2'
-                                path='/lessons'
+                                path='/student/lessons'
                                 component={StudentLessons}
                             />
                             <PrivateRoute
                                 roleNeeded={ROLES.STUDENT}
                                 key='route-student-3'
-                                path='/payments'
+                                path='/student/payments'
                                 component={StudentPayments}
-                            /> */}
+                            />
+
                             {/* teacher */}
+                            <PrivateRoute
+                                roleNeeded={ROLES.TEACHER}
+                                key='route-teacher-1'
+                                path='/teacher/calendar'
+                                component={TeacherCalendar}
+                            />
+                            <PrivateRoute
+                                roleNeeded={ROLES.TEACHER}
+                                key='route-student-2'
+                                path='/teacher/lessons'
+                                component={TeacherLessons}
+                            />
                             {/* <Route key='route-teacher-2' path='/lessons' component={TeacherLessons} /> */}
 
                             {/* cualquier otra direccion redirige a "/" */}

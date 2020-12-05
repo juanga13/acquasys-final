@@ -27,13 +27,14 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
             console.log('rol: ' + role);
             switch (role) {
                 case ROLES.ADMIN:
-                    console.log('admin')
+                    // console.log('admin')
                     dispatch(adminActions.getAllData());
                     break;
                 case ROLES.STUDENT:
-                    console.log('student')
+                    // console.log('student')
+                    dispatch(studentActions.getMyEnrolled());
+                    dispatch(studentActions.getMyselfData());
                     dispatch(studentActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
-                    dispatch(studentActions.getLessons());
                     dispatch(studentActions.getPayments());
                     break;
                 case ROLES.TEACHER:

@@ -1,16 +1,32 @@
-export const STUDENT_GET_LESSONS = 'STUDENT_GET_LESSONS';
-export const STUDENT_GET_LESSONS_SUCCESS = 'STUDENT_GET_LESSONS_SUCCESS';
-export const STUDENT_GET_LESSONS_ERROR = 'STUDENT_GET_LESSONS_ERROR';
+/* profile and other */
+export const GET_MY_ENROLLED = 'GET_MY_ENROLLED';
+export const GET_MY_ENROLLED_SUCCESS = 'GET_MY_ENROLLED_SUCCESS';
+export const GET_MY_ENROLLED_ERROR = 'GET_MY_ENROLLED_ERROR';
 
-export const STUDENT_GET_PAYMENTS = 'GET_PAYMENTS';
-export const STUDENT_GET_PAYMENTS_SUCCESS = 'GET_PAYMENTS_SUCCESS';
-export const STUDENT_GET_PAYMENTS_ERROR = 'GET_PAYMENTS_ERROR';
+export const GET_MYSELF_DATA = 'GET_MYSELF_DATA';
+export const GET_MYSELF_DATA_SUCCESS = 'GET_MYSELF_DATA_SUCCESS';
+export const GET_MYSELF_DATA_ERROR = 'GET_MYSELF_DATA_ERROR';
 
-export const STUDENT_SELECT_PAYMENT = 'STUDENT_SELECT_PAYMENT';
+export const STUDENT_CHANGE_MODAL_STATE = 'STUDENT_CHANGE_MODAL_STATE';
+export const STUDENT_INPUT_CHANGE = 'STUDENT_INPUT_CHANGE';
 
+export const UPDATE_MY_DATA_REQUEST = 'UPDATE_DATA_REQUEST';
+export const UPDATE_MY_DATA_REQUEST_SUCCESS = 'UPDATE_DATA_REQUEST_SUCCESS';
+export const UPDATE_MY_DATA_REQUEST_ERROR = 'UPDATE_DATA_REQUEST_ERROR';
+
+/* calendar */
 export const STUDENT_GET_CALENDAR = 'GET_CALENDAR';
 export const STUDENT_GET_CALENDAR_SUCCESS = 'GET_CALENDAR_SUCCESS';
 export const STUDENT_GET_CALENDAR_ERROR = 'GET_CALENDAR_ERROR';
+
+/* lessons */
+export const STUDENT_LESSONS_INPUT_CHANGE = 'STUDENT_LESSONS_INPUT_CHANGE';
+export const STUDENT_LESSONS_CHANGE_MODAL_STATE = 'STUDENT_LESSONS_CHANGE_MODAL_STATE';
+export const STUDENT_SELECT_LESSON = 'STUDENT_SELECT_LESSON';
+
+export const STUDENT_GET_LESSONS = 'STUDENT_GET_LESSONS';
+export const STUDENT_GET_LESSONS_SUCCESS = 'STUDENT_GET_LESSONS_SUCCESS';
+export const STUDENT_GET_LESSONS_ERROR = 'STUDENT_GET_LESSONS_ERROR';
 
 export const SUBSCRIBE_LESSON = 'SUBSCRIBE_LESSON';
 export const SUBSCRIBE_LESSON_SUCCESS = 'SUBSCRIBE_LESSON_SUCCESS';
@@ -20,23 +36,41 @@ export const UNSUBSCRIBE_LESSON = 'UNSUBSCRIBE_LESSON';
 export const UNSUBSCRIBE_LESSON_SUCCESS = 'UNSUBSCRIBE_LESSON_SUCCESS';
 export const UNSUBSCRIBE_LESSON_ERROR = 'UNSUBSCRIBE_LESSON_ERROR';
 
-export const STUDENT_CHANGE_MODAL_STATE = 'STUDENT_CHANGE_MODAL_STATE';
-// export const STUDENT_INPUT_CHANGE = 'STUDENT_INPUT_CHANGE';
+/* payment */
+export const STUDENT_GET_PAYMENTS = 'GET_PAYMENTS';
+export const STUDENT_GET_PAYMENTS_SUCCESS = 'GET_PAYMENTS_SUCCESS';
+export const STUDENT_GET_PAYMENTS_ERROR = 'GET_PAYMENTS_ERROR';
+
+export const STUDENT_SELECT_PAYMENT = 'STUDENT_SELECT_PAYMENT';
 
 
 const studentActions = {
-    getLessons: () => ({type: STUDENT_GET_LESSONS}),
-    getLessonsSuccess: (response) => ({type: STUDENT_GET_LESSONS_SUCCESS, response}),
-    getLessonsError: () => ({type: STUDENT_GET_LESSONS_ERROR}),
+    /* profile and other */
+    getMyEnrolled: () => ({type: GET_MY_ENROLLED}),
+    getMyEnrolledSuccess: (response) => ({type: GET_MY_ENROLLED_SUCCESS, response}),
+    getMyEnrolledError: (error) => ({type: GET_MY_ENROLLED_ERROR, error}),
+    
+    getMyselfData: () => ({type: GET_MYSELF_DATA}),
+    getMyselfDataSuccess: (response) => ({type: GET_MYSELF_DATA_SUCCESS, response}),
+    getMyselfDataError: (error) => ({type: GET_MYSELF_DATA_ERROR, error}),
+    
+    studentChangeModalState: () => ({type: STUDENT_CHANGE_MODAL_STATE}),
+    studentInputChange: (id, typeD, value) => ({type: STUDENT_INPUT_CHANGE, id, typeD, value}),
 
-    getPayments: (startDate, endDate) => ({type: STUDENT_GET_PAYMENTS, startDate, endDate }),
-    getPaymentsSuccess: (response) => ({type: STUDENT_GET_PAYMENTS_SUCCESS, response}),
-    getPaymentsError: () => ({type: STUDENT_GET_PAYMENTS_ERROR}),
+    updateMyDataRequest: () => ({type: UPDATE_MY_DATA_REQUEST}),
+    updateMyDataRequestSuccess: (response) => ({type: UPDATE_MY_DATA_REQUEST_SUCCESS, response}),
+    updateMyDataRequestError: () => ({type: UPDATE_MY_DATA_REQUEST_ERROR}),
 
-    getCalendar: () => ({type: STUDENT_GET_CALENDAR}),
+    /* calendar */
+    getCalendar: (startDate, endDate) => ({type: STUDENT_GET_CALENDAR, startDate, endDate}),
     getCalendarSuccess: (response) => ({type: STUDENT_GET_CALENDAR_SUCCESS, response}),
     getCalendarError: () => ({type: STUDENT_GET_CALENDAR_ERROR}),
 
+    /* lessons */
+    getLessons: () => ({type: STUDENT_GET_LESSONS}),
+    getLessonsSuccess: (response) => ({type: STUDENT_GET_LESSONS_SUCCESS, response}),
+    getLessonsError: () => ({type: STUDENT_GET_LESSONS_ERROR}),
+    
     subscribeLesson: (lesson, student) => ({type: SUBSCRIBE_LESSON, lesson, student}),
     subscribeLessonSuccess: () => ({type: SUBSCRIBE_LESSON_SUCCESS}),
     subscribeLessonError: () => ({type: SUBSCRIBE_LESSON_ERROR}),
@@ -44,9 +78,13 @@ const studentActions = {
     unsubscribeLesson: () => ({type: UNSUBSCRIBE_LESSON}),
     unsubscribeLessonSuccess: () => ({type: UNSUBSCRIBE_LESSON_SUCCESS}),
     unsubscribeLessonError: () => ({type: UNSUBSCRIBE_LESSON_ERROR}),
+    
+    /* payment */
+    getPayments: () => ({type: STUDENT_GET_PAYMENTS }),
+    getPaymentsSuccess: (response) => ({type: STUDENT_GET_PAYMENTS_SUCCESS, response}),
+    getPaymentsError: () => ({type: STUDENT_GET_PAYMENTS_ERROR}),
 
-    studentChangeModalState: () => ({type: STUDENT_CHANGE_MODAL_STATE}),
-    // studentInputChange: () => ({type: STUDENT_INPUT_CHANGE}),
+    selectPayment: (payment) => ({type: STUDENT_SELECT_PAYMENT, payment}),
 };
 
 export default studentActions;

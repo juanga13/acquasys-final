@@ -5,8 +5,9 @@ import { Header, Divider } from 'semantic-ui-react';
 
 const Profile = (props) => {
     const {
-
+        profile,
     } = props;
+    console.log('profile props', props);
 
     return (
         <div className='section-container'>
@@ -20,7 +21,7 @@ const Profile = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-
+    profile: state.session.profile,
 });
 
 const mapDispatchToProps = (dispatch) => ({

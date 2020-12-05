@@ -72,7 +72,7 @@ const MyTable = (props) => {
                                                     color={getColor(type)}
                                                     onClick={() => action(item)}>
                                                     
-                                                    <Icon name={type}/>
+                                                <Icon name={type}/>
                                                     {I18n.t('common.table.cells.' + type)}
                                                 </Button>
                                             ))}

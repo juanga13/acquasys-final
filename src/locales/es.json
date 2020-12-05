@@ -153,7 +153,8 @@
       },
       "cells": {
         "file alternate": "Detalles",
-        "user delete": "Eliminar"
+        "user delete": "Eliminar",
+        "signup": "Suscribirse"
       },
       "error": {
         "dataError": "Hubo un error con la obtencion de datos"
@@ -304,7 +305,6 @@
         "title": "Ingreso",
         "description": "Hubo un error al ingresar."
       }
-      
     }
   },
   "admin": {
@@ -475,14 +475,43 @@
           "title": "Actualizacion de datos",
           "description": "Hubo un error al actualizar tus datos."
         }
+      },
+      "meta": "Alumno",
+      "settings": {
+        "header": "Ajustes"
       }
     },
     "lessons": {
-      "success": {},
+      "success": {
+        "suscribe": {
+          "title": "Suscripcion a clase",
+          "description": "Te suscribiste a la clase correctamente."
+        },
+        "unsuscribe": {
+          "title": "Desuscripcion a clase",
+          "description": "Te desuscribiste a la clase correctamente."
+        }
+      },
       "error": {
         "get": {
-          "title": "Obtencion de datos",
+          "title": "Obtencion de clases",
           "description": "Hubo un error al obtener las clases."
+        },
+        "suscribe": {
+          "title": "Suscripcion a clase",
+          "description": "Hubo un error al suscribirse a la clase."
+        },
+        "unsuscribe": {
+          "title": "Desuscripcion a clase",
+          "description": "Hubo un error al desuscribirse a la clase."
+        },
+        "enrollData": {
+          "title": "Obtencion de clases",
+          "description": "Hubo un error al obtener tus clases."
+        },
+        "myData": {
+          "title": "Mis datos",
+          "description": "Hubo un error al obtener tus datos."
         }
       }
     },

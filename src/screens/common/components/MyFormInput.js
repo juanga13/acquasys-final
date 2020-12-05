@@ -177,7 +177,7 @@ const MyFormInput = (props) => {
             return (
                 <Form.Input
                     id={id}
-                    value={value}
+                    value={value || ''}
                     error={error}
                     placeholder={I18n.t(placeholder)}
                     type={type}
