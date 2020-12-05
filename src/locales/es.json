@@ -460,6 +460,18 @@
     },
     "calendar": {
       "title": "Calendario"
+    },
+    "profile": {
+      "lessons": {
+        "header": "Clases que se dan esta semana"
+      },
+      "payments": {
+        "header": "Pagos pendientes",
+        "next": {
+          "header": "Pagos por venir"
+        }
+      },
+      "meta": "Administrador"
     }
   },
   "student": {
@@ -477,8 +489,16 @@
         }
       },
       "meta": "Alumno",
-      "settings": {
-        "header": "Ajustes"
+      "verified": "Verificado",
+      "myData": "Ver todos mis datos",
+      "payments": {
+        "next": {
+          "header": "Pagos por venir"
+        },
+        "header": "Pagos pendientes"
+      },
+      "lessons": {
+        "header": "Mis clases"
       }
     },
     "lessons": {

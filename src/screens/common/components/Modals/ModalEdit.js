@@ -45,29 +45,44 @@ const ModalEdit = (props) => {
         props.onChange(id, type, value);
     };
 
-    const handleSubmit = () => {
-        // if (!Object.values(form).some(field => !verifyField(field.type, field.value))) {
-        //     props.login();   
-        // }
-    };
+    // const handleSubmit = () => {
+    //     if (!Object.values(form).some(field => !verifyField(field.type, field.value))) {
+    //         props.login();   
+    //     }
+    // };
 
     const renderForm = () => {
         switch (type) {
-            case MODAL_TYPES.ADMIN_STUDENT:
-                return (
-                    <Form onSubmit={handleSubmit}>
-                        {formValues.map((valueProps) => (
-                            <Form.Field required={valueProps.id !== 'password' && valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
-                                <label>{I18n.t(valueProps.label) + ':'}</label>
-                                <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
-                            </Form.Field>
-                        ))}
-                    </Form>
-                );
+            // case MODAL_TYPES.ADMIN_PROFILE:
+                // como es igual al de abajo, hace fallback al return de abajo
+                // return (
+                //     <Form onSubmit={handleSubmit}>
+                //         {formValues.map((valueProps) => (
+                //             <Form.Field required={valueProps.id !== 'password' && valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
+                //                 <label>{I18n.t(valueProps.label) + ':'}</label>
+                //                 <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
+                //             </Form.Field>
+                //         ))}
+                //     </Form>
+                // );
 
+            // case MODAL_TYPES.ADMIN_STUDENT:
+                // como es igual al de abajo, hace fallback al return de abajo
+                // return (
+                //     <Form onSubmit={handleSubmit}>
+                //         {formValues.map((valueProps) => (
+                //             <Form.Field required={valueProps.id !== 'password' && valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
+                //                 <label>{I18n.t(valueProps.label) + ':'}</label>
+                //                 <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
+                //             </Form.Field>
+                //         ))}
+                //     </Form>
+                // );
+
+            case MODAL_TYPES.ADMIN_STUDENT:
             case MODAL_TYPES.ADMIN_TEACHER:
                 return (
-                    <Form onSubmit={handleSubmit}>
+                    <Form>
                         {formValues.map((valueProps) => (
                             <Form.Field required={valueProps.id !== 'password' && valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
                                 <label>{I18n.t(valueProps.label) + ':'}</label>
@@ -79,7 +94,7 @@ const ModalEdit = (props) => {
 
             case MODAL_TYPES.ADMIN_LESSON:
                 return (
-                    <Form onSubmit={handleSubmit}>
+                    <Form>
                         {formValues.map((valueProps) => {
                             const setCustomFieldClassName = () => {
                                 switch (valueProps.id) {
@@ -110,7 +125,7 @@ const ModalEdit = (props) => {
 
             case MODAL_TYPES.ADMIN_PAYMENT:
                 return (
-                    <Form onSubmit={handleSubmit}>
+                    <Form>
                         {formValues.map((valueProps) => (
                             <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
                                 <label>{I18n.t(valueProps.label) + ':'}</label>
@@ -133,51 +148,17 @@ const ModalEdit = (props) => {
                     </Form>
                 );
 
-            case MODAL_TYPES.STUDENT_LESSON:
-                return (
-                    <Form onSubmit={handleSubmit}>
-                        {formValues.map((valueProps) => (
-                            <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
-                                <label>{I18n.t(valueProps.label) + ':'}</label>
-                                <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
-                            </Form.Field>
-                        ))}
-                    </Form>
-                );
-
-            case MODAL_TYPES.STUDENT_PAYMENT:
-                return (
-                    <Form onSubmit={handleSubmit}>
-                        {formValues.map((valueProps) => (
-                            <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
-                                <label>{I18n.t(valueProps.label) + ':'}</label>
-                                <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
-                            </Form.Field>
-                        ))}
-                    </Form>
-                );
-
-            case MODAL_TYPES.TEACHER_LESSON:
-                return (
-                    <Form onSubmit={handleSubmit}>
-                        {formValues.map((valueProps) => (
-                            <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
-                                <label>{I18n.t(valueProps.label) + ':'}</label>
-                                <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
-                            </Form.Field>
-                        ))}
-                    </Form>
-                );
-                
-            case MODAL_TYPES.TEACHER_ASSISTANCES:
+            case MODAL_TYPES.STUDENT_PROFILE:
                 return (
                     <Form>
-                        {formValues.map((value, i) => (
-                            <p>{'EDIT' + value}</p>
+                        {formValues.map((valueProps) => (
+                            <Form.Field required={valueProps.required} className='field-container' key={'modal-edit-form-field-' + valueProps.id} >
+                                <label>{I18n.t(valueProps.label) + ':'}</label>
+                                <MyFormInput {...valueProps} onChange={(id, type, value) => handleChange(id, type, value)} />
+                            </Form.Field>
                         ))}
                     </Form>
                 );
-
 
             default: return null;
         }
@@ -185,13 +166,13 @@ const ModalEdit = (props) => {
 
     const getModalSize = () => {
         switch (type) {
-            case MODAL_TYPES.ADMIN_STUDENT: return 'small';
-            case MODAL_TYPES.ADMIN_TEACHER: return 'small';
             case MODAL_TYPES.ADMIN_LESSON: return 'large';
-            case MODAL_TYPES.ADMIN_PAYMENT: return 'small';
-            case MODAL_TYPES.STUDENT_LESSON: return 'small';
-            case MODAL_TYPES.STUDENT_PAYMENT: return 'small';
-            case MODAL_TYPES.TEACHER_LESSON: return 'small';
+            case MODAL_TYPES.ADMIN_STUDENT:
+            case MODAL_TYPES.ADMIN_TEACHER:
+            case MODAL_TYPES.ADMIN_PAYMENT:
+            case MODAL_TYPES.STUDENT_LESSON:
+            case MODAL_TYPES.STUDENT_PAYMENT:
+            case MODAL_TYPES.TEACHER_LESSON:
             default: return 'small';
         }
     }

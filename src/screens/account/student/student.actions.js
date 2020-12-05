@@ -54,7 +54,7 @@ const studentActions = {
     getMyselfDataSuccess: (response) => ({type: GET_MYSELF_DATA_SUCCESS, response}),
     getMyselfDataError: (error) => ({type: GET_MYSELF_DATA_ERROR, error}),
     
-    studentChangeModalState: () => ({type: STUDENT_CHANGE_MODAL_STATE}),
+    studentChangeModalState: (modalState) => ({type: STUDENT_CHANGE_MODAL_STATE, modalState}),
     studentInputChange: (id, typeD, value) => ({type: STUDENT_INPUT_CHANGE, id, typeD, value}),
 
     updateMyDataRequest: () => ({type: UPDATE_MY_DATA_REQUEST}),

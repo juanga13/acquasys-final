@@ -33,7 +33,6 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             let createData = formToDataTransform(createLessonForm);
             // take missing data (not shown in form) and add it in order to make the request
             // take data from getState().selectedLesson and insert it into data!
-            createData.avatarUrl = '';
             createData.id = 0;
             // if (createData.password.value === '') {
             //     createData.password.value = 'asd123';
@@ -56,7 +55,6 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             let updateData = formToDataTransform(getState().admin.lessons.lessonForm);
             // take missing data (not shown in form) and add it in order to make the request
             // take data from getState().selectedLesson and insert it into data!
-            updateData.avatarUrl = updateSelectedLesson.avatarUrl || null;
             updateData.id = updateSelectedLesson.id;
             updateData.role = updateSelectedLesson.role;
             if (updateData.password === '') {

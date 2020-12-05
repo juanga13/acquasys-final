@@ -34,7 +34,13 @@ const ModalPreview = (props) => {
 
     const renderValues = () => {
         switch (type) {
+            case MODAL_TYPES.ADMIN_PROFILE:
             case MODAL_TYPES.ADMIN_STUDENT:
+            case MODAL_TYPES.TEACHER_PROFILE:
+            case MODAL_TYPES.TEACHER_STUDENT:
+            case MODAL_TYPES.STUDENT_PROFILE:
+            case MODAL_TYPES.STUDENT_STUDENT:
+            case MODAL_TYPES.UNVERIFIED_PROFILE:
                 return values.map((value, i) => {
                     if (['id', 'role', 'complete', 'avatarUrl', 'password'].some(valueD => valueD === keys[i])) {
                         return null;
@@ -78,7 +84,8 @@ const ModalPreview = (props) => {
                 });
 
             case MODAL_TYPES.ADMIN_LESSON:
-                
+            case MODAL_TYPES.TEACHER_LESSON:
+            case MODAL_TYPES.STUDENT_LESSON:
                 return values.map((value, i) => {
                     if (['id'].some(value => value === keys[i])) {
                         return null;
@@ -138,6 +145,7 @@ const ModalPreview = (props) => {
                     }
                 });
 
+            case MODAL_TYPES.STUDENT_PAYMENT:
             case MODAL_TYPES.ADMIN_PAYMENT:
                 return values.map((value, i) => {
                     if (['student'].some(value => value === keys[i])) {
@@ -232,7 +240,6 @@ const ModalPreview = (props) => {
                     }
                 });
 
-            case MODAL_TYPES.STUDENT_PAYMENT:
                 return null;
 
             case MODAL_TYPES.TEACHER_LESSON:

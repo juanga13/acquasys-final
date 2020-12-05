@@ -43,15 +43,24 @@ export const MODAL_STATES = {
 };
 
 export const MODAL_TYPES = {
+    ADMIN_PROFILE: 'adminProfile',
     ADMIN_STUDENT: 'adminStudent',
     ADMIN_TEACHER: 'adminTeacher',
     ADMIN_LESSON: 'adminLesson',
     ADMIN_ASSISTANCES: 'adminAssistances',
     ADMIN_PAYMENT: 'adminPayment',
+    
+    TEACHER_PROFILE: 'teacherProfile',
+    TEACHER_STUDENT: 'teacherStudent',
+    TEACHER_LESSON: 'teacherLesson',
+    TEACHER_ASSISTANCES: 'teacherAssistances',
+    
+    STUDENT_PROFILE: 'studentProfile',
+    STUDENT_STUDENT: 'studentStudent',
     STUDENT_LESSON: 'studentLesson',
     STUDENT_PAYMENT: 'studentPayment',
-    TEACHER_LESSON: 'teacherLesson',
-    TEACHER_ASSISTANCES: 'teacherAssistances'
+
+    UNVERIFIED_PROFILE: 'unverifiedProfile',
 };
 
 export const GENRES = {

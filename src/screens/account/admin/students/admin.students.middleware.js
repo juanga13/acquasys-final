@@ -34,9 +34,9 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
             createData.complete = '';  // TODO
             createData.id = 0;
             createData.role = 'STUDENT';
-            if (createData.password.value === '') {
-                createData.password.value = 'asd123';
-            }
+            // if (createData.password.value === '') {
+            //     createData.password.value = 'asd123';
+            // }
             requests.createStudent(createData)
                 .then(() => {
                     dispatch(adminStudentsActions.createStudentSuccess());

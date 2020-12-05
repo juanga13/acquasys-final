@@ -21,7 +21,7 @@ const StudentProfile = (props) => {
             <ModalEdit
                 key='modal-edit'
                 isOpen={modalState === MODAL_STATES.EDIT}
-                type={MODAL_TYPES.ADMIN_STUDENT}
+                type={MODAL_TYPES.STUDENT_PROFILE}
                 form={form}
                 status={updateMyDataStatus}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
@@ -34,7 +34,7 @@ const StudentProfile = (props) => {
             <ModalPreview
                 key='modal-preview'
                 isOpen={modalState === MODAL_STATES.PREVIEW}
-                type={MODAL_TYPES.ADMIN_STUDENT}
+                type={MODAL_TYPES.STUDENT_PROFILE}
                 data={myData}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onEdit={() => props.changeModalState(MODAL_STATES.EDIT)}
@@ -45,41 +45,53 @@ const StudentProfile = (props) => {
             </div>
             <Divider hidden/>
             <div className='section-content-container'>
-                <div className='profile-cards-container'>
-                    <Card>
-                        <Image src={myData.avatarUrl || dummyAvatar} size='medium' circular />
-                        <Card.Content>
-                            <Card.Header>{`${profile.name} ${profile.surname}`}</Card.Header>
-                            <Card.Meta>{I18n.t('student.profile.meta')}</Card.Meta>
-                            <Card.Description>{profile.email}</Card.Description>
-                        </Card.Content>
-                        <Card.Content>
-                            <Button as='div' labelPosition='right' fluid>
-                                <Button color='blue' fluid>
-                                    <Icon name='eye' />
-                                    Mis datos
+                <div className='profile-image-data-container'>
+                    <Image src={myData.avatarUrl || dummyAvatar} size='small' circular />
+                    <div className='profile-data-container'>
+                        <Card fluid>
+                            <Card.Content textAlign='right'>
+                                <Card.Header>{`${profile.name} ${profile.surname}`}</Card.Header>
+                                <Card.Meta>{I18n.t('student.profile.meta')}</Card.Meta>
+                                <Card.Description>{profile.email}</Card.Description>
+                            </Card.Content>
+                            <Card.Content textAlign='right'>
+                                <Button as='div' labelPosition='right'>
+                                    <Button color='blue'  onClick={() => props.changeModalState(MODAL_STATES.PREVIEW)}>
+                                        <Icon name='eye' />
+                                        {I18n.t('student.profile.myData')}
+                                    </Button>
+                                    <Label basic color={'green'} pointing='left'>
+                                        {I18n.t('student.profile.verified')}
+                                    </Label>
                                 </Button>
-                                <Label as='a' basic color={myData.verified ? 'green' : 'red'} pointing='left'>
-                                    {myData.verified ? `Verificado` : 'No verificado'}
-                                </Label>
-                            </Button>
-                        </Card.Content>
-                    </Card>
-                    <Card>
-                        <Card.Content>
-                            <Card.Header>{I18n.t('student.profile.settings.header')}</Card.Header>
-                        </Card.Content>
-                        <Card.Content>
-                            
-                        </Card.Content>
-                    </Card>
+                            </Card.Content>
+                        </Card>
+                    </div>
                 </div>
-                <Divider hidden/>
-                <div>
-                    <p>{I18n.t('common.myProfile.student.weekLessons')}</p>
-                    <p>{I18n.t('common.myProfile.student.paymentsNotDone')}</p>
-                    <p>{I18n.t('common.myProfile.student.paymentsNext')}</p>
-                </div>
+                <Card  fluid>
+                    <Card.Content>
+                        <Card.Header>{I18n.t('student.profile.lessons.header')}</Card.Header>
+                    </Card.Content>
+                    <Card.Content>
+                        
+                    </Card.Content>
+                </Card>
+                <Card  fluid>
+                    <Card.Content>
+                        <Card.Header>{I18n.t('student.profile.payments.header')}</Card.Header>
+                    </Card.Content>
+                    <Card.Content>
+                        
+                    </Card.Content>
+                </Card>
+                <Card  fluid>
+                    <Card.Content>
+                        <Card.Header>{I18n.t('student.profile.payments.next.header')}</Card.Header>
+                    </Card.Content>
+                    <Card.Content>
+                        
+                    </Card.Content>
+                </Card>
             </div>
         </div>
     )
@@ -94,6 +106,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    changeModalState: (modalState) => dispatch(studentActions.studentChangeModalState(modalState)),
     updateMyData: () => dispatch(studentActions.updateMyDataRequest()),
 });
 
