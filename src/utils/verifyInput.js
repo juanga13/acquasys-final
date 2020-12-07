@@ -28,7 +28,7 @@ export default function(id, type, value) {
         case FIELD_TYPES.NUMBER: return (value.toString().length > 0);
         case FIELD_TYPES.DATE: return (true);
         case FIELD_TYPES.BOOLEAN: return (true);
-        case FIELD_TYPES.TEXT_AREA: return (true);
+        case FIELD_TYPES.TEXT_AREA: return (value.length > 0);
         
         case FIELD_TYPES.NULL: return (true)
         default:

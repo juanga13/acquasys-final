@@ -19,7 +19,7 @@ const commonActions = {
     getMessagesSuccess: (response) => ({type: GET_MESSAGES_SUCCESS, response }),
     getMessagesError: () => ({type: GET_MESSAGES_ERROR }),
 
-    newMessageInputChange: (id, value) => ({ type: NEW_MESSAGE_INPUT_CHANGE, id, value }),
+    newMessageInputChange: (id, typeD, value) => ({ type: NEW_MESSAGE_INPUT_CHANGE, id, typeD, value }),
     newMessageModalStateChange: (modalState) => ({ type: NEW_MESSAGE_MODAL_STATE_CHANGE, modalState }),
 
     sendMessage: () => ({type: SEND_MESSAGE }),

@@ -22,7 +22,16 @@ export const sortData = (modalType, data) => {
             order = ['name', 'surname', 'dni', 'amount', 'date'];
             break;
         case MODAL_TYPES.STUDENT_PROFILE: 
-            order = ['name', 'surname', 'email', 'password', 'dni', 'sex', 'birthday', 'phoneNumber', 'address', 'socialPlan', 'affiliateNumber', 'inscriptionDate', 'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone', 'motherName', 'motherSurname', 'motherEmail', 'motherPhone', 'verified'];
+            order = [
+                'name', 'surname', 'email',
+                // 'password',
+                'dni', 'sex', 'birthday',
+                'phoneNumber', 'address', 'socialPlan',
+                'affiliateNumber', 'inscriptionDate',
+                'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone',
+                'motherName', 'motherSurname', 'motherEmail', 'motherPhone',
+                // 'verified'
+            ];
             break;
         case MODAL_TYPES.STUDENT_LESSON: 
             order = ['name', 'startDate', 'endDate', 'students', 'teachers', 'weekdays'];

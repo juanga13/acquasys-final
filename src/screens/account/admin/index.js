@@ -3,7 +3,7 @@ import Lessons from './lessons/components/Lessons';
 import Payments from './payments/components/Payments';
 import Students from './students/components/Students';
 import Teachers from './teachers/components/Teachers';
-import Profile from './Profile';
+import Profile from './components/Profile/Profile';
 
 export { 
     Calendar as AdminCalendar, 

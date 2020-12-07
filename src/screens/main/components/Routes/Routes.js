@@ -18,7 +18,7 @@ import { AdminCalendar, AdminStudents, AdminLessons, AdminPayments, AdminTeacher
 import { StudentCalendar, StudentLessons, StudentPayments } from '../../../account/student';
 import { TeacherCalendar, TeacherLessons } from '../../../account/teacher';
 import MyProfile from '../../../common/components/MyProfile';
-import Messaging from '../../../common/components/Messaging';
+import Messaging from '../../../common/components/Messaging/Messaging';
 import { Loader } from 'semantic-ui-react';
 
 

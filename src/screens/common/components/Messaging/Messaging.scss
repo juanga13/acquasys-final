@@ -1,0 +1,12 @@
+.message-description-container {
+    display: flex;
+    flex-flow: row nowrap;
+
+    p {
+        margin: 0 !important;
+        margin-right: 7px !important;
+        &.bold {
+            font-weight: bold;
+        }
+    }
+}

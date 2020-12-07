@@ -5,7 +5,7 @@ export const FIELD_TYPES = {
     NUMBER: 'number',
     DATE: 'date',
     BOOLEAN: 'boolean',
-    TEXT_AREA: '',
+    TEXT_AREA: 'textArea',
     NULL: 'null'
 };
 

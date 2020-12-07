@@ -42,9 +42,7 @@ const ModalPreview = (props) => {
             case MODAL_TYPES.STUDENT_STUDENT:
             case MODAL_TYPES.UNVERIFIED_PROFILE:
                 return values.map((value, i) => {
-                    if (['id', 'role', 'complete', 'avatarUrl', 'password'].some(valueD => valueD === keys[i])) {
-                        return null;
-                    } else if (keys[i] === 'verified') {
+                    if (keys[i] === 'verified') {
                         return (
                             <div className='field-container verified' key={'modal-preview-item-' + i}>
                                 <label>{I18n.t('forms.' + keys[i]) + ':'}</label>

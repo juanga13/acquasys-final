@@ -180,7 +180,8 @@
           "verificationsPending": "Usuarios que se necesitan verificar"
         },
         "texts": {
-          "noVerifiedAccount": "Ninguna cuenta que verificar."
+          "noVerifiedAccount": "Ninguna cuenta que verificar.",
+          "noLessonsThisWeek": "Ninguna clase esta semana"
         }
       },
       "student": {
@@ -233,7 +234,21 @@
       },
       "buttons": {
         "newMessage": "Nuevo mensaje"
-      }
+      },
+      "success": {
+        "send": {
+          "title": "Mensajería",
+          "description": "Mensaje enviado correctamente"
+        }
+      },
+      "error": {
+        "send": {
+          "title": "Mensajería",
+          "description": "El mensaje no se pudo enviar, el destinatario no existe"
+        }
+      },
+      "sender": "Remitente",
+      "receiver": "Destinatario"
     }
   },
   "forms": {

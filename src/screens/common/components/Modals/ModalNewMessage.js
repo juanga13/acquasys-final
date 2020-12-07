@@ -28,7 +28,7 @@ const ModalNewMessage = (props) => {
                 {formValues.map((valueProps) => (
                     <Form.Field required={valueProps.required} className='field-container' key={'modal-new-message-form-field-' + valueProps.id} >
                         <label>{I18n.t(valueProps.label) + ':'}</label>
-                        <MyFormInput {...valueProps} onChange={(id, value) => props.onChange(id, value)} />
+                        <MyFormInput {...valueProps} onChange={(id, type, value) => props.onChange(id, type, value)} />
                     </Form.Field>
                 ))}
             </Form>

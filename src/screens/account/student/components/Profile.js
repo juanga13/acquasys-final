@@ -39,6 +39,7 @@ const StudentProfile = (props) => {
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onEdit={() => props.changeModalState(MODAL_STATES.EDIT)}
                 showImage
+                noEditOption
             />
             <div className='section-header-container'>
                 <Header>{I18n.t('common.myProfile.title')}</Header>

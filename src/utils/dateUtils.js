@@ -6,6 +6,7 @@ export const dateToString = (date) => {
     console.log()
     return `${date}`;
 }
+
 dateToString.PropTypes = {
     date: PropTypes.Date,
 }
