@@ -10,9 +10,9 @@ export const GET_MYSELF_DATA_ERROR = 'GET_MYSELF_DATA_ERROR';
 export const STUDENT_CHANGE_MODAL_STATE = 'STUDENT_CHANGE_MODAL_STATE';
 export const STUDENT_INPUT_CHANGE = 'STUDENT_INPUT_CHANGE';
 
-export const UPDATE_MY_DATA_REQUEST = 'UPDATE_DATA_REQUEST';
-export const UPDATE_MY_DATA_REQUEST_SUCCESS = 'UPDATE_DATA_REQUEST_SUCCESS';
-export const UPDATE_MY_DATA_REQUEST_ERROR = 'UPDATE_DATA_REQUEST_ERROR';
+// export const UPDATE_MY_DATA_REQUEST = 'UPDATE_DATA_REQUEST';
+// export const UPDATE_MY_DATA_REQUEST_SUCCESS = 'UPDATE_DATA_REQUEST_SUCCESS';
+// export const UPDATE_MY_DATA_REQUEST_ERROR = 'UPDATE_DATA_REQUEST_ERROR';
 
 /* calendar */
 export const STUDENT_GET_CALENDAR = 'GET_CALENDAR';
@@ -57,9 +57,9 @@ const studentActions = {
     studentChangeModalState: (modalState) => ({type: STUDENT_CHANGE_MODAL_STATE, modalState}),
     studentInputChange: (id, typeD, value) => ({type: STUDENT_INPUT_CHANGE, id, typeD, value}),
 
-    updateMyDataRequest: () => ({type: UPDATE_MY_DATA_REQUEST}),
-    updateMyDataRequestSuccess: (response) => ({type: UPDATE_MY_DATA_REQUEST_SUCCESS, response}),
-    updateMyDataRequestError: () => ({type: UPDATE_MY_DATA_REQUEST_ERROR}),
+    // updateMyDataRequest: () => ({type: UPDATE_MY_DATA_REQUEST}),
+    // updateMyDataRequestSuccess: (response) => ({type: UPDATE_MY_DATA_REQUEST_SUCCESS, response}),
+    // updateMyDataRequestError: () => ({type: UPDATE_MY_DATA_REQUEST_ERROR}),
 
     /* calendar */
     getCalendar: (startDate, endDate) => ({type: STUDENT_GET_CALENDAR, startDate, endDate}),

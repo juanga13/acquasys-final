@@ -16,6 +16,7 @@ import { tenDaysBeforeNow } from '../../utils/time';
 import commonActions from '../common/common.actions';
 import { I18n } from 'react-redux-i18n';
 import fireToast from '../common/components/Toaster';
+import unverifiedActions from '../account/unverified/unverified.actions';
 
 const sessionMiddleware = ({dispatch, getState}) => next => action => {
     next(action);
@@ -43,6 +44,7 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
                     dispatch(teacherActions.getLessons());
                     break;
                 case ROLES.UNVERIFIED_STUDENT:
+                    dispatch(unverifiedActions.getMyselfData());
                     break;
                     
                 default: break;

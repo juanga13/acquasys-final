@@ -142,9 +142,9 @@ const requests = {
     },
 
     // updateMyDataRequest
-    updateMyData: (newData) => {
+    // updateMyData: (newData) => {
         
-    },
+    // },
 };
 
 export default requests;

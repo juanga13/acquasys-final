@@ -21,14 +21,64 @@ export const sortData = (modalType, data) => {
         case MODAL_TYPES.ADMIN_PAYMENT:
             order = ['name', 'surname', 'dni', 'amount', 'date'];
             break;
+        case MODAL_TYPES.STUDENT_PROFILE: 
+            order = ['name', 'surname', 'email', 'password', 'dni', 'sex', 'birthday', 'phoneNumber', 'address', 'socialPlan', 'affiliateNumber', 'inscriptionDate', 'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone', 'motherName', 'motherSurname', 'motherEmail', 'motherPhone', 'verified'];
+            break;
         case MODAL_TYPES.STUDENT_LESSON: 
             order = ['name', 'startDate', 'endDate', 'students', 'teachers', 'weekdays'];
             break;
         case MODAL_TYPES.STUDENT_PAYMENT: 
             order = [];
             break;
+        case MODAL_TYPES.STUDENT_STUDENT: 
+            order = [
+                'name', 'surname', 'email', 
+                // 'password',
+                'dni', 'sex', 'birthday', 'phoneNumber', 'address', 'socialPlan',
+                'affiliateNumber', 'inscriptionDate',
+                'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone',
+                'motherName', 'motherSurname', 'motherEmail', 'motherPhone',
+                // 'verified'
+            ];
+            break;
+        case MODAL_TYPES.TEACHER_PROFILE: 
+            order = [
+                'name', 'surname', 'email',
+                // 'password',
+                'cuil', 'sex', 'birthday', 'phoneNumber',
+                'address', 'socialPlan', 'affiliateNumber', 'inscriptionDate',
+                'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone',
+                'motherName', 'motherSurname', 'motherEmail', 'motherPhone',
+                // 'verified'
+            ];
+            break;
         case MODAL_TYPES.TEACHER_LESSON: 
             order = ['name', 'endDate', 'startDate', 'students', 'teachers', 'weekdays'];
+            break;
+        case MODAL_TYPES.TEACHER_STUDENT: 
+            order = [
+                'name', 'surname', 'email', 
+                // 'password',
+                'dni', 'sex', 'birthday', 'phoneNumber', 'address', 'socialPlan',
+                'affiliateNumber', 'inscriptionDate',
+                'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone',
+                'motherName', 'motherSurname', 'motherEmail', 'motherPhone',
+                // 'verified'
+            ];
+            break;
+        case MODAL_TYPES.TEACHER_ASSISTANCES: 
+            order = [];
+            break;
+        case MODAL_TYPES.UNVERIFIED_PROFILE: 
+            order = [
+                'name', 'surname', 'email', 
+                // 'password',
+                'dni', 'sex', 'birthday', 'phoneNumber', 'address', 'socialPlan',
+                'affiliateNumber', 'inscriptionDate',
+                'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone',
+                'motherName', 'motherSurname', 'motherEmail', 'motherPhone',
+                // 'verified'
+            ];
             break;
         default:
             order = [];  // !! not expected

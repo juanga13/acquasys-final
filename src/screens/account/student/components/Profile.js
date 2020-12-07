@@ -18,7 +18,7 @@ const StudentProfile = (props) => {
     
     return (
         <div className='section-container'>
-            <ModalEdit
+            {/* <ModalEdit
                 key='modal-edit'
                 isOpen={modalState === MODAL_STATES.EDIT}
                 type={MODAL_TYPES.STUDENT_PROFILE}
@@ -30,7 +30,7 @@ const StudentProfile = (props) => {
                 onCancel={() => props.changeModalState(MODAL_STATES.PREVIEW)}
                 onSubmit={() => props.updateMyData()}
                 showImage
-            />
+            /> */}
             <ModalPreview
                 key='modal-preview'
                 isOpen={modalState === MODAL_STATES.PREVIEW}
@@ -94,20 +94,20 @@ const StudentProfile = (props) => {
                 </Card>
             </div>
         </div>
-    )
+    );
 };
 
 const mapStateToProps = (state) => ({
     profile: state.session.profile,
     modalState: state.student.modalState,
     myData: state.student.myData,
-    form: state.student.form,
-    updateMyDataStatus: state.student.updateMyDataStatus, 
+    // form: state.student.form,
+    // updateMyDataStatus: state.student.updateMyDataStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     changeModalState: (modalState) => dispatch(studentActions.studentChangeModalState(modalState)),
-    updateMyData: () => dispatch(studentActions.updateMyDataRequest()),
+    // updateMyData: () => dispatch(studentActions.updateMyDataRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StudentProfile);

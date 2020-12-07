@@ -17,6 +17,7 @@ const requests = {
                 else throw response.json()
             })
     },
+    
     createStudent: (data) => {
         const requestOptions = {
             method: 'POST',

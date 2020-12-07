@@ -8,7 +8,7 @@ import {
     STUDENT_INPUT_CHANGE,
     GET_MY_ENROLLED, GET_MY_ENROLLED_SUCCESS, GET_MY_ENROLLED_ERROR,
     GET_MYSELF_DATA, GET_MYSELF_DATA_SUCCESS, GET_MYSELF_DATA_ERROR, STUDENT_SELECT_PAYMENT,
-    UPDATE_MY_DATA_REQUEST, UPDATE_MY_DATA_REQUEST_SUCCESS, UPDATE_MY_DATA_REQUEST_ERROR,
+    // UPDATE_MY_DATA_REQUEST, UPDATE_MY_DATA_REQUEST_SUCCESS, UPDATE_MY_DATA_REQUEST_ERROR,
 } from './student.actions';
 import { REQUEST_STATUS, MODAL_STATES, FIELD_TYPES, GENRES } from '../../../utils/consts';
 import verifyInput from '../../../utils/verifyInput';
@@ -22,33 +22,33 @@ const initialState = {
     getMyEnrolledStatus: REQUEST_STATUS.NONE,
     myData: null,
     getMyselfDataStatus: REQUEST_STATUS.NONE,
-    form: {
-        name: { id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: true },
-        surname: { id: 'surname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.surname', label: 'forms.surname', required: true },
-        email: { id: 'email', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email', required: true },
-        password: { id: 'password', value: '', error: false, type: FIELD_TYPES.PASSWORD, placeholder: 'forms.password', label: 'forms.password', required: true },
-        dni: { id: 'dni', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.dni', label: 'forms.dni', required: true },
-        sex: { id: 'sex', value: GENRES.FEMENINE, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.sex', label: 'forms.sex', required: true },
-        birthday: { id: 'birthday', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.birthday', label: 'forms.birthday', required: true, maxDate: _today },
-        phoneNumber: { id: 'phoneNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.phoneNumber', label: 'forms.phoneNumber', required: true },
-        address: { id: 'address', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.address', label: 'forms.address', required: true },
-        socialPlan: { id: 'socialPlan', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.socialPlan', label: 'forms.socialPlan', required: true },
-        affiliateNumber: { id: 'affiliateNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.affiliateNumber', label: 'forms.affiliateNumber', required: true },
-        inscriptionDate: { id: 'inscriptionDate', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.inscriptionDate', label: 'forms.inscriptionDate', required: true, maxDate: _today },
+    // form: {
+    //     name: { id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: true },
+    //     surname: { id: 'surname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.surname', label: 'forms.surname', required: true },
+    //     email: { id: 'email', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email', required: true },
+    //     password: { id: 'password', value: '', error: false, type: FIELD_TYPES.PASSWORD, placeholder: 'forms.password', label: 'forms.password', required: true },
+    //     dni: { id: 'dni', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.dni', label: 'forms.dni', required: true },
+    //     sex: { id: 'sex', value: GENRES.FEMENINE, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.sex', label: 'forms.sex', required: true },
+    //     birthday: { id: 'birthday', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.birthday', label: 'forms.birthday', required: true, maxDate: _today },
+    //     phoneNumber: { id: 'phoneNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.phoneNumber', label: 'forms.phoneNumber', required: true },
+    //     address: { id: 'address', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.address', label: 'forms.address', required: true },
+    //     socialPlan: { id: 'socialPlan', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.socialPlan', label: 'forms.socialPlan', required: true },
+    //     affiliateNumber: { id: 'affiliateNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.affiliateNumber', label: 'forms.affiliateNumber', required: true },
+    //     inscriptionDate: { id: 'inscriptionDate', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.inscriptionDate', label: 'forms.inscriptionDate', required: true, maxDate: _today },
 
-        // optional data
-        fatherName: { id: 'fatherName', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherName', label: 'forms.fatherName', required: false },
-        fatherSurname: { id: 'fatherSurname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherSurname', label: 'forms.fatherSurname', required: false },
-        fatherEmail: { id: 'fatherEmail', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.fatherEmail', label: 'forms.fatherEmail', required: false },
-        fatherPhone: { id: 'fatherPhone', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherPhone', label: 'forms.fatherPhone', required: false },
-        motherName: { id: 'motherName', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherName', label: 'forms.motherName', required: false },
-        motherSurname: { id: 'motherSurname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherSurname', label: 'forms.motherSurname', required: false },
-        motherEmail: { id: 'motherEmail', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.motherEmail', label: 'forms.motherEmail', required: false },
-        motherPhone: { id: 'motherPhone', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherPhone', label: 'forms.motherPhone', required: false },
+    //     // optional data
+    //     fatherName: { id: 'fatherName', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherName', label: 'forms.fatherName', required: false },
+    //     fatherSurname: { id: 'fatherSurname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherSurname', label: 'forms.fatherSurname', required: false },
+    //     fatherEmail: { id: 'fatherEmail', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.fatherEmail', label: 'forms.fatherEmail', required: false },
+    //     fatherPhone: { id: 'fatherPhone', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherPhone', label: 'forms.fatherPhone', required: false },
+    //     motherName: { id: 'motherName', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherName', label: 'forms.motherName', required: false },
+    //     motherSurname: { id: 'motherSurname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherSurname', label: 'forms.motherSurname', required: false },
+    //     motherEmail: { id: 'motherEmail', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.motherEmail', label: 'forms.motherEmail', required: false },
+    //     motherPhone: { id: 'motherPhone', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherPhone', label: 'forms.motherPhone', required: false },
         
-        verified: { id: 'verified', value: false, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.verified', label: 'forms.verified', required: false },
-    },
-    updateMyDataStatus: REQUEST_STATUS.NONE,
+    //     verified: { id: 'verified', value: false, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.verified', label: 'forms.verified', required: false },
+    // },
+    // updateMyDataStatus: REQUEST_STATUS.NONE,
 
     /* calendar */
     calendar: null,
@@ -103,13 +103,15 @@ const studentReducer = (state = initialState, action) => {
         case GET_MYSELF_DATA_SUCCESS: return { ...state, getMyselfDataStatus: REQUEST_STATUS.SUCCESS, myData: action.response };
         case GET_MYSELF_DATA_ERROR: return { ...state, getMyselfDataStatus: REQUEST_STATUS.ERROR };
 
+        // case UPDATE_MY_DATA_REQUEST: return { ...state, updateMyDataStatus: REQUEST_STATUS.LOADING };
+        // case UPDATE_MY_DATA_REQUEST_SUCCESS: return { ...state, updateMyDataStatus: REQUEST_STATUS.SUCCESS };
+        // case UPDATE_MY_DATA_REQUEST_ERROR: return { ...state, updateMyDataStatus: REQUEST_STATUS.ERROR };
+        
         /* calendar */
         case STUDENT_GET_CALENDAR: return { ...state, getCalendarStatus: REQUEST_STATUS.LOADING };
         case STUDENT_GET_CALENDAR_SUCCESS: return { ...state, getCalendarStatus: REQUEST_STATUS.SUCCESS, calendar: action.response };
         case STUDENT_GET_CALENDAR_ERROR: return { ...state, getCalendarStatus: REQUEST_STATUS.ERROR };
-        case UPDATE_MY_DATA_REQUEST: return { ...state, updateMyDataStatus: REQUEST_STATUS.LOADING };
-        case UPDATE_MY_DATA_REQUEST_SUCCESS: return { ...state, updateMyDataStatus: REQUEST_STATUS.SUCCESS };
-        case UPDATE_MY_DATA_REQUEST_ERROR: return { ...state, updateMyDataStatus: REQUEST_STATUS.ERROR };
+
         /* lessons */
         case STUDENT_GET_LESSONS: return { ...state, getLessonsStatus: REQUEST_STATUS.LOADING };
         case STUDENT_GET_LESSONS_SUCCESS: return { ...state, getLessonsStatus: REQUEST_STATUS.SUCCESS, lessons: action.response };

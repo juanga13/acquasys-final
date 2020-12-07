@@ -26,7 +26,7 @@ const ModalEdit = (props) => {
         type,
         form,
         showImage,
-        loading
+        loading,
     } = props;
     const [formValid, setFormValid] = useState(false);
 
@@ -81,6 +81,10 @@ const ModalEdit = (props) => {
 
             case MODAL_TYPES.ADMIN_STUDENT:
             case MODAL_TYPES.ADMIN_TEACHER:
+            case MODAL_TYPES.ADMIN_PROFILE:
+            case MODAL_TYPES.STUDENT_PROFILE:
+            case MODAL_TYPES.TEACHER_PROFILE:
+            case MODAL_TYPES.UNVERIFIED_PROFILE:
                 return (
                     <Form>
                         {formValues.map((valueProps) => (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
  
-import { Modal, Button, Icon, Image, Divider } from 'semantic-ui-react';
+import { Modal, Button, Icon, Image, Divider, Loader, Dimmer } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import { dummyAvatar } from '../../../../assets';
 import { MODAL_TYPES, weekdayConstTranslate } from '../../../../utils/consts';
@@ -334,8 +334,8 @@ const ModalPreview = (props) => {
             size={getModalSize()}
             open={isOpen}
             onClose={props.onClose}
-            loading={loading}
         >
+            <Dimmer active={loading} inverted><Loader /></Dimmer>
             <Modal.Header>{I18n.t('common.modals.preview.title.' + type, titleData)}</Modal.Header>
             <Modal.Content image>
                 {showImage && <Image wrapped size='small' src={dummyAvatar} />}

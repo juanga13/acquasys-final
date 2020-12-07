@@ -31,12 +31,9 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
             let createData = formToDataTransform(getState().admin.students.studentForm);
             // take data from getState().selectedStudent and insert it into data!
             createData.avatarUrl = '';
-            createData.complete = '';  // TODO
+            createData.complete = true;  // TODO
             createData.id = 0;
             createData.role = 'STUDENT';
-            // if (createData.password.value === '') {
-            //     createData.password.value = 'asd123';
-            // }
             requests.createStudent(createData)
                 .then(() => {
                     dispatch(adminStudentsActions.createStudentSuccess());
@@ -57,9 +54,6 @@ const adminStudentsMiddleware = ({ dispatch, getState }) => next => action => {
             updateData.complete = updateSelectedStudent.complete;
             updateData.id = updateSelectedStudent.id;
             updateData.role = updateSelectedStudent.role;
-            if (updateData.password === '') {
-                updateData.password = updateSelectedStudent.password;
-            }
             requests.updateStudent(updateData)
                 .then((respose) => {
                     dispatch(adminStudentsActions.updateStudentSuccess());

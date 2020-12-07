@@ -79,15 +79,15 @@ const studentMiddleware = ({dispatch, getState}) => next => action => {
                 });
             break;
 
-        case UPDATE_MY_DATA_REQUEST:
-            const myData = getState().student.myData;
-            request.updateMyData(myData)
-                .then(() => {
-                    dispatch();
-                })
-                .catch(() => {
-                    dispatch();
-                })
+        // case UPDATE_MY_DATA_REQUEST:
+        //     const myData = getState().student.myData;
+        //     request.updateMyData(myData)
+        //         .then(() => {
+        //             dispatch();
+        //         })
+        //         .catch(() => {
+        //             dispatch();
+        //         })
 
         default: break;
     }

@@ -30,9 +30,12 @@
           "adminTeacher": "Profesores - Detalles de datos de %{name} %{surname}",
           "adminLesson": "Clases - Detalles de datos de %{name}",
           "adminPayment": "Pagos - Detalles de datos de %{name}",
+          "studentProfile": "Mis datos",
           "studentLesson": "Clases - Detalles de datos de %{name}",
           "studentPayment": "Pagos - Detalles de datos de %{name}",
-          "teacherLesson": "Clases - Detalles de datos de %{name}"
+          "teacherProfile": "Mis datos",
+          "teacherLesson": "Clases - Detalles de datos de %{name}",
+          "unverifiedProfile": "Mis datos"
         },
         "buttons": {
           "submit": "Aceptar",
@@ -74,9 +77,12 @@
           "adminTeacher": "Profesores - Editar de datos",
           "adminLesson": "Clases - Editar de datos",
           "adminPayment": "Pagos - Editar de datos",
+          "studentProfile": "Editar mis datos",
           "studentLesson": "Clases - Editar de datos",
           "studentPayment": "Pagos - Editar de datos",
-          "teacherLesson": "Clases - Editar de datos"
+          "teacherProfile": "Editar mis datos",
+          "teacherLesson": "Clases - Editar de datos",
+          "unverifiedProfile": "Editar mis datos"
         },
         "buttons": {
           "submit": "Aceptar cambios",
@@ -592,7 +598,9 @@
           "title": "Actualizacion de datos",
           "description": "Hubo un error al actualizar tus datos."
         }
-      }
+      },
+      "notVerified": "No verificado",
+      "verificationPending": "Esperando confirmación"
     }
   }
 }

@@ -10,36 +10,19 @@ const AdminProfile = (props) => {
     const {
         profile,
         allStudents,
-        // lessons,
-        // payments
+        calendar,
+        lessons,
+        payments,
     } = props;
-    /**
-     * allStudents -> unverified students
-     * @description se filtra para obtener todos los alumnos que faltan 
-     * verificar.
-     */
     const unverifiedStudents = allStudents.filter(student => !student.verified);
-
-    /**
-     * lessons -> weekLessons
-     * @description se filtra para obtener todas las clases que hay esta
-     * semana
-     */
-    // const weekDateRange = getWeekDataRange();  // [hoy, sabado]
-    // const weekLessons = lessons.filter(lesson => {
-
-    // });
-    /**
-     * payments -> payments not done until now (with month) AND payments 
-     * to be done this month
-     * @description se filtra para sacar 2 arrays.
-     */
-    // var todoPayments = [];
-    // var nowPayments = [];
-    // payments.forEach(payment => {
-        
-    // });
-    
+    // const todoPayments = calendar.map(())
+    /* 
+        allday: false
+        end: 1578421800000
+        lessonId: 444
+        start: 1578418200000
+        title: "Natacion"
+    */
     return (
         <div className='section-container'>
             <div className='section-content-container'>
@@ -114,6 +97,7 @@ const mapStateToProps = (state) => ({
     allStudents: state.admin.students.students,
     lessons: state.admin.lessons.lessons,
     payments: state.admin.payments.payments,
+    calendar: state.admin.calendar.calendar,
 });
 
 const mapDispatchToProps = (dispatch) => ({
