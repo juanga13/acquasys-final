@@ -25,6 +25,7 @@ const ModalPreview = (props) => {
         type,
         showImage,
         noEditOption,
+        noAttendanceOption,
         loading
     } = props;
     const sortedData  = data ? sortData(type, data) : {};
@@ -101,7 +102,6 @@ const ModalPreview = (props) => {
                                 );
                             case 'teachers': 
                                 return (
-                                    
                                     <div className='field-container' key={'modal-preview-item-' + i}>
                                         <label>{I18n.t('forms.' + keys[i]) + ':'}</label>                                      
                                         <ul>
@@ -111,8 +111,7 @@ const ModalPreview = (props) => {
                                     </div>
                                 );
                             case 'weekdays':
-                                return (
-                                    
+                                return (                                    
                                     <div className='field-container' key={'modal-preview-item-' + i}>
                                         <label>{I18n.t('forms.' + keys[i]) + ':'}</label>
                                         <ul>
@@ -316,9 +315,10 @@ const ModalPreview = (props) => {
     };
 
     const getAttendancesButton = () => {
-        if (type === MODAL_TYPES.ADMIN_LESSON || type === MODAL_TYPES.TEACHER_LESSON) {
+        if (noAttendanceOption) return null;
+        if (type === MODAL_TYPES.ADMIN_LESSON || type === MODAL_TYPES.TEACHER_LESSON || type === MODAL_TYPES.STUDENT_LESSON) {
             return (
-                <Button color='brown'>
+                <Button color='brown' onClick={props.onAttendances}>
                     <Icon name='book'/>
                     {I18n.t('common.modals.preview.buttons.attendances')}
                     <Icon name='chevron right'/>

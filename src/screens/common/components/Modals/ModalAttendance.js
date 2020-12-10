@@ -24,8 +24,6 @@ const ModalAttendance = (props) => {
     const {
         isOpen,
         type,
-        form,
-        showImage,
         loading,
 
         key,
@@ -37,8 +35,6 @@ const ModalAttendance = (props) => {
         onSetAttendance,
     } = props;
 
-    // const formKeys = form ? Object.keys(form) : [];
-    const formValues = form ? Object.values(form) : [];
     
     const handleSubmit = () => {
         // if (!Object.values(form).some(field => !verifyField(field.type, field.value))) {
@@ -48,14 +44,19 @@ const ModalAttendance = (props) => {
 
     const renderForm = () => {
         switch (type) {
-            case MODAL_TYPES.TEACHER_ASSISTANCES:
-                return formValues.map((value, i) => (
-                    <p>{'EDIT' + value}</p>
+            case MODAL_TYPES.ADMIN_ATTENDANCES:
+                return attendances?.map((value, i) => (
+                    <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
                 ));
 
-            case MODAL_TYPES.TEACHER_ASSISTANCES:
-                return formValues.map((value, i) => (
-                    <p>{'EDIT' + value}</p>
+            case MODAL_TYPES.STUDENT_ATTENDANCES:
+                return attendances?.map((value, i) => (
+                    <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
+                ));
+
+            case MODAL_TYPES.TEACHER_ATTENDANCES:
+                return attendances?.map((value, i) => (
+                    <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
                 ));
 
 
@@ -65,8 +66,9 @@ const ModalAttendance = (props) => {
 
     const getModalSize = () => {
         switch (type) {
-            case MODAL_TYPES.TEACHER_ASSISTANCES: return 'small';
-            case MODAL_TYPES.TEACHER_ASSISTANCES: return 'small';
+            case MODAL_TYPES.ADMIN_ATTENDANCES: return 'small';
+            case MODAL_TYPES.STUDENT_ATTENDANCES: return 'small';
+            case MODAL_TYPES.TEACHER_ATTENDANCES: return 'small';
             default: return 'small';
         }
     }
@@ -78,17 +80,15 @@ const ModalAttendance = (props) => {
             onClose={props.onClose}
         >
             <Dimmer active={loading} inverted><Loader /></Dimmer>
-            <Modal.Header>{I18n.t('common.modals.edit.title.' + type)}</Modal.Header>
-            <Modal.Content image>
-                {showImage && <Image wrapped size='small' src={dummyAvatar} />}
+            <Modal.Header>{I18n.t('common.modals.attendances.title.' + type)}</Modal.Header>
+            <Modal.Content>
                 <Modal.Description>
                     {renderForm()}
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-                <Button color='green' onClick={props.onSubmit}><Icon name='check' />{I18n.t('common.modals.edit.buttons.submit')}</Button>
-                <Button color='red' onClick={props.onClose}><Icon name='close' />{I18n.t('common.modals.edit.buttons.cancel')}</Button>
-                <Button color='blue' onClick={props.onCancel}><Icon name='chevron left' />{I18n.t('common.modals.edit.buttons.goBack')}</Button>
+                <Button color='blue' onClick={props.onBack}><Icon name='chevron left' />{I18n.t('common.modals.attendances.buttons.goBack')}</Button>
+                <Button color='green' onClick={props.onClose}><Icon name='close' />{I18n.t('common.modals.attendances.buttons.close')}</Button>
             </Modal.Actions>
         </Modal>
     );

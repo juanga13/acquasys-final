@@ -6,6 +6,7 @@ const getColor = icon => {
     switch (icon) {
         case 'edit':  // edit icon
             return 'blue';
+        case 'remove':
         case 'user delete':  // delete icon
             return 'red';
         case 'file alternate':  // preview icon

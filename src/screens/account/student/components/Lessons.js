@@ -7,6 +7,7 @@ import { MODAL_TYPES, MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../..
 import { ModalPreview, ModalEdit, ModalCreate, ModalDelete } from '../../../common/components/Modals';
 import MyTable from '../../../common/components/MyTable';
 import fireToast from '../../../common/components/Toaster';
+import ModalAttendance from '../../../common/components/Modals/ModalAttendance';
 
 const Lessons = (props) => {
     const {
@@ -15,10 +16,18 @@ const Lessons = (props) => {
         modalState,
         getLessonsStatus,
         subscribeLessonStatus,
-        unsubscribeLessonStatus
+        unsubscribeLessonStatus,
+        myData,
+        myEnrolled,
+        getAttendanceStatus,
+        attendances,
+        setAttendanceStatus,
     } = props;
     const [searchName, setSearchName] = useState('');
-    const filteredLessons = lessons.filter(lesson => lesson.name.includes(searchName));
+    const filteredLessons = lessons.filter(lesson => (
+        lesson.name.includes(searchName) &&
+        !myEnrolled.find((enrolledLesson) => enrolledLesson.id === lesson.id)
+    ));
 
     // TODO hacer traducciones de error/success
     useEffect(() => {
@@ -30,10 +39,23 @@ const Lessons = (props) => {
             <ModalPreview
                 key='modal-preview'
                 isOpen={modalState === MODAL_STATES.PREVIEW} 
-                type={MODAL_TYPES.ADMIN_LESSON}
+                type={MODAL_TYPES.STUDENT_LESSON}
                 data={selectedLesson}
-                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)} 
-                onEdit={() => props.changeModalState(MODAL_STATES.EDIT)}
+                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
+                onAttendances={() => props.changeModalState(MODAL_STATES.ATTENDANCE)}
+                noEditOption
+                noAttendanceOption={myEnrolled.find((lesson) => selectedLesson.id === lesson.id) === undefined}
+            />,
+            <ModalAttendance
+                key='modal-attendances'
+                isOpen={modalState === MODAL_STATES.ATTENDANCE}    
+                type={MODAL_TYPES.STUDENT_ATTENDANCES}
+                getAttendancesStatus={getAttendanceStatus}
+                attendances={attendances}
+                setAttendanceStatus={setAttendanceStatus}
+                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
+                onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
+                onSetAttendance={(id, type, value) => props.inputChange(id, type, value)}
             />
         ])
     };
@@ -43,9 +65,6 @@ const Lessons = (props) => {
             {renderModals()}
             <div className='section-header-container'>
                 <Header>{I18n.t('admin.lessons.title')}</Header>
-                <Button color='grey' onClick={() => props.changeModalState(MODAL_STATES.CREATE)}>
-                    {I18n.t('admin.lessons.buttons.newLesson')}
-                </Button>
             </div>
             <div className='section-header-container'>
                 <Input
@@ -58,6 +77,7 @@ const Lessons = (props) => {
             </div>
             <MyTable
                 data={filteredLessons}
+                noResults={filteredLessons.length === 0}
                 columns={['name']}
                 actions={[
                     { type: 'file alternate', action: (data) => {
@@ -65,12 +85,31 @@ const Lessons = (props) => {
                         props.changeModalState(MODAL_STATES.PREVIEW);
                     }},
                     { type: 'signup', action: (data) => {
-                        // console.log('suscribed ', data); 
-                        props.subscribeLesson(data);
+                        console.log('suscribed ', data, myData.id, data.id); 
+                        props.subscribeLesson(myData.id, data.id);
                     }}
                 ]}
                 status={getLessonsStatus}
                 color='yellow'
+                noSortable
+            />
+            <MyTable
+                data={myEnrolled}
+                noResults={myEnrolled.length === 0}
+                columns={['name']}
+                actions={[
+                    { type: 'file alternate', action: (data) => {
+                        props.selectLesson(data);
+                        props.changeModalState(MODAL_STATES.PREVIEW);
+                    }},
+                    { type: 'remove', action: (data) => {
+                        console.log('unsuscribed ', data, myData.id, data.id); 
+                        props.subscribeLesson(myData.id, data.id);
+                    }}
+                ]}
+                status={getLessonsStatus}
+                color='yellow'
+                noSortable
             />
         </div>
     );
@@ -83,12 +122,17 @@ const mapStateToProps = (state) => ({
     getLessonsStatus: state.student.getLessonsStatus,
     subscribeLessonStatus: state.student.subscribeLessonStatus,
     unsubscribeLessonStatus: state.student.unsubscribeLessonStatus,
+    myData: state.student.myData,
+    myEnrolled: state.student.myEnrolled,
+    getAttendanceStatus: state.student.getAttendanceStatus,
+    attendances: state.student.attendances,
+    setAttendanceStatus: state.student.setAttendanceStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    changeModalState: (modalState) => dispatch(studentActions.adminLessonsChangeModalState(modalState)),
-    selectLesson: (data) => dispatch(studentActions.selectLesson(data)),
-    subscribeLesson: (lesson) => dispatch(studentActions.subscribeLesson(lesson)), 
+    changeModalState: (modalState) => dispatch(studentActions.studentLessonsChangeModalState(modalState)),
+    selectLesson: (lesson) => dispatch(studentActions.studentSelectLesson(lesson)),
+    subscribeLesson: (lessonId, studentId) => dispatch(studentActions.subscribeLesson(lessonId, studentId)), 
     unsubscribeLesson: (lesson) => dispatch(studentActions.unsubscribeLesson(lesson)) 
 });
 

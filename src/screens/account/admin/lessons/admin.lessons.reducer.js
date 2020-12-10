@@ -6,8 +6,8 @@ import {
     CREATE_LESSON, CREATE_LESSON_SUCCESS, CREATE_LESSON_ERROR,
     UPDATE_LESSON, UPDATE_LESSON_SUCCESS, UPDATE_LESSON_ERROR,
     DELETE_LESSON, DELETE_LESSON_SUCCESS, DELETE_LESSON_ERROR,
-    ADMIN_GET_ATTENDANCES, ADMIN_GET_ATTENDANCES_SUCCESS, ADMIN_GET_ATTENDANCES_ERROR,
-    ADMIN_SET_ATTENDANCE, ADMIN_SET_ATTENDANCE_SUCCESS, ADMIN_SET_ATTENDANCE_ERROR
+    ADMIN_SET_ATTENDANCE, ADMIN_SET_ATTENDANCE_SUCCESS, ADMIN_SET_ATTENDANCE_ERROR,
+    ADMIN_GET_ATTENDANCES, ADMIN_GET_ATTENDANCES_SUCCESS, ADMIN_GET_ATTENDANCES_ERROR
 } from './admin.lessons.actions';
 import { REQUEST_STATUS, FIELD_TYPES, MODAL_STATES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
@@ -31,7 +31,7 @@ const initialState = {
         weekdays: {id: 'weekdays', value: [], error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.weekdays', label: 'forms.weekdays', required: true },
         // id: {id: 'id', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.id', label: 'forms.id', required: false },
     },
-    getAttendancesStatus: REQUEST_STATUS.NONE,
+    getAttendanceStatus: REQUEST_STATUS.NONE,
     attendances: [],
     setAttendanceStatus: REQUEST_STATUS.NONE
 };
@@ -80,9 +80,9 @@ const adminLessonsReducer = (state = initialState, action) => {
         case DELETE_LESSON_SUCCESS: return { ...state, deleteLessonStatus: REQUEST_STATUS.SUCCESS };
         case DELETE_LESSON_ERROR: return { ...state, deleteLessonStatus: REQUEST_STATUS.ERROR };
         
-        case ADMIN_GET_ATTENDANCES: return { ...state, getAttendancesStatus: REQUEST_STATUS.LOADING }
-        case ADMIN_GET_ATTENDANCES_SUCCESS: return { ...state, getAttendancesStatus: REQUEST_STATUS.SUCCESS, attendances: action.response }
-        case ADMIN_GET_ATTENDANCES_ERROR: return { ...state, getAttendancesStatus: REQUEST_STATUS.ERROR }
+        case ADMIN_GET_ATTENDANCES: return { ...state, getAttendanceStatus: REQUEST_STATUS.LOADING }
+        case ADMIN_GET_ATTENDANCES_SUCCESS: return { ...state, getAttendanceStatus: REQUEST_STATUS.SUCCESS, attendances: action.response }
+        case ADMIN_GET_ATTENDANCES_ERROR: return { ...state, getAttendancestatus: REQUEST_STATUS.ERROR }
 
         case ADMIN_SET_ATTENDANCE: return { ...state, setAttendanceStatus: REQUEST_STATUS.LOADING }
         case ADMIN_SET_ATTENDANCE_SUCCESS: return { ...state, setAttendanceStatus: REQUEST_STATUS.SUCCESS }

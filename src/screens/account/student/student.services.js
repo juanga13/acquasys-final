@@ -70,7 +70,7 @@ const requests = {
     },
 
     // suscribe to a lesson
-    suscribe: (studentId, lessonId) => {
+    suscribe: (lessonId, studentId) => {
         const requestOptions = {
             method: "GET",
             mode: "cors",
@@ -80,8 +80,9 @@ const requests = {
                 "Authorization": "Bearer " + localStorage.getItem("token")
             }
         };
-        return fetch(baseUrl + `/api/lesson/unroll/${studentId}/${lessonId}`, requestOptions)
+        return fetch(baseUrl + `/api/lesson/enroll/${studentId}/${lessonId}`, requestOptions)
             .then(response => {
+                console.log(response);
                 if (response.ok) return response.json()
                 else throw response.json()
             })
@@ -141,10 +142,23 @@ const requests = {
             })
     },
 
-    // updateMyDataRequest
-    // updateMyData: (newData) => {
-        
-    // },
+    getAttendance: (id) => {
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        };
+        return fetch(baseUrl + `/api/lesson/attendance/${id}`, requestOptions)
+            .then(response => {
+                if (response.ok) return response.json();
+                else throw response.json();
+            });
+    },
+    
 };
 
 export default requests;

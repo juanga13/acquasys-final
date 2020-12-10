@@ -69,6 +69,42 @@ const requests = {
                 else throw response.json()
             })
     },
+
+    getAttendances: (id) => {
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        };
+        
+        return fetch(baseUrl + `/api/lesson/attendance/${id}`, requestOptions)
+            .then(response => {
+                if (response.ok) return response.json();
+                else throw response.json();
+            });
+    },
+
+    setAttendance: (data) => {
+        const requestOptions = {
+            method: 'PUT',
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")   
+            },
+            body: JSON.stringify(data),
+        };
+
+        return fetch(baseUrl + '/api/lesson/attendance', requestOptions)
+            .then(response => {
+                if (response.ok) return response.json()
+                else throw response.json()
+            })
+    },
 };
 
 export default requests;

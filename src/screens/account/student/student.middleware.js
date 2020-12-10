@@ -8,7 +8,8 @@ import studentActions, {
     UNSUBSCRIBE_LESSON,
     GET_MY_ENROLLED,
     GET_MYSELF_DATA,
-    UPDATE_MY_DATA_REQUEST
+    STUDENT_GET_ATTENDANCES,
+    STUDENT_SET_ATTENDANCE,
 } from './student.actions';
 import request from './student.services';
 
@@ -38,7 +39,7 @@ const studentMiddleware = ({dispatch, getState}) => next => action => {
             break;
 
         case SUBSCRIBE_LESSON:
-            request.suscribe()
+            request.suscribe(action.lessonId, action.studentId)
                 .then((response) => {
                     dispatch(studentActions.subscribeLessonSuccess(response))
                     fireToast(I18n.t('student.lessons.success.suscribe.title'), I18n.t('student.lessons.success.suscribe.description'), 'success', 'check');
@@ -79,6 +80,12 @@ const studentMiddleware = ({dispatch, getState}) => next => action => {
                 });
             break;
 
+        case STUDENT_GET_ATTENDANCES:
+            
+            break;
+        case STUDENT_SET_ATTENDANCE:
+
+            break;
         // case UPDATE_MY_DATA_REQUEST:
         //     const myData = getState().student.myData;
         //     request.updateMyData(myData)

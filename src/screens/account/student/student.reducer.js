@@ -7,7 +7,7 @@ import {
     STUDENT_CHANGE_MODAL_STATE,
     STUDENT_INPUT_CHANGE,
     GET_MY_ENROLLED, GET_MY_ENROLLED_SUCCESS, GET_MY_ENROLLED_ERROR,
-    GET_MYSELF_DATA, GET_MYSELF_DATA_SUCCESS, GET_MYSELF_DATA_ERROR, STUDENT_SELECT_PAYMENT,
+    GET_MYSELF_DATA, GET_MYSELF_DATA_SUCCESS, GET_MYSELF_DATA_ERROR, STUDENT_SELECT_PAYMENT, STUDENT_LESSONS_CHANGE_MODAL_STATE, STUDENT_SELECT_LESSON,
     // UPDATE_MY_DATA_REQUEST, UPDATE_MY_DATA_REQUEST_SUCCESS, UPDATE_MY_DATA_REQUEST_ERROR,
 } from './student.actions';
 import { REQUEST_STATUS, MODAL_STATES, FIELD_TYPES, GENRES } from '../../../utils/consts';
@@ -113,6 +113,9 @@ const studentReducer = (state = initialState, action) => {
         case STUDENT_GET_CALENDAR_ERROR: return { ...state, getCalendarStatus: REQUEST_STATUS.ERROR };
 
         /* lessons */
+        case STUDENT_LESSONS_CHANGE_MODAL_STATE: return { ...state, modalState: action.modalState };
+        case STUDENT_SELECT_LESSON: return { ...state, selectedLesson: action.lesson };
+
         case STUDENT_GET_LESSONS: return { ...state, getLessonsStatus: REQUEST_STATUS.LOADING };
         case STUDENT_GET_LESSONS_SUCCESS: return { ...state, getLessonsStatus: REQUEST_STATUS.SUCCESS, lessons: action.response };
         case STUDENT_GET_LESSONS_ERROR: return { ...state, getLessonsStatus: REQUEST_STATUS.ERROR };

@@ -42,6 +42,7 @@ const Lessons = (props) => {
                 data={selectedLesson}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)} 
                 onEdit={() => props.changeModalState(MODAL_STATES.EDIT)}
+                onAttendances={() => props.changeModalState(MODAL_STATES.ATTENDANCE)}
             />,
             // ModalEdit with not null data is a new lesson
             <ModalEdit
@@ -62,13 +63,13 @@ const Lessons = (props) => {
             <ModalAttendance
                 key='modal-attendances'
                 isOpen={modalState === MODAL_STATES.ATTENDANCE}    
-                type={MODAL_TYPES.ADMIN_ASSISTANCES}
+                type={MODAL_TYPES.ADMIN_ATTENDANCES}
                 getAttendancesStatus={getAttendancesStatus}
                 attendances={attendances}
                 setAttendanceStatus={setAttendanceStatus}
-                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
-                onSetAttendance={(id, type, value) => props.inputChange(id, type, value)}
+                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
+                onSetAttendance={props.setAttendance}
             />,
             <ModalCreate
                 key='modal-create'
@@ -155,7 +156,8 @@ const mapDispatchToProps = (dispatch) => ({
     createLesson: (data) => dispatch(adminLessonsActions.createLesson(data)),
     updateLesson: (data) => dispatch(adminLessonsActions.updateLesson(data)),
     deleteLesson: (id) => dispatch(adminLessonsActions.deleteLesson(id)),
-    inputChange: (id, type, value) => dispatch(adminLessonsActions.adminLessonsInputChange(id, type, value))
+    inputChange: (id, type, value) => dispatch(adminLessonsActions.adminLessonsInputChange(id, type, value)),
+    setAttendance: (attendance) => dispatch(adminLessonsActions.setAttendance(attendance)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lessons);

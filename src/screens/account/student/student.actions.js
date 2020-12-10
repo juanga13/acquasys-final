@@ -20,13 +20,20 @@ export const STUDENT_GET_CALENDAR_SUCCESS = 'GET_CALENDAR_SUCCESS';
 export const STUDENT_GET_CALENDAR_ERROR = 'GET_CALENDAR_ERROR';
 
 /* lessons */
-export const STUDENT_LESSONS_INPUT_CHANGE = 'STUDENT_LESSONS_INPUT_CHANGE';
 export const STUDENT_LESSONS_CHANGE_MODAL_STATE = 'STUDENT_LESSONS_CHANGE_MODAL_STATE';
 export const STUDENT_SELECT_LESSON = 'STUDENT_SELECT_LESSON';
 
 export const STUDENT_GET_LESSONS = 'STUDENT_GET_LESSONS';
 export const STUDENT_GET_LESSONS_SUCCESS = 'STUDENT_GET_LESSONS_SUCCESS';
 export const STUDENT_GET_LESSONS_ERROR = 'STUDENT_GET_LESSONS_ERROR';
+
+export const STUDENT_GET_ATTENDANCES = 'STUDENT_GET_ATTENDANCES';
+export const STUDENT_GET_ATTENDANCES_SUCCESS = 'STUDENT_GET_ATTENDANCES_SUCCESS';
+export const STUDENT_GET_ATTENDANCES_ERROR = 'STUDENT_GET_ATTENDANCES_ERROR';
+
+export const STUDENT_SET_ATTENDANCE = 'STUDENT_SET_ATTENDANCE';
+export const STUDENT_SET_ATTENDANCE_SUCCESS = 'STUDENT_SET_ATTENDANCE_SUCCESS';
+export const STUDENT_SET_ATTENDANCE_ERROR = 'STUDENT_SET_ATTENDANCE_ERROR';
 
 export const SUBSCRIBE_LESSON = 'SUBSCRIBE_LESSON';
 export const SUBSCRIBE_LESSON_SUCCESS = 'SUBSCRIBE_LESSON_SUCCESS';
@@ -67,11 +74,23 @@ const studentActions = {
     getCalendarError: () => ({type: STUDENT_GET_CALENDAR_ERROR}),
 
     /* lessons */
+
+    studentLessonsChangeModalState: (modalState) =>  ({type: STUDENT_LESSONS_CHANGE_MODAL_STATE, modalState}),
+    studentSelectLesson: (lesson) =>  ({type: STUDENT_SELECT_LESSON, lesson}),
+
     getLessons: () => ({type: STUDENT_GET_LESSONS}),
     getLessonsSuccess: (response) => ({type: STUDENT_GET_LESSONS_SUCCESS, response}),
     getLessonsError: () => ({type: STUDENT_GET_LESSONS_ERROR}),
     
-    subscribeLesson: (lesson, student) => ({type: SUBSCRIBE_LESSON, lesson, student}),
+    studentGetAttendances: () => ({type: STUDENT_GET_ATTENDANCES}),
+    studentGetAttendancesSuccess: (response) => ({type: STUDENT_GET_ATTENDANCES_SUCCESS, response}),
+    studentGetAttendancesError: () => ({type: STUDENT_GET_ATTENDANCES_ERROR}),
+
+    studentSetAttendance: (attendance) => ({type: STUDENT_SET_ATTENDANCE, attendance}),
+    studentSetAttendanceSuccess: () => ({type: STUDENT_SET_ATTENDANCE_SUCCESS}),
+    studentSetAttendanceError: () => ({type: STUDENT_SET_ATTENDANCE_ERROR}),
+    
+    subscribeLesson: (lessonId, studentId) => ({type: SUBSCRIBE_LESSON, lessonId, studentId}),
     subscribeLessonSuccess: () => ({type: SUBSCRIBE_LESSON_SUCCESS}),
     subscribeLessonError: () => ({type: SUBSCRIBE_LESSON_ERROR}),
 

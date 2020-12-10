@@ -145,6 +145,17 @@
           "cancel": "Cancel",
           "send": "Enviar mensaje"
         }
+      },
+      "attendances": {
+        "title": {
+          "adminAttendances": "Asistencias",
+          "studentAttendances": "Asistencias",
+          "teacherAttendances": "Asistencias"
+        },
+        "buttons": {
+          "close": "Cerrar",
+          "goBack": "Volver"
+        }
       }
     },
     "table": {
@@ -160,7 +171,8 @@
       "cells": {
         "file alternate": "Detalles",
         "user delete": "Eliminar",
-        "signup": "Suscribirse"
+        "signup": "Suscribirse",
+        "remove": "Desuscribirse"
       },
       "error": {
         "dataError": "Hubo un error con la obtencion de datos"
@@ -364,6 +376,14 @@
         "get": {
           "title": "Obtencion de clases",
           "description": "Hubo un error al obtener las clases."
+        },
+        "getAttendance": {
+          "title": "Obtencion de clases",
+          "description": "Hubo un error al obtener las asistencias de esta clase."
+        },
+        "setAttendance": {
+          "title": "Asistencias",
+          "description": "Hubo un error al ingresar la asistencia."
         }
       },
       "searchName": "Nombre de la clase",

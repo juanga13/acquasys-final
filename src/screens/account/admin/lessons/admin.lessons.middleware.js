@@ -3,7 +3,10 @@ import adminLessonsActions, {
     CREATE_LESSON, 
     ADMIN_LESSONS_CHANGE_MODAL_STATE, 
     DELETE_LESSON,
-    UPDATE_LESSON
+    UPDATE_LESSON,
+    ADMIN_GET_ATTENDANCES,
+    ADMIN_SET_ATTENDANCE,
+    ADMIN_SELECT_LESSON,
 } from './admin.lessons.actions';
 import requests from './admin.lessons.services';
 import { MODAL_STATES } from '../../../../utils/consts';
@@ -85,6 +88,33 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
                 .catch(() => {
                     fireToast( I18n.t('admin.lessons.error.delete.title'), I18n.t('admin.lessons.error.delete.description'), 'error', 'warning' );
                     dispatch(adminLessonsActions.deleteLessonError())
+                });
+            break;
+
+        case ADMIN_SELECT_LESSON:
+            dispatch(adminLessonsActions.getAttendance(action.lesson.id));
+            break;
+
+        case ADMIN_GET_ATTENDANCES:
+            requests.getAttendances(action.id)
+                .then((response) => {
+                    dispatch(adminLessonsActions.getAttendancesSuccess(response));
+                })
+                .catch((error) => {
+                    dispatch(adminLessonsActions.getAttendancesError());
+                    fireToast(I18n.t('admin.lessons.error.getAttendance.title'), I18n.t('admin.lessons.error.getAttendance.description'), 'error', 'warning');
+                });
+            break;
+
+        case ADMIN_SET_ATTENDANCE:
+            requests.setAttendance(action.attendance)
+                .then((response) => {
+                    dispatch(adminLessonsActions.setAttendanceSuccess());
+                    dispatch(adminLessonsActions.getAttendance(getState().selectedLesson.id))
+                })
+                .catch((error) => {
+                    dispatch(adminLessonsActions.setAttendanceError());
+                    fireToast(I18n.t('admin.lessons.error.setAttendance.title'), I18n.t('admin.lessons.error.setAttendance.title'), 'error', 'warning');
                 });
             break;
 

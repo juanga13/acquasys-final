@@ -15,6 +15,7 @@ const MyTable = (props) => {
         color,
         noResults,
         defaultSort,
+        noSortable,
     } = props;
     let keys = Object.keys(data.length > 0 && data[0]).filter(key => columns.includes(key));
     const renderingData = defaultSort === 'date' ? data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : data;
@@ -29,7 +30,7 @@ const MyTable = (props) => {
             {status === REQUEST_STATUS.ERROR ?
                 <Header disabled>{I18n.t('common.table.error.dataError')}</Header>
                 :
-                <Table fixed padded striped celled color={color} sortable>
+                <Table fixed padded striped celled color={color} sortable={!noSortable}>
                     <Table.Header>
                         <Table.Row>
                             {keys.map((key) => (

@@ -50,13 +50,13 @@ const adminLessonsActions = {
     deleteLessonSuccess: () => ({ type: DELETE_LESSON_SUCCESS }),
     deleteLessonError: () => ({ type: DELETE_LESSON_ERROR }),
 
-    getAttendances: () => ({ type: ADMIN_GET_ATTENDANCES }),
-    getAttendances: (response) => ({ type: ADMIN_GET_ATTENDANCES_SUCCESS, response }),
-    getAttendances: () => ({ type: ADMIN_GET_ATTENDANCES_ERROR }),
+    getAttendances: (id) => ({ type: ADMIN_GET_ATTENDANCES, id }),
+    getAttendancesSuccess: (response) => ({ type: ADMIN_GET_ATTENDANCES_SUCCESS, response }),
+    getAttendancesError: () => ({ type: ADMIN_GET_ATTENDANCES_ERROR }),
 
     setAttendance: (attendance) => ({ type: ADMIN_SET_ATTENDANCE, attendance }),
-    setAttendance: () => ({ type: ADMIN_SET_ATTENDANCE_SUCCESS }),
-    setAttendance: () => ({ type: ADMIN_SET_ATTENDANCE_ERROR }),
+    setAttendanceSuccess: () => ({ type: ADMIN_SET_ATTENDANCE_SUCCESS }),
+    setAttendanceError: () => ({ type: ADMIN_SET_ATTENDANCE_ERROR }),
     
     clearStatuses: () => ({ type: CLEAR_STATUSES })
 };

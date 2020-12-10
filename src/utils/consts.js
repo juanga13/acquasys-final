@@ -47,18 +47,19 @@ export const MODAL_TYPES = {
     ADMIN_STUDENT: 'adminStudent',
     ADMIN_TEACHER: 'adminTeacher',
     ADMIN_LESSON: 'adminLesson',
-    ADMIN_ASSISTANCES: 'adminAssistances',
+    ADMIN_ATTENDANCES: 'adminAttendances',
     ADMIN_PAYMENT: 'adminPayment',
     
     TEACHER_PROFILE: 'teacherProfile',
     TEACHER_STUDENT: 'teacherStudent',
     TEACHER_LESSON: 'teacherLesson',
-    TEACHER_ASSISTANCES: 'teacherAssistances',
+    TEACHER_ATTENDANCES: 'teacherAttendances',
     
     STUDENT_PROFILE: 'studentProfile',
     STUDENT_STUDENT: 'studentStudent',
     STUDENT_LESSON: 'studentLesson',
     STUDENT_PAYMENT: 'studentPayment',
+    STUDENT_ATTENDANCES: 'studentAttendances',
 
     UNVERIFIED_PROFILE: 'unverifiedProfile',
 };
