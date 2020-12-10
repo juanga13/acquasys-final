@@ -28,10 +28,9 @@ const Profile = (props) => {
                 form={form}
                 status={updateMyDataStatus}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onVerify={(id) => props.verifyStudent(id)}
                 onChange={(id, type, value) => props.inputChange(id, type, value)}
                 onCancel={() => props.changeModalState(MODAL_STATES.PREVIEW)}
-                onSubmit={() => props.updateMyData()}
+                onSubmit={() => props.completeMyData()}
                 showImage
                 loading={getMyselfDataStatus === REQUEST_STATUS.LOADING || completeMyDataStatus === REQUEST_STATUS.LOADING}
             />
@@ -55,8 +54,7 @@ const Profile = (props) => {
                     <div className='profile-data-container'>
                         <Card fluid>
                             <Card.Content textAlign='right'>
-                                <Card.Header>{`${profile.name} ${profile.surname}`}</Card.Header>
-                                <Card.Meta>{I18n.t('student.profile.meta')}</Card.Meta>
+                                <Card.Header>{I18n.t('unverified.profile.title')}</Card.Header>
                                 <Card.Description>{profile.email}</Card.Description>
                             </Card.Content>
                             <Card.Content textAlign='right'>

@@ -199,10 +199,16 @@
       "student": {
         "weekLessons": "(mTODO) Clases que tengo esta semana",
         "paymentsNotDone": "(mTODO) Pagos que me faltan hacer.",
-        "paymentsNext": "(mTODO) Pagos que tengo que hacer el mes que viene."
+        "paymentsNext": "(mTODO) Pagos que tengo que hacer el mes que viene.",
+        "texts": {
+          "noLessonsThisWeek": "Ninguna clase esta semana"
+        }
       },
       "teacher": {
-        "weekLessons": "(mTODO) Clases que tengo que dar esta semana."
+        "weekLessons": "(mTODO) Clases que tengo que dar esta semana.",
+        "texts": {
+          "noLessonsThisWeek": "Ninguna clase esta semana"
+        }
       },
       "unverified": {
         "verificationStatus": "(mTODO) Estado de la verificacion de mi cuenta (1. faltan datos; 2. falta confirmacion; 3. verificacion denegada)"
@@ -539,7 +545,7 @@
         "header": "Pagos pendientes"
       },
       "lessons": {
-        "header": "Mis clases"
+        "header": "Mis clases esta semana"
       }
     },
     "lessons": {
@@ -599,7 +605,8 @@
           "title": "Actualizacion de datos",
           "description": "Hubo un error al actualizar tus datos."
         }
-      }
+      },
+      "meta": "Profesor"
     },
     "lessons": {
       "success": {
@@ -616,6 +623,18 @@
         "setAttendance": {
           "title": "Asistencias",
           "description": "Hubo un error al poner las asistencias."
+        },
+        "getAttendances": {
+          "title": "Asistencias",
+          "description": "Hubo un error al obtener las asistencias"
+        },
+        "getMyself": {
+          "title": "Mis datos",
+          "description": "Hubo un error al obtener tus datos"
+        },
+        "calendar": {
+          "title": "Calendario",
+          "description": "Hubo un error al obtener los datos del calendario"
         }
       }
     }
@@ -635,7 +654,8 @@
         }
       },
       "notVerified": "No verificado",
-      "verificationPending": "Esperando confirmación"
+      "verificationPending": "Esperando confirmación",
+      "title": "Alumno sin verificar"
     }
   }
 }

@@ -17,38 +17,11 @@ import { dataToFormTransform } from '../../../utils/dataFormTransform';
 const _today = new Date();
 const initialState = {
     /* profile and other */
-    modalState: MODAL_STATES.CLOSED,  // only modal edit available in profile of student 
+    modalState: MODAL_STATES.CLOSED,
     myEnrolled: [],
     getMyEnrolledStatus: REQUEST_STATUS.NONE,
     myData: null,
     getMyselfDataStatus: REQUEST_STATUS.NONE,
-    // form: {
-    //     name: { id: 'name', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.name', label: 'forms.name', required: true },
-    //     surname: { id: 'surname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.surname', label: 'forms.surname', required: true },
-    //     email: { id: 'email', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email', required: true },
-    //     password: { id: 'password', value: '', error: false, type: FIELD_TYPES.PASSWORD, placeholder: 'forms.password', label: 'forms.password', required: true },
-    //     dni: { id: 'dni', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.dni', label: 'forms.dni', required: true },
-    //     sex: { id: 'sex', value: GENRES.FEMENINE, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.sex', label: 'forms.sex', required: true },
-    //     birthday: { id: 'birthday', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.birthday', label: 'forms.birthday', required: true, maxDate: _today },
-    //     phoneNumber: { id: 'phoneNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.phoneNumber', label: 'forms.phoneNumber', required: true },
-    //     address: { id: 'address', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.address', label: 'forms.address', required: true },
-    //     socialPlan: { id: 'socialPlan', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.socialPlan', label: 'forms.socialPlan', required: true },
-    //     affiliateNumber: { id: 'affiliateNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.affiliateNumber', label: 'forms.affiliateNumber', required: true },
-    //     inscriptionDate: { id: 'inscriptionDate', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.inscriptionDate', label: 'forms.inscriptionDate', required: true, maxDate: _today },
-
-    //     // optional data
-    //     fatherName: { id: 'fatherName', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherName', label: 'forms.fatherName', required: false },
-    //     fatherSurname: { id: 'fatherSurname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherSurname', label: 'forms.fatherSurname', required: false },
-    //     fatherEmail: { id: 'fatherEmail', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.fatherEmail', label: 'forms.fatherEmail', required: false },
-    //     fatherPhone: { id: 'fatherPhone', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherPhone', label: 'forms.fatherPhone', required: false },
-    //     motherName: { id: 'motherName', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherName', label: 'forms.motherName', required: false },
-    //     motherSurname: { id: 'motherSurname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherSurname', label: 'forms.motherSurname', required: false },
-    //     motherEmail: { id: 'motherEmail', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.motherEmail', label: 'forms.motherEmail', required: false },
-    //     motherPhone: { id: 'motherPhone', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherPhone', label: 'forms.motherPhone', required: false },
-        
-    //     verified: { id: 'verified', value: false, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.verified', label: 'forms.verified', required: false },
-    // },
-    // updateMyDataStatus: REQUEST_STATUS.NONE,
 
     /* calendar */
     calendar: null,
@@ -60,6 +33,9 @@ const initialState = {
     selectedLesson: null,
     subscribeLessonStatus: REQUEST_STATUS.NONE,
     unsubscribeLessonStatus: REQUEST_STATUS.NONE,
+    attendances: [],
+    getAttendancesStatus: REQUEST_STATUS.NONE,
+    setAttendanceStatus: REQUEST_STATUS.NONE,
     
     /* payment */
     payments: [],

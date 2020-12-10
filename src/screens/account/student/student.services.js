@@ -69,7 +69,6 @@ const requests = {
             })
     },
 
-    // suscribe to a lesson
     suscribe: (lessonId, studentId) => {
         const requestOptions = {
             method: "GET",
@@ -88,7 +87,6 @@ const requests = {
             })
     },
     
-    // unsuscribe to a lesson
     unsuscribe: (studentId, lessonId) => {
         const requestOptions = {
             method: "GET",
@@ -106,7 +104,6 @@ const requests = {
             })
     },
     
-    //  GET_MY_ENROLLED 
     getMyEnrolled: () => {
         const requestOptions = {
             method: "GET",
@@ -124,7 +121,6 @@ const requests = {
             })
     },
     
-    //  GET_MYSELF_DATA
     getMyselfData: () => {
         const requestOptions = {
             method: "GET",
@@ -158,7 +154,6 @@ const requests = {
                 else throw response.json();
             });
     },
-    
 };
 
 export default requests;

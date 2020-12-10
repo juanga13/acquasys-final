@@ -64,19 +64,15 @@ const studentActions = {
     studentChangeModalState: (modalState) => ({type: STUDENT_CHANGE_MODAL_STATE, modalState}),
     studentInputChange: (id, typeD, value) => ({type: STUDENT_INPUT_CHANGE, id, typeD, value}),
 
-    // updateMyDataRequest: () => ({type: UPDATE_MY_DATA_REQUEST}),
-    // updateMyDataRequestSuccess: (response) => ({type: UPDATE_MY_DATA_REQUEST_SUCCESS, response}),
-    // updateMyDataRequestError: () => ({type: UPDATE_MY_DATA_REQUEST_ERROR}),
-
+    studentSelectLesson: (lesson) =>  ({type: STUDENT_SELECT_LESSON, lesson}),
+    studentLessonsChangeModalState: (modalState) =>  ({type: STUDENT_LESSONS_CHANGE_MODAL_STATE, modalState}),
+    
     /* calendar */
     getCalendar: (startDate, endDate) => ({type: STUDENT_GET_CALENDAR, startDate, endDate}),
     getCalendarSuccess: (response) => ({type: STUDENT_GET_CALENDAR_SUCCESS, response}),
     getCalendarError: () => ({type: STUDENT_GET_CALENDAR_ERROR}),
 
     /* lessons */
-
-    studentLessonsChangeModalState: (modalState) =>  ({type: STUDENT_LESSONS_CHANGE_MODAL_STATE, modalState}),
-    studentSelectLesson: (lesson) =>  ({type: STUDENT_SELECT_LESSON, lesson}),
 
     getLessons: () => ({type: STUDENT_GET_LESSONS}),
     getLessonsSuccess: (response) => ({type: STUDENT_GET_LESSONS_SUCCESS, response}),

@@ -10,10 +10,10 @@ export const sortData = (modalType, data) => {
     let order = [];
     switch (modalType) {
         case MODAL_TYPES.ADMIN_STUDENT: 
-            order = ['name', 'surname', 'email', 'password', 'dni', 'sex', 'birthday', 'phoneNumber', 'address', 'socialPlan', 'affiliateNumber', 'inscriptionDate', 'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone', 'motherName', 'motherSurname', 'motherEmail', 'motherPhone', 'verified'];
+            order = ['name', 'surname', 'email', 'dni', 'sex', 'birthday', 'phoneNumber', 'address', 'socialPlan', 'affiliateNumber', 'inscriptionDate', 'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone', 'motherName', 'motherSurname', 'motherEmail', 'motherPhone', 'verified'];
             break;
         case MODAL_TYPES.ADMIN_TEACHER: 
-            order = ['email', 'password', 'name', 'surname', 'dni', 'cuil', 'sex', 'phoneNumber'];
+            order = ['email', 'name', 'surname', 'dni', 'cuil', 'sex', 'phoneNumber'];
             break;
         case MODAL_TYPES.ADMIN_LESSON: 
             order = ['name', 'startDate', 'endDate', 'students', 'teachers', 'weekdays'];

@@ -20,11 +20,6 @@ const Lessons = (props) => {
     const [searchName, setSearchName] = useState('');
     const filteredLessons = lessons.filter(lesson => lesson.name.includes(searchName));
 
-    useEffect(() => {
-        if (getLessonsStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('teacher.lessons.error.get.title'), I18n.t('teacher.lessons.error.get.description'), 'error', 'warning' );
-        if (getAttendancesStatus === REQUEST_STATUS.SUCCESS) fireToast( I18n.t('teacher.lessons.success.setAttendance.title'), I18n.t('teacher.lessons.success.setAttendance.description'), 'success', 'check' );
-        if (getAttendancesStatus === REQUEST_STATUS.ERROR) fireToast( I18n.t('teacher.lessons.error.setAttendance.title'), I18n.t('teacher.lessons.error.setAttendance.description'), 'error', 'warning' );
-    }, [props.getLessonsStatus, props.getAttendancesStatus]);
 
     const renderModals = () => {
         return ([

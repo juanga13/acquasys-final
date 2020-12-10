@@ -19,23 +19,22 @@ const requests = {
             })
     },
     
-    // TODO no esta hecho en el back
-    // getCalendar: (startDate, endDate) => {
-    //     const requestOptions = {
-    //         method: "GET",
-    //         mode: "cors",
-    //         credentials: "same-origin",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": "Bearer " + localStorage.getItem("token")
-    //         }
-    //     };
-    //     return fetch(baseUrl + "/api/lesson/calendar/" + startDate + "/" + endDate, requestOptions)
-    //         .then(response => {
-    //             if (response.ok) return response.json()
-    //             else throw response.json()
-    //         })
-    // },
+    getCalendar: (startDate, endDate) => {
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        };
+        return fetch(baseUrl + "/api/lesson/calendar/" + startDate + "/" + endDate, requestOptions)
+            .then(response => {
+                if (response.ok) return response.json()
+                else throw response.json()
+            })
+    },
 
     getAttendances(lessonId) {
         const requestOptions = {
@@ -72,7 +71,41 @@ const requests = {
                 if (response.ok) return response.json();
                 else throw response.json();
             })
-    }
+    },
+
+    getMyselfData: () => {
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        };
+        return fetch(baseUrl + "/api/teacher/myself", requestOptions)
+            .then(response => {
+                if (response.ok) return response.json()
+                else throw response.json()
+            })
+    },
+
+    getAttendance: (id) => {
+        const requestOptions = {
+            method: "GET",
+            mode: "cors",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            }
+        };
+        return fetch(baseUrl + `/api/lesson/attendance/${id}`, requestOptions)
+            .then(response => {
+                if (response.ok) return response.json();
+                else throw response.json();
+            });
+    },
 };
 
 export default requests;

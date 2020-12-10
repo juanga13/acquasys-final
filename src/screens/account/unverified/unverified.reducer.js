@@ -18,12 +18,12 @@ const initialState = {
         password: { id: 'password', value: '', error: false, type: FIELD_TYPES.PASSWORD, placeholder: 'forms.password', label: 'forms.password', required: true },
         dni: { id: 'dni', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.dni', label: 'forms.dni', required: true },
         sex: { id: 'sex', value: GENRES.FEMENINE, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.sex', label: 'forms.sex', required: true },
-        birthday: { id: 'birthday', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.birthday', label: 'forms.birthday', required: true, maxDate: _today },
+        birthday: { id: 'birthday', value: null, error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.birthday', label: 'forms.birthday', required: true, maxDate: _today },
         phoneNumber: { id: 'phoneNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.phoneNumber', label: 'forms.phoneNumber', required: true },
         address: { id: 'address', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.address', label: 'forms.address', required: true },
         socialPlan: { id: 'socialPlan', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.socialPlan', label: 'forms.socialPlan', required: true },
         affiliateNumber: { id: 'affiliateNumber', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.affiliateNumber', label: 'forms.affiliateNumber', required: true },
-        inscriptionDate: { id: 'inscriptionDate', value: _today.getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.inscriptionDate', label: 'forms.inscriptionDate', required: true, maxDate: _today },
+        inscriptionDate: { id: 'inscriptionDate', value: null, error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.inscriptionDate', label: 'forms.inscriptionDate', required: true, maxDate: _today },
 
         // optional data
         fatherName: { id: 'fatherName', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.fatherName', label: 'forms.fatherName', required: false },
@@ -34,6 +34,8 @@ const initialState = {
         motherSurname: { id: 'motherSurname', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherSurname', label: 'forms.motherSurname', required: false },
         motherEmail: { id: 'motherEmail', value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.motherEmail', label: 'forms.motherEmail', required: false },
         motherPhone: { id: 'motherPhone', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.motherPhone', label: 'forms.motherPhone', required: false },
+        
+        // verified: { id: 'verified', value: false, error: false, type: FIELD_TYPES.BOOLEAN, placeholder: 'forms.verified', label: 'forms.verified', required: false },
     },
     
     myData: null,
@@ -45,14 +47,15 @@ const unverifiedReducer = (state = initialState, action) => {
     switch (action.type) {
         case UNVERIFIED_CHANGE_MODAL_STATE:
             if (action.modalState === MODAL_STATES.EDIT) {
-                const newStudentForm = dataToFormTransform(state.myData, state.form);
+                const dataWithoutVerified = state.myData; delete dataWithoutVerified.verified
+                const newStudentForm = dataToFormTransform(dataWithoutVerified, state.form);
                 return { ...state, modalState: action.modalState, form: newStudentForm };    
             } else {
                 return { ...state, modalState: action.modalState, form: initialState.form };
             };
         case UNVERIFIED_INPUT_CHANGE:
-            const { id, typedD, value } = action;
-            const error = !verifyInput(id, typedD, value);
+            const { id, typeD, value } = action;
+            const error = !verifyInput(id, typeD, value);
             return {
                 ...state,
                 form: {
