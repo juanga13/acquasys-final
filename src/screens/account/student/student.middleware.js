@@ -1,4 +1,5 @@
 import { I18n } from 'react-redux-i18n';
+import { tenDaysBeforeNow } from '../../../utils/time';
 import fireToast from '../../common/components/Toaster';
 import studentActions, {
     STUDENT_GET_LESSONS, 
@@ -39,10 +40,12 @@ const studentMiddleware = ({dispatch, getState}) => next => action => {
             break;
 
         case SUBSCRIBE_LESSON:
-            request.suscribe(action.lessonId, action.studentId)
+            request.suscribe(action.studentId, action.lessonId)
                 .then((response) => {
                     dispatch(studentActions.subscribeLessonSuccess(response))
                     fireToast(I18n.t('student.lessons.success.suscribe.title'), I18n.t('student.lessons.success.suscribe.description'), 'success', 'check');
+                    dispatch(studentActions.getMyEnrolled());
+                    dispatch(studentActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
                 })
                 .catch((error) => {
                     dispatch(studentActions.subscribeLessonError(error))
@@ -51,10 +54,12 @@ const studentMiddleware = ({dispatch, getState}) => next => action => {
             break;
 
         case UNSUBSCRIBE_LESSON:
-            request.unsuscribe()
+            request.unsuscribe(action.studentId, action.lessonId)
                 .then((response) => {
                     dispatch(studentActions.unsubscribeLessonSuccess(response))
                     fireToast( I18n.t('student.lessons.success.unsuscribe.title'), I18n.t('student.lessons.success.unsuscribe.description'), 'success', 'check');
+                    dispatch(studentActions.getMyEnrolled());
+                    dispatch(studentActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
                 })
                 .catch((error) => {
                     dispatch(studentActions.unsubscribeLessonError(error))

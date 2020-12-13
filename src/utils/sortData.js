@@ -53,12 +53,7 @@ export const sortData = (modalType, data) => {
         case MODAL_TYPES.TEACHER_PROFILE: 
             order = [
                 'name', 'surname', 'email',
-                // 'password',
-                'cuil', 'sex', 'birthday', 'phoneNumber',
-                'address', 'socialPlan', 'affiliateNumber', 'inscriptionDate',
-                'fatherName', 'fatherSurname', 'fatherEmail', 'fatherPhone',
-                'motherName', 'motherSurname', 'motherEmail', 'motherPhone',
-                // 'verified'
+                'cuil', 'sex', 'phoneNumber',
             ];
             break;
         case MODAL_TYPES.TEACHER_LESSON: 

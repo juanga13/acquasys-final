@@ -45,17 +45,17 @@ const ModalAttendance = (props) => {
     const renderForm = () => {
         switch (type) {
             case MODAL_TYPES.ADMIN_ATTENDANCES:
-                return attendances?.map((value, i) => (
-                    <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
+                return attendances.possibleDates.map((value, i) => (
+                    <p key={`modal-attendance-item-${i}`}>{new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})}</p>
                 ));
 
             case MODAL_TYPES.STUDENT_ATTENDANCES:
-                return attendances?.map((value, i) => (
+                return attendances.possibleDates.map((value, i) => (
                     <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
                 ));
 
             case MODAL_TYPES.TEACHER_ATTENDANCES:
-                return attendances?.map((value, i) => (
+                return attendances.possibleDates.map((value, i) => (
                     <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
                 ));
 
@@ -83,7 +83,7 @@ const ModalAttendance = (props) => {
             <Modal.Header>{I18n.t('common.modals.attendances.title.' + type)}</Modal.Header>
             <Modal.Content>
                 <Modal.Description>
-                    {renderForm()}
+                    {/* {renderForm()} */}
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>

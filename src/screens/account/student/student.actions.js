@@ -86,11 +86,11 @@ const studentActions = {
     studentSetAttendanceSuccess: () => ({type: STUDENT_SET_ATTENDANCE_SUCCESS}),
     studentSetAttendanceError: () => ({type: STUDENT_SET_ATTENDANCE_ERROR}),
     
-    subscribeLesson: (lessonId, studentId) => ({type: SUBSCRIBE_LESSON, lessonId, studentId}),
+    subscribeLesson: (studentId, lessonId) => ({type: SUBSCRIBE_LESSON, studentId, lessonId}),
     subscribeLessonSuccess: () => ({type: SUBSCRIBE_LESSON_SUCCESS}),
     subscribeLessonError: () => ({type: SUBSCRIBE_LESSON_ERROR}),
 
-    unsubscribeLesson: () => ({type: UNSUBSCRIBE_LESSON}),
+    unsubscribeLesson: (studentId, lessonId) => ({type: UNSUBSCRIBE_LESSON, studentId, lessonId}),
     unsubscribeLessonSuccess: () => ({type: UNSUBSCRIBE_LESSON_SUCCESS}),
     unsubscribeLessonError: () => ({type: UNSUBSCRIBE_LESSON_ERROR}),
     

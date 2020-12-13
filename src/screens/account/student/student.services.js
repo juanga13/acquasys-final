@@ -69,7 +69,7 @@ const requests = {
             })
     },
 
-    suscribe: (lessonId, studentId) => {
+    suscribe: (studentId, lessonId) => {
         const requestOptions = {
             method: "GET",
             mode: "cors",

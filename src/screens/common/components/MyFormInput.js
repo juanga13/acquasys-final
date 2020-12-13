@@ -107,7 +107,16 @@ const MyFormInput = (props) => {
                         selection
                         defaultValue={selectedStudents}
                         options={allStudents}
-                        onChange={(e, data) => props.onChange(id, type, data.value)}
+                        /* array of student ids */
+                        // onChange={(e, data) => props.onChange(id, type, data.value)}
+                        /* array of student objects */
+                        onChange={(e, studentIdArray) => {
+                            var result = [];
+                            studentIdArray.value.forEach(studentId => (
+                                result.push(props.students.find(student => student.id === studentId))
+                            ));
+                            props.onChange(id, type, result);
+                        }}
                     />
                 );
             } else if (id === 'teachers') {
@@ -129,6 +138,9 @@ const MyFormInput = (props) => {
                         selection
                         defaultValue={selectedTeachersIds}
                         options={allTeachers}
+                        /* array of teacher ids */
+                        // onChange={(e, data) => props.onChange(id, type, data.value)}
+                        /* array of teacher objects */
                         onChange={(e, teacherIdArray) => {
                             var result = [];
                             teacherIdArray.value.forEach(teacherId => (

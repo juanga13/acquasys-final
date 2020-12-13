@@ -18,23 +18,6 @@ const requests = {
                 else throw response.json();
             })
     },
-    
-    getCalendar: (startDate, endDate) => {
-        const requestOptions = {
-            method: "GET",
-            mode: "cors",
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            }
-        };
-        return fetch(baseUrl + "/api/lesson/calendar/" + startDate + "/" + endDate, requestOptions)
-            .then(response => {
-                if (response.ok) return response.json()
-                else throw response.json()
-            })
-    },
 
     getAttendances(lessonId) {
         const requestOptions = {

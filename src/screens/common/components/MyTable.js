@@ -16,6 +16,7 @@ const MyTable = (props) => {
         noResults,
         defaultSort,
         noSortable,
+        loading,
     } = props;
     let keys = Object.keys(data.length > 0 && data[0]).filter(key => columns.includes(key));
     const renderingData = defaultSort === 'date' ? data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : data;
@@ -26,7 +27,7 @@ const MyTable = (props) => {
 
     return (
         <div className='table-container'>
-            <Dimmer active={status === REQUEST_STATUS.LOADING} inverted><Loader inverted/></Dimmer>
+            <Dimmer active={status === REQUEST_STATUS.LOADING || loading} inverted><Loader inverted/></Dimmer>
             {status === REQUEST_STATUS.ERROR ?
                 <Header disabled>{I18n.t('common.table.error.dataError')}</Header>
                 :

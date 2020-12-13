@@ -25,14 +25,11 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
             dispatch(sessionActions.getProfile());
             dispatch(commonActions.getMessages());
             const role = localStorage.getItem('role');
-            console.log('rol: ' + role);
             switch (role) {
                 case ROLES.ADMIN:
-                    // console.log('admin')
                     dispatch(adminActions.getAllData());
                     break;
                 case ROLES.STUDENT:
-                    // console.log('student')
                     dispatch(studentActions.getMyEnrolled());
                     dispatch(studentActions.getMyselfData());
                     dispatch(studentActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
@@ -40,8 +37,7 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
                     dispatch(studentActions.getLessons());
                     break;
                 case ROLES.TEACHER:
-                    console.log('teacher')
-                    // dispatch(teacherActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
+                    dispatch(teacherActions.getMyselfData());
                     dispatch(teacherActions.getLessons());
                     break;
                 case ROLES.UNVERIFIED_STUDENT:

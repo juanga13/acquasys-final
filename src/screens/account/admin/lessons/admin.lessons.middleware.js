@@ -92,7 +92,7 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             break;
 
         case ADMIN_SELECT_LESSON:
-            dispatch(adminLessonsActions.getAttendance(action.lesson.id));
+            if (!!action.lesson) dispatch(adminLessonsActions.getAttendances(action.lesson.id));
             break;
 
         case ADMIN_GET_ATTENDANCES:

@@ -32,7 +32,7 @@ const Lessons = (props) => {
     // TODO hacer traducciones de error/success
     useEffect(() => {
         // console.log('lesson effect');
-    }, [props.subscribeLessonStatus, props.unsubscribeLessonStatus]);
+    }, [subscribeLessonStatus, unsubscribeLessonStatus]);
 
     const renderModals = () => {
         return ([
@@ -44,7 +44,7 @@ const Lessons = (props) => {
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onAttendances={() => props.changeModalState(MODAL_STATES.ATTENDANCE)}
                 noEditOption
-                noAttendanceOption={myEnrolled.find((lesson) => selectedLesson.id === lesson.id) === undefined}
+                noAttendanceOption={selectedLesson && myEnrolled.find((lesson) => selectedLesson.id === lesson.id) === undefined}
             />,
             <ModalAttendance
                 key='modal-attendances'
@@ -92,6 +92,7 @@ const Lessons = (props) => {
                 status={getLessonsStatus}
                 color='yellow'
                 noSortable
+                loading={subscribeLessonStatus === REQUEST_STATUS.LOADING || unsubscribeLessonStatus === REQUEST_STATUS.LOADING}
             />
             <MyTable
                 data={myEnrolled}
@@ -104,12 +105,13 @@ const Lessons = (props) => {
                     }},
                     { type: 'remove', action: (data) => {
                         console.log('unsuscribed ', data, myData.id, data.id); 
-                        props.subscribeLesson(myData.id, data.id);
+                        props.unsubscribeLesson(myData.id, data.id);
                     }}
                 ]}
                 status={getLessonsStatus}
                 color='yellow'
                 noSortable
+                loading={subscribeLessonStatus === REQUEST_STATUS.LOADING || unsubscribeLessonStatus === REQUEST_STATUS.LOADING}
             />
         </div>
     );
@@ -133,7 +135,7 @@ const mapDispatchToProps = (dispatch) => ({
     changeModalState: (modalState) => dispatch(studentActions.studentLessonsChangeModalState(modalState)),
     selectLesson: (lesson) => dispatch(studentActions.studentSelectLesson(lesson)),
     subscribeLesson: (lessonId, studentId) => dispatch(studentActions.subscribeLesson(lessonId, studentId)), 
-    unsubscribeLesson: (lesson) => dispatch(studentActions.unsubscribeLesson(lesson)) 
+    unsubscribeLesson: (lessonId, studentId) => dispatch(studentActions.unsubscribeLesson(lessonId, studentId)) 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lessons);

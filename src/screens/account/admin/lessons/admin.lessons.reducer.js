@@ -31,7 +31,11 @@ const initialState = {
         weekdays: {id: 'weekdays', value: [], error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.weekdays', label: 'forms.weekdays', required: true },
         // id: {id: 'id', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.id', label: 'forms.id', required: false },
     },
-    attendances: [],
+    attendances: {
+        attendance: {},
+        possibleDates: [],
+        students: [],
+    },
     getAttendanceStatus: REQUEST_STATUS.NONE,
     setAttendanceStatus: REQUEST_STATUS.NONE,
 };

@@ -606,7 +606,11 @@
           "description": "Hubo un error al actualizar tus datos."
         }
       },
-      "meta": "Profesor"
+      "meta": "Profesor",
+      "myData": "Ver mis datos",
+      "lessons": {
+        "header": "Clases esta semana"
+      }
     },
     "lessons": {
       "success": {
