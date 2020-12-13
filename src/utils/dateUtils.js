@@ -10,3 +10,9 @@ export const dateToString = (date) => {
 dateToString.PropTypes = {
     date: PropTypes.Date,
 }
+
+const monthsSimple = ['ENE', 'FEB', 'MAR', 'ABR', 'MAR', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+export const dateToSimple = (date) => {
+    const datee = new Date(date);
+    return `${datee.getDay()}/${monthsSimple[datee.getMonth()]}/${datee.getFullYear()}`
+}

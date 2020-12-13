@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Header, Button, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import teacherActions from '../teacher.actions';
-import { MODAL_TYPES, MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../../../utils/consts';
+import { MODAL_TYPES, MODAL_STATES, FIELD_TYPES, REQUEST_STATUS } from '../../../../utils/consts';
 import { ModalPreview } from '../../../common/components/Modals';
-import MyTable from '../../../common/components/MyTable';
-import fireToast from '../../../common/components/Toaster';
+import MyTable from '../../../common/components/MyTable/MyTable';
+import ModalAttendance from '../../../common/components/Modals/ModalAttendance';
+
 
 const Lessons = (props) => {
     const {
@@ -14,8 +15,9 @@ const Lessons = (props) => {
         selectedLesson,
         modalState,
         getLessonsStatus,
-        getAttendancesStatus,
         attendances,
+        getAttendancesStatus,
+        setAttendanceStatus,
     } = props;
     const [searchName, setSearchName] = useState('');
     const filteredLessons = lessons.filter(lesson => lesson.name.includes(searchName));
@@ -29,8 +31,19 @@ const Lessons = (props) => {
                 type={MODAL_TYPES.TEACHER_LESSON}
                 data={selectedLesson}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)} 
-                onEdit={() => props.changeModalState(MODAL_STATES.EDIT)}
+                onAttendances={() => props.changeModalState(MODAL_STATES.ATTENDANCE)}
+                noEditOption
+            />,
+            <ModalAttendance
+                key='modal-attendances'
+                isOpen={modalState === MODAL_STATES.ATTENDANCE}    
+                type={MODAL_TYPES.STUDENT_ATTENDANCES}
+                getAttendancesStatus={getAttendancesStatus}
                 attendances={attendances}
+                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
+                onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
+                setAttendanceStatus={setAttendanceStatus}
+                onSetAttendance={(id, type, value) => props.inputChange(id, type, value)}
             />
         ])
     };
@@ -68,6 +81,7 @@ const Lessons = (props) => {
                     }}
                 ]}
                 status={getLessonsStatus}
+                loading={getAttendancesStatus === REQUEST_STATUS.LOADING}
                 color='yellow'
             />
         </div>
@@ -80,6 +94,7 @@ const mapStateToProps = (state) => ({
     modalState: state.teacher.modalState,
     getLessonsStatus: state.teacher.getLessonsStatus,
     getAttendancesStatus: state.teacher.getAttendancesStatus,
+    setAttendanceStatus: state.teacher.setAttendanceStatus,
     attendances: state.teacher.attendances
 });
 

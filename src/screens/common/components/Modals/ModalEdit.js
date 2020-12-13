@@ -5,7 +5,7 @@ import { Modal, Form, Image, Button, Icon, Loader, Dimmer, Label } from 'semanti
 import { I18n } from 'react-redux-i18n';
 import { dummyAvatar } from '../../../../assets';
 import { MODAL_TYPES, REQUEST_STATUS } from '../../../../utils/consts';
-import MyFormInput from '../MyFormInput';
+import MyFormInput from '../MyFormInput/MyFormInput';
 import verifyInput from '../../../../utils/verifyInput';
 
 /**

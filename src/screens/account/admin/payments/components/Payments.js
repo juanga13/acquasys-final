@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { Header, Button, Label, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
-import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import ModalCreate from '../../../../common/components/Modals/ModalCreate';
-import ModalDelete from '../../../../common/components/Modals/ModalDelete';
 import { MODAL_STATES, MODAL_TYPES, REQUEST_STATUS, FIELD_TYPES } from '../../../../../utils/consts';
 import adminPaymentsActions from '../admin.payments.actions';
-import MyTable from '../../../../common/components/MyTable';
+import MyTable from '../../../../common/components/MyTable/MyTable';
 import fireToast from '../../../../common/components/Toaster';
 import './Payment.scss';
 import ReactDatePicker from 'react-datepicker';
@@ -63,20 +61,6 @@ const Payments = (props) => {
                 onEdit={() => props.changeModalState(MODAL_STATES.EDIT)}
                 noEditOption
             />,
-            // <ModalEdit
-            //     key='modal-edit'
-            //     isOpen={modalState === MODAL_STATES.EDIT}
-            //     type={MODAL_TYPES.ADMIN_PAYMENT}
-            //     form={paymentForm}
-            //     loading={updatePaymentStatus === REQUEST_STATUS.LOADING}
-            //     onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-            //     onChange={(id, value) => props.inputChange(id, value)}
-            //     onCancel={() => {  // user cancel edition and goes back to preview mode
-            //         props.changeModalState(MODAL_STATES.PREVIEW);
-            //     }}
-            //     onSubmit={() => props.updatePayment()}
-            //     students={props.students}  // all students available
-            // />,
             <ModalCreate
                 key='modal-create'
                 isOpen={modalState === MODAL_STATES.CREATE}
@@ -89,15 +73,6 @@ const Payments = (props) => {
                 onSubmit={(data) => props.createPayment(data)}  // triggers selectedPayment if success and opens preview
                 students={props.students}
             />,
-            // <ModalDelete
-            //     key='modal-delete'
-            //     isOpen={modalState === MODAL_STATES.DELETE}
-            //     type={MODAL_TYPES.ADMIN_PAYMENT}
-            //     data={selectedPayment}
-            //     loading={deletePaymentStatus === REQUEST_STATUS.LOADING}
-            //     onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-            //     onSubmit={() => props.deletePayment(selectedPayment.id)}
-            // />
         ])
     };
 
@@ -174,10 +149,6 @@ const Payments = (props) => {
                             props.changeModalState(MODAL_STATES.PREVIEW);
                         }
                     },
-                    // { type: 'user delete', action: (data) => {
-                    //     props.selectPayment(data);
-                    //     props.changeModalState(MODAL_STATES.DELETE);
-                    // }}
                 ]}
                 status={getPaymentsStatus}
                 color='grey'

@@ -1,0 +1,18 @@
+.attendance-checkbox-container {
+    border-radius: 3px;
+    border: 1px solid #888888;
+    background-color: #ffffff;
+    width: 25px;
+    height: 25px;
+
+    &:hover {
+        box-shadow: 0px 0px 5px 1px #ffffff;
+    }
+    &:active {
+        box-shadow: 0px 0px 5px 1px #888888;
+    }
+
+    .attendance-checkbox-letter {
+        font-weight: bold;
+    }
+}

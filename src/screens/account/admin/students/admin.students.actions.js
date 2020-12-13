@@ -33,7 +33,7 @@ const adminStudentsActions = {
     createStudentSuccess: () => ({ type: CREATE_STUDENT_SUCCESS }),
     createStudentError: () => ({ type: CREATE_STUDENT_ERROR }),
 
-    updateStudent: (data) => ({ type: UPDATE_STUDENT, data }),
+    updateStudent: () => ({ type: UPDATE_STUDENT }),
     updateStudentSuccess: () => ({ type: UPDATE_STUDENT_SUCCESS }),
     updateStudentError: () => ({ type: UPDATE_STUDENT_ERROR }),
 

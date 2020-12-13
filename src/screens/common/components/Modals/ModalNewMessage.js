@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
  
 import { Modal, Form, Button, Icon } from 'semantic-ui-react';
-import MyFormInput from '../MyFormInput';
+import MyFormInput from '../MyFormInput/MyFormInput';
 import { I18n } from 'react-redux-i18n';
 
 /**

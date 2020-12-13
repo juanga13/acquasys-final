@@ -10,11 +10,11 @@ import {
     GET_MYSELF_DATA, GET_MYSELF_DATA_SUCCESS, GET_MYSELF_DATA_ERROR, STUDENT_SELECT_PAYMENT, STUDENT_LESSONS_CHANGE_MODAL_STATE, STUDENT_SELECT_LESSON,
     // UPDATE_MY_DATA_REQUEST, UPDATE_MY_DATA_REQUEST_SUCCESS, UPDATE_MY_DATA_REQUEST_ERROR,
 } from './student.actions';
-import { REQUEST_STATUS, MODAL_STATES, FIELD_TYPES, GENRES } from '../../../utils/consts';
+import { REQUEST_STATUS, MODAL_STATES } from '../../../utils/consts';
 import verifyInput from '../../../utils/verifyInput';
 import { dataToFormTransform } from '../../../utils/dataFormTransform';
 
-const _today = new Date();
+// const _today = new Date();
 const initialState = {
     /* profile and other */
     modalState: MODAL_STATES.CLOSED,

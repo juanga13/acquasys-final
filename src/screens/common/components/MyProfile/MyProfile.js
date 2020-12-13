@@ -1,11 +1,11 @@
 import React from 'react';
-import { ROLES } from '../../../utils/consts';
+import { ROLES } from '../../../../utils/consts';
 import { connect } from 'react-redux';
  
-import { AdminProfile } from '../../account/admin';
-import { StudentProfile } from '../../account/student';
-import { TeacherProfile } from '../../account/teacher';
-import { UnverifiedProfile } from '../../account/unverified';
+import { AdminProfile } from '../../../account/admin';
+import { StudentProfile } from '../../../account/student';
+import { TeacherProfile } from '../../../account/teacher';
+import { UnverifiedProfile } from '../../../account/unverified';
 import './MyProfile.scss';
 
 const MyProfile = (props) => {

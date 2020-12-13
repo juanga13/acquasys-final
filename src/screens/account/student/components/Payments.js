@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Header, Button, Label, Input } from 'semantic-ui-react';
+import { Header, Label, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
-import { ModalPreview, ModalEdit, ModalCreate, ModalDelete } from '../../../common/components/Modals';
+import { ModalPreview } from '../../../common/components/Modals';
 import { MODAL_STATES, MODAL_TYPES, REQUEST_STATUS, FIELD_TYPES } from '../../../../utils/consts';
 import adminPaymentsActions from '../student.actions';
-import MyTable from '../../../common/components/MyTable';
-import fireToast from '../../../common/components/Toaster';
+import MyTable from '../../../common/components/MyTable/MyTable';
 import './Payment.scss';
 import ReactDatePicker from 'react-datepicker';
 
@@ -18,16 +17,16 @@ const Payments = (props) => {
         selectedPayment,
         modalState,
         getPaymentsStatus,
-        createPaymentStatus,
-        updatePaymentStatus,
-        deletePaymentStatus,
+        // createPaymentStatus,
+        // updatePaymentStatus,
+        // deletePaymentStatus,
         getFeeStatus,
         setFeeStatus,
-        paymentForm
+        // paymentForm
     } = props;
     // fee
-    const [newFee, setNewFee] = useState('');
-    const isFeeSegmentLoading = (getFeeStatus === REQUEST_STATUS.LOADING || setFeeStatus === REQUEST_STATUS.LOADING);
+    // const [newFee, setNewFee] = useState('');
+    // const isFeeSegmentLoading = (getFeeStatus === REQUEST_STATUS.LOADING || setFeeStatus === REQUEST_STATUS.LOADING);
 
     // table search inputs
     const [searchText, setsearchText] = useState('');

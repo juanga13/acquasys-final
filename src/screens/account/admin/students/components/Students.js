@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Header, Button, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
-import MyTable from '../../../../common/components/MyTable';
+import MyTable from '../../../../common/components/MyTable/MyTable';
 import { REQUEST_STATUS, MODAL_STATES, MODAL_TYPES, FIELD_TYPES } from '../../../../../utils/consts';
 import adminStudentsActions from '../admin.students.actions';
 import ModalDelete from '../../../../common/components/Modals/ModalDelete';

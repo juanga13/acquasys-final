@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
- 
-import { Modal, Form, Image, Button, Icon, Loader, Dimmer, Label } from 'semantic-ui-react';
+import { Modal, Button, Icon, Loader, Dimmer } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
-import { dummyAvatar } from '../../../../assets';
 import { MODAL_TYPES, REQUEST_STATUS } from '../../../../utils/consts';
-import MyFormInput from '../MyFormInput';
+import AttendanceTable from '../AttendanceTable/AttendanceTable';
+
 
 /**
  * 
@@ -22,32 +21,30 @@ import MyFormInput from '../MyFormInput';
  */
 const ModalAttendance = (props) => {
     const {
+        key,
         isOpen,
         type,
-        loading,
-
-        key,
         getAttendancesStatus,
         attendances,
         setAttendanceStatus,
-        onClose,
-        onBack,
-        onSetAttendance,
+        // onBack, function
+        // onClose, function
+        // onSetAttendance, function
+        lessonId,
+        loading,
     } = props;
-
-    
-    const handleSubmit = () => {
-        // if (!Object.values(form).some(field => !verifyField(field.type, field.value))) {
-        //     props.login();   
-        // }
-    };
 
     const renderForm = () => {
         switch (type) {
             case MODAL_TYPES.ADMIN_ATTENDANCES:
-                return attendances.possibleDates.map((value, i) => (
-                    <p key={`modal-attendance-item-${i}`}>{new Date(value).toLocaleDateString('es-ES', {year:'numeric', month: 'long', day: 'numeric'})}</p>
-                ));
+                return (
+                    <AttendanceTable
+                        attendances={attendances} lessonId={lessonId}
+                        loading={getAttendancesStatus === REQUEST_STATUS.LOADING || setAttendanceStatus === REQUEST_STATUS.LOADING}
+                        error={getAttendancesStatus === REQUEST_STATUS.ERROR}
+                        onSetAttendance={props.onSetAttendance}
+                    />
+                );
 
             case MODAL_TYPES.STUDENT_ATTENDANCES:
                 return attendances.possibleDates.map((value, i) => (
@@ -64,26 +61,17 @@ const ModalAttendance = (props) => {
         }
     };
 
-    const getModalSize = () => {
-        switch (type) {
-            case MODAL_TYPES.ADMIN_ATTENDANCES: return 'small';
-            case MODAL_TYPES.STUDENT_ATTENDANCES: return 'small';
-            case MODAL_TYPES.TEACHER_ATTENDANCES: return 'small';
-            default: return 'small';
-        }
-    }
-
     return (
         <Modal
-            size={getModalSize()}
-            open={isOpen}
+            size='fullscreen'
+            open={isOpen} key={key}
             onClose={props.onClose}
         >
-            <Dimmer active={loading} inverted><Loader /></Dimmer>
+            <Dimmer active={getAttendancesStatus === REQUEST_STATUS.LOADING || setAttendanceStatus === REQUEST_STATUS.LOADING } inverted><Loader /></Dimmer>
             <Modal.Header>{I18n.t('common.modals.attendances.title.' + type)}</Modal.Header>
             <Modal.Content>
                 <Modal.Description>
-                    {/* {renderForm()} */}
+                    {renderForm()}
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>

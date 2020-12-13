@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
  
 import { Form, Button, Dropdown, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
-import { weekdayConstTranslate, FIELD_TYPES, allWeekDaysValues } from '../../../utils/consts';
+import { weekdayConstTranslate, FIELD_TYPES, allWeekDaysValues } from '../../../../utils/consts';
 import ReactDatePicker from 'react-datepicker';
 import './WeekdaysInput.scss';
 

@@ -177,7 +177,8 @@
       "error": {
         "dataError": "Hubo un error con la obtencion de datos"
       },
-      "noResults": "Sin resultados"
+      "noResults": "Sin resultados",
+      "studentColumn": "Alumno"
     },
     "myProfile": {
       "name": "Nombre",

@@ -8,9 +8,9 @@ import ModalPreview from '../../../../common/components/Modals/ModalPreview';
 import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import ModalCreate from '../../../../common/components/Modals/ModalCreate';
 import ModalDelete from '../../../../common/components/Modals/ModalDelete';
-import MyTable from '../../../../common/components/MyTable';
-import fireToast from '../../../../common/components/Toaster';
+import MyTable from '../../../../common/components/MyTable/MyTable';
 import ModalAttendance from '../../../../common/components/Modals/ModalAttendance';
+
 
 const Lessons = (props) => {
     const {
@@ -70,6 +70,7 @@ const Lessons = (props) => {
                 onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onSetAttendance={props.setAttendance}
+                lessonId={selectedLesson?.id}
             />,
             <ModalCreate
                 key='modal-create'

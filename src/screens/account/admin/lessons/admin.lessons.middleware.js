@@ -110,7 +110,7 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             requests.setAttendance(action.attendance)
                 .then((response) => {
                     dispatch(adminLessonsActions.setAttendanceSuccess());
-                    dispatch(adminLessonsActions.getAttendance(getState().selectedLesson.id))
+                    dispatch(adminLessonsActions.getAttendances(getState().admin.lessons.selectedLesson.id));
                 })
                 .catch((error) => {
                     dispatch(adminLessonsActions.setAttendanceError());

@@ -11,8 +11,8 @@ const AdminProfile = (props) => {
         profile,
         allStudents,
         calendar,
-        lessons,
-        payments,
+        // lessons,
+        // payments,
     } = props;
     const unverifiedStudents = allStudents.filter(student => !student.verified);
     // const todoPayments = calendar.map(())

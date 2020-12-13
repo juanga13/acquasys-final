@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { I18n } from 'react-redux-i18n';
 import { Loader, Header, Table, Button, Dimmer, Icon } from 'semantic-ui-react';
-import { REQUEST_STATUS } from '../../../utils/consts';
+import { REQUEST_STATUS } from '../../../../utils/consts';
 import './MyTable.scss';
-import { getColor } from '../../../utils/iconColorGetter';
+import { getColor } from '../../../../utils/iconColorGetter';
 
 const MyTable = (props) => {
     const [sorting, setSorting] = useState({column: null, direction: null});

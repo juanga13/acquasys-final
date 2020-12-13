@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Header, Button, Input } from 'semantic-ui-react';
+import { Header, Input } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import studentActions from '../student.actions';
 import { MODAL_TYPES, MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../../../utils/consts';
-import { ModalPreview, ModalEdit, ModalCreate, ModalDelete } from '../../../common/components/Modals';
-import MyTable from '../../../common/components/MyTable';
-import fireToast from '../../../common/components/Toaster';
+import { ModalPreview } from '../../../common/components/Modals';
+import MyTable from '../../../common/components/MyTable/MyTable';
 import ModalAttendance from '../../../common/components/Modals/ModalAttendance';
 
 const Lessons = (props) => {
@@ -52,10 +51,8 @@ const Lessons = (props) => {
                 type={MODAL_TYPES.STUDENT_ATTENDANCES}
                 getAttendancesStatus={getAttendanceStatus}
                 attendances={attendances}
-                setAttendanceStatus={setAttendanceStatus}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
-                onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
-                onSetAttendance={(id, type, value) => props.inputChange(id, type, value)}
+                onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)} 
             />
         ])
     };

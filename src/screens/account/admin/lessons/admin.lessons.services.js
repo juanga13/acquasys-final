@@ -90,7 +90,7 @@ const requests = {
 
     setAttendance: (data) => {
         const requestOptions = {
-            method: 'PUT',
+            method: 'POST',
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",

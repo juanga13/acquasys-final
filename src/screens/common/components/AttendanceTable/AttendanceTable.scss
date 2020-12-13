@@ -1,0 +1,22 @@
+.attendance-table-container {
+    overflow-x: scroll;
+    padding-bottom: 10px;
+}
+
+.attendance-header-cell {
+    min-width: 100px; 
+    max-width: 100px;
+}
+
+.attendance-row-student-info {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 180px;
+    > .ui.image.header > .content {
+        color: white;
+        
+        .sub.header {
+            color: white;
+        }
+    }
+}

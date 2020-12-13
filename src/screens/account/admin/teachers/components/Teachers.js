@@ -8,8 +8,8 @@ import ModalCreate from '../../../../common/components/Modals/ModalCreate';
 import ModalEdit from '../../../../common/components/Modals/ModalEdit';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
 import ModalDelete from '../../../../common/components/Modals/ModalDelete';
-import MyTable from '../../../../common/components/MyTable';
-import fireToast from '../../../../common/components/Toaster';
+import MyTable from '../../../../common/components/MyTable/MyTable';
+
 
 const Teachers = (props) => {
     const {
