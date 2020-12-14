@@ -78,7 +78,7 @@ const Lessons = (props) => {
                 columns={['name']}
                 actions={[
                     { type: 'file alternate', action: (data) => {
-                        props.selectLesson(data);
+                        props.selectLesson(data, false);
                         props.changeModalState(MODAL_STATES.PREVIEW);
                     }},
                     { type: 'signup', action: (data) => {
@@ -97,7 +97,7 @@ const Lessons = (props) => {
                 columns={['name']}
                 actions={[
                     { type: 'file alternate', action: (data) => {
-                        props.selectLesson(data);
+                        props.selectLesson(data, true);
                         props.changeModalState(MODAL_STATES.PREVIEW);
                     }},
                     { type: 'remove', action: (data) => {
@@ -130,7 +130,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     changeModalState: (modalState) => dispatch(studentActions.studentLessonsChangeModalState(modalState)),
-    selectLesson: (lesson) => dispatch(studentActions.studentSelectLesson(lesson)),
+    selectLesson: (lesson, getAttendances) => dispatch(studentActions.studentSelectLesson(lesson, getAttendances)),
     subscribeLesson: (lessonId, studentId) => dispatch(studentActions.subscribeLesson(lessonId, studentId)), 
     unsubscribeLesson: (lessonId, studentId) => dispatch(studentActions.unsubscribeLesson(lessonId, studentId)) 
 });

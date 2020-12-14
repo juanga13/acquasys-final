@@ -19,11 +19,11 @@ const initialState = {
     forms: {
         login: {
             // admin
-            email: { id: 'email', value: 'admin@admin.com', error: false , type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email' },
-            password: { id: 'password', value: 'asd123', error: false , type: FIELD_TYPES.PASSWORD, placeholder: 'forms.passwordPlease', label: 'forms.passwordPlease' }
-            // juanga student
-            // email: { id: 'email', value: 'riccijuanga@gmail.com', error: false , type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email' },
+            // email: { id: 'email', value: 'admin@admin.com', error: false , type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email' },
             // password: { id: 'password', value: 'asd123', error: false , type: FIELD_TYPES.PASSWORD, placeholder: 'forms.passwordPlease', label: 'forms.passwordPlease' }
+            // juanga student
+            email: { id: 'email', value: 'riccijuanga@gmail.com', error: false , type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email' },
+            password: { id: 'password', value: 'asd123', error: false , type: FIELD_TYPES.PASSWORD, placeholder: 'forms.passwordPlease', label: 'forms.passwordPlease' }
             // facu teacher 
             // email: { id: 'email', value: 'facufacundo@gmail.com', error: false , type: FIELD_TYPES.EMAIL, placeholder: 'forms.email', label: 'forms.email' },
             // password: { id: 'password', value: 'asd123', error: false , type: FIELD_TYPES.PASSWORD, placeholder: 'forms.passwordPlease', label: 'forms.passwordPlease' }

@@ -47,14 +47,24 @@ const ModalAttendance = (props) => {
                 );
 
             case MODAL_TYPES.STUDENT_ATTENDANCES:
-                return attendances.possibleDates.map((value, i) => (
-                    <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
-                ));
+                return (
+                    <AttendanceTable
+                        attendances={attendances} lessonId={lessonId}
+                        loading={getAttendancesStatus === REQUEST_STATUS.LOADING || setAttendanceStatus === REQUEST_STATUS.LOADING}
+                        error={getAttendancesStatus === REQUEST_STATUS.ERROR}
+                        previewMode
+                    />
+                );
 
             case MODAL_TYPES.TEACHER_ATTENDANCES:
-                return attendances.possibleDates.map((value, i) => (
-                    <p key={`modal-attendance-item-${i}`}>{'EDIT' + value}</p>
-                ));
+                return (
+                    <AttendanceTable
+                        attendances={attendances} lessonId={lessonId}
+                        loading={getAttendancesStatus === REQUEST_STATUS.LOADING || setAttendanceStatus === REQUEST_STATUS.LOADING}
+                        error={getAttendancesStatus === REQUEST_STATUS.ERROR}
+                        onSetAttendance={props.onSetAttendance}
+                    />
+                );
 
 
             default: return null;

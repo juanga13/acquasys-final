@@ -12,6 +12,7 @@ const AttendanceCheckbox = (props) => {
         key,
         checkedState,
         onChange,
+        previewMode,
     } = props;
 
 
@@ -26,7 +27,12 @@ const AttendanceCheckbox = (props) => {
     }
 
     return (
-        <div key={key} className='attendance-checkbox-container' onClick={handleClick}>
+        <div
+            key={key}
+            className={previewMode ? 'attendance-checkbox-container-preview'
+                : 'attendance-checkbox-container'}
+            onClick={handleClick}
+        >
             {/* {checkedState === CHECKED_STATE.NONE && <p className='attendance-checkbox-letter'>P</p>} */}
             {checkedState === CHECKED_STATE.PRESENT && <p className='attendance-checkbox-letter'>P</p>}
             {checkedState === CHECKED_STATE.ABSENT && <p className='attendance-checkbox-letter'>A</p>}

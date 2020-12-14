@@ -580,6 +580,13 @@
         "myData": {
           "title": "Mis datos",
           "description": "Hubo un error al obtener tus datos."
+        },
+        "getAttendance": {
+          "title": "Asistencias",
+          "description": "No se pudo obtener tus asistencias"
+        },
+        "setAttendance": {
+          "title": "Asistencias"
         }
       }
     },

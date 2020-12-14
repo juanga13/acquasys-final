@@ -7,8 +7,9 @@ import {
     STUDENT_CHANGE_MODAL_STATE,
     STUDENT_INPUT_CHANGE,
     GET_MY_ENROLLED, GET_MY_ENROLLED_SUCCESS, GET_MY_ENROLLED_ERROR,
-    GET_MYSELF_DATA, GET_MYSELF_DATA_SUCCESS, GET_MYSELF_DATA_ERROR, STUDENT_SELECT_PAYMENT, STUDENT_LESSONS_CHANGE_MODAL_STATE, STUDENT_SELECT_LESSON,
-    // UPDATE_MY_DATA_REQUEST, UPDATE_MY_DATA_REQUEST_SUCCESS, UPDATE_MY_DATA_REQUEST_ERROR,
+    GET_MYSELF_DATA, GET_MYSELF_DATA_SUCCESS, GET_MYSELF_DATA_ERROR,
+    STUDENT_SELECT_PAYMENT, STUDENT_LESSONS_CHANGE_MODAL_STATE, STUDENT_SELECT_LESSON,
+    STUDENT_GET_ATTENDANCES, STUDENT_GET_ATTENDANCES_SUCCESS, STUDENT_GET_ATTENDANCES_ERROR
 } from './student.actions';
 import { REQUEST_STATUS, MODAL_STATES } from '../../../utils/consts';
 import verifyInput from '../../../utils/verifyInput';
@@ -35,7 +36,6 @@ const initialState = {
     unsubscribeLessonStatus: REQUEST_STATUS.NONE,
     attendances: [],
     getAttendancesStatus: REQUEST_STATUS.NONE,
-    setAttendanceStatus: REQUEST_STATUS.NONE,
     
     /* payment */
     payments: [],
@@ -78,10 +78,6 @@ const studentReducer = (state = initialState, action) => {
         case GET_MYSELF_DATA: return { ...state, getMyselfDataStatus: REQUEST_STATUS.LOADING };
         case GET_MYSELF_DATA_SUCCESS: return { ...state, getMyselfDataStatus: REQUEST_STATUS.SUCCESS, myData: action.response };
         case GET_MYSELF_DATA_ERROR: return { ...state, getMyselfDataStatus: REQUEST_STATUS.ERROR };
-
-        // case UPDATE_MY_DATA_REQUEST: return { ...state, updateMyDataStatus: REQUEST_STATUS.LOADING };
-        // case UPDATE_MY_DATA_REQUEST_SUCCESS: return { ...state, updateMyDataStatus: REQUEST_STATUS.SUCCESS };
-        // case UPDATE_MY_DATA_REQUEST_ERROR: return { ...state, updateMyDataStatus: REQUEST_STATUS.ERROR };
         
         /* calendar */
         case STUDENT_GET_CALENDAR: return { ...state, getCalendarStatus: REQUEST_STATUS.LOADING };
@@ -104,6 +100,9 @@ const studentReducer = (state = initialState, action) => {
         case UNSUBSCRIBE_LESSON_SUCCESS: return { ...state, unsubscribeLessonStatus: REQUEST_STATUS.SUCCESS };
         case UNSUBSCRIBE_LESSON_ERROR: return { ...state, unsubscribeLessonStatus: REQUEST_STATUS.ERROR };
 
+        case STUDENT_GET_ATTENDANCES: return { ...state, getAttendancesStatus: REQUEST_STATUS.LOADING };
+        case STUDENT_GET_ATTENDANCES_SUCCESS: return { ...state, getAttendancesStatus: REQUEST_STATUS.SUCCESS, attendances: action.attendances };
+        case STUDENT_GET_ATTENDANCES_ERROR: return { ...state, getAttendancesStatus: REQUEST_STATUS.ERROR };
         /* payment */
         case STUDENT_GET_PAYMENTS: return { ...state, getPaymentsStatus: REQUEST_STATUS.LOADING };
         case STUDENT_GET_PAYMENTS_SUCCESS: return { ...state, getPaymentsStatus: REQUEST_STATUS.SUCCESS, payments: action.response };

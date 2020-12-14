@@ -11,6 +11,7 @@ import studentActions, {
     GET_MYSELF_DATA,
     STUDENT_GET_ATTENDANCES,
     STUDENT_SET_ATTENDANCE,
+    STUDENT_SELECT_LESSON,
 } from './student.actions';
 import request from './student.services';
 
@@ -86,20 +87,19 @@ const studentMiddleware = ({dispatch, getState}) => next => action => {
             break;
 
         case STUDENT_GET_ATTENDANCES:
+            request.getAttendance(action.id)
+                .then((response) => {
+                    dispatch(studentActions.studentGetAttendancesSuccess(response));
+                })    
+                .catch((error) => {
+                    dispatch(studentActions.studentGetAttendancesError());
+                    fireToast(I18n.t('student.lessons.error.getAttendance.title'), I18n.t('student.lessons.error.getAttendance.description'), 'error', 'warning');
+                })
+            break;
             
+        case STUDENT_SELECT_LESSON:
+            if (!!action.lesson && action.getAttendances) dispatch(studentActions.studentGetAttendances(action.lesson.id));
             break;
-        case STUDENT_SET_ATTENDANCE:
-
-            break;
-        // case UPDATE_MY_DATA_REQUEST:
-        //     const myData = getState().student.myData;
-        //     request.updateMyData(myData)
-        //         .then(() => {
-        //             dispatch();
-        //         })
-        //         .catch(() => {
-        //             dispatch();
-        //         })
 
         default: break;
     }

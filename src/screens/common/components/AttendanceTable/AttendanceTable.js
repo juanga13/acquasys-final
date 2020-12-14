@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { I18n } from 'react-redux-i18n';
-import { Dimmer, Header, Image, Loader, Table } from 'semantic-ui-react';
+import { Dimmer, Header, Icon, Image, Loader, Table } from 'semantic-ui-react';
 import { dummyAvatar } from '../../../../assets';
 import { dateToSimple } from '../../../../utils/dateUtils';
 import AttendanceCheckbox, { CHECKED_STATE } from './AttendanceCheckbox';
@@ -11,7 +11,7 @@ import './AttendanceTable.scss';
 const AttendanceTable = (props) => {
     const {
         loading, error, attendances,
-        lessonId,
+        lessonId, previewMode,
         // onSetAttendance, function
     } = props;
     const {
@@ -63,6 +63,7 @@ const AttendanceTable = (props) => {
                                                 present: (state === CHECKED_STATE.PRESENT), // TODO: cambiar a state cuando este hecho
                                                 studentId: student.id
                                             })}
+                                            previewMode={previewMode}
                                         />
                                     </Table.Cell>
                                 ))}
