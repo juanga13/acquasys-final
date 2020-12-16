@@ -26,9 +26,8 @@ const Teachers = (props) => {
     const filteredTeachers = teachers.filter(teacher => {
         const nameIncluded = teacher.name.toLowerCase().includes(searchName);
         const surnameIncluded = teacher.surname.toLowerCase().includes(searchName);
-        const cuilIncluded = teacher.cuil.toString().includes(searchName);
-        if (nameIncluded || surnameIncluded || cuilIncluded) return true;
-        else return false;
+        const cuilIncluded = teacher.cuil && teacher.cuil.toString().includes(searchName);
+        return nameIncluded || surnameIncluded || cuilIncluded;
     });
     useEffect(() => {
         // console.log('useEffect, teachers prop changed');

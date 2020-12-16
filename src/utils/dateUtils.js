@@ -14,5 +14,5 @@ dateToString.PropTypes = {
 const monthsSimple = ['ENE', 'FEB', 'MAR', 'ABR', 'MAR', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
 export const dateToSimple = (date) => {
     const datee = new Date(date);
-    return `${datee.getDay()}/${monthsSimple[datee.getMonth()]}/${datee.getFullYear()}`
+    return `${datee.getDate()}/${monthsSimple[datee.getMonth()]}/${datee.getFullYear()} ${datee.getHours()}:${datee.getMinutes()}`
 }

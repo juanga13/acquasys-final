@@ -37,6 +37,8 @@ const Payments = (props) => {
     const [endDate, setEndDate] = useState(null);
     const getFilteredPayments = () => {
         return payments.filter(payment => {
+            if(!payment.name)
+                return false;
             const date = new Date(payment.date);
             const a = payment.name.toLowerCase().includes(searchText);
             const b = payment.surname.toLowerCase().includes(searchText); 

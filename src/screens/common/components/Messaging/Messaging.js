@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
- 
+
 import { Header, Divider, Loader, Button, Card, Dimmer, List } from 'semantic-ui-react';
 import { I18n } from 'react-redux-i18n';
 import commonActions from '../../common.actions';
@@ -59,7 +59,7 @@ const Messaging = (props) => {
                 <Card.Content>
                     {messages && messages.received.length === 0 ? 
                         <div>
-                            <p>no mssg</p>
+                            <p>Sin mensajes</p>
                         </div>
                         :
                         <List>
@@ -78,10 +78,12 @@ const Messaging = (props) => {
                                         <List.Description>
                                             <div className='message-description-container'>
                                                 <p className='bold'>{`${I18n.t('common.messaging.sender')}: `}</p>
-                                                <p>{message.sender.email}</p>
+                                                <p>{message.sender ? message.sender.email : "Sistema"}</p>
+                                            </div>
+                                            <div className='message-description-container'>
+                                                <p>{message.content}</p>
                                             </div>
                                         </List.Description>
-                                        <List.Description>{message.content}</List.Description>
                                     </List.Content>
                                 </List.Item>
                             ))}
@@ -97,7 +99,7 @@ const Messaging = (props) => {
                 <Card.Content>
                     {messages && messages.sent.length === 0 ? 
                         <div>
-                            <p>no mssg</p>
+                            <p>Sin mensajes</p>
                         </div>
                         :
                         <List>
@@ -107,7 +109,7 @@ const Messaging = (props) => {
                                 readFlag: false
                                 receiver: {id: 510, email: "admin@admin.com",…}
                                 sender: {id: 559, email: "riccijuanga@gmail.com",…}
-                                subject: "pete" */}
+                                subject: "pit" */}
                             {messages.sent.map(message => (
                                 <List.Item>
                                     <List.Icon name='mail' size='large' verticalAlign='middle' />
