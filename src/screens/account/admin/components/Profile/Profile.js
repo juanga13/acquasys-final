@@ -102,14 +102,21 @@ const AdminProfile = (props) => {
                                     <List.Item>
                                         <Image avatar src={student.avatarUrl || dummyAvatar} />
                                         <List.Content>
-                                            <List.Header>{`${student.name} ${student.surname}`}</List.Header>
+                                            <List.Header>{student.name ? `${student.name} ${student.surname}` : "El estudiante todavia no completo los datos"}</List.Header>
                                             <List.Description>
-                                                <div className='pending-verification-student-list-item'>
-                                                    <p className='bold'>DNI:</p>
-                                                    <p>{student.dni}</p>
-                                                    <p className='bold'>E-mail:</p>
-                                                    <p>{student.email}</p>
-                                                </div>
+                                                {student.name ?
+                                                    <div className='pending-verification-student-list-item'>
+                                                        <p className='bold'>DNI:</p>
+                                                        <p>{student.dni}</p>
+                                                        <p className='bold'>E-mail:</p>
+                                                        <p>{student.email}</p>
+                                                    </div>
+                                                    :
+                                                    <div className='pending-verification-student-list-item'>
+                                                        <p className='bold'>E-mail:</p>
+                                                        <p>{student.email}</p>
+                                                    </div>
+                                                }
                                             </List.Description>
                                         </List.Content>
                                     </List.Item>
