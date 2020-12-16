@@ -51,23 +51,6 @@ const requests = {
                 else throw response.json()
             })
     },
-    
-    getPayments: () => {
-        const requestOptions = {
-            method: "GET",
-            mode: "cors",
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("token")
-            }
-        };
-        return fetch(baseUrl + "/api/payment/payments", requestOptions)
-            .then(response => {
-                if (response.ok) return response.json()
-                else throw response.json()
-            })
-    },
 
     suscribe: (studentId, lessonId) => {
         const requestOptions = {

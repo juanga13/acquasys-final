@@ -35,13 +35,6 @@ export const UNSUBSCRIBE_LESSON = 'UNSUBSCRIBE_LESSON';
 export const UNSUBSCRIBE_LESSON_SUCCESS = 'UNSUBSCRIBE_LESSON_SUCCESS';
 export const UNSUBSCRIBE_LESSON_ERROR = 'UNSUBSCRIBE_LESSON_ERROR';
 
-/* payment */
-export const STUDENT_GET_PAYMENTS = 'GET_PAYMENTS';
-export const STUDENT_GET_PAYMENTS_SUCCESS = 'GET_PAYMENTS_SUCCESS';
-export const STUDENT_GET_PAYMENTS_ERROR = 'GET_PAYMENTS_ERROR';
-
-export const STUDENT_SELECT_PAYMENT = 'STUDENT_SELECT_PAYMENT';
-
 
 const studentActions = {
     /* profile and other */
@@ -81,13 +74,6 @@ const studentActions = {
     unsubscribeLesson: (studentId, lessonId) => ({type: UNSUBSCRIBE_LESSON, studentId, lessonId}),
     unsubscribeLessonSuccess: () => ({type: UNSUBSCRIBE_LESSON_SUCCESS}),
     unsubscribeLessonError: () => ({type: UNSUBSCRIBE_LESSON_ERROR}),
-    
-    /* payment */
-    getPayments: () => ({type: STUDENT_GET_PAYMENTS }),
-    getPaymentsSuccess: (response) => ({type: STUDENT_GET_PAYMENTS_SUCCESS, response}),
-    getPaymentsError: () => ({type: STUDENT_GET_PAYMENTS_ERROR}),
-
-    selectPayment: (payment) => ({type: STUDENT_SELECT_PAYMENT, payment}),
 };
 
 export default studentActions;

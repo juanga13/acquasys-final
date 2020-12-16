@@ -33,7 +33,6 @@ const sessionMiddleware = ({dispatch, getState}) => next => action => {
                     dispatch(studentActions.getMyEnrolled());
                     dispatch(studentActions.getMyselfData());
                     dispatch(studentActions.getCalendar(tenDaysBeforeNow().getTime(), new Date().getTime()));
-                    dispatch(studentActions.getPayments());
                     dispatch(studentActions.getLessons());
                     break;
                 case ROLES.TEACHER:

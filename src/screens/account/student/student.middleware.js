@@ -3,14 +3,12 @@ import { tenDaysBeforeNow } from '../../../utils/time';
 import fireToast from '../../common/components/Toaster';
 import studentActions, {
     STUDENT_GET_LESSONS, 
-    STUDENT_GET_PAYMENTS, 
     STUDENT_GET_CALENDAR,
     SUBSCRIBE_LESSON,
     UNSUBSCRIBE_LESSON,
     GET_MY_ENROLLED,
     GET_MYSELF_DATA,
     STUDENT_GET_ATTENDANCES,
-    STUDENT_SET_ATTENDANCE,
     STUDENT_SELECT_LESSON,
 } from './student.actions';
 import request from './student.services';
@@ -23,15 +21,6 @@ const studentMiddleware = ({dispatch, getState}) => next => action => {
             request.getLessons()
                 .then(response => dispatch(studentActions.getLessonsSuccess(response)))
                 .catch(() => dispatch(studentActions.getLessonsError()))
-            break;
-
-        case STUDENT_GET_PAYMENTS:
-            request.getPayments()
-                .then(response => dispatch(studentActions.getPaymentsSuccess(response)))
-                .catch(() => {
-                    fireToast(I18n.t('student.lessons.error.get.title'), I18n.t('student.lessons.error.get.description'), 'error', 'warning');
-                    dispatch(studentActions.getPaymentsError())
-                })
             break;
 
         case STUDENT_GET_CALENDAR:

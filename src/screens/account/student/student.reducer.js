@@ -1,6 +1,5 @@
 import {
     STUDENT_GET_LESSONS, STUDENT_GET_LESSONS_SUCCESS, STUDENT_GET_LESSONS_ERROR,
-    STUDENT_GET_PAYMENTS, STUDENT_GET_PAYMENTS_SUCCESS, STUDENT_GET_PAYMENTS_ERROR,
     STUDENT_GET_CALENDAR, STUDENT_GET_CALENDAR_SUCCESS, STUDENT_GET_CALENDAR_ERROR,
     SUBSCRIBE_LESSON, SUBSCRIBE_LESSON_SUCCESS, SUBSCRIBE_LESSON_ERROR,
     UNSUBSCRIBE_LESSON, UNSUBSCRIBE_LESSON_SUCCESS, UNSUBSCRIBE_LESSON_ERROR,
@@ -8,7 +7,7 @@ import {
     STUDENT_INPUT_CHANGE,
     GET_MY_ENROLLED, GET_MY_ENROLLED_SUCCESS, GET_MY_ENROLLED_ERROR,
     GET_MYSELF_DATA, GET_MYSELF_DATA_SUCCESS, GET_MYSELF_DATA_ERROR,
-    STUDENT_SELECT_PAYMENT, STUDENT_LESSONS_CHANGE_MODAL_STATE, STUDENT_SELECT_LESSON,
+    STUDENT_LESSONS_CHANGE_MODAL_STATE, STUDENT_SELECT_LESSON,
     STUDENT_GET_ATTENDANCES, STUDENT_GET_ATTENDANCES_SUCCESS, STUDENT_GET_ATTENDANCES_ERROR
 } from './student.actions';
 import { REQUEST_STATUS, MODAL_STATES } from '../../../utils/consts';
@@ -36,12 +35,6 @@ const initialState = {
     unsubscribeLessonStatus: REQUEST_STATUS.NONE,
     attendances: [],
     getAttendancesStatus: REQUEST_STATUS.NONE,
-    
-    /* payment */
-    payments: [],
-    getPaymentsStatus: REQUEST_STATUS.NONE,
-    selectedPayment: null,
-    
 };
 
 const studentReducer = (state = initialState, action) => {
@@ -103,13 +96,7 @@ const studentReducer = (state = initialState, action) => {
         case STUDENT_GET_ATTENDANCES: return { ...state, getAttendancesStatus: REQUEST_STATUS.LOADING };
         case STUDENT_GET_ATTENDANCES_SUCCESS: return { ...state, getAttendancesStatus: REQUEST_STATUS.SUCCESS, attendances: action.attendances };
         case STUDENT_GET_ATTENDANCES_ERROR: return { ...state, getAttendancesStatus: REQUEST_STATUS.ERROR };
-        /* payment */
-        case STUDENT_GET_PAYMENTS: return { ...state, getPaymentsStatus: REQUEST_STATUS.LOADING };
-        case STUDENT_GET_PAYMENTS_SUCCESS: return { ...state, getPaymentsStatus: REQUEST_STATUS.SUCCESS, payments: action.response };
-        case STUDENT_GET_PAYMENTS_ERROR: return { ...state, getPaymentsStatus: REQUEST_STATUS.ERROR };
-
-        case STUDENT_SELECT_PAYMENT: return { ...state, selectedPayment: action.payment };
-
+       
 
         default: return state;
     }

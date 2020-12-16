@@ -15,7 +15,7 @@ import Login from '../../../session/components/Login';
 import Register from '../../../session/components/Register';
 
 import { AdminCalendar, AdminStudents, AdminLessons, AdminPayments, AdminTeachers } from '../../../account/admin';
-import { StudentCalendar, StudentLessons, StudentPayments } from '../../../account/student';
+import { StudentCalendar, StudentLessons } from '../../../account/student';
 import { TeacherCalendar, TeacherLessons } from '../../../account/teacher';
 import MyProfile from '../../../common/components/MyProfile/MyProfile';
 import Messaging from '../../../common/components/Messaging/Messaging';
@@ -131,12 +131,6 @@ const Routes = (props) => {
                                 key='route-student-2'
                                 path='/student/lessons'
                                 component={StudentLessons}
-                            />
-                            <PrivateRoute
-                                roleNeeded={ROLES.STUDENT}
-                                key='route-student-3'
-                                path='/student/payments'
-                                component={StudentPayments}
                             />
 
                             {/* teacher */}

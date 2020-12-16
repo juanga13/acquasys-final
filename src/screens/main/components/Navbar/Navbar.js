@@ -41,7 +41,6 @@ const Navbar = (props) => {
                     {/* student items */}
                     <NavItemLoggedRole id='navbar-item-student-1' to='/student/calendar' iconName='calendar' text='main.navbar.calendar' isLoggedIn={isLoggedIn} role={ROLES.STUDENT}/>
                     <NavItemLoggedRole id='navbar-item-student-2' to='/student/lessons' iconName='calendar alternate outline' text='main.navbar.lessons' isLoggedIn={isLoggedIn} role={ROLES.STUDENT}/>
-                    <NavItemLoggedRole id='navbar-item-student-3' to='/student/payments' iconName='money bill alternate' text='main.navbar.payments' isLoggedIn={isLoggedIn} role={ROLES.STUDENT}/>                
                     {/* teacher items */}
                     <NavItemLoggedRole id='navbar-item-teacher-2' to='/teacher/lessons' iconName='calendar alternate outline' text='main.navbar.lessons' isLoggedIn={isLoggedIn} role={ROLES.TEACHER}/>
                     {/* logged, any role items */}
