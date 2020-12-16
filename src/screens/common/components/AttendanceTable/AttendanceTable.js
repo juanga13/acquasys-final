@@ -19,6 +19,7 @@ const AttendanceTable = (props) => {
         possibleDates, // array of numbers
         students, // array of students object 
     } = attendances;
+    const sortedStudents = students ? students.sort((a, b) => (a.dni - b.dni)) : []
 
     if (error) {
         return (
@@ -42,7 +43,7 @@ const AttendanceTable = (props) => {
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        {students.map((student) => (
+                        {sortedStudents.map((student) => (
                             <Table.Row key={`attendance-row_${student.id}`}>
                                 <Table.Cell className={`attendance-row-student-info`}>
                                     <Header as='h4' image>
@@ -55,19 +56,22 @@ const AttendanceTable = (props) => {
                                         </Header.Content>
                                     </Header>
                                 </Table.Cell>
-                                {possibleDates.map((date) => (
-                                    <Table.Cell key={`attendance_${student.id}_${date}`}>
-                                        <AttendanceCheckbox
-                                            checkedState={(attendance[date].filter(att => att.id === student.id).length > 0) ? CHECKED_STATE.PRESENT : CHECKED_STATE.ABSENT}
-                                            onChange={(state) => props.onSetAttendance({
-                                                date, lessonId,
-                                                present: (state === CHECKED_STATE.PRESENT), // TODO: cambiar a state cuando este hecho
-                                                studentId: student.id
-                                            })}
-                                            previewMode={previewMode}
-                                        />
-                                    </Table.Cell>
-                                ))}
+                                {possibleDates.map((date) => {
+                                    const present = attendance[date].find((attStudent) => attStudent.id === student.id);
+                                    return (
+                                        <Table.Cell key={`attendance_${student.id}_${date}`}>
+                                            <AttendanceCheckbox
+                                                checkedState={present ? CHECKED_STATE.PRESENT : CHECKED_STATE.ABSENT}
+                                                onChange={(state) => props.onSetAttendance({
+                                                    date, lessonId,
+                                                    present: (!present),
+                                                    studentId: student.id
+                                                })}
+                                                previewMode={previewMode}
+                                            />
+                                        </Table.Cell>
+                                    )
+                                })}
                             </Table.Row>
                         ))}
                     </Table.Body>
