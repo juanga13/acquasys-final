@@ -83,6 +83,7 @@ const Lessons = (props) => {
                 status={getLessonsStatus}
                 loading={getAttendancesStatus === REQUEST_STATUS.LOADING}
                 color='yellow'
+                noResults={'a'}
             />
         </div>
     );

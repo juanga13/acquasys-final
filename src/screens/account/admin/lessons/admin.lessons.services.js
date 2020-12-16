@@ -47,7 +47,7 @@ const requests = {
             body: JSON.stringify(data),
         };
 
-        return fetch(baseUrl + '/api/lesson', requestOptions)
+        return fetch(baseUrl + '/api/lesson/withIds', requestOptions)
             .then(response => {
                 if (response.ok) return response.json()
                 else throw response.json()
