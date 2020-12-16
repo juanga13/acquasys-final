@@ -7,6 +7,7 @@ import { ModalPreview } from '../../../common/components/Modals';
 import fireToast from '../../../common/components/Toaster';
 import studentActions from '../student.actions';
 import { connect } from 'react-redux';
+import ModalAttendance from '../../../common/components/Modals/ModalAttendance';
 
 const Calendar = (props) => {
     const {
@@ -15,7 +16,9 @@ const Calendar = (props) => {
         getCalendarStatus,
         getLessonsStatus,
         lessons,
-        selectedLesson
+        selectedLesson,
+        attendances,
+        getAttendanceStatus,
     } = props;
 
     // TODO calendar student firetoast texts
@@ -25,16 +28,27 @@ const Calendar = (props) => {
     }, [props.getCalendarStatus, props.updateLessonStatus]);
 
     const renderModals = () => {
-        return (
+        return ([
             <ModalPreview
-                key='modal-edit'
-                isOpen={modalState === MODAL_STATES.PREVIEW}    
+                key='modal-preview'
+                isOpen={modalState === MODAL_STATES.PREVIEW}
                 type={MODAL_TYPES.STUDENT_LESSON}
                 data={selectedLesson}
                 loading={getLessonsStatus === REQUEST_STATUS.LOADING}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
+                onAttendances={() => props.changeModalState(MODAL_STATES.ATTENDANCE)}
+                noEditOption
+            />,
+            <ModalAttendance
+                key='modal-attendances'
+                isOpen={modalState === MODAL_STATES.ATTENDANCE}    
+                type={MODAL_TYPES.STUDENT_ATTENDANCES}
+                getAttendancesStatus={getAttendanceStatus}
+                attendances={attendances}
+                onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
+                onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)} 
             />
-        );
+        ]);
     };
 
     return (
@@ -48,8 +62,8 @@ const Calendar = (props) => {
                 calendarEvents={calendar} 
                 // TODO: cambiar a seleccionar el lesson y abrir el modal
                 handleEventClick={(info) => {
-                    props.selectLesson(lessons.find(lesson => lesson.id === info.event._def.extendedProps.lessonId));
-                    props.changeModalState(MODAL_STATES.EDIT);
+                    props.selectLesson(lessons.find(lesson => lesson.id === info.event._def.extendedProps.lessonId), true);
+                    props.changeModalState(MODAL_STATES.PREVIEW);
                 }}
             />
         </div>
@@ -63,11 +77,14 @@ const mapStateToProps = (state) => ({
     modalState: state.student.modalState,
     lessons: state.student.lessons,  // el calendar tiene solo el id de la leccion
     // y para seleccionar una lesson hay que dar toda la data jeje
-    selectedLesson: state.student.selectedLesson
+    selectedLesson: state.student.selectedLesson,
+    attendances: state.student.attendances,
+    getAttendanceStatus: state.student.getAttendanceStatus,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    changeModalState: (modalState) => dispatch(studentActions.adminLessonsChangeModalState(modalState))
+    changeModalState: (modalState) => dispatch(studentActions.studentLessonsChangeModalState(modalState)),
+    selectLesson: (lesson, getAttendances) => dispatch(studentActions.studentSelectLesson(lesson, getAttendances))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

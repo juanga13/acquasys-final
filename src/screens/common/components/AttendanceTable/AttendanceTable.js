@@ -62,7 +62,7 @@ const AttendanceTable = (props) => {
                                         <Table.Cell key={`attendance_${student.id}_${date}`}>
                                             <AttendanceCheckbox
                                                 checkedState={present ? CHECKED_STATE.PRESENT : CHECKED_STATE.ABSENT}
-                                                onChange={(state) => props.onSetAttendance({
+                                                onChange={(state) => !previewMode && props.onSetAttendance({
                                                     date, lessonId,
                                                     present: (!present),
                                                     studentId: student.id
