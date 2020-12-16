@@ -23,8 +23,10 @@ const teacherMiddleware = ({dispatch, getState}) => next => action => {
 
         case TEACHER_GET_ATTENDANCES:
             requests.getAttenances()
-                .then(() => dispatch(teacherActions.getAttenancesSuccess()))
-                .catch(() => {
+                .then((response) => {
+                    dispatch(teacherActions.getAttenancesSuccess(response))
+                })
+                .catch((error) => {
                     dispatch(teacherActions.getAttenancesError());
                     fireToast( I18n.t('teacher.lessons.error.getAttendances.title'), I18n.t('teacher.lessons.error.getAttendances.description'), 'error', 'warning' );
                 })
@@ -32,16 +34,16 @@ const teacherMiddleware = ({dispatch, getState}) => next => action => {
 
         case TEACHER_SET_ATTENDANCE:
             requests.setAttendance(action.attendance)
-                .then(() => {
+                .then((response) => {
                     dispatch(teacherActions.setAttendanceSuccess());
-                    fireToast( I18n.t('teacher.lessons.success.setAttendance.title'), I18n.t('teacher.lessons.success.setAttendance.description'), 'success', 'check' );
+                    dispatch(teacherActions.getAttendances(getState().teacher.selectedLesson.id));
                 })
-                .catch(() => {
+                .catch((error) => {
                     dispatch(teacherActions.setAttendanceError());
                     fireToast( I18n.t('teacher.lessons.error.setAttendance.title'), I18n.t('teacher.lessons.error.setAttendance.description'), 'error', 'warning' );
                 })
             break;
-                
+
         case TEACHER_GET_MYSELF_DATA:
             requests.getMyselfData()
                 .then((response) => dispatch(teacherActions.getMyselfDataSuccess(response)))
