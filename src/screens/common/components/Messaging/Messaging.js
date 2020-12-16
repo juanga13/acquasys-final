@@ -121,7 +121,7 @@ const Messaging = (props) => {
                                                 <p>{message.receiver.email}</p>
                                             </div>
                                         </List.Description>
-                                        <List.Description>{message.content}</List.Description>
+                                        <List.Description>{message.contents}</List.Description>
                                     </List.Content>
                                 </List.Item>
                             ))}
