@@ -13,9 +13,9 @@ const initialState = {
     messages: [],
     getMessagesStatus: REQUEST_STATUS.NONE,
     newMessageForm: {
-        subject: {id: 'subject', value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.subject', label: 'forms.subject', required: false },
-        to:      {id: 'to',      value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.to', label: 'forms.to', required: true },
-        content: {id: 'content', value: '', error: false, type: FIELD_TYPES.TEXT_AREA, placeholder: 'forms.content', label: 'forms.content', required: true },
+        subject:  {id: 'subject',  value: '', error: false, type: FIELD_TYPES.STRING, placeholder: 'forms.subject', label: 'forms.subject', required: false },
+        to:       {id: 'to',       value: '', error: false, type: FIELD_TYPES.EMAIL, placeholder: 'forms.to', label: 'forms.to', required: true },
+        contents: {id: 'contents', value: '', error: false, type: FIELD_TYPES.TEXT_AREA, placeholder: 'forms.content', label: 'forms.content', required: true },
     },
     sendMessageStatus: REQUEST_STATUS.NONE,
     setReadMessageStatus: REQUEST_STATUS.NONE,

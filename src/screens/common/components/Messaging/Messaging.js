@@ -81,7 +81,7 @@ const Messaging = (props) => {
                                                 <p>{message.sender ? message.sender.email : "Sistema"}</p>
                                             </div>
                                             <div className='message-description-container'>
-                                                <p>{message.content}</p>
+                                                <p>{message.contents}</p>
                                             </div>
                                         </List.Description>
                                     </List.Content>
