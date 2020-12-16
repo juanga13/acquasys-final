@@ -15,6 +15,7 @@ const AttendanceTable = (props) => {
         // onSetAttendance, function
     } = props;
     const {
+        attendance, //Attendances
         possibleDates, // array of numbers
         students, // array of students object 
     } = attendances;
@@ -57,7 +58,7 @@ const AttendanceTable = (props) => {
                                 {possibleDates.map((date) => (
                                     <Table.Cell key={`attendance_${student.id}_${date}`}>
                                         <AttendanceCheckbox
-                                            checkState={CHECKED_STATE.NONE}
+                                            checkedState={(attendance[date].filter(att => att.id === student.id).length > 0) ? CHECKED_STATE.PRESENT : CHECKED_STATE.ABSENT}
                                             onChange={(state) => props.onSetAttendance({
                                                 date, lessonId,
                                                 present: (state === CHECKED_STATE.PRESENT), // TODO: cambiar a state cuando este hecho
