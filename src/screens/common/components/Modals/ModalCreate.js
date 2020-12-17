@@ -98,7 +98,6 @@ const ModalCreate = (props) => {
                 );
 
             case MODAL_TYPES.ADMIN_PAYMENT:
-                console.log('modal create payments', formValues);
                 return (
                     <Form>
                         {formValues.map((valueProps) => (

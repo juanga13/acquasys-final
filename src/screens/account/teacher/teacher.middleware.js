@@ -3,6 +3,7 @@ import teacherActions, {
     TEACHER_GET_ATTENDANCES,
     TEACHER_SET_ATTENDANCE,
     TEACHER_GET_MYSELF_DATA,
+    TEACHER_SELECT_LESSON,
 } from './teacher.actions';
 import requests from './teacher.services';
 import fireToast from '../../common/components/Toaster';
@@ -13,7 +14,7 @@ const teacherMiddleware = ({dispatch, getState}) => next => action => {
     next(action);
     switch (action.type) {
         case TEACHER_GET_LESSONS:
-            requests.getLessons()
+            requests.getLessons(action.id)
                 .then((response) => dispatch(teacherActions.getLessonsSuccess(response)))
                 .catch(() => {
                     dispatch(teacherActions.getLessonsError());
@@ -22,12 +23,12 @@ const teacherMiddleware = ({dispatch, getState}) => next => action => {
             break;
 
         case TEACHER_GET_ATTENDANCES:
-            requests.getAttenances()
+            requests.getAttendances(getState().teacher.selectedLesson.id)
                 .then((response) => {
-                    dispatch(teacherActions.getAttenancesSuccess(response))
+                    dispatch(teacherActions.getAttendancesSuccess(response))
                 })
                 .catch((error) => {
-                    dispatch(teacherActions.getAttenancesError());
+                    dispatch(teacherActions.getAttendancesError());
                     fireToast( I18n.t('teacher.lessons.error.getAttendances.title'), I18n.t('teacher.lessons.error.getAttendances.description'), 'error', 'warning' );
                 })
             break;
@@ -53,6 +54,10 @@ const teacherMiddleware = ({dispatch, getState}) => next => action => {
                 })
             break;
 
+        case TEACHER_SELECT_LESSON:
+            if (!!action.lesson) dispatch(teacherActions.getAttendances(action.lesson.id));
+            break;
+        
         default: break;
     }
 };

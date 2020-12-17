@@ -36,13 +36,13 @@ export const teacherActions = {
     getLessonsSuccess: (response) => ({type: TEACHER_GET_LESSONS_SUCCESS, response}),
     getLessonsError: () => ({type: TEACHER_GET_LESSONS_ERROR}),
     
-    getAttendances: () => ({ type: TEACHER_GET_ATTENDANCES }),
-    getAttendances: (response) => ({ type: TEACHER_GET_ATTENDANCES_SUCCESS, response }),
-    getAttendances: () => ({ type: TEACHER_GET_ATTENDANCES_ERROR }),
+    getAttendances: (id) => ({ type: TEACHER_GET_ATTENDANCES, id }),
+    getAttendancesSuccess: (response) => ({ type: TEACHER_GET_ATTENDANCES_SUCCESS, response }),
+    getAttendancesError: () => ({ type: TEACHER_GET_ATTENDANCES_ERROR }),
     
     setAttendance: (attendance) => ({ type: TEACHER_SET_ATTENDANCE, attendance }),
-    setAttendance: () => ({ type: TEACHER_SET_ATTENDANCE_SUCCESS }),
-    setAttendance: () => ({ type: TEACHER_SET_ATTENDANCE_ERROR }),
+    setAttendanceSuccess: () => ({ type: TEACHER_SET_ATTENDANCE_SUCCESS }),
+    setAttendanceError: () => ({ type: TEACHER_SET_ATTENDANCE_ERROR }),
 };
 
 export default teacherActions;

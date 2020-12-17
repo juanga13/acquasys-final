@@ -13,7 +13,6 @@ const PrivateRoute = (props) => {
         isLoggedIn,
     } = props;
     const role = localStorage.getItem('role');
-    console.log('private route', path, 'isLoggedIn: ', isLoggedIn, 'roleNeeded', roleNeeded, 'role', role)
     if (!isLoggedIn) return (<Redirect to={redirectTo}/>);
     if (roleNeeded !== undefined && role !== roleNeeded) return (<Redirect to={redirectTo}/>);
     return (

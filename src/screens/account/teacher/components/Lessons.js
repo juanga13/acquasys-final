@@ -22,7 +22,6 @@ const Lessons = (props) => {
     const [searchName, setSearchName] = useState('');
     const filteredLessons = lessons.filter(lesson => lesson.name.includes(searchName));
 
-
     const renderModals = () => {
         return ([
             <ModalPreview
@@ -37,13 +36,14 @@ const Lessons = (props) => {
             <ModalAttendance
                 key='modal-attendances'
                 isOpen={modalState === MODAL_STATES.ATTENDANCE}    
-                type={MODAL_TYPES.STUDENT_ATTENDANCES}
+                type={MODAL_TYPES.TEACHER_ATTENDANCES}
                 getAttendancesStatus={getAttendancesStatus}
                 attendances={attendances}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
                 setAttendanceStatus={setAttendanceStatus}
-                onSetAttendance={(id, type, value) => props.inputChange(id, type, value)}
+                onSetAttendance={props.setAttendance}
+                lessonId={selectedLesson?.id}
             />
         ])
     };
@@ -68,7 +68,7 @@ const Lessons = (props) => {
             </div>
             <MyTable
                 data={filteredLessons}
-                noResults={searchName.length > 0 && filteredLessons.length === 0}
+                noResults={filteredLessons.length === 0}
                 columns={['name']}
                 actions={[
                     { type: 'file alternate', action: (data) => {
@@ -83,7 +83,6 @@ const Lessons = (props) => {
                 status={getLessonsStatus}
                 loading={getAttendancesStatus === REQUEST_STATUS.LOADING}
                 color='yellow'
-                noResults={'a'}
             />
         </div>
     );
@@ -100,7 +99,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    changeModalState: (modalState) => dispatch(teacherActions.teacherChangeModalState(modalState)),
+    changeModalState: (modalState) => dispatch(teacherActions.changeModalState(modalState)),
     selectLesson: (data) => dispatch(teacherActions.selectLesson(data)),
     setAttendance: (attendance) => dispatch(teacherActions.setAttendance(attendance))
 });
