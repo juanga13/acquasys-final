@@ -38,7 +38,6 @@ const AdminProfile = (props) => {
 
     const renderTodaysWeekLessons = () => {
         const list = lessonsThisWeek();
-        console.log(calendar, list);
         return (
             <List>
                 {list.length === 0 ? 
