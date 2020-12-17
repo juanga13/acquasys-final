@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { Header, Button, Label, Input } from 'semantic-ui-react';
-import { I18n } from 'react-redux-i18n';
+import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
+import {Button, Header, Input, Label} from 'semantic-ui-react';
+import {I18n} from 'react-redux-i18n';
 import ModalPreview from '../../../../common/components/Modals/ModalPreview';
 import ModalCreate from '../../../../common/components/Modals/ModalCreate';
-import { MODAL_STATES, MODAL_TYPES, REQUEST_STATUS, FIELD_TYPES } from '../../../../../utils/consts';
+import {FIELD_TYPES, MODAL_STATES, MODAL_TYPES, REQUEST_STATUS} from '../../../../../utils/consts';
 import adminPaymentsActions from '../admin.payments.actions';
 import MyTable from '../../../../common/components/MyTable/MyTable';
-import fireToast from '../../../../common/components/Toaster';
 import './Payment.scss';
 import ReactDatePicker from 'react-datepicker';
 
@@ -38,9 +37,9 @@ const Payments = (props) => {
     const [endDate, setEndDate] = useState(null);
     const getFilteredPayments = () => {
         return payments.filter(payment => {
-            if(!payment.name)
+            if (!payment.name)
                 return false;
-            if(payment.payed)
+            if (payment.payed)
                 return false;
             const date = new Date(payment.date);
             const a = payment.name.toLowerCase().includes(searchText);
@@ -53,7 +52,8 @@ const Payments = (props) => {
     };
     const filteredPayments = getFilteredPayments();
 
-    useEffect(() => {}, [fee, payments, payPaymentStatus])
+    useEffect(() => {
+    }, [fee, payments, payPaymentStatus])
 
     const renderModals = () => {
         return ([
@@ -87,7 +87,7 @@ const Payments = (props) => {
             {renderModals()}
             <div className='section-header-container'>
                 <Header floated='right'>{I18n.t('admin.payments.title')}</Header>
-                <Header floated='left' >
+                <Header floated='left'>
                     {/* <Button color='grey' size='medium' onClick={() => props.changeModalState(MODAL_STATES.CREATE)}>
                         {I18n.t('admin.payments.buttons.newPayment')}
                     </Button> */}
@@ -131,7 +131,7 @@ const Payments = (props) => {
                     startDate={startDate}
                     className='table-date-input'
                     placeholderText={I18n.t('admin.lessons.searchStartDate')}
-                    />
+                />
                 <ReactDatePicker
                     selected={endDate}
                     onChange={date => setEndDate(date)}
@@ -154,6 +154,7 @@ const Payments = (props) => {
                             props.selectPayment(data);
                             props.changeModalState(MODAL_STATES.PREVIEW);
                         },
+                    }, {
                         type: 'dollar sign', action: (data) => {
                             console.log('mark as payed', data);
                             props.payPayment({
