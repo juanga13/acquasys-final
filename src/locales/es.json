@@ -172,7 +172,8 @@
         "file alternate": "Detalles",
         "user delete": "Eliminar",
         "signup": "Suscribirse",
-        "remove": "Desuscribirse"
+        "remove": "Desuscribirse",
+        "dollar sign": "Marcar como pago"
       },
       "error": {
         "dataError": "Hubo un error con la obtencion de datos"

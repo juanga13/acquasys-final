@@ -7,7 +7,7 @@ import {
     // UPDATE_PAYMENT, UPDATE_PAYMENT_SUCCESS, UPDATE_PAYMENT_ERROR,
     // DELETE_PAYMENT, DELETE_PAYMENT_SUCCESS, DELETE_PAYMENT_ERROR,
     GET_FEE, GET_FEE_SUCCESS, GET_FEE_ERROR,
-    SET_FEE, SET_FEE_SUCCESS, SET_FEE_ERROR
+    SET_FEE, SET_FEE_SUCCESS, SET_FEE_ERROR, PAY_PAYMENT, PAY_PAYMENT_SUCCESS, PAY_PAYMENT_ERROR
 } from './admin.payments.actions';
 import { MODAL_STATES, REQUEST_STATUS, FIELD_TYPES } from '../../../../utils/consts';
 import { dataToFormTransform } from '../../../../utils/dataFormTransform';
@@ -19,19 +19,20 @@ const initialState = {
     selectedPayment: null,
     modalState: MODAL_STATES.CLOSED,
     getPaymentsStatus: REQUEST_STATUS.NONE,
-    createPaymentStatus: REQUEST_STATUS.NONE,
+    // createPaymentStatus: REQUEST_STATUS.NONE,
     // updatePaymentStatus: REQUEST_STATUS.NONE,
     // deletePaymentStatus: REQUEST_STATUS.NONE,
     fee: 0,
     getFeeStatus: REQUEST_STATUS.NONE,
     setFeeStatus: REQUEST_STATUS.NONE,
-    paymentForm: {
-        amount: { id: 'amount', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.amount', label: 'forms.amount', required: true },
-        date: { id: 'date', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.date', label: 'forms.date', required: true },
-        // en el caso de crear un payment el back me pide studentId
-        // se pone student para que se muestre el dropdown para elegir student
-        student: { id: 'student', value: -1, error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.student', label: 'forms.student', required: true },
-    }
+    // paymentForm: {
+    //     amount: { id: 'amount', value: '', error: false, type: FIELD_TYPES.NUMBER, placeholder: 'forms.amount', label: 'forms.amount', required: true },
+    //     date: { id: 'date', value: new Date().getTime(), error: false, type: FIELD_TYPES.DATE, placeholder: 'forms.date', label: 'forms.date', required: true },
+    //     // en el caso de crear un payment el back me pide studentId
+    //     // se pone student para que se muestre el dropdown para elegir student
+    //     student: { id: 'student', value: -1, error: false, type: FIELD_TYPES.NULL, placeholder: 'forms.student', label: 'forms.student', required: true },
+    // },
+    payPaymentStatus: REQUEST_STATUS.NONE,
 };
 
 const adminPaymentsReducer = (state = initialState, action) => {
@@ -73,6 +74,9 @@ const adminPaymentsReducer = (state = initialState, action) => {
         // case UPDATE_PAYMENT_SUCCESS: return { ...state, updatePaymentStatus: REQUEST_STATUS.SUCCESS }
         // case UPDATE_PAYMENT_ERROR: return { ...state, updatePaymentStatus: REQUEST_STATUS.ERROR }
 
+        case PAY_PAYMENT: return { ...state, payPaymentStatus: REQUEST_STATUS.LOADING };
+        case PAY_PAYMENT_SUCCESS: return { ...state, payPaymentStatus: REQUEST_STATUS.SUCCESS };
+        case PAY_PAYMENT_ERROR: return { ...state, payPaymentStatus: REQUEST_STATUS.ERROR };
         // case DELETE_PAYMENT: return { ...state, deletePaymentStatus: REQUEST_STATUS.LOADING }
         // case DELETE_PAYMENT_SUCCESS: return { ...state, deletePaymentStatus: REQUEST_STATUS.SUCCESS }
         // case DELETE_PAYMENT_ERROR: return { ...state, deletePaymentStatus: REQUEST_STATUS.ERROR }

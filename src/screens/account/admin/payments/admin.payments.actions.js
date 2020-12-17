@@ -14,6 +14,10 @@ export const CREATE_PAYMENT_ERROR = 'CREATE_PAYMENT_ERROR';
 // export const UPDATE_PAYMENT_SUCCESS = 'UPDATE_PAYMENT_SUCCESS';
 // export const UPDATE_PAYMENT_ERROR = 'UPDATE_PAYMENT_ERROR';
 
+export const PAY_PAYMENT = 'PAY_PAYMENT';
+export const PAY_PAYMENT_SUCCESS = 'PAY_PAYMENT_SUCCESS';
+export const PAY_PAYMENT_ERROR = 'PAY_PAYMENT_ERROR';
+
 // export const DELETE_PAYMENT = 'DELETE_PAYMENT';
 // export const DELETE_PAYMENT_SUCCESS = 'DELETE_PAYMENT_SUCCESS';
 // export const DELETE_PAYMENT_ERROR = 'DELETE_PAYMENT_ERROR';
@@ -45,6 +49,10 @@ const adminPaymentsActions = {
     // updatePayment: (data) => ({ type: UPDATE_PAYMENT, data }),
     // updatePaymentSuccess: () => ({ type: UPDATE_PAYMENT_SUCCESS }),
     // updatePaymentError: () => ({ type: UPDATE_PAYMENT }),
+
+    payPayment: (payment) => ({ type: PAY_PAYMENT, payment }),
+    payPaymentSuccess: () => ({ type: PAY_PAYMENT_SUCCESS }),
+    payPaymentError: () => ({ type: PAY_PAYMENT_ERROR }),
 
     // deletePayment: (id) => ({ type: DELETE_PAYMENT, id }),
     // deletePaymentSuccess: () => ({ type: DELETE_PAYMENT_SUCCESS }),

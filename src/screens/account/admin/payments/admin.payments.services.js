@@ -103,7 +103,25 @@ const requests = {
                 if (response.ok) return response.json();
                 else throw response.json();
             })
-    }
+    },
+
+    payPayment: (payment) => {
+        const requestOptions = {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("token")
+            },
+            body: JSON.stringify(payment),
+        };
+
+        return fetch(baseUrl + '/payment/pay', requestOptions)
+            .then(response => {
+                if (response.ok) return response.json();
+                else throw response.json();
+            })
+    },
 };
 
 export default requests;

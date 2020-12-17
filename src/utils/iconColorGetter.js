@@ -13,7 +13,9 @@ const getColor = icon => {
             return 'grey'
         case 'signup':
             return 'yellow';
-        
+        case 'dollar sign':
+            return 'green';
+            
         default:
             return 'black'
     }

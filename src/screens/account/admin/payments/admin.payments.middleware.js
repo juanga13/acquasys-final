@@ -5,6 +5,7 @@ import adminPaymentsActions, {
     ADMIN_PAYMENTS_CHANGE_MODAL_STATE, 
     CREATE_PAYMENT,
     GET_FEE,
+    PAY_PAYMENT,
     SET_FEE
 } from './admin.payments.actions';
 import requests from './admin.payments.services';
@@ -63,6 +64,18 @@ const adminPaymentsMiddleware = ({ dispatch, getState }) => next => action => {
                 .catch(() => {
                     dispatch(adminPaymentsActions.createPaymentError());
                     fireToast(I18n.t('admin.payments.error.create.title'), I18n.t('admin.payments.error.create.description'), 'error', 'warning');
+                });
+            break;
+
+        case PAY_PAYMENT:
+            requests.payPayment(action.payment)
+                .then((response) => {
+                    dispatch(adminPaymentsActions.payPaymentSuccess());
+                    dispatch(adminPaymentsActions.getPayments())
+                })
+                .catch((error) => {
+                    dispatch(adminPaymentsActions.payPaymentError())
+                    fireToast('Pagos', 'Hubo un error al marcar como pago', 'error', 'warning');
                 });
             break;
 

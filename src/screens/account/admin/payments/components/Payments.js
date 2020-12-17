@@ -24,7 +24,8 @@ const Payments = (props) => {
         // deletePaymentStatus,
         getFeeStatus,
         setFeeStatus,
-        paymentForm
+        paymentForm,
+        payPaymentStatus
     } = props;
 
     // fee
@@ -52,7 +53,7 @@ const Payments = (props) => {
     };
     const filteredPayments = getFilteredPayments();
 
-    useEffect(() => {}, [props.fee])
+    useEffect(() => {}, [fee, payments, payPaymentStatus])
 
     const renderModals = () => {
         return ([
@@ -80,15 +81,16 @@ const Payments = (props) => {
         ])
     };
 
+    console.log(filteredPayments)
     return (
         <div className='section-container'>
             {renderModals()}
             <div className='section-header-container'>
                 <Header floated='right'>{I18n.t('admin.payments.title')}</Header>
                 <Header floated='left' >
-                    <Button color='grey' size='medium' onClick={() => props.changeModalState(MODAL_STATES.CREATE)}>
+                    {/* <Button color='grey' size='medium' onClick={() => props.changeModalState(MODAL_STATES.CREATE)}>
                         {I18n.t('admin.payments.buttons.newPayment')}
-                    </Button>
+                    </Button> */}
                     {/* apparently without image changes the style of the label texts xD */}
                     <div className='fee-items-container'>
                         <Input
@@ -151,10 +153,19 @@ const Payments = (props) => {
                         type: 'file alternate', action: (data) => {
                             props.selectPayment(data);
                             props.changeModalState(MODAL_STATES.PREVIEW);
-                        }
+                        },
+                        type: 'dollar sign', action: (data) => {
+                            console.log('mark as payed', data);
+                            props.payPayment({
+                                amount: data.amount,
+                                date: data.date,
+                                studentId: data.student.id,
+                            });
+                        },
                     },
                 ]}
                 status={getPaymentsStatus}
+                loading={payPaymentStatus === REQUEST_STATUS.LOADING}
                 color='grey'
                 defaultSort='date'
             />
@@ -168,9 +179,10 @@ const mapStateToProps = (state) => ({
     selectedPayment: state.admin.payments.selectedPayment,
     modalState: state.admin.payments.modalState,
     getPaymentsStatus: state.admin.payments.getPaymentsStatus,
-    createPaymentStatus: state.admin.payments.createPaymentStatus,
-    updatePaymentStatus: state.admin.payments.updatePaymentStatus,
-    deletePaymentStatus: state.admin.payments.deletePaymentStatus,
+    // createPaymentStatus: state.admin.payments.createPaymentStatus,
+    // updatePaymentStatus: state.admin.payments.updatePaymentStatus,
+    // deletePaymentStatus: state.admin.payments.deletePaymentStatus,
+    payPaymentStatus: state.admin.payments.payPaymentStatus,
     paymentForm: state.admin.payments.paymentForm,
     getFeeStatus: state.admin.payments.getFeeStatus,
     setFeeStatus: state.admin.payments.setFeeStatus,
@@ -180,9 +192,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     changeModalState: (modalState) => dispatch(adminPaymentsActions.adminPaymentsChangeModalState(modalState)),
     selectPayment: (data) => dispatch(adminPaymentsActions.selectPayment(data)),
-    createPayment: (data) => dispatch(adminPaymentsActions.createPayment(data)),
-    updatePayment: (data) => dispatch(adminPaymentsActions.updatePayment(data)),
-    deletePayment: (id) => dispatch(adminPaymentsActions.deletePayment(id)),
+    // createPayment: (data) => dispatch(adminPaymentsActions.createPayment(data)),
+    // updatePayment: (data) => dispatch(adminPaymentsActions.updatePayment(data)),
+    // deletePayment: (id) => dispatch(adminPaymentsActions.deletePayment(id)),
+    payPayment: (payment) => dispatch(adminPaymentsActions.payPayment(payment)),
     inputChange: (id, type, value) => dispatch(adminPaymentsActions.adminPaymentsInputChange(id, type, value)),
     setFee: (fee) => dispatch(adminPaymentsActions.setFee(fee))
 });
