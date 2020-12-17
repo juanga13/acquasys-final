@@ -154,6 +154,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    changeModalState: (modalState) => dispatch(studentActions.studentChangeModalState(modalState))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StudentProfile);
