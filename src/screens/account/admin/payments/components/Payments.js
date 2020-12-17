@@ -39,17 +39,19 @@ const Payments = (props) => {
         return payments.filter(payment => {
             if(!payment.name)
                 return false;
+            if(payment.payed)
+                return false;
             const date = new Date(payment.date);
             const a = payment.name.toLowerCase().includes(searchText);
-            const b = payment.surname.toLowerCase().includes(searchText); 
-            const c = payment.dni.toString().includes(searchText); 
-            const dateIsAfterStartDate = (startDate !== null ? date >= startDate : true); 
-            const dateIsBeforeEndDate = (endDate !== null ? date <= endDate : true); 
+            const b = payment.surname.toLowerCase().includes(searchText);
+            const c = payment.dni.toString().includes(searchText);
+            const dateIsAfterStartDate = (startDate !== null ? date >= startDate : true);
+            const dateIsBeforeEndDate = (endDate !== null ? date <= endDate : true);
             return (a || b || c) && (dateIsAfterStartDate && dateIsBeforeEndDate);
         })
     };
     const filteredPayments = getFilteredPayments();
-    
+
     useEffect(() => {}, [props.fee])
 
     const renderModals = () => {
