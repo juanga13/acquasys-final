@@ -36,13 +36,14 @@ const Lessons = (props) => {
             <ModalAttendance
                 key='modal-attendances'
                 isOpen={modalState === MODAL_STATES.ATTENDANCE}    
-                type={MODAL_TYPES.STUDENT_ATTENDANCES}
+                type={MODAL_TYPES.TEACHER_ATTENDANCES}
                 getAttendancesStatus={getAttendancesStatus}
                 attendances={attendances}
                 onClose={() => props.changeModalState(MODAL_STATES.CLOSED)}
                 onBack={() => props.changeModalState(MODAL_STATES.PREVIEW)}
                 setAttendanceStatus={setAttendanceStatus}
-                onSetAttendance={(id, type, value) => props.inputChange(id, type, value)}
+                onSetAttendance={props.setAttendance}
+                lessonId={selectedLesson?.id}
             />
         ])
     };
@@ -98,7 +99,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    changeModalState: (modalState) => dispatch(teacherActions.teacherChangeModalState(modalState)),
+    changeModalState: (modalState) => dispatch(teacherActions.changeModalState(modalState)),
     selectLesson: (data) => dispatch(teacherActions.selectLesson(data)),
     setAttendance: (attendance) => dispatch(teacherActions.setAttendance(attendance))
 });
