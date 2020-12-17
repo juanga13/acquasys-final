@@ -81,10 +81,10 @@ const Lessons = (props) => {
                         props.selectLesson(data, false);
                         props.changeModalState(MODAL_STATES.PREVIEW);
                     }},
-                    { type: 'signup', action: (data) => {
-                        console.log('suscribed ', data, myData.id, data.id); 
-                        props.subscribeLesson(myData.id, data.id);
-                    }}
+                    // { type: 'signup', action: (data) => {
+                    //     console.log('suscribed ', data, myData.id, data.id); 
+                    //     props.subscribeLesson(myData.id, data.id);
+                    // }}
                 ]}
                 status={getLessonsStatus}
                 color='yellow'
