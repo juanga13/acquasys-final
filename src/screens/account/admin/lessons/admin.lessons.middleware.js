@@ -37,6 +37,8 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             // take missing data (not shown in form) and add it in order to make the request
             // take data from getState().selectedLesson and insert it into data!
             createData.id = 0;
+            createData.students = createData.students.map((student) => student.id);
+            createData.teachers = createData.teachers.map((teacher) => teacher.id);
             // if (createData.password.value === '') {
             //     createData.password.value = 'asd123';
             // }
