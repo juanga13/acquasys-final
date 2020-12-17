@@ -60,7 +60,8 @@ const adminLessonsMiddleware = ({ dispatch, getState }) => next => action => {
             // take data from getState().selectedLesson and insert it into data!
             updateData.id = updateSelectedLesson.id;
             updateData.role = updateSelectedLesson.role;
-            console.log('update lesson', updateSelectedLesson)
+            updateData.students = updateData.students.map((student) => student.id);
+            updateData.teachers = updateData.teachers.map((teacher) => teacher.id);
             // if (updateData.password === '') {
             //     updateData.password = updateSelectedLesson.password;
             // }

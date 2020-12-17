@@ -108,15 +108,15 @@ const MyFormInput = (props) => {
                         defaultValue={selectedStudents}
                         options={allStudents}
                         /* array of student ids */
-                        onChange={(e, data) => props.onChange(id, type, data.value)}
+                        // onChange={(e, data) => props.onChange(id, type, data.value)}
                         /* array of student objects */
-                        // onChange={(e, studentIdArray) => {
-                        //     var result = [];
-                        //     studentIdArray.value.forEach(studentId => (
-                        //         result.push(props.students.find(student => student.id === studentId))
-                        //     ));
-                        //     props.onChange(id, type, result);
-                        // }}
+                        onChange={(e, studentIdArray) => {
+                            var result = [];
+                            studentIdArray.value.forEach(studentId => (
+                                result.push(props.students.find(student => student.id === studentId))
+                            ));
+                            props.onChange(id, type, result);
+                        }}
                     />
                 );
             } else if (id === 'teachers') {
@@ -139,15 +139,15 @@ const MyFormInput = (props) => {
                         defaultValue={selectedTeachersIds}
                         options={allTeachers}
                         /* array of teacher ids */
-                        onChange={(e, data) => props.onChange(id, type, data.value)}
+                        // onChange={(e, data) => props.onChange(id, type, data.value)}
                         /* array of teacher objects */
-                        // onChange={(e, teacherIdArray) => {
-                        //     var result = [];
-                        //     teacherIdArray.value.forEach(teacherId => (
-                        //         result.push(props.teachers.find(teacher => teacher.id === teacherId))
-                        //     ));
-                        //     props.onChange(id, type, result);
-                        // }}
+                        onChange={(e, teacherIdArray) => {
+                            var result = [];
+                            teacherIdArray.value.forEach(teacherId => (
+                                result.push(props.teachers.find(teacher => teacher.id === teacherId))
+                            ));
+                            props.onChange(id, type, result);
+                        }}
                     />
                 );
             } else if (id === 'weekdays') {
